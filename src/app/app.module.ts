@@ -13,6 +13,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutModule } from 'ng2-flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ HomeFormComponent
     routing,
     FormsModule,
     HttpModule,
-    LayoutModule
+    LayoutModule,
+    FlexLayoutModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

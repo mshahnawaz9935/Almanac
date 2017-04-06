@@ -1,15 +1,15 @@
 .backgroundHome{
-    background-image: url('./assets/images/almanac1.jpg');
-    background-size: 100%;
+    background-image: url('./assets/images/almanac3.jpg');
+    background-size: cover;
 } 
-.titleHome{
+/*.titleHome{
     padding-top: 200px;
     padding-left: 34%;
     color: white;
-}
+}*/
 
 md-card{
-    width:  100px;
+    margin:15%;
     background-color: rgba(0, 173, 238, 0.6);
 }
 
