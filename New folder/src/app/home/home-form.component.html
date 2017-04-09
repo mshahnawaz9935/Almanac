@@ -1,0 +1,475 @@
+<br>
+<div class="container" style="box-shadow: 10px 10px 8px #888888;" >
+
+
+  <md-card>
+      <md-tab-group>
+        <md-tab label="Tell us about your car">
+      
+             <br>
+            <div class="row">
+            <div  [hidden]="submitted">
+                <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+           <div class="col-sm-4" >
+                <div class="form-group">
+                    <label for="name">Enter your Registration Number</label>
+                   
+                    <br>
+                    <br>
+                    <input type="text" class="form-control" id="name"
+                        required [(ngModel)]="model.name" name="name" #name="ngModel" >
+                        <br>
+                       <button md-raised-button color="accent">Find My Car</button>
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Name is required </div>
+                </div>
+                </div>
+
+                 <br>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                    <label for="name">Value of Vehicle</label>
+                    <input type="text" class="form-control" id="name3"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Value is required
+                    </div>
+                </div>
+
+                  <br>
+                 <div class="form-group">
+                    <label for="ncb">Years No Claim Bonus</label>
+                    <select class="form-control" id="ncb" required
+                            [(ngModel)]="model.ncb" name="ncb" #ncb="ngModel" >
+                    <option *ngFor="let n of ncbs" [value]="n">{{n}}</option>
+                    </select>
+                    <div [hidden]="ncb.valid || ncb.pristine" class="alert alert-danger">NCB is required
+                    </div>
+                </div>
+
+                 <br>
+                 <div class="form-group">
+                    <label for="type">Where you park Overnight</label>
+                    <select class="form-control" id="type" required
+                            [(ngModel)]="model.type" name="type" #type="ngModel" >
+                    <option *ngFor="let t of types" [value]="t">{{t}}</option>
+                    </select>
+                    <div [hidden]="type.valid || type.pristine" class="alert alert-danger">This is required
+                    </div>
+                </div>
+                </div>
+       
+               
+              <div class="col-sm-4">
+            <md-radio-group>
+            <md-radio-button color="primary" value="1">Comprehensive</md-radio-button>
+            <br>
+            <br>
+            <md-radio-button value="2">Third Party</md-radio-button>
+            <br>
+            <br>
+            <md-radio-button value="3">Third Party or Theft</md-radio-button>
+            <br>
+            <br>
+            </md-radio-group>
+            <br>
+            <button md-raised-button color="accent">Continue</button>
+            </div>
+   
+                </form>
+                
+            </div>
+            <div [hidden]="!submitted">
+                <h2>You submitted the following:</h2>
+                <div class="row">
+                <div class="col-xs-3">Name</div>
+                <div class="col-xs-9  pull-left">{{ model.name }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Alter Ego</div>
+                <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Power</div>
+                <div class="col-xs-9 pull-left">{{ model.power }}</div>
+                </div>
+                <br>
+                <button class="btn btn-default" (click)="submitted=false">Edit</button>
+            </div>
+            </div>
+            
+
+        </md-tab>
+    
+
+    
+        
+        <md-tab label="Tell us more about yourself">
+
+            <div class="row">
+            <div  [hidden]="submitted">
+                <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+                    <div class="col-sm-4">    
+                        <br>        
+                    <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="name"
+                        required
+                        [(ngModel)]="model.name" name="name"
+                        #name="ngModel" >
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Name is required </div>
+                </div>
+                <br>
+                    <div class="form-group">
+                    <label for="name">Sur Name</label>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Name is required
+                    </div>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required
+                    </div>
+                </div>
+                </div>
+
+                 <div class="col-sm-4">   
+                     <br>     
+                <div class="form-group">
+                    <label for="name">DOB</label>
+                    <br>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger">Name is required
+                    </div>
+                </div>
+      
+                <div class="form-group">
+                    <label for="name">Phone Number</label>
+                    <br>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger">Name is required </div>
+                </div>
+   
+                <div class="form-group">
+                    <label for="alterEgo">Address</label>
+                    <br>
+                    <input type="text" class="form-control" id="alterEgo"
+                        [(ngModel)]="model.alterEgo" name="alterEgo" >
+                </div>
+                <div class="form-group">
+                    <label for="power">Insurance Type</label>
+                    <select class="form-control" id="power" required
+                            [(ngModel)]="model.power" name="power" #power="ngModel" >
+                    <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+                    </select>
+                    <div [hidden]="power.valid || power.pristine" class="alert alert-danger">Power is required
+                    </div>
+                </div>
+                <br>
+                </div>
+                
+                  <div class="col-sm-4">  
+                      <br>  
+                <label>License Type</label>
+                <br>
+                <br>
+            <md-radio-group>
+            <md-radio-button color="primary" value="1">UK</md-radio-button>
+              <br>
+                <br>
+            <md-radio-button value="2">Irish</md-radio-button>
+            <br>
+              <br>
+            <md-radio-button value="3">Provisional</md-radio-button>
+              <br>
+                <br>
+                <md-radio-button value="4">Full EU</md-radio-button>
+            </md-radio-group>
+            <br>
+            <br>
+           
+                        <button md-raised-button color="warn">Get Cheapest Quote</button>
+
+            <!--<button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">Submit</button>
+                <button type="button" class="btn btn-default" (click)="newHero()">New Driver</button>-->
+                </div>
+                </form>
+                
+            </div>
+            <div [hidden]="!submitted">
+                <h2>You submitted the following:</h2>
+                <div class="row">
+                <div class="col-xs-3">Name</div>
+                <div class="col-xs-9  pull-left">{{ model.name }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Alter Ego</div>
+                <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Power</div>
+                <div class="col-xs-9 pull-left">{{ model.type }}</div>
+                </div>
+                <button class="btn btn-default" (click)="submitted=false">Edit</button>
+            </div>
+            </div>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
+
+  <div class="container" style="width:1400px;box-shadow: 10px 10px 8px #888888;">
+
+  <md-card>
+      <md-tab-group>
+        <md-tab label="Tell us about your car">
+      
+             <br>
+            <div>
+            <div  [hidden]="submitted">
+                <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+                <div style="width:400px;height:400px;float:left;padding-top:150px;">
+                <div class="form-group" >
+                 style="width:350px;">
+                    <label for="name">Enter your Registration Number</label>
+                   
+                    <br>
+                    <br>
+                    <input type="text" class="form-control" id="name"
+                        required [(ngModel)]="model.name" name="name" #name="ngModel" >
+                        <br>
+                       <button md-raised-button color="accent">Find My Car</button>
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Name is required </div>
+                </div>
+                </div>
+
+
+                 <br>
+                <div style="width:400px;height:400px;padding:30px;padding-top:50px;float:left;border-left:0.5px solid grey">
+                    <div class="form-group" style="width:350px;">
+                    <label for="name">Value of Vehicle</label>
+                    <input type="text" class="form-control" id="name3"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Value is required
+                    </div>
+                </div>
+
+                  <br>
+                 <div class="form-group" style="width:350px;">
+                    <label for="ncb">Years No Claim Bonus</label>
+                    <select class="form-control" id="ncb" required
+                            [(ngModel)]="model.ncb" name="ncb" #ncb="ngModel" >
+                    <option *ngFor="let n of ncbs" [value]="n">{{n}}</option>
+                    </select>
+                    <div [hidden]="ncb.valid || ncb.pristine" class="alert alert-danger">NCB is required
+                    </div>
+                </div>
+
+                 <br>
+                 <div class="form-group" style="width:350px;">
+                    <label for="type">Where you park Overnight</label>
+                    <select class="form-control" id="type" required
+                            [(ngModel)]="model.type" name="type" #type="ngModel" >
+                    <option *ngFor="let t of types" [value]="t">{{t}}</option>
+                    </select>
+                    <div [hidden]="type.valid || type.pristine" class="alert alert-danger">This is required
+                    </div>
+                </div>
+                </div>
+       
+               
+              <div style="width:400px;height:400px;padding:30px;padding-top:90px;float:left;border-left:0.5px solid grey">
+            <md-radio-group>
+            <md-radio-button color="primary" value="1">Comprehensive</md-radio-button>
+            <br>
+            <br>
+            <md-radio-button value="2">Third Party</md-radio-button>
+            <br>
+            <br>
+            <md-radio-button value="3">Third Party or Theft</md-radio-button>
+            <br>
+            <br>
+            </md-radio-group>
+            <br>
+            <button md-raised-button color="accent">Continue</button>
+            </div>
+ 
+                </form>
+                
+            </div>
+            <div [hidden]="!submitted">
+                <h2>You submitted the following:</h2>
+                <div class="row">
+                <div class="col-xs-3">Name</div>
+                <div class="col-xs-9  pull-left">{{ model.name }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Alter Ego</div>
+                <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Power</div>
+                <div class="col-xs-9 pull-left">{{ model.power }}</div>
+                </div>
+                <br>
+                <button class="btn btn-default" (click)="submitted=false">Edit</button>
+            </div>
+            </div>
+
+        </md-tab>
+        <md-tab label="Tell us more about yourself">
+ 
+                <br>
+
+            <div class="container">
+            <div  [hidden]="submitted">
+                <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+                <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="name"
+                        required
+                        [(ngModel)]="model.name" name="name"
+                        #name="ngModel" >
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Name is required </div>
+                </div>
+                    <div class="form-group">
+                    <label for="name">Sur Name</label>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger"> Name is required
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">DOB</label>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger">Name is required
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Phone Number</label>
+                    <input type="text" class="form-control" id="name2"
+                        name="name">
+                    <div [hidden]="name.valid || name.pristine" 
+                        class="alert alert-danger">Name is required </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="alterEgo">Address</label>
+                    <input type="text" class="form-control" id="alterEgo"
+                        [(ngModel)]="model.alterEgo" name="alterEgo" >
+                </div>
+                <div class="form-group">
+                    <label for="power">Insurance Type</label>
+                    <select class="form-control" id="power" required
+                            [(ngModel)]="model.power" name="power" #power="ngModel" >
+                    <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+                    </select>
+                    <div [hidden]="power.valid || power.pristine" class="alert alert-danger">Power is required
+                    </div>
+                </div>
+                
+            <md-radio-group>
+            <md-radio-button color="primary" value="1">UK</md-radio-button>
+            <md-radio-button value="2">Irish</md-radio-button>
+            <br>
+            <md-radio-button value="3">Provisional</md-radio-button>
+                <md-radio-button value="4">Full EU</md-radio-button>
+            </md-radio-group>
+            <br>
+            <button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">Submit</button>
+                <button type="button" class="btn btn-default" (click)="newHero()">New Driver</button>
+                </form>
+            </div>
+            <div [hidden]="!submitted">
+                <h2>You submitted the following:</h2>
+                <div class="row">
+                <div class="col-xs-3">Name</div>
+                <div class="col-xs-9  pull-left">{{ model.name }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Alter Ego</div>
+                <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Power</div>
+                <div class="col-xs-9 pull-left">{{ model.type }}</div>
+                </div>
+                <br>
+                <button class="btn btn-default" (click)="submitted=false">Edit</button>
+            </div>
+            </div>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+    </div>-->
