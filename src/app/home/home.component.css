@@ -13,3 +13,7 @@ md-card{
     padding:5%;
     background-color: rgba(0, 173, 238, 0.6);
 }
+.example-fill-remaining-space {
+
+  flex: 1 1 auto;
+}

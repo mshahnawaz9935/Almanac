@@ -12,8 +12,8 @@ import { SupportComponent } from './support/support.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { FooterComponent } from './footer/footer.component';
-import { LayoutModule } from 'ng2-flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SupportComponent,
     MenuBarComponent,
     FooterComponent,
-HomeFormComponent
+  HomeFormComponent,
+  SearchComponent
   ],
   entryComponents: [
     AppComponent,
@@ -35,7 +36,6 @@ HomeFormComponent
     routing,
     FormsModule,
     HttpModule,
-    LayoutModule,
     FlexLayoutModule
   ],
   providers: [appRoutingProviders],

@@ -1,0 +1,11 @@
+
+<md-card fxLayout="row" fxLayoutAlign="center center" class="dash-card" style="text-align:center"><h3>Enter keyword : </h3>
+<md-input-container>
+        <input mdInput class="dash-text center" value="{{value}}" #box (keyup.enter)="onEnter(box.value)">
+    </md-input-container></md-card>
+<div style="padding-top:3%;padding-left:10%;padding-right:10%;">
+<md-card *ngFor= "let result of results" >
+        <img [src]="result.image">
+          {{result.name}}  {{result.description}}
+</md-card>
+</div>

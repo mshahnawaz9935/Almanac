@@ -128,9 +128,7 @@ md-icon {
     .hide {
         display: none!important;
     }
-    /*.padding-sml {
-        padding:0px;
-    }*/
+
     chart {
         height: 130px;
     }
@@ -179,9 +177,6 @@ md-icon {
     md-card-title {
         font-size: 19px!important;
     }
-    /*.margin-sml {
-        margin: 10px;
-    }*/
 }
 
 @media only screen and (max-width: 900px) {

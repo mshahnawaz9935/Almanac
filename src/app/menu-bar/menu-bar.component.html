@@ -1,11 +1,13 @@
-    <md-toolbar color="primary">
-    <div flex="70">
+    <md-toolbar color="primary" >
+   <span>
         <button md-button [routerLink]="['/']">ALMANAC</button>
-    </div>
-    <div class="menuButton" layout="row" >
+    </span>
+     <span class="example-fill-remaining-space"></span>
+    <span>
         <button md-button [routerLink]="['/about']">About</button>
         <button md-button [routerLink]="['/support']">Support</button>
         <button md-button [routerLink]="['/contact']">Contact</button>
-    </div>
+        <button md-button [routerLink]="['/search']">Search</button>
+    </span>
 
     </md-toolbar>
