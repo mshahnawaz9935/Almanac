@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule,MdInputModule  } from '@angular/material';
 import { AppComponent} from './app.component';
 import { HomeComponent } from './home/home.component';
 import {HomeFormComponent} from './home/home-form.component';
@@ -13,6 +13,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LayoutModule} from 'ng2-flex-layout';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { SearchComponent } from './search/search.component';
     routing,
     FormsModule,
     HttpModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    LayoutModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

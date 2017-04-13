@@ -57,16 +57,16 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 520:
+/***/ 521:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(851);
+var content = __webpack_require__(852);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(912)(content, {});
+var update = __webpack_require__(915)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -84,7 +84,7 @@ if(false) {
 
 /***/ },
 
-/***/ 849:
+/***/ 850:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(296)();
@@ -99,7 +99,7 @@ exports.push([module.i, ".mat-elevation-z0{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0
 
 /***/ },
 
-/***/ 850:
+/***/ 851:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(296)();
@@ -114,23 +114,23 @@ exports.push([module.i, ".layout, .layout-column, .layout-row {\n  box-sizing: b
 
 /***/ },
 
-/***/ 851:
+/***/ 852:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(296)();
 // imports
+exports.i(__webpack_require__(851), "");
 exports.i(__webpack_require__(850), "");
-exports.i(__webpack_require__(849), "");
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n  @font-face {\n        font-family: \"Roboto\";\n        src: url(\"/assets/fonts/Roboto-Regular.ttf\");\n    }\n\nbody {\n  margin: 0;\n  font-family: \"Roboto\";\n}\n\n/* You can add global styles to this file, and also import other style files */\n@font-face {\n  font-family: \"Lato-Regular\";\n  src: url(\"/assets/fonts/Lato-Regular.ttf\");\n}\n\n.main-sec {\n    padding: 10px;\n}\n\n.full-height {\n    height: 100%;\n}\n\n.dash-card {\n    background-color: #FFF;\n    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);\n    padding: 0px!important;\n    height: 100%;\n}\n\nmd-card-header {\n    background-color: #237DC1;\n    height: 50px!important;\n    margin: 0px!important;\n}\n\n.md-card-header-text {\n    height: auto!important;\n}\n\nmd-card-title {\n    color: #FFF;\n    font-size: 26px!important;\n    margin: 0px!important;\n}\n\n.dash-text {\n    color: #237DC1;\n    font-size: 36px;\n    font-weight: 400;\n    margin: 0px;\n    font-family: 'Lato-Regular'!important;\n}\n\n.dash-grey {\n    color: #87929A;\n    font-size: 36px;\n    font-weight: 400;\n    margin: 0px;\n    font-family: 'Lato-Regular'!important;\n}\n\n.loc {\n    color: #87929A;\n    font-size: 22px;\n    font-weight: 400;\n    margin: 0px;\n    font-family: 'Lato-Regular'!important;\n}\n\n.small-header {\n    color: #237DC1;\n    font-size: 26px;\n    margin: 20px;\n    font-weight: 400;\n    font-family: 'Lato-Regular'!important;\n}\n\n.fb-text {\n    color: #237DC1;\n    font-size: 26px;\n    margin: 0px;\n    font-weight: 400;\n    font-family: 'Lato-Regular'!important;\n}\n\np {\n    color: #87929A;\n    font-size: 16px;\n    font-weight: 400;\n    margin: 0px;\n    font-family: 'Lato-Regular'!important; \n    padding-bottom: 15px;\n    padding-right: 15px;\n}\n\nchart {\n    width:100%;\n    height: 260px;\n}\n\nmd-icon {\n    height: 36px!important;\n    width: 36px!important;\n}\n\n.center {\n    text-align: center;\n}\n\n.border {\n    border-bottom: 2px solid #D8D8D8;;\n}\n\n.padding-sml {\n    padding: 15px;\n}\n\n.chart-size {\n    height: 30%;\n}\n\n@media only screen and (max-height: 870px) {\n    .hide {\n        display: none!important;\n    }\n    /*.padding-sml {\n        padding:0px;\n    }*/\n    chart {\n        height: 130px;\n    }\n    p {\n        font-size: 12px!important;\n    }\n    .small-header {\n        margin: 20px;\n    }\n    .chart-size {\n        height: 20%;\n    }\n}\n\n@media only screen and (max-height: 950px) {\n    p {\n        font-size: 13px;\n    }\n    .dash-grey, .dash-text {\n        font-size: 25px;\n    }\n    .loc {\n        font-size: 20px;\n    }\n    .small-header,.fb-text  {\n        font-size: 20px!important;\n    }\n    md-card-title {\n        font-size: 19px!important;\n    }\n}\n\n@media only screen and (max-width: 1350px) {\n    p {\n        font-size: 13px;\n    }\n    .dash-grey, .dash-text {\n        font-size: 25px;\n    }\n    .loc {\n        font-size: 20px;\n    }\n    .small-header,.fb-text  {\n        font-size: 20px!important;\n    }\n    md-card-title {\n        font-size: 19px!important;\n    }\n    /*.margin-sml {\n        margin: 10px;\n    }*/\n}\n\n@media only screen and (max-width: 900px) {\n    .full-height {\n        height: auto;\n        margin-top: 10px;\n    }\n    .dash-card {\n        min-height: 70px;\n    }\n    .hide {\n        display: none!important;\n    }\n}\n\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n  @font-face {\r\n        font-family: \"Roboto\";\r\n        src: url(\"/assets/fonts/Roboto-Regular.ttf\");\r\n    }\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\";\r\n}\r\n\r\n/* You can add global styles to this file, and also import other style files */\r\n@font-face {\r\n  font-family: \"Lato-Regular\";\r\n  src: url(\"/assets/fonts/Lato-Regular.ttf\");\r\n}\r\n\r\n.main-sec {\r\n    padding: 10px;\r\n}\r\n\r\n.full-height {\r\n    height: 100%;\r\n}\r\n\r\n.dash-card {\r\n    background-color: #FFF;\r\n    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);\r\n    padding: 0px!important;\r\n    height: 100%;\r\n}\r\n\r\nmd-card-header {\r\n    background-color: #237DC1;\r\n    height: 50px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n.md-card-header-text {\r\n    height: auto!important;\r\n}\r\n\r\nmd-card-title {\r\n    color: #FFF;\r\n    font-size: 26px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n.dash-text {\r\n    color: #237DC1;\r\n    font-size: 36px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.dash-grey {\r\n    color: #87929A;\r\n    font-size: 36px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.loc {\r\n    color: #87929A;\r\n    font-size: 22px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.small-header {\r\n    color: #237DC1;\r\n    font-size: 26px;\r\n    margin: 20px;\r\n    font-weight: 400;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.fb-text {\r\n    color: #237DC1;\r\n    font-size: 26px;\r\n    margin: 0px;\r\n    font-weight: 400;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\np {\r\n    color: #87929A;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important; \r\n    padding-bottom: 15px;\r\n    padding-right: 15px;\r\n}\r\n\r\nchart {\r\n    width:100%;\r\n    height: 260px;\r\n}\r\n\r\nmd-icon {\r\n    height: 36px!important;\r\n    width: 36px!important;\r\n}\r\n\r\n.center {\r\n    text-align: center;\r\n}\r\n\r\n.border {\r\n    border-bottom: 2px solid #D8D8D8;;\r\n}\r\n\r\n.padding-sml {\r\n    padding: 15px;\r\n}\r\n\r\n.chart-size {\r\n    height: 30%;\r\n}\r\n\r\n@media only screen and (max-height: 870px) {\r\n    .hide {\r\n        display: none!important;\r\n    }\r\n\r\n    chart {\r\n        height: 130px;\r\n    }\r\n    p {\r\n        font-size: 12px!important;\r\n    }\r\n    .small-header {\r\n        margin: 20px;\r\n    }\r\n    .chart-size {\r\n        height: 20%;\r\n    }\r\n}\r\n\r\n@media only screen and (max-height: 950px) {\r\n    p {\r\n        font-size: 13px;\r\n    }\r\n    .dash-grey, .dash-text {\r\n        font-size: 25px;\r\n    }\r\n    .loc {\r\n        font-size: 20px;\r\n    }\r\n    .small-header,.fb-text  {\r\n        font-size: 20px!important;\r\n    }\r\n    md-card-title {\r\n        font-size: 19px!important;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1350px) {\r\n    p {\r\n        font-size: 13px;\r\n    }\r\n    .dash-grey, .dash-text {\r\n        font-size: 25px;\r\n    }\r\n    .loc {\r\n        font-size: 20px;\r\n    }\r\n    .small-header,.fb-text  {\r\n        font-size: 20px!important;\r\n    }\r\n    md-card-title {\r\n        font-size: 19px!important;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 900px) {\r\n    .full-height {\r\n        height: auto;\r\n        margin-top: 10px;\r\n    }\r\n    .dash-card {\r\n        min-height: 70px;\r\n    }\r\n    .hide {\r\n        display: none!important;\r\n    }\r\n}\r\n\r\n", ""]);
 
 // exports
 
 
 /***/ },
 
-/***/ 912:
+/***/ 915:
 /***/ function(module, exports) {
 
 /*
@@ -383,13 +383,13 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 915:
+/***/ 918:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(520);
+module.exports = __webpack_require__(521);
 
 
 /***/ }
 
-},[915]);
+},[918]);
 //# sourceMappingURL=styles.map
