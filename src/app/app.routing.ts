@@ -5,13 +5,15 @@ import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SupportComponent } from './support/support.component';
 import { SearchComponent } from './search/search.component';
+import { PostsComponent} from './posts/posts.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'support', component: SupportComponent },
     { path: 'contact', component: ContactUsComponent },
-       { path: 'search', component: SearchComponent },
+    { path: 'search', component: SearchComponent },
+    { path: 'posts', component: PostsComponent },
 ];
 
 export const appRoutingProviders: any[] = [];

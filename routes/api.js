@@ -37,26 +37,26 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
 });
 
 router.get('/search', (req, res) => {
-      username = "almanac",
-    password = "a1m*Nac";
-    var request = require('request');
-var options = {
-  url: 'http://kdeg-vm-43.scss.tcd.ie/cjfallon/',
-  auth: {
-    user: username,
-    password: password
-  }
-}
+//       username = "almanac",
+//     password = "a1m*Nac";
+//     var request = require('request');
+// var options = {
+//   url: 'http://kdeg-vm-43.scss.tcd.ie/cjfallon/',
+//   auth: {
+//     user: username,
+//     password: password
+//   }
+// }
 
-request(options, function (err, res, body) {
-  if (err) {
-    console.dir(err)
-    return
-  }
-  console.dir('headers', res.headers)
-  console.dir('status code', res.statusCode)
-  console.dir(body)
-})
+// request(options, function (err, res, body) {
+//   if (err) {
+//     console.dir(err)
+//     return
+//   }
+//   console.dir('headers', res.headers)
+//   console.dir('status code', res.statusCode)
+//   console.dir(body)
+// })
  
 
 // var text = [{ id : 'dublintechsummit'  ,facebook : 'dublintechsummit' , twitter : 'DubTechSummit', tags : 'DublinTechSummit'  } ,
@@ -82,16 +82,17 @@ request(options, function (err, res, body) {
 
 });
 
-router.get('/post', (req, res) => {
-var id = req.query.id;
+router.get('/posts', (req, res) => {
+var topic = req.query.topic;
+var chapter = req.query.chapter;
 var queryObject =  {
    "userID":"IOK_Postman_Testing",
    "parameters":{
         "parameterInstance":[
             {"name":"complexity","value":5},
             {"name":"duration","value":4}, 
-            {"name":"topic","value":id},
-            {"name":"chapter","value":"Volcanoes"}
+            {"name":"topic","value":topic},
+            {"name":"chapter","value":chapter}
           ]
        }
 } ;
@@ -105,7 +106,8 @@ request({
         "content-type": "application/json",  // <--Very important!!!
     },
 }, function (error, response, body){
-    console.log("post query" + response.body.title);
+    console.log("post query" + response.body);
+        res.send(response.body);
 });
 });
 

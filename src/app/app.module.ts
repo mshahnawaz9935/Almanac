@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule} from 'ng2-flex-layout';
 import { SearchComponent } from './search/search.component';
 import { PostsComponent } from './posts/posts.component';
+import { DataService} from './DataService';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { PostsComponent } from './posts/posts.component';
     FlexLayoutModule,
     LayoutModule
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

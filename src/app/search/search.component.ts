@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http ,Response} from '@angular/http'; 
 import 'rxjs/add/operator/map';
+import { DataService } from '../DataService';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class SearchComponent implements OnInit {
 value=''; data=[];
 results;username='';password='';
-  constructor(private http:Http) { }
+  constructor(private http:Http , private DataService: DataService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -31,5 +33,12 @@ results;username='';password='';
     console.log(data.results.result);
     this.results = data.results.result;
 
+  }
+    onSelect(data): void {
+      console.log('clicked query' + data.name + data.query);
+      this.DataService.myquery.topic = data.query;
+      this.DataService.myquery.chapter = data.name;
+      this.router.navigate(['./posts']);
+       
   }
 }

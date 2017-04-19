@@ -4,8 +4,8 @@
         <input mdInput class="dash-text center" value="{{value}}" #box (keyup.enter)="onEnter(box.value)">
     </md-input-container></md-card>
 <div style="padding-top:3%;padding-left:10%;padding-right:10%;">
-<md-card *ngFor= "let result of results" >
+<md-card *ngFor= "let result of results" (click)="onSelect(result)" >
         <img [src]="result.image">
-          {{result.name}}  {{result.description}}
+          {{result.name}}  {{result.description}} {{result.query}}
 </md-card>
 </div>
