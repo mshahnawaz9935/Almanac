@@ -37,6 +37,27 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
 });
 
 router.get('/search', (req, res) => {
+      username = "almanac",
+    password = "a1m*Nac";
+    var request = require('request');
+var options = {
+  url: 'http://kdeg-vm-43.scss.tcd.ie/cjfallon/',
+  auth: {
+    user: username,
+    password: password
+  }
+}
+
+request(options, function (err, res, body) {
+  if (err) {
+    console.dir(err)
+    return
+  }
+  console.dir('headers', res.headers)
+  console.dir('status code', res.statusCode)
+  console.dir(body)
+})
+ 
 
 // var text = [{ id : 'dublintechsummit'  ,facebook : 'dublintechsummit' , twitter : 'DubTechSummit', tags : 'DublinTechSummit'  } ,
 //  { id: 'microsoft' ,facebook : 'MicrosoftUK' , twitter : 'Microsoft', tags : 'Microsoft' }, // tags stand for twitter_hash tags
@@ -59,6 +80,33 @@ router.get('/search', (req, res) => {
     res.send(response.body);
     });
 
+});
+
+router.get('/post', (req, res) => {
+var id = req.query.id;
+var queryObject =  {
+   "userID":"IOK_Postman_Testing",
+   "parameters":{
+        "parameterInstance":[
+            {"name":"complexity","value":5},
+            {"name":"duration","value":4}, 
+            {"name":"topic","value":id},
+            {"name":"chapter","value":"Volcanoes"}
+          ]
+       }
+} ;
+  var request = require('request');
+request({
+    url: "http://kdeg-vm-43.scss.tcd.ie:7080/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
+    method: "POST",
+    json: true,   // <--Very important!!!
+    body: queryObject,
+     headers: {
+        "content-type": "application/json",  // <--Very important!!!
+    },
+}, function (error, response, body){
+    console.log("post query" + response.body.title);
+});
 });
 
 module.exports = router;

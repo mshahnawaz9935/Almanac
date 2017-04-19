@@ -9,13 +9,14 @@ import 'rxjs/add/operator/map';
 })
 export class SearchComponent implements OnInit {
 value=''; data=[];
-results;
+results;username='';password='';
   constructor(private http:Http) { }
 
   ngOnInit() {
   }
 
     onEnter(value: string) {
+
     this.value = value;
     this.http.get('http://localhost:3000/api/search?id='+ this.value)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
@@ -23,6 +24,7 @@ results;
           this.getdata(dataFromServer);
           console.log('Data from postman is ' + this.data );
         });
+     
   }
 
   getdata(data){
