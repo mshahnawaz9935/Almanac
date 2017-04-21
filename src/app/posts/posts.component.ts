@@ -18,7 +18,7 @@ img_data = { x : ''};
 
       this.data = this.DataService.myquery;
       console.log('Data from post api is ' + this.data1.sections.section[0].images );
-    this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
+    this.http.get('http://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
         //  console.log('Data from post api is ' + this.img_data.image[0].url );
@@ -28,7 +28,7 @@ img_data = { x : ''};
   }
   savedata()
   {
-        this.http.get('http://localhost:3000/api/store')
+        this.http.get('http://angular2ap.azurewebsites.net/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
         });
