@@ -121,7 +121,9 @@ request({
 
 router.get('/store', (req, res) => {
 
-     MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+      function(err, db) {
+          console.log('connected');
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -140,6 +142,8 @@ router.get('/store', (req, res) => {
         db.close();
     });
 });
+console.log('inside');
+
 res.json('favourites stored');
 });
 
