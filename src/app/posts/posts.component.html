@@ -1,19 +1,65 @@
-<p>
-  posts works!   dddd 
-</p>
+<h3>
+  Results showing for {{data.topic}} and {{data.chapter}}
+</h3>
+    <button md-button (click)="savedata()">Save To Favourites</button>
 <div *ngFor= "let image of img_data.section">
-  <md-card>
+  <!--<md-card>
     <md-card-content>
     <h3>
     {{image.text.text}}
     </h3>
   </md-card-content>
   <img style="width:300px;height:200px" *ngFor= "let url of image.images.image" md-card-image [src]="url.url" />
-  <!--<md-card *ngFor= "let url of image.images.image">
-        <img [src]="url.url"> </md-card>-->
-        </md-card>
-        <md-card *ngFor= "let vid_url of image.videos.video">
-          <iframe  width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(vid_url.url)"></iframe>
+        </md-card>-->
+        <!--<md-card *ngFor= "let vid_url of image.videos.video">
+          <iframe  width="560" height="315" [src]=""></iframe>
           {{vid_url.url}}
-        </md-card>
+        </md-card>-->
+        <h4> {{image.text.text}}</h4>
+        <md-grid-list cols="3" rowHeight="2:2.5">
+  <md-grid-tile *ngFor= "let url of image.images.image">
+           <md-card  class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{url.caption}}</md-card-title>
+
+  </md-card-header>
+  <img  md-card-image [src]="url.url">
+  <md-card-content>
+    <p>
+       {{url.caption}}
+    </p>
+  </md-card-content>
+</md-card>
+</md-grid-tile></md-grid-list>
 </div>
+
+
+
+<md-grid-list cols="3" rowHeight="2:3">
+  <md-grid-tile>
+     <md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>Shiba Inu</md-card-title>
+    <md-card-subtitle>Dog Breed</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image src="../assets/images/shiba2.jpg">
+  <md-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+      bred for hunting.
+    </p>
+      <section class="example-section">
+      <label class="example-margin">Progress:</label>
+      <md-slider class="example-margin" ></md-slider>
+      <md-progress-bar mode="indeterminate"></md-progress-bar>
+    </section>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+</md-card>
+  </md-grid-tile></md-grid-list>

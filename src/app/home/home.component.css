@@ -11,9 +11,17 @@
 md-card{
     margin:10%;
     padding:5%;
-    background-color: rgba(0, 173, 238, 0.6);
+    /*background-color: rgba(0, 173, 238, 0.6);*/
 }
 .example-fill-remaining-space {
 
   flex: 1 1 auto;
+}
+.example-card {
+  width: 400px;
+}
+
+.example-header-image {
+  background-image: url('./assets/images/shiba2.jpg');
+  background-size: cover;
 }

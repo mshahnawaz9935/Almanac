@@ -4,9 +4,10 @@ var request=require('request');
 var MongoClient = require('mongodb').MongoClient , format = require('util').format;
 
 /* GET api listing. */
+var favourites ={};
 router.get('/getdata', (req, res) => {
 
-  MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {
+  MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {        //Run mongodb and its service mongod.exe
     if (err) {
         throw err;
     } else {
@@ -96,7 +97,7 @@ var queryObject =  {
           ]
        }
 } ;
-  var request = require('request');
+  var request = require('request'); 
 request({
     url: "http://kdeg-vm-43.scss.tcd.ie:7080/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
     method: "POST",
@@ -106,9 +107,41 @@ request({
         "content-type": "application/json",  // <--Very important!!!
     },
 }, function (error, response, body){
+
+ 
+
+     console.log('sdssd2' + response.body);
     console.log("post query" + response.body);
+      favourites = response.body;
         res.send(response.body);
+    
 });
 });
+
+
+router.get('/store', (req, res) => {
+
+     MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+    if(err) throw err;
+
+     var collection = db.collection('test');
+     console.log('sdssd' + favourites.title);
+    collection.insert( favourites, function(err, docs) {
+        collection.count(function(err, count) {
+            console.log(format("count = %s", count));
+        });
+    });
+
+    // Locate all the entries using find
+    collection.find().toArray(function(err, results) {
+        console.dir(results);
+        // Let's close the db
+         // res.json(results );
+        db.close();
+    });
+});
+res.json('favourites stored');
+});
+
 
 module.exports = router;

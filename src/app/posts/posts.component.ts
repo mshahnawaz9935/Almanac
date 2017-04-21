@@ -26,6 +26,13 @@ img_data = { x : ''};
   
     
   }
+  savedata()
+  {
+        this.http.get('http://localhost:3000/api/store')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log( dataFromServer);
+        });
+  }
 
   ngOnInit() {
   }

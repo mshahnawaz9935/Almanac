@@ -3,9 +3,30 @@
 <md-input-container>
         <input mdInput class="dash-text center" value="{{value}}" #box (keyup.enter)="onEnter(box.value)">
     </md-input-container></md-card>
-<div style="padding-top:3%;padding-left:10%;padding-right:10%;">
-<md-card *ngFor= "let result of results" (click)="onSelect(result)" >
-        <img [src]="result.image">
-          {{result.name}}  {{result.description}} {{result.query}}
+<div style="padding-top:3%;padding-left:10%;padding-right:10%;"></div>
+    <md-grid-list cols="3" rowHeight="2:2.5">
+  <md-grid-tile  *ngFor= "let result of results">
+<md-card  class="example-card" (click)="onSelect(result)" >
+     <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{result.name}}</md-card-title>
+    <md-card-subtitle>{{result.query}}</md-card-subtitle>
+  </md-card-header>
+        <img md-card-image [src]="result.image"> 
+        <md-card-content>
+    <p>
+    {{result.description}} 
+    </p>
+      <section class="example-section">
+      <label class="example-margin">Progress:</label>
+      <md-slider class="example-margin" ></md-slider>
+      <md-progress-bar mode="indeterminate"></md-progress-bar>
+    </section>
+  </md-card-content>
+          
+           <md-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
 </md-card>
-</div>
+  </md-grid-tile></md-grid-list>
