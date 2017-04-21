@@ -76,7 +76,7 @@ router.get('/search', (req, res) => {
 //   query = text[flag];
   console.log('id is ' + id);
 
-    request.get('http://kdeg-vm-43.scss.tcd.ie:7080/ALMANAC_Personalised_Composition_Service/composer/search2?query='+ id,function(err,response,body){
+    request.get('http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/search2?query='+ id,function(err,response,body){
         console.log(response.body);
     res.send(response.body);
     });
@@ -99,7 +99,7 @@ var queryObject =  {
 } ;
   var request = require('request'); 
 request({
-    url: "http://kdeg-vm-43.scss.tcd.ie:7080/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
+    url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
     method: "POST",
     json: true,   // <--Very important!!!
     body: queryObject,
