@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 var request=require('request');
 var MongoClient = require('mongodb').MongoClient , format = require('util').format;
+var User     = require('../models/user');
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/details');
 
 /* GET api listing. */
 var favourites ={};
@@ -146,6 +149,45 @@ console.log('inside');
 
 res.json('favourites stored');
 });
+
+router.route('/users')
+
+     // the URL is  http://localhost:8080/api/users
+    .post(function(req, res) {
+        
+        var user = new User();      // create a new instance of the User model
+        user.name = req.body.name;
+        user.phone = req.body.phone;  // set the User name (comes from the request)
+
+        // save the user and check for errors
+        user.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'User created!' });
+        });
+        
+    })
+     .get(function(req, res) {
+        User.find(function(err, users) {
+            if (err)
+                res.send(err);
+
+            res.json(users);
+        });
+    });
+
+    router.route('/users/:user_name')                 //change accordingly either to user or id
+        .delete(function(req, res) {
+        User.remove({
+            name: req.params.bear_id
+        }, function(err, user) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Successfully deleted' });
+        });
+    });
 
 
 module.exports = router;
