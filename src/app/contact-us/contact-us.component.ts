@@ -48,6 +48,20 @@ export class ContactUsComponent implements OnInit {
       let body = res.json();
       console.log('body is ', body);
       return body.data || { };
+      
     }
+    ondelete()
+    {
+      this.http.delete('http://localhost:3000/api/users/'+this.model.name) // ...using put request
+                         .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+                          .subscribe(
+                                data => {
+                                    data ; console.log('deleted');
+                                }, 
+                                err => {
+                                    console.log(err);
+                                });
+          this.onclick();
+    }   
 
 }

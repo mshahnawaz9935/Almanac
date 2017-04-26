@@ -22,8 +22,9 @@ img_data = { x : ''};
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
         //  console.log('Data from post api is ' + this.img_data.image[0].url );
-        });
-  
+      });
+      
+
     
   }
   savedata()
@@ -32,6 +33,12 @@ img_data = { x : ''};
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
         });
+  }
+
+  savenote()
+  {
+        window.open('http://www.localhost:3000/note');
+
   }
 
   ngOnInit() {

@@ -175,19 +175,50 @@ router.route('/users')
 
             res.json(users);
         });
-    });
+    })
+    
+      
+
 
     router.route('/users/:user_name')                 //change accordingly either to user or id
-        .delete(function(req, res) {
-        User.remove({
-            name: req.params.bear_id
-        }, function(err, user) {
+
+    
+
+           .put(function(req, res) {
+
+        // use our user model to find the user we want
+        User.findById(req.params.user_name, function(err, user) {
+
             if (err)
                 res.send(err);
 
-            res.json({ message: 'Successfully deleted' });
-        });
-    });
+            user.name = req.body.name;  
+
+            user.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'User updated!' });
+            });
+
+            })
+         })
+            .delete(function(req, res) {
+
+                User.remove(
+                    {
+                    name: req.params.user_name
+                }, 
+                function(err, user) {
+                    if (err)
+                        res.send(err);
+
+                    res.json(
+                        { message: 'Successfully deleted' }
+                        );
+                });
+            })
+    
 
 
 module.exports = router;
