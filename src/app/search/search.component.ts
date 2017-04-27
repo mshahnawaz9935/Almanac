@@ -34,6 +34,13 @@ results;username='';password='';
     this.results = data.results.result;
 
   }
+
+    note()
+  {
+        window.open('http://www.localhost:3000/note');
+
+  }
+
     onSelect(data): void {
       console.log('clicked query' + data.name + data.query);
       this.DataService.myquery.topic = data.query;

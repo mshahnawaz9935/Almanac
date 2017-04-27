@@ -4,6 +4,7 @@ var request=require('request');
 var MongoClient = require('mongodb').MongoClient , format = require('util').format;
 var User     = require('../models/user');
 var mongoose   = require('mongoose');
+var session = require('express-session');
 mongoose.connect('mongodb://127.0.0.1:27017/details');
 
 /* GET api listing. */
@@ -100,7 +101,9 @@ var queryObject =  {
           ]
        }
 } ;
-  var request = require('request'); 
+req.session.topic = topic;
+req.session.chapter = chapter;
+
 request({
     url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
     method: "POST",
@@ -111,12 +114,11 @@ request({
     },
 }, function (error, response, body){
 
- 
-
      console.log('sdssd2' + response.body);
     console.log("post query" + response.body);
       favourites = response.body;
-        res.send(response.body);
+      console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter);
+        res.send(response.body) +  req.session.topic;
     
 });
 });
