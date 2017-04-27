@@ -1,3 +1,16 @@
+       <!--<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#" [routerLink]="['/about']">About</a></li>
+      <li><a href="#" [routerLink]="['/contact']">Contact</a></li>
+      <li><a href="#" [routerLink]="['/search']">Search</a></li>
+      <li><a href="#" [routerLink]="['/posts']">Posts</a></li>
+    </ul>
+  </div>
+</nav>-->
     <md-toolbar color="primary" >
    <span>
         <button md-button [routerLink]="['/']">ALMANAC</button>
@@ -5,9 +18,17 @@
      <span class="example-fill-remaining-space"></span>
     <span>
         <button md-button [routerLink]="['/about']">About</button>
-        <button md-button [routerLink]="['/support']">Support</button>
         <button md-button [routerLink]="['/contact']">Contact</button>
         <button md-button [routerLink]="['/search']">Search</button>
+        <button md-button [routerLink]="['/posts']">Posts</button>
     </span>
 
     </md-toolbar>
+    <span>
+<md-tab-group>
+  <md-tab  label="Science"></md-tab>
+  <md-tab label="Business"></md-tab>
+    <md-tab label="Geography"></md-tab>
+      <md-tab  label="Minecraft"></md-tab>
+</md-tab-group>
+    </span>

@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule} from 'ng2-flex-layout';
 import { SearchComponent } from './search/search.component';
+import { PostsComponent } from './posts/posts.component';
+import { DataService} from './DataService';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { SearchComponent } from './search/search.component';
     MenuBarComponent,
     FooterComponent,
   HomeFormComponent,
-  SearchComponent
+  SearchComponent,
+  PostsComponent
   ],
   entryComponents: [
     AppComponent,
@@ -40,7 +43,7 @@ import { SearchComponent } from './search/search.component';
     FlexLayoutModule,
     LayoutModule
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

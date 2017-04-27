@@ -1,18 +1,65 @@
 <p>
   contact-us works!
 </p>
-<md-card class="dash-card">
+
+<form (ngSubmit)="onSubmit()" class="example-form" style= "padding:3%">
+  <h3>Enter details</h3>
+  <md-input-container class="example-full-width">
+    <input mdInput placeholder="Company (disabled)" disabled value="Google">
+  </md-input-container>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-input-container class="example-full-width">
+      <input mdInput  required
+       [(ngModel)]="model.name" name="name" value="{{name}}" placeholder="First name">   
+    </md-input-container></td> TODO: remove this: {{model.name}}
+    <td><md-input-container class="example-full-width">
+      <input mdInput placeholder="Long Last Name That Will Be Truncated">
+    </md-input-container></td>
+  </tr></table>
+
+  <p>
+    <md-input-container class="example-full-width">
+      <textarea mdInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+    </md-input-container>
+    <md-input-container class="example-full-width">
+      <textarea mdInput placeholder="Address 2"></textarea>
+    </md-input-container>
+       <md-input-container class="example-full-width">
+      <textarea mdInput [(ngModel)]="model.phone" name="phone" value="{{phone}}" placeholder="Phone"></textarea>
+    </md-input-container>
+  </p>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-input-container class="example-full-width">
+      <input mdInput placeholder="City">
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input mdInput placeholder="State">
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+      <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+    </md-input-container></td>
+  </tr></table>
+    <button type="submit" color="warn" md-button>Submit</button>
+
+</form>
+  <button color="warn" md-button (click)="onclick()">Get Contacts</button>
+    <button color="warn" md-button (click)="ondelete()">Delete</button>
+
+<md-card class="dash-card" >
   <md-card-header fxLayout="row" fxLayoutAlign="center center">
     <md-card-title class="center">Contact Us</md-card-title>
   </md-card-header>
   <md-card-content fxLayout="column" fxLayoutAlign="center center">
-    <div style="width:100%;" fxLayout="column" fxLayoutAlign="center start">
-      <div class="border" style="width:100%" fxLayout="row" fxLayoutAlign="space-between center">
-        <h4 style="margin:16px" class="small-header">1.sdsd</h4>
-        <h4 class="loc">sds</h4>
-        <h3 class="dash-grey center">sd</h3>
+    <div  style="width:100%;" fxLayout="column" fxLayoutAlign="center start">
+      <div  *ngFor="let name of data" class="border" style="width:100%" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4 style="margin:16px" class="small-header">...</h4>
+        <h4 class="loc">{{name.name}}</h4>
+        <h3 class="dash-grey center">{{name.phone}}</h3>
       </div>
-      <div class="border" style="width:100%" fxLayout="row" fxLayoutAlign="space-between center">
+      <!--<div class="border" style="width:100%" fxLayout="row" fxLayoutAlign="space-between center">
         <h4 style="margin:16px" class="small-header">2.sddsds</h4>
         <h4 class="loc">sdd</h4>
         <h3 class="dash-grey center">sdds</h3>
@@ -21,7 +68,8 @@
         <h4 style="margin:16px" class="small-header">3.sddsds</h4>
         <h4 class="loc">sddssd</h4>
         <h3 class="dash-grey center">sdsdds</h3>
-      </div>
+      </div>-->
     </div>
   </md-card-content>
 </md-card>
+
