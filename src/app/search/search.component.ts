@@ -30,7 +30,7 @@ authenticated = false;
     onEnter(value: string) {
 
     this.value = value;
-    this.http.get('http://angular2ap.azurewebsites.net/api/search?id='+ this.value)
+    this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.value)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.data = dataFromServer;
           this.getdata(dataFromServer);
@@ -49,7 +49,7 @@ authenticated = false;
     note()
   {
        console.log('Authenticated');
-       window.open('http://angular2ap.azurewebsites.net/note','_self' );
+       window.open('https://angular2ap.azurewebsites.net/note','_self' );
    
   }
 
