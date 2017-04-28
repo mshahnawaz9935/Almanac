@@ -30,6 +30,7 @@
     "core-js": "^2.4.1",
     "express": "^4.15.2",
     "mongodb": "^2.2.25",
+    "mongoose": "^4.9.6",
     "ng2-flex-layout": "^0.1.5",
     "oauth": "^0.9.15",
     "rxjs": "5.0.0-beta.12",

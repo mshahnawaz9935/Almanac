@@ -3,6 +3,8 @@ import { Http ,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
 import {Router } from '@angular/router';
+import { ActivatedRoute }     from '@angular/router';
+
 
 @Component({
   selector: 'app-search',
@@ -12,7 +14,15 @@ import {Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 value=''; data=[];
 results;username='';password='';
-  constructor(private http:Http , private DataService: DataService,private router: Router) { }
+authenticated = false;
+  constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
+       route.queryParams.subscribe(
+      data =>{ 
+        console.log('queryParams', data['authenticated']) ;
+        if(data['authenticated']== 'true')
+        this.authenticated = true;
+    });
+   }
 
   ngOnInit() {
   }
@@ -26,6 +36,7 @@ results;username='';password='';
           this.getdata(dataFromServer);
           console.log('Data from postman is ' + this.data );
         });
+        
      
   }
 
@@ -37,8 +48,9 @@ results;username='';password='';
 
     note()
   {
-        window.open('http://www.localhost:3000/note');
-
+       console.log('Authenticated');
+       window.open('http://www.localhost:3000/note','_self' );
+   
   }
 
     onSelect(data): void {

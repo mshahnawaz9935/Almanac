@@ -35,8 +35,7 @@ img_data = { x : ''};
 
   savenote()
   {
-       //window.open('http://localhost:3000/note/token');
-       this.router.navigate(['http://localhost:3000/note/token']);
+       window.open('http://localhost:3000/note/token','_self');
        alert('Saved to One Note');
 
   }

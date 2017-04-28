@@ -54,19 +54,18 @@ router.get('/callback', function(req, res,next){
          
         }
       });
-    res.redirect('/search');
+    res.redirect('/search?authenticated=true');
 });
 
 
 router.get('/token', function(req, res,next){
     if(token!= undefined)
     {
-        writetonote(token, req.session.topic, req.session.chapter);
-        next();
-   
+         writetonote(token, req.session.topic, req.session.chapter);
+         res.redirect('/search?authenticated=true');
     }
-    else res.json('no token authenticate first'+req.session.topic  + req.session.chapter );
-       
+    else 
+        res.redirect('/search');
 });
 
 function writetonote(token,topic,chapter)
