@@ -49,7 +49,7 @@ authenticated = false;
     note()
   {
        console.log('Authenticated');
-       window.open('http://www.localhost:3000/note','_self' );
+       window.open('http://angular2ap.azurewebsites.net/note','_self' );
    
   }
 
