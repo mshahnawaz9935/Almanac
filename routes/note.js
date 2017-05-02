@@ -50,11 +50,24 @@ router.get('/callback', function(req, res,next){
         } 
         else {
         token = access_token;
+        req.session.token = access_token;
         console.log(access_token);
          
         }
       });
-    res.redirect('/search?authenticated=true');
+    res.redirect('/search');
+});
+
+
+router.get('/checklogin', function(req,res,next){
+
+        if(req.session.token == undefined)
+        {
+        res.json('No Login');
+        }
+        else
+        res.json('Logged in');
+
 });
 
 
@@ -62,7 +75,7 @@ router.get('/token', function(req, res,next){
     if(token!= undefined)
     {
          writetonote(token, req.session.topic, req.session.chapter);
-         res.redirect('/search?authenticated=true');
+         res.redirect('/search');
     }
     else 
         res.redirect('/search');
