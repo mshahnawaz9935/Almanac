@@ -61,7 +61,7 @@ router.get('/callback', function(req, res,next){
 
 router.get('/checklogin', function(req,res,next){
 
-        if(req.session.token == undefined)
+        if(token == undefined)
         {
         res.json('No Login');
         }
