@@ -1,4 +1,5 @@
      <button md-button *ngIf="!authenticated" (click)="note()">Authenticate to One Note</button>
+         <button md-button *ngIf="authenticated" (click)="logout()">Logged in / Click To Log Out</button>
 <md-card fxLayout="row" fxLayoutAlign="center center" class="dash-card" style="text-align:center"><h3>Enter keyword : </h3>
 <md-input-container>
         <input mdInput class="dash-text center" value="{{value}}" #box (keyup.enter)="onEnter(box.value)">

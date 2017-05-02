@@ -60,6 +60,11 @@ authenticated = false;
        window.open('https://angular2ap.azurewebsites.net/note','_self' );
    
   }
+     logout()
+  {
+       window.open('https://angular2ap.azurewebsites.net/note/logout','_self' );
+   
+  }
 
     onSelect(data): void {
       console.log('clicked query' + data.name + data.query);

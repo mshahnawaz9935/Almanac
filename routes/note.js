@@ -70,6 +70,13 @@ router.get('/checklogin', function(req,res,next){
 
 });
 
+router.get('/logout', function(req,res,next){
+
+        token == '';
+        res.redirect('http://angular2ap.azurewebsites.net');
+
+});
+
 
 router.get('/token', function(req, res,next){
     if(token!= undefined)
