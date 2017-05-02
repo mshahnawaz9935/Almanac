@@ -22,7 +22,7 @@ authenticated = false;
         if(data['authenticated']== 'true')
         this.authenticated = true;
     });
-     this.http.get('http://angular2ap.azurewebsites.net/note/checklogin')
+     this.http.get('https://angular2ap.azurewebsites.net/note/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
