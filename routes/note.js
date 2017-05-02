@@ -72,7 +72,7 @@ router.get('/checklogin', function(req,res,next){
 
 router.get('/logout', function(req,res,next){
 
-        token == '';
+        token = undefined;
         res.redirect('http://angular2ap.azurewebsites.net');
 
 });
