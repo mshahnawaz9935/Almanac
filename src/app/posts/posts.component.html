@@ -64,3 +64,20 @@
   </md-card-actions>
 </md-card>
   </md-grid-tile></md-grid-list>
+
+   <div class="row">
+             <div class="col-md-6" *ngFor= "let image of img_data.section" >
+            <div class="card-block" >
+                        <!--Title-->
+                      
+                          <hr>
+                        <!--Text-->
+                        <p class="card-text">  {{image.text.text}}  </p>
+                    
+                        <div class="avatar" *ngFor= "let url of image.images.image">  <h4 class="card-title" >{{url.caption}} </h4><img [src]="url.url"  class="rounded-circle img-responsive">
+              </div>
+                  <a class="btn btn-primary blue">More here</a>
+                    </div>
+                      </div>
+                     
+            </div>

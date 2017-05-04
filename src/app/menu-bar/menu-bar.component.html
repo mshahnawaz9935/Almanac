@@ -1,17 +1,42 @@
-       <!--<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+
+  <nav class="navbar navbar-toggleable-md navbar-dark purple">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" [routerLink]="['/']" >
+            <strong>ALMANAC</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/about']">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/contact']">Contact</a>
+                </li>
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                        <a class="dropdown-item" [routerLink]="['/search']" >Search</a>
+                        <a class="dropdown-item">Posts</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline waves-effect waves-light">
+                <input class="form-control" type="text" placeholder="Search">
+            </form>
+        </div>
     </div>
-    <ul class="nav navbar-nav">
-        <li class="active"><a href="#" [routerLink]="['/about']">About</a></li>
-      <li><a href="#" [routerLink]="['/contact']">Contact</a></li>
-      <li><a href="#" [routerLink]="['/search']">Search</a></li>
-      <li><a href="#" [routerLink]="['/posts']">Posts</a></li>
-    </ul>
-  </div>
-</nav>-->
-    <md-toolbar color="primary" >
+</nav>
+   
+
+<!--/Angular Material 2 Nav-->
+
+    <!--<md-toolbar color="primary" >
    <span>
         <button md-button [routerLink]="['/']">ALMANAC</button>
     </span>
@@ -31,4 +56,4 @@
     <md-tab label="Geography"></md-tab>
       <md-tab  label="Minecraft"></md-tab>
 </md-tab-group>
-    </span>
+    </span>-->
