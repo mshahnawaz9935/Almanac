@@ -22,7 +22,7 @@ authenticated = false;
         if(data['authenticated']== 'true')
         this.authenticated = true;
     });
-     this.http.get('http://localhost:3000/note/checklogin')
+     this.http.get('https://angular2ap.azurewebsites.net/note/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -38,7 +38,7 @@ authenticated = false;
     onEnter(value: string) {
 
     this.value = value;
-    this.http.get('http://localhost:3000/api/search?id='+ this.value)
+    this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.value)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.data = dataFromServer;
           this.getdata(dataFromServer);
@@ -62,12 +62,12 @@ authenticated = false;
     note()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/note','_self' );
+       window.open('https://angular2ap.azurewebsites.net/note','_self' );
    
   }
      logout()
   {
-       window.open('http://localhost:3000/note/logout','_self' );
+       window.open('https://angular2ap.azurewebsites.net/note/logout','_self' );
    
   }
 
