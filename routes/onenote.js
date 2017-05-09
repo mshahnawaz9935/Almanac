@@ -48,7 +48,7 @@ router.get('/disconnect', function (req, res) {
   res.clearCookie('nodecookie');
   clearCookies(res);
   res.status(200);
-  res.redirect('http://localhost:3000/search');
+  res.redirect('https://angular2ap.azurewebsites.net/search');
 });
 
 /* GET home page. */
