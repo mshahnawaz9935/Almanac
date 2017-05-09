@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit {
 value=''; data=[];
 results;username='';password='';
 authenticated = false;
+authenticated1= false;
+user='';
   constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
        route.queryParams.subscribe(
       data =>{ 
@@ -22,7 +24,7 @@ authenticated = false;
         if(data['authenticated']== 'true')
         this.authenticated = true;
     });
-     this.http.get('https://angular2ap.azurewebsites.net/note/checklogin')
+     this.http.get('http://localhost:3000/note/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -30,6 +32,23 @@ authenticated = false;
           else this.authenticated =true;
           console.log(this.authenticated);
         });
+        this.http.get('http://localhost:3000/onenote/checklogin')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Login status is ' + dataFromServer );
+          if(dataFromServer == 'No Login')
+          this.authenticated1 = false;
+          else
+          { this.authenticated1 =true;
+          console.log(this.authenticated1);
+
+          this.http.get('http://localhost:3000/onenote/aboutme')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+                console.log('Login status is ' + dataFromServer );
+                this.user = dataFromServer;
+              });
+          }
+        });
+         
    }
 
   ngOnInit() {
@@ -38,7 +57,7 @@ authenticated = false;
     onEnter(value: string) {
 
     this.value = value;
-    this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.value)
+    this.http.get('http://localhost:3000/api/search?id='+ this.value)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.data = dataFromServer;
           this.getdata(dataFromServer);
@@ -62,12 +81,23 @@ authenticated = false;
     note()
   {
        console.log('Authenticated');
-       window.open('https://angular2ap.azurewebsites.net/note','_self' );
+       window.open('http://localhost:3000/note','_self' );
+   
+  }
+  onenote()
+  {
+       console.log('Authenticated');
+       window.open('http://localhost:3000/onenote','_self' );
+   
+  }
+   onenotelogout()
+  {
+       window.open('http://localhost:3000/onenote/disconnect','_self' );
    
   }
      logout()
   {
-       window.open('https://angular2ap.azurewebsites.net/note/logout','_self' );
+       window.open('http://localhost:3000/note/logout','_self' );
    
   }
 

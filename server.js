@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 var session = require('express-session');
 const api = require('./routes/api');
 const note = require('./routes/note');
-
+const onenote = require('./routes/onenote');
+var cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(session({secret:'insert your things'}));
@@ -19,13 +20,21 @@ app.use(function(req, res, next) {
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cookieParser());
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api', api);
 app.use('/note', note);
+app.use('/onenote', onenote);
 
+
+app.use(session({
+  secret: '12345QWERTY-SECRET',
+  name: 'nodecookie',
+  resave: false,
+  saveUninitialized: false
+}));
 
 
 // Catch all other routes and return the index file
