@@ -33,26 +33,30 @@
 </md-card>
   </md-grid-tile></md-grid-list>-->
    <div class="row">
-     <button md-button *ngIf="!authenticated" (click)="note()">Authenticate to One Note</button>
-               <a *ngIf="!authenticated1" class="btn btn-primary primary" (click)="onenote()">Login Office 365</a>
-               <a *ngIf="authenticated1" class="btn btn-primary primary" (click)="onenotelogout()">Disconnect Office 365</a>
-         <button md-button *ngIf="authenticated" (click)="logout()">Logged in / Click To Log Out</button>
          <div class="col-md-12">
-
+           <br>
+                <a *ngIf="!authenticated1" class="btn btn-primary primary" (click)="note()">Authenticate to One Note</a>
+                <a *ngIf="!authenticated1" class="btn btn-primary primary" (click)="onenote()">Login Office 365</a>
+                <a *ngIf="authenticated1" class="btn btn-primary primary" (click)="onenotelogout()">Disconnect Office 365</a>
+                <button md-button *ngIf="authenticated" (click)="logout()">Logged in / Click To Log Out</button>
               <h2>{{user}}</h2>
                 <!--Card-->
-                <div class="md-form">
-                    <input type="text" id="form1" class="form-control"  value="{{value}}" #box (keyup.enter)="onEnter(box.value)">
-                    <label for="form1" class="">Text</label>
-                </div>
-        
-            <div class="card-block">
+                <div class="card">
+                   <div class="card-block">
                         <!--Title-->
                         <h4 class="card-title">Learn Better</h4>
                         <!--Text-->
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
+                        <p>Enter the topic you're looking for:</p>
+                       <div class="md-form">
+                          <input type="text" id="form1" class="form-control"  value="{{value}}" #box (keyup.enter)="onEnter(box.value)">
+                          <label for="form1" class="">Text</label>
+                      </div>
+                       
                         <a class="btn btn-primary red">SEARCH</a>
                     </div>
+                    </div>
+                
                       </div>
           </div>
           <div class="row">
