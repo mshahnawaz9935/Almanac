@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule} from 'ng2-flex-layout';
 import { SearchComponent } from './search/search.component';
 import { PostsComponent } from './posts/posts.component';
+import { AccountComponent } from './account/account.component';
 import { DataService} from './DataService';
 
 @NgModule({
@@ -27,9 +28,10 @@ import { DataService} from './DataService';
     SupportComponent,
     MenuBarComponent,
     FooterComponent,
-  HomeFormComponent,
-  SearchComponent,
-  PostsComponent
+    HomeFormComponent,
+    SearchComponent,
+    PostsComponent,
+    AccountComponent
   ],
   entryComponents: [
     AppComponent,

@@ -6,6 +6,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SupportComponent } from './support/support.component';
 import { SearchComponent } from './search/search.component';
 import { PostsComponent} from './posts/posts.component';
+import { AccountComponent } from './account/account.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'contact', component: ContactUsComponent },
     { path: 'search', component: SearchComponent },
     { path: 'posts', component: PostsComponent },
+    { path: 'account', component: AccountComponent },
 ];
 
 export const appRoutingProviders: any[] = [];
