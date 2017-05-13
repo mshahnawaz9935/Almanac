@@ -36,7 +36,10 @@ user='';
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
+          {
           this.authenticated1 = false;
+          this.router.navigate(['./account']);
+          }
           else
           { this.authenticated1 =true;
           console.log(this.authenticated1);
