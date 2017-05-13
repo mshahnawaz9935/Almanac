@@ -24,8 +24,8 @@
                         <a class="dropdown-item">Posts</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                                    <a  class="nav-link waves-effect waves-light"><i class="fa fa-gear"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <li *ngIf="authenticated1" class="nav-item">
+                                    <a  class="nav-link waves-effect waves-light"><i class="fa fa-gear"></i>{{user}}</a>
                                 </li>
                  <li class="nav-item dropdown btn-group">
                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
