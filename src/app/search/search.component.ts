@@ -38,7 +38,7 @@ user='';
           if(dataFromServer == 'No Login')
           {
           this.authenticated1 = false;
-          this.router.navigate(['./account']);
+          this.router.navigate(['/account']);
           }
           else
           { this.authenticated1 =true;

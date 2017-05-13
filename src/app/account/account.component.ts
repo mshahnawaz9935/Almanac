@@ -16,6 +16,11 @@ user = '';
 
   ngOnInit() {
   }
-
+    onenote()
+  {
+       console.log('Authenticated');
+       window.open('https://angular2ap.azurewebsites.net/onenote','_self' );
+   
+  }
  
 }
