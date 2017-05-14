@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http ,Response} from '@angular/http'; 
 import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
-import {Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { ActivatedRoute }     from '@angular/router';
 
 
@@ -38,7 +38,7 @@ user='';
           if(dataFromServer == 'No Login')
           {
           this.authenticated1 = false;
-          this.router.navigate(['/account']);
+         // this.router.navigate(['/account']);
           }
           else
           { this.authenticated1 =true;

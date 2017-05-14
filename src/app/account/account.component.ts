@@ -7,20 +7,17 @@ import 'rxjs/add/operator/map';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
-authenticated1 = false;
-user = '';
-  constructor(private http:Http) {
-   
-   }
+  export class AccountComponent implements OnInit {
+  authenticated1 = false;
+  user = '';
+  constructor(private http:Http) {}
 
-  ngOnInit() {
-  }
-    onenote()
+  ngOnInit() {}
+
+  onenote() 
   {
        console.log('Authenticated');
        window.open('https://angular2ap.azurewebsites.net/onenote','_self' );
-   
-  }
+    }
  
 }

@@ -7,13 +7,15 @@ import { SupportComponent } from './support/support.component';
 import { SearchComponent } from './search/search.component';
 import { PostsComponent} from './posts/posts.component';
 import { AccountComponent } from './account/account.component';
+import { AuthGuard } from './AuthGuard';
+
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'support', component: SupportComponent },
     { path: 'contact', component: ContactUsComponent },
-    { path: 'search', component: SearchComponent },
+    { path: 'search', component: SearchComponent , canActivate: [AuthGuard] },
     { path: 'posts', component: PostsComponent },
     { path: 'account', component: AccountComponent },
 ];

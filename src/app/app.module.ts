@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search.component';
 import { PostsComponent } from './posts/posts.component';
 import { AccountComponent } from './account/account.component';
 import { DataService} from './DataService';
+import { AuthGuard } from './AuthGuard';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { DataService} from './DataService';
     FlexLayoutModule,
     LayoutModule
   ],
-  providers: [appRoutingProviders, DataService],
+  providers: [appRoutingProviders, DataService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
