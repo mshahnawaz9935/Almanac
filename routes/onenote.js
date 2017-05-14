@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
   } else {
       console.log('Logged in' );
        req.session.login ='Logged in';
-        res.redirect('/search');
+        res.redirect('/');
   }
 });
 router.get('/aboutmail', function (req, res) {
@@ -60,7 +60,7 @@ router.get('/login', function (req, res) {
         res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
         res.cookie(authHelper.REFRESH_TOKEN_CACHE_KEY, refreshToken);
         req.session.login ='Logged in';
-        res.redirect('/search');
+        res.redirect('/');
       } else {
         console.log(JSON.parse(e.data).error_description);
         res.status(500);
