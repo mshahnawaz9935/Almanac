@@ -1,6 +1,6 @@
 webpackJsonp([1,2],{
 
-/***/ 297:
+/***/ 196:
 /***/ function(module, exports) {
 
 /*
@@ -63,10 +63,10 @@ module.exports = function() {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(860);
+var content = __webpack_require__(863);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(927)(content, {});
+var update = __webpack_require__(934)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -84,10 +84,10 @@ if(false) {
 
 /***/ },
 
-/***/ 858:
+/***/ 860:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(297)();
+exports = module.exports = __webpack_require__(196)();
 // imports
 
 
@@ -99,10 +99,10 @@ exports.push([module.i, ".mat-elevation-z0{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0
 
 /***/ },
 
-/***/ 859:
+/***/ 861:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(297)();
+exports = module.exports = __webpack_require__(196)();
 // imports
 
 
@@ -114,13 +114,29 @@ exports.push([module.i, ".layout, .layout-column, .layout-row {\n  box-sizing: b
 
 /***/ },
 
-/***/ 860:
+/***/ 862:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(297)();
+exports = module.exports = __webpack_require__(196)();
 // imports
-exports.i(__webpack_require__(859), "");
-exports.i(__webpack_require__(858), "");
+
+
+// module
+exports.push([module.i, "/*! nouislider - 9.2.0 - 2017-01-11 10:35:35 */.noUi-target,.noUi-target *{-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;-ms-touch-action:none;touch-action:none;-ms-user-select:none;-moz-user-select:none;user-select:none;-moz-box-sizing:border-box;box-sizing:border-box}.noUi-target{position:relative;direction:ltr}.noUi-base{width:100%;height:100%;position:relative;z-index:1}.noUi-connect{position:absolute;right:0;top:0;left:0;bottom:0}.noUi-origin{position:absolute;height:0;width:0}.noUi-handle{position:relative;z-index:1}.noUi-state-tap .noUi-connect,.noUi-state-tap .noUi-origin{-webkit-transition:top .3s,right .3s,bottom .3s,left .3s;transition:top .3s,right .3s,bottom .3s,left .3s}.noUi-state-drag *{cursor:inherit!important}.noUi-base,.noUi-handle{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.noUi-horizontal{height:18px}.noUi-horizontal .noUi-handle{width:34px;height:28px;left:-17px;top:-6px}.noUi-vertical{width:18px}.noUi-vertical .noUi-handle{width:28px;height:34px;left:-6px;top:-17px}.noUi-target{background:#FAFAFA;border-radius:4px;border:1px solid #D3D3D3;box-shadow:inset 0 1px 1px #F0F0F0,0 3px 6px -5px #BBB}.noUi-connect{background:#3FB8AF;box-shadow:inset 0 0 3px rgba(51,51,51,.45);-webkit-transition:background 450ms;transition:background 450ms}.noUi-draggable{cursor:ew-resize}.noUi-vertical .noUi-draggable{cursor:ns-resize}.noUi-handle{border:1px solid #D9D9D9;border-radius:3px;background:#FFF;cursor:default;box-shadow:inset 0 0 1px #FFF,inset 0 1px 7px #EBEBEB,0 3px 6px -3px #BBB}.noUi-active{box-shadow:inset 0 0 1px #FFF,inset 0 1px 7px #DDD,0 3px 6px -3px #BBB}.noUi-handle:after,.noUi-handle:before{content:\"\";display:block;position:absolute;height:14px;width:1px;background:#E8E7E6;left:14px;top:6px}.noUi-handle:after{left:17px}.noUi-vertical .noUi-handle:after,.noUi-vertical .noUi-handle:before{width:14px;height:1px;left:6px;top:14px}.noUi-vertical .noUi-handle:after{top:17px}[disabled] .noUi-connect{background:#B8B8B8}[disabled] .noUi-handle,[disabled].noUi-handle,[disabled].noUi-target{cursor:not-allowed}.noUi-pips,.noUi-pips *{-moz-box-sizing:border-box;box-sizing:border-box}.noUi-pips{position:absolute;color:#999}.noUi-value{position:absolute;text-align:center}.noUi-value-sub{color:#ccc;font-size:10px}.noUi-marker{position:absolute;background:#CCC}.noUi-marker-large,.noUi-marker-sub{background:#AAA}.noUi-pips-horizontal{padding:10px 0;height:80px;top:100%;left:0;width:100%}.noUi-value-horizontal{-webkit-transform:translate3d(-50%,50%,0);transform:translate3d(-50%,50%,0)}.noUi-marker-horizontal.noUi-marker{margin-left:-1px;width:2px;height:5px}.noUi-marker-horizontal.noUi-marker-sub{height:10px}.noUi-marker-horizontal.noUi-marker-large{height:15px}.noUi-pips-vertical{padding:0 10px;height:100%;top:0;left:100%}.noUi-value-vertical{-webkit-transform:translate3d(0,50%,0);transform:translate3d(0,50%,0);padding-left:25px}.noUi-marker-vertical.noUi-marker{width:5px;height:2px;margin-top:-1px}.noUi-marker-vertical.noUi-marker-sub{width:10px}.noUi-marker-vertical.noUi-marker-large{width:15px}.noUi-tooltip{display:block;position:absolute;border:1px solid #D9D9D9;border-radius:3px;background:#fff;color:#000;padding:5px;text-align:center}.noUi-horizontal .noUi-tooltip{-webkit-transform:translate(-50%,0);transform:translate(-50%,0);left:50%;bottom:120%}.noUi-vertical .noUi-tooltip{-webkit-transform:translate(0,-50%);transform:translate(0,-50%);top:50%;right:120%}", ""]);
+
+// exports
+
+
+/***/ },
+
+/***/ 863:
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(196)();
+// imports
+exports.i(__webpack_require__(861), "");
+exports.i(__webpack_require__(860), "");
+exports.i(__webpack_require__(862), "");
 
 // module
 exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n  @font-face {\r\n        font-family: \"Roboto\";\r\n        src: url(\"/assets/fonts/Roboto-Regular.ttf\");\r\n    }\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\";\r\n}\r\n\r\n/* You can add global styles to this file, and also import other style files */\r\n@font-face {\r\n  font-family: \"Lato-Regular\";\r\n  src: url(\"/assets/fonts/Lato-Regular.ttf\");\r\n}\r\n/*\r\n.main-sec {\r\n    padding: 10px;\r\n}\r\n\r\n.full-height {\r\n    height: 100%;\r\n}\r\n\r\n.dash-card {\r\n    background-color: #FFF;\r\n    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);\r\n    padding: 0px!important;\r\n    height: 100%;\r\n}\r\n\r\nmd-card-header {\r\n    background-color: #237DC1;\r\n    height: 50px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n.md-card-header-text {\r\n    height: auto!important;\r\n}\r\n\r\nmd-card-title {\r\n    color: #FFF;\r\n    font-size: 26px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n.dash-text {\r\n    color: #237DC1;\r\n    font-size: 36px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.dash-grey {\r\n    color: #87929A;\r\n    font-size: 36px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.loc {\r\n    color: #87929A;\r\n    font-size: 22px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.small-header {\r\n    color: #237DC1;\r\n    font-size: 26px;\r\n    margin: 20px;\r\n    font-weight: 400;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.fb-text {\r\n    color: #237DC1;\r\n    font-size: 26px;\r\n    margin: 0px;\r\n    font-weight: 400;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\np {\r\n    color: #87929A;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important; \r\n    padding-bottom: 15px;\r\n    padding-right: 15px;\r\n}\r\n\r\nchart {\r\n    width:100%;\r\n    height: 260px;\r\n}\r\n\r\nmd-icon {\r\n    height: 36px!important;\r\n    width: 36px!important;\r\n}\r\n\r\n.center {\r\n    text-align: center;\r\n}\r\n\r\n.border {\r\n    border-bottom: 2px solid #D8D8D8;;\r\n}\r\n\r\n.padding-sml {\r\n    padding: 15px;\r\n}\r\n\r\n.chart-size {\r\n    height: 30%;\r\n}\r\n\r\n@media only screen and (max-height: 870px) {\r\n    .hide {\r\n        display: none!important;\r\n    }\r\n\r\n    chart {\r\n        height: 130px;\r\n    }\r\n    p {\r\n        font-size: 12px!important;\r\n    }\r\n    .small-header {\r\n        margin: 20px;\r\n    }\r\n    .chart-size {\r\n        height: 20%;\r\n    }\r\n}\r\n\r\n@media only screen and (max-height: 950px) {\r\n    p {\r\n        font-size: 13px;\r\n    }\r\n    .dash-grey, .dash-text {\r\n        font-size: 25px;\r\n    }\r\n    .loc {\r\n        font-size: 20px;\r\n    }\r\n    .small-header,.fb-text  {\r\n        font-size: 20px!important;\r\n    }\r\n    md-card-title {\r\n        font-size: 19px!important;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1350px) {\r\n    p {\r\n        font-size: 13px;\r\n    }\r\n    .dash-grey, .dash-text {\r\n        font-size: 25px;\r\n    }\r\n    .loc {\r\n        font-size: 20px;\r\n    }\r\n    .small-header,.fb-text  {\r\n        font-size: 20px!important;\r\n    }\r\n    md-card-title {\r\n        font-size: 19px!important;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 900px) {\r\n    .full-height {\r\n        height: auto;\r\n        margin-top: 10px;\r\n    }\r\n    .dash-card {\r\n        min-height: 70px;\r\n    }\r\n    .hide {\r\n        display: none!important;\r\n    }\r\n}\r\n*/\r\n", ""]);
@@ -130,7 +146,7 @@ exports.push([module.i, "/* You can add global styles to this file, and also imp
 
 /***/ },
 
-/***/ 927:
+/***/ 934:
 /***/ function(module, exports) {
 
 /*
@@ -383,7 +399,7 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 930:
+/***/ 937:
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(529);
@@ -391,5 +407,5 @@ module.exports = __webpack_require__(529);
 
 /***/ }
 
-},[930]);
+},[937]);
 //# sourceMappingURL=styles.map

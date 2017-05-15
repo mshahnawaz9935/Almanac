@@ -10,6 +10,7 @@ body {
 }
 @import "../node_modules/ng2-flex-layout/dist/ng2-flex-layout.css";
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import "~nouislider/distribute/nouislider.min.css";
 
 /* You can add global styles to this file, and also import other style files */
 @font-face {

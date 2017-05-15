@@ -32,6 +32,7 @@
   </md-card-actions>
 </md-card>
   </md-grid-tile></md-grid-list>-->
+
    <div class="row">
          <div class="col-md-12">
            <br>
@@ -40,20 +41,63 @@
                 <a *ngIf="authenticated1" class="btn btn-primary primary" (click)="onenotelogout()">Disconnect Office 365</a>
                 <button md-button *ngIf="authenticated" (click)="logout()">Logged in / Click To Log Out</button>
               <h2>{{user}}</h2>
+
                 <!--Card-->
                 <div class="card">
                    <div class="card-block">
                         <!--Title-->
                         <h4 class="card-title">Learn Better</h4>
+                          
                         <!--Text-->
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
-                        <p>Enter the topic you're looking for:</p>
-                       <div class="md-form">
-                          <input type="text" id="form1" class="form-control"  value="{{value}}" #box (keyup.enter)="onEnter(box.value)">
-                          <label for="form1" class="">Text</label>
+                        <p>1 ) Enter the topic you're looking for:</p>
+      
+                <form (ngSubmit)="onSubmit()">
+                    <div class="row">
+                  <div class="col-md-8">   
+                  <div class="md-form">
+                      <input type="text" id="form1" class="form-control" [(ngModel)]="model.search" name="search" value="{{value}}" #box ><!--(keyup.enter)="onEnter(box.value)">-->
+                          <label for="form1" class="">{{model.search}}</label>
                       </div>
-                       
-                        <a class="btn btn-primary red">SEARCH</a>
+                      </div>
+                             </div>
+                             <br>
+                       <h5>2 ) Describe what results you want for this search:</h5>     
+                        <p>Ability</p>
+                        <!--Ability-->
+                       <div class="row">
+                             <div class="col-md-1">
+                               <p>Low</p>
+                                </div>
+                                 <div class="col-md-7">
+                                    <p>
+                                  <nouislider [min]="0" [max]="10" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
+                                    </p>
+                                  </div>
+                              <div class="col-md-2">
+                               <p>High</p>
+                               </div>
+                             </div>
+                              <br>
+                               <p>PRIOR KNOWLEDGE</p>
+                            <div class="row">
+                             <div class="col-md-1">
+                               <p>Low</p>
+                                </div>
+                                 <div class="col-md-7">
+                                    <p>
+                                  <nouislider [min]="0" [max]="10" [step]="1" name="noui2" [(ngModel)]="model.slider_value2" ></nouislider>
+                                    </p>
+                                  </div>
+                              <div class="col-md-2">
+                               <p>High</p>
+                               </div>
+                             </div>   
+                             <br>   
+                          <h5>3 ) And … Go!</h5>   
+                        <button class="btn btn-primary red" type="submit" color="warn" >Search</button>
+                        </form>
+                             
                     </div>
                     </div>
                 

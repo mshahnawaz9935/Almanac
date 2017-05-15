@@ -20,6 +20,8 @@ import { AccountComponent } from './account/account.component';
 import { DataService} from './DataService';
 import { AuthGuard } from './AuthGuard';
 import { PricingComponent } from './pricing/pricing.component';
+import { NouisliderModule } from 'ng2-nouislider';
+import { ModulesComponent } from './modules/modules.component';
 
 @NgModule({
   declarations: [
@@ -34,19 +36,21 @@ import { PricingComponent } from './pricing/pricing.component';
     SearchComponent,
     PostsComponent,
     AccountComponent,
-    PricingComponent
+    PricingComponent,
+    ModulesComponent
   ],
   entryComponents: [
     AppComponent,
   ],
   imports: [
-        MaterialModule.forRoot(),
+    MaterialModule.forRoot(),
     BrowserModule,
     routing,
     FormsModule,
     HttpModule,
     FlexLayoutModule,
-    LayoutModule
+    LayoutModule,
+    NouisliderModule
   ],
   providers: [appRoutingProviders, DataService, AuthGuard],
   bootstrap: [AppComponent]

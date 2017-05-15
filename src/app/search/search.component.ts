@@ -4,14 +4,20 @@ import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
 import { CanActivate, Router } from '@angular/router';
 import { ActivatedRoute }     from '@angular/router';
-
+import { Search }    from './Search';
+import { NouisliderModule } from 'ng2-nouislider';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
+
+
 export class SearchComponent implements OnInit {
+    model = new Search('', 4, 10);
+  submitted = false;
 value=''; data=[];
 results;username='';password='';
 authenticated = false;
@@ -55,19 +61,23 @@ user='';
    }
 
   ngOnInit() {
+ 
   }
 
-    onEnter(value: string) {
+  //   onEnter(value: string) {
 
-    this.value = value;
-    this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.value)
+   
+  // }
+  onSubmit()
+  {
+    this.submitted = true;
+    console.log('hello', this.model.search , this.model.slider_value1, this.model.slider_value2);
+    this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.data = dataFromServer;
           this.getdata(dataFromServer);
           console.log('Data from postman is ' + this.data );
         });
-        
-     
   }
 
   getdata(data){
@@ -87,6 +97,7 @@ user='';
        window.open('https://angular2ap.azurewebsites.net/note','_self' );
    
   }
+
   onenote()
   {
        console.log('Authenticated');

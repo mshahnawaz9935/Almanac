@@ -9,6 +9,7 @@ import { PostsComponent} from './posts/posts.component';
 import { AccountComponent } from './account/account.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { AuthGuard } from './AuthGuard';
+import { ModulesComponent } from './modules/modules.component';
 
 
 const routes: Routes = [
@@ -16,10 +17,11 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'support', component: SupportComponent },
     { path: 'contact', component: ContactUsComponent },
-    { path: 'search', component: SearchComponent , canActivate: [AuthGuard] },
+    { path: 'search', component: SearchComponent } ,// canActivate: [AuthGuard] },
     { path: 'posts', component: PostsComponent },
     { path: 'account', component: AccountComponent },
-    { path: 'pricing', component: PricingComponent }
+    { path: 'pricing', component: PricingComponent },
+    { path: 'modules', component: ModulesComponent }
 ];
 
 export const appRoutingProviders: any[] = [];
