@@ -7,6 +7,7 @@ import { SupportComponent } from './support/support.component';
 import { SearchComponent } from './search/search.component';
 import { PostsComponent} from './posts/posts.component';
 import { AccountComponent } from './account/account.component';
+import { PricingComponent } from './pricing/pricing.component';
 import { AuthGuard } from './AuthGuard';
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'search', component: SearchComponent , canActivate: [AuthGuard] },
     { path: 'posts', component: PostsComponent },
     { path: 'account', component: AccountComponent },
+    { path: 'pricing', component: PricingComponent }
 ];
 
 export const appRoutingProviders: any[] = [];

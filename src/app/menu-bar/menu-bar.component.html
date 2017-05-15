@@ -9,7 +9,7 @@
                         <div class="collapse navbar-collapse" id="navbarNav3">
                             <ul class="navbar-nav ml-auto">
                                  <li class="nav-item active">
-                                    <a class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> Pricing</a>
+                                    <a [routerLink]="['/pricing']" class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> Pricing</a>
                                 </li>
                                 <li class="nav-item">
                                     <a [routerLink]="['/about']" class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> How it Works</a>
@@ -31,7 +31,7 @@
                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
                                              <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  </a>  
                                     <div class="dropdown-menu dropdown-warning dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <a *ngIf="!authenticated1" class="dropdown-item waves-effect waves-light" href="#">Log In</a>
+                                        <a [routerLink]="['/account']" *ngIf="!authenticated1" class="dropdown-item waves-effect waves-light" >Log In</a>
                                         <a *ngIf="authenticated1" class="dropdown-item waves-effect waves-light" href="https://angular2ap.azurewebsites.net/onenote/disconnect">Disconnect</a>
                                     </div>
                                 </li>
@@ -58,7 +58,7 @@
                     <a class="nav-link" [routerLink]="['/contact']">MINECRAFT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/contact']">BROWSE->></a>
+                    <a class="nav-link" [routerLink]="['/contact']">BROWSE</a>
                 </li>
                 <li class="nav-item dropdown btn-group">
                     <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
@@ -69,7 +69,7 @@
                 </li>
             </ul>
             <form class="form-inline waves-effect waves-light">
-                <input class="form-control" type="text" placeholder="Search">
+                <input class="form-control" value="" #box (keyup.enter)="onEnter(box.value)" type="text" placeholder="Search">
             </form>
         </div>
         </div>

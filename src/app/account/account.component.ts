@@ -19,5 +19,9 @@ import 'rxjs/add/operator/map';
        console.log('Authenticated');
        window.open('https://angular2ap.azurewebsites.net/onenote','_self' );
     }
+    create()
+    {
+      alert('Functionality no longer supported. Login using Office 365');
+    }
  
 }

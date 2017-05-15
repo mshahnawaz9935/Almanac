@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http ,Response} from '@angular/http'; 
 import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-bar',
@@ -11,7 +12,7 @@ import { DataService } from '../DataService';
 export class MenuBarComponent implements OnInit {
 authenticated1 = false;
 user = '';
-   constructor(private http:Http ,  private DataService: DataService) {
+   constructor(private http:Http, private DataService: DataService, private router:Router)  {
 
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
        this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
@@ -33,6 +34,11 @@ user = '';
    }
 
   ngOnInit() {
+  }
+  onEnter(value)
+  {
+    this.router.navigate(['/search']);
+    value='';
   }
 
 }

@@ -19,6 +19,7 @@ import { PostsComponent } from './posts/posts.component';
 import { AccountComponent } from './account/account.component';
 import { DataService} from './DataService';
 import { AuthGuard } from './AuthGuard';
+import { PricingComponent } from './pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthGuard } from './AuthGuard';
     HomeFormComponent,
     SearchComponent,
     PostsComponent,
-    AccountComponent
+    AccountComponent,
+    PricingComponent
   ],
   entryComponents: [
     AppComponent,
