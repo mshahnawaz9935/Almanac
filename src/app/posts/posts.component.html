@@ -1,22 +1,5 @@
-<h3>
-  Results showing for {{data.topic}} and {{data.chapter}}
-</h3>
-    <button md-button (click)="savedata()">Save To Favourites</button>
-     <button md-button (click)="savenote()">Save To Note</button>
-       <a class="btn btn-primary primary" (click)="saveonenote()">Save To One Note</a>
-<div *ngFor= "let image of img_data.section">
-  <!--<md-card>
-    <md-card-content>
-    <h3>
-    {{image.text.text}}
-    </h3>
-  </md-card-content>
-  <img style="width:300px;height:200px" *ngFor= "let url of image.images.image" md-card-image [src]="url.url" />
-        </md-card>-->
-        <!--<md-card *ngFor= "let vid_url of image.videos.video">
-          <iframe  width="560" height="315" [src]=""></iframe>
-          {{vid_url.url}}
-        </md-card>-->
+
+<!--<div *ngFor= "let image of img_data.section">
         <h4> {{image.text.text}}</h4>
         <md-grid-list cols="3" rowHeight="2:2.5">
   <md-grid-tile *ngFor= "let url of image.images.image">
@@ -34,10 +17,10 @@
   </md-card-content>
 </md-card>
 </md-grid-tile></md-grid-list>
-</div>
+</div>-->
 
 
-
+<!--
 <md-grid-list cols="3" rowHeight="2:3">
   <md-grid-tile>
      <md-card class="example-card">
@@ -64,15 +47,68 @@
     <button md-button>SHARE</button>
   </md-card-actions>
 </md-card>
-  </md-grid-tile></md-grid-list>
+  </md-grid-tile></md-grid-list>-->
+<br>
+<div class="row">
+             <div class="col-md-12"  >
+                    <div class="card">
+                    <div class="view overlay hm-white-slight">
+                        <a>
+                            <div class="mask"></div>
+                        </a>
+                    </div>
 
-   <div class="row">
+                    <div class="card-block">
+  
+                        <h4 class="card-title">ARTICLE Results showing for {{data.topic}} and {{data.chapter}}</h4>
+                        <p class="card-text">    
+                        <a class="btn btn-primary primary" (click)="savedata()">Save To Favourites</a>
+                        <a class="btn btn-primary primary" (click)="savenote()">Save To Note</a>
+                          <a class="btn btn-primary primary" (click)="saveonenote()">Save To One Note!</a></p>
+                    </div>
+                </div>
+             </div>  
+             </div>
+             <br>
+
+   <div class="row" >
+             <div class="col-md-6" *ngFor= "let image of img_data.section"  >
+                   <div class="card">
+          
+                        <div class="card-block" >
+                  
+                        <p [innerHTML]="image.text.text" class="card-text">    </p>      
+                    </div>
+                   <div class="view overlay hm-white-slight" *ngFor= "let url of image.images.image" >
+                  
+                     <div class="card-block" >
+                            
+                                  <h4 class="card-title">{{url.caption}}</h4>
+                                  <hr>
+                             
+                                   <!--<p class="card-text"> Description   </p>-->
+                          </div>
+                        <img [src]="url.url" alt="" style="width:100%">
+                        <a>
+                            <div class="mask waves-effect waves-light"></div>
+                        </a>
+                          
+                        </div>
+                         
+              </div>
+              <br>
+              </div>
+                     
+            </div>
+
+
+   <!--<div class="row">
              <div class="col-md-6" *ngFor= "let image of img_data.section" >
             <div class="card-block" >
-                        <!--Title-->
+                       
                       
                           <hr>
-                        <!--Text-->
+                 
                         <p class="card-text">  {{image.text.text}}  </p>
                     
                         <div class="avatar" *ngFor= "let url of image.images.image">  <h4 class="card-title" >{{url.caption}} </h4><img [src]="url.url"  class="rounded-circle img-responsive">
@@ -81,4 +117,4 @@
                     </div>
                       </div>
                      
-            </div>
+            </div>-->

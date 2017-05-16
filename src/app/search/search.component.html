@@ -106,7 +106,7 @@
           <br>
           <div class="row">
              <div class="col-md-6"  *ngFor= "let result of results">
-             <div class="card">
+             <div class="card" (click)="onSelect(result)" >
                     <div class="card-block">
              
                         <h4 class="card-title">{{result.name}}</h4>
@@ -115,7 +115,7 @@
               
                       <div class="view overlay hm-white-slight" >
                         <img [src]="result.image" alt="" style="width:100%">
-                        <a href="#">
+                        <a>
                             <div class="mask waves-effect waves-light"></div>
                         </a>
                           <div class="card-block" >

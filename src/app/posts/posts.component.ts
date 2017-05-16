@@ -20,11 +20,47 @@ img_data = { x : ''};
       this.data = this.DataService.myquery;
       console.log('Data from post api is ' + this.data1.sections.section[0].images );
     this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
+        // this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
-        //  console.log('Data from post api is ' + this.img_data.image[0].url );
+            this.getdata(dataFromServer.sections);
       });
   }
+
+    getdata(data){
+    
+    for(let section of data.section)
+    {
+
+      let len =section.text.text.length;
+      section.text.text = section.text.text.substring(9,len-3);
+
+         console.log(section.images.image);
+         for(let image of section.images.image)
+         {
+           if(image.caption!==undefined)
+           {
+                 let len = image.caption.length;
+                 image.caption = image.caption.substring(9,len-3);
+           }
+           else { image.caption = "Random picha"; }
+         }
+
+
+      }
+      // else
+      // {
+      //     console.log('yes');
+      //   let len =section.images.image.caption.length;
+      //   section.images.image.caption = section.images.image.caption.substring(2,len-1);
+
+      // }
+    }
+
+
+
+
+
   savedata()
   {
         this.http.get('https://angular2ap.azurewebsites.net/api/store')
