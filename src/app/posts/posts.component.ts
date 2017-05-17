@@ -14,16 +14,18 @@ import {Image} from '../image.interface';
 export class PostsComponent implements OnInit {
 
       private NextPhotoInterval:number = 3000;
+      private NextPhotoInterval2:number = 100;
     //Looping or not
     private noLoopSlides:boolean = false;
+      private noLoopSlides2:boolean = true;
     value='';
     data;
     img_data = { x : ''};
-    data1 = { sections :{section : [ { images : { image :[ {url : 'ssss' }  ] }  }  ]            }     };
+    videoarray = [{url:'https://www.youtube.com/embed/tpYUAlZ64mE'},{url:'https://www.youtube.com/embed/tpYUAlZ64mE'}];
+
   constructor(private http:Http,private DataService: DataService, private sanitizer: DomSanitizer, private router:Router) { 
 
       this.data = this.DataService.myquery;
-      console.log('Data from post api is ' + this.data1.sections.section[0].images );
     //this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
          this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
