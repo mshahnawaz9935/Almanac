@@ -104,7 +104,20 @@
                       </div>
           </div>
           <br>
-          <div class="row">
+           <div *ngIf="error"  class="row">
+              <div class="col-md-12">
+                <div class="card">
+                 <div class="card-block">
+             
+                        <h4 class="card-title">No Results Found</h4>
+                 
+                        </div>
+                        </div>
+                        <br>
+                </div>
+                </div>
+
+          <div *ngIf="!error" class="row">
              <div class="col-md-6"  *ngFor= "let result of results">
              <div class="card" (click)="onSelect(result)" >
                     <div class="card-block">

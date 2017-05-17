@@ -7,6 +7,7 @@ import { ActivatedRoute }     from '@angular/router';
 import { Search }    from './Search';
 import { NouisliderModule } from 'ng2-nouislider';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-search',
@@ -63,32 +64,36 @@ user='';
   ngOnInit() {
  
   }
-
-  //   onEnter(value: string) {
-
-   
-  // }
+    error:boolean = false;
   onSubmit()
   {
     this.submitted = true;
-    console.log('hello', this.model.search , this.model.slider_value1, this.model.slider_value2);
+    console.log('hello', this.model.search.length , this.model.slider_value1, this.model.slider_value2);
+    if(this.model.search != '')
+    {
     this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search)
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+        .map((res: Response) => res.json())
+        .subscribe((dataFromServer) => {
           this.data = dataFromServer;
           this.getdata(dataFromServer);
-          console.log('Data from postman is ' + this.data );
+          console.log('Data from postman is ' + this.data);
         });
+    }
   }
 
   getdata(data){
-    console.log('get ',data.results.result);
-    for(let desc of data.results.result)
+    console.log('get ',data);
+    if(data.results != null)
     {
-      let len =desc.description.length;
-      desc.description = desc.description.substring(9,len-3);
+      this.error = false;
+      for(let desc of data.results.result)
+      {
+        let len =desc.description.length;
+        desc.description = desc.description.substring(9,len-3);
+      }
+      this.results = data.results.result;
     }
-    this.results = data.results.result;
-
+      else this.error =true;
   }
 
     note()
