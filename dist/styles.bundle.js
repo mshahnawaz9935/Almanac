@@ -57,16 +57,16 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 529:
+/***/ 530:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(863);
+var content = __webpack_require__(866);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(934)(content, {});
+var update = __webpack_require__(937)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -84,7 +84,7 @@ if(false) {
 
 /***/ },
 
-/***/ 860:
+/***/ 863:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(196)();
@@ -99,7 +99,7 @@ exports.push([module.i, ".mat-elevation-z0{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0
 
 /***/ },
 
-/***/ 861:
+/***/ 864:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(196)();
@@ -114,7 +114,7 @@ exports.push([module.i, ".layout, .layout-column, .layout-row {\n  box-sizing: b
 
 /***/ },
 
-/***/ 862:
+/***/ 865:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(196)();
@@ -129,14 +129,14 @@ exports.push([module.i, "/*! nouislider - 9.2.0 - 2017-01-11 10:35:35 */.noUi-ta
 
 /***/ },
 
-/***/ 863:
+/***/ 866:
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(196)();
 // imports
-exports.i(__webpack_require__(861), "");
-exports.i(__webpack_require__(860), "");
-exports.i(__webpack_require__(862), "");
+exports.i(__webpack_require__(864), "");
+exports.i(__webpack_require__(863), "");
+exports.i(__webpack_require__(865), "");
 
 // module
 exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n  @font-face {\r\n        font-family: \"Roboto\";\r\n        src: url(\"/assets/fonts/Roboto-Regular.ttf\");\r\n    }\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\";\r\n}\r\n\r\n/* You can add global styles to this file, and also import other style files */\r\n@font-face {\r\n  font-family: \"Lato-Regular\";\r\n  src: url(\"/assets/fonts/Lato-Regular.ttf\");\r\n}\r\n/*\r\n.main-sec {\r\n    padding: 10px;\r\n}\r\n\r\n.full-height {\r\n    height: 100%;\r\n}\r\n\r\n.dash-card {\r\n    background-color: #FFF;\r\n    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);\r\n    padding: 0px!important;\r\n    height: 100%;\r\n}\r\n\r\nmd-card-header {\r\n    background-color: #237DC1;\r\n    height: 50px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n.md-card-header-text {\r\n    height: auto!important;\r\n}\r\n\r\nmd-card-title {\r\n    color: #FFF;\r\n    font-size: 26px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n.dash-text {\r\n    color: #237DC1;\r\n    font-size: 36px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.dash-grey {\r\n    color: #87929A;\r\n    font-size: 36px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.loc {\r\n    color: #87929A;\r\n    font-size: 22px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.small-header {\r\n    color: #237DC1;\r\n    font-size: 26px;\r\n    margin: 20px;\r\n    font-weight: 400;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\n.fb-text {\r\n    color: #237DC1;\r\n    font-size: 26px;\r\n    margin: 0px;\r\n    font-weight: 400;\r\n    font-family: 'Lato-Regular'!important;\r\n}\r\n\r\np {\r\n    color: #87929A;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0px;\r\n    font-family: 'Lato-Regular'!important; \r\n    padding-bottom: 15px;\r\n    padding-right: 15px;\r\n}\r\n\r\nchart {\r\n    width:100%;\r\n    height: 260px;\r\n}\r\n\r\nmd-icon {\r\n    height: 36px!important;\r\n    width: 36px!important;\r\n}\r\n\r\n.center {\r\n    text-align: center;\r\n}\r\n\r\n.border {\r\n    border-bottom: 2px solid #D8D8D8;;\r\n}\r\n\r\n.padding-sml {\r\n    padding: 15px;\r\n}\r\n\r\n.chart-size {\r\n    height: 30%;\r\n}\r\n\r\n@media only screen and (max-height: 870px) {\r\n    .hide {\r\n        display: none!important;\r\n    }\r\n\r\n    chart {\r\n        height: 130px;\r\n    }\r\n    p {\r\n        font-size: 12px!important;\r\n    }\r\n    .small-header {\r\n        margin: 20px;\r\n    }\r\n    .chart-size {\r\n        height: 20%;\r\n    }\r\n}\r\n\r\n@media only screen and (max-height: 950px) {\r\n    p {\r\n        font-size: 13px;\r\n    }\r\n    .dash-grey, .dash-text {\r\n        font-size: 25px;\r\n    }\r\n    .loc {\r\n        font-size: 20px;\r\n    }\r\n    .small-header,.fb-text  {\r\n        font-size: 20px!important;\r\n    }\r\n    md-card-title {\r\n        font-size: 19px!important;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1350px) {\r\n    p {\r\n        font-size: 13px;\r\n    }\r\n    .dash-grey, .dash-text {\r\n        font-size: 25px;\r\n    }\r\n    .loc {\r\n        font-size: 20px;\r\n    }\r\n    .small-header,.fb-text  {\r\n        font-size: 20px!important;\r\n    }\r\n    md-card-title {\r\n        font-size: 19px!important;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 900px) {\r\n    .full-height {\r\n        height: auto;\r\n        margin-top: 10px;\r\n    }\r\n    .dash-card {\r\n        min-height: 70px;\r\n    }\r\n    .hide {\r\n        display: none!important;\r\n    }\r\n}\r\n*/\r\n", ""]);
@@ -146,7 +146,7 @@ exports.push([module.i, "/* You can add global styles to this file, and also imp
 
 /***/ },
 
-/***/ 934:
+/***/ 937:
 /***/ function(module, exports) {
 
 /*
@@ -399,13 +399,13 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 937:
+/***/ 940:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(529);
+module.exports = __webpack_require__(530);
 
 
 /***/ }
 
-},[937]);
+},[940]);
 //# sourceMappingURL=styles.map

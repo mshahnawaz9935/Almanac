@@ -22,6 +22,9 @@ import { AuthGuard } from './AuthGuard';
 import { PricingComponent } from './pricing/pricing.component';
 import { NouisliderModule } from 'ng2-nouislider';
 import { ModulesComponent } from './modules/modules.component';
+import {CSSCarouselComponent} from './pricing/carousel.component2';
+import { Carousel } from './pricing/carousel.component';
+import { Slide } from './pricing/slide.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { ModulesComponent } from './modules/modules.component';
     PostsComponent,
     AccountComponent,
     PricingComponent,
-    ModulesComponent
+    ModulesComponent,
+    CSSCarouselComponent,
+    Carousel,Slide
   ],
   entryComponents: [
     AppComponent,

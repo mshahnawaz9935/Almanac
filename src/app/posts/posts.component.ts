@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
 import { DomSanitizer } from '@angular/platform-browser';
 import {Router } from '@angular/router';
+import {Image} from '../image.interface';
 
 @Component({
   selector: 'app-posts',
@@ -11,16 +12,20 @@ import {Router } from '@angular/router';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-value='';
-data;
-img_data = { x : ''};
- data1 = { sections :{section : [ { images : { image :[ {url : 'ssss' }  ] }  }  ]            }     };
+
+      private NextPhotoInterval:number = 3000;
+    //Looping or not
+    private noLoopSlides:boolean = false;
+    value='';
+    data;
+    img_data = { x : ''};
+    data1 = { sections :{section : [ { images : { image :[ {url : 'ssss' }  ] }  }  ]            }     };
   constructor(private http:Http,private DataService: DataService, private sanitizer: DomSanitizer, private router:Router) { 
 
       this.data = this.DataService.myquery;
       console.log('Data from post api is ' + this.data1.sections.section[0].images );
-    this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
-        // this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
+    //this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
+         this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
