@@ -11,7 +11,7 @@ authenticated1;
 myquery = { topic: '' , chapter : '' };
     constructor(private http: Http) {
 
-    this.http.get('http://localhost:3000/onenote/checklogin')
+    this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Service Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')

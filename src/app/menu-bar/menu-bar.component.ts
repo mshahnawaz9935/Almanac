@@ -15,7 +15,7 @@ user = '';
    constructor(private http:Http, private DataService: DataService, private router:Router)  {
 
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
-       this.http.get('http://localhost:3000/onenote/checklogin')
+       this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -24,7 +24,7 @@ user = '';
           { this.authenticated1 =true;
           console.log(this.authenticated1);
 
-          this.http.get('http://localhost:3000/onenote/aboutme')
+          this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
