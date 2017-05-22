@@ -98,6 +98,7 @@ function aboutme(req,res)
       if (response.statusCode === 200) {
                 console.log(body);
                 console.log(JSON.parse(body).displayName);
+                req.session.email = JSON.parse(body).userPrincipalName;
                 res.json('Welcome ' + JSON.parse(body).displayName);
         //callback(null, JSON.parse(body));
 

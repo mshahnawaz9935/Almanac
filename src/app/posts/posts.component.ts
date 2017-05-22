@@ -18,16 +18,18 @@ export class PostsComponent implements OnInit {
     //Looping or not
     private noLoopSlides:boolean = false;
       private noLoopSlides2:boolean = true;
+    saved = false;
     value='';
     data;
+    saved_data = [];
     img_data = { x : ''};
     videoarray = [{url:'https://www.youtube.com/embed/tpYUAlZ64mE'},{url:'https://www.youtube.com/embed/tpYUAlZ64mE'}];
 
   constructor(private http:Http,private DataService: DataService, private sanitizer: DomSanitizer, private router:Router) { 
 
       this.data = this.DataService.myquery;
-    //this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
-         this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
+    this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
+        // this.http.get('http://localhost:3000/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
@@ -65,12 +67,9 @@ export class PostsComponent implements OnInit {
     }
 
 
-
-
-
   savedata()
   {
-        this.http.get('https://angular2ap.azurewebsites.net/api/store')
+        this.http.get('http://localhost:3000/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
         });
@@ -78,14 +77,31 @@ export class PostsComponent implements OnInit {
 
   savenote()
   {
-       window.open('https://angular2ap.azurewebsites.net/note/token','_self');
+       window.open('http://localhost:3000/note/token','_self');
        alert('Saved to Note');
 
   }
   saveonenote()
   {
-       window.open('https://angular2ap.azurewebsites.net/onenote/writenote','_self');
+       window.open('http://localhost:3000/onenote/writenote','_self');
        alert('Saved to One Note');
+
+  }
+  showdata()
+  { 
+          this.saved = true;
+         this.http.get('http://localhost:3000/api/getdata')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log( 'Saved data in db' , dataFromServer);
+          this.saved_data = dataFromServer;
+          console.log(this.saved_data);
+            // for(let section of dataFromServer)
+            // {     
+            //     console.log('sections are', section.sections , section.title);
+
+            // }
+
+        });
 
   }
 

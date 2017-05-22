@@ -9,14 +9,14 @@ var session = require('express-session');
 
 mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
-  //  mongoose.connect('mongodb://127.0.0.1:27017/test');
+ //   mongoose.connect('mongodb://127.0.0.1:27017/test');
 
 
 /* GET api listing. */
 var favourites ={};
 router.get('/getdata', (req, res) => {
 
-  MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {        //Run mongodb and its service mongod.exe
+  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/test', function (err, db) {        //Run mongodb and its service mongod.exe
     if (err) {
         throw err;
     } else {
@@ -24,7 +24,7 @@ router.get('/getdata', (req, res) => {
     }
     db.close();
 });
-MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/test?ssl=true, function(err, db) {
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -35,7 +35,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
     // });
 
     // Locate all the entries using find
-    collection.find().toArray(function(err, results) {
+    console.log(req.session.email);
+    collection.find({"username":req.session.email}).toArray(function(err, results) {
         console.dir(results);
         // Let's close the db
           res.json(results );
@@ -132,13 +133,16 @@ request({
 router.get('/store', (req, res) => {
 
      MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+  //     MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
 
      var collection = db.collection('test');
-     console.log('sdssd' + favourites.title);
-    collection.insert( favourites, function(err, docs) {
+
+     favourites['username']= req.session.email;
+          console.log('sdssd' + favourites.title + favourites.username);
+    collection.insert(favourites, function(err, docs) {
         collection.count(function(err, count) {
             console.log(format("count = %s", count));
         });
