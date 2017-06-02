@@ -8,6 +8,7 @@ var authHelper = require('../authHelper.js');
 router.get('/', function (req, res) {
   // check for token
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
+    req.session.login = '';
     res.redirect('/onenote/login');
   } else {
       console.log('Logged in' );
@@ -35,6 +36,9 @@ router.get('/writenote', function (req, res) {
 });
 router.get('/checklogin', function (req, res) {
   // check for token
+  if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
+    req.session.login = '';
+  }
   if(req.session.login == 'Logged in')
   res.json('Logged in');
   else
@@ -44,6 +48,7 @@ router.get('/checklogin', function (req, res) {
 
 router.get('/disconnect', function (req, res) {
   // check for token
+  console.log('disconnect');
   req.session.destroy();
   res.clearCookie('nodecookie');
   clearCookies(res);
@@ -116,7 +121,7 @@ function aboutme(req,res)
       error.innerError.code === 'InvalidAuthenticationToken' ||
       error.innerError.message === 'Access token has expired.')
       {     console.log('Disconnect');
-           res.redirect('/disconnect'); }
+           res.redirect('/onenote/disconnect'); }
       }
     });
   }).on('error', function (e) {

@@ -10,7 +10,7 @@ var credentials = {
   token_endpoint: '/oauth2/v2.0/token',
   client_id: 'd23a1a63-2516-4822-bbef-ac9fbf1c05fa',
   client_secret: 'DrqO19XuXbGyHVz3oULCHdX',
-  redirect_uri: 'https://angular2ap.azurewebsites.net/onenote/login',
+  redirect_uri: 'http://localhost:3000/onenote/login',
   scope: ['User.Read Mail.Send Mail.ReadWrite Notes.Create offline_access ']
 };
 

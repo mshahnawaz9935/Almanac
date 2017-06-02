@@ -57,7 +57,9 @@ import { Slide } from './pricing/slide.component';
     LayoutModule,
     NouisliderModule
   ],
-  providers: [appRoutingProviders, DataService, AuthGuard],
+  providers: [appRoutingProviders,
+   DataService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
