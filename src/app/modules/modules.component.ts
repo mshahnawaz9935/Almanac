@@ -35,7 +35,9 @@ export class ModulesComponent implements OnInit {
     }
   }
   onclick(){
+    this.text= modules.name;
     console.log('Module clicked');
+    
   }
 
 }
