@@ -17,24 +17,24 @@ import { Observable } from 'rxjs/Observable';
 
 
 export class SearchComponent implements OnInit {
-    model = new Search('', 4, 10);
+  model = new Search('', 1, 1);
   submitted = false;
-value=''; data=[];
-results;username='';password='';
-authenticated = false;
-authenticated1= false;
-user='';
-instances='';
-differentiator1={};
-differentiator2={};
+  value=''; data=[];
+  results;username='';password='';
+  authenticated = false;
+  authenticated1= false;
+  user='';
+  differentiator = [{name:'', levels:[]}];
+  type={name:'', levels:[]};
   constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
-       route.queryParams.subscribe(
-      data =>{ 
-        console.log('queryParams', data['authenticated']) ;
-        if(data['authenticated']== 'true')
-        this.authenticated = true;
-    });
-     this.http.get('http://localhost:3000/note/checklogin')
+    //    route.queryParams.subscribe(
+    //   data =>{ 
+    //     console.log('queryParams', data['authenticated']) ;   //Read Query string from Url
+    //     if(data['authenticated']== 'true')
+    //     this.authenticated = true;
+    // });
+    console.log(this.DataService.moduleid);
+     this.http.get('https://angular2ap.azurewebsites.net/note/checklogin')               // Check Login
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -42,8 +42,8 @@ differentiator2={};
           else this.authenticated =true;
           console.log(this.authenticated);
         });
-        this.http.get('http://localhost:3000/onenote/checklogin')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+        this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {      //Check if user is logged in
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
           {
@@ -54,32 +54,50 @@ differentiator2={};
           { this.authenticated1 =true;
           console.log(this.authenticated1);
 
-          this.http.get('http://localhost:3000/onenote/aboutme')
-              .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {    // Get User details
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
               });
           }
         });
-        this.http.get('http://localhost:3000/api/instances')
-              .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-                console.log('Login status is ' + dataFromServer );
-                this.instances = dataFromServer;
-              });
+       
          
    }
 
   ngOnInit() {
+    //  if(this.DataService.moduleid != '')
+    //     {
+    //       console.log('Module selected' , this.DataService.moduleid);
+    //     this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+    //           .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
+    //             console.log('Login status is ' + dataFromServer );
+    //             this.getInstance(dataFromServer);
+
+    //           });
+                 
+    //     }
+    //     else
+    //     {  
+    //         this.router.navigate(['/modules']);
+    //     }
  
   }
+
     error:boolean = false;
+    slider1;
+    slider2;
   onSubmit()
   {
     this.submitted = true;
     console.log('hello', this.model.search.length , this.model.slider_value1, this.model.slider_value2);
+    this.slider1= this.differentiator[0].levels[this.model.slider_value1];
+    this.slider2=this.type.levels[this.model.slider_value2];
+    console.log('Slider values are' ,this.slider1, this.slider2);
     if(this.model.search != '')
     {
-    this.http.get('http://localhost:3000/api/search?id='+ this.model.search)
+    // this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search)
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
           this.data = dataFromServer;
@@ -89,9 +107,27 @@ differentiator2={};
     }
   }
 
-  getdata(data){
-    console.log('get ',data);
-    if(data.results != null)
+  getInstance(data)
+  {
+    console.log(data);
+    for(let module of data)
+    {
+      if(this.DataService.moduleid == module.id)
+      {
+        console.log('module found');
+        this.differentiator = module.differentiators;
+        this.type= module.type;
+      }
+      
+      
+    }
+
+    console.log('difff and type', this.type.name, this.differentiator[0].name, this.type.levels);
+  }
+
+  getdata(data){                      
+    console.log('get ',data);                    // Substring the text from the obtained data
+    if(data.results.length >0)
     {
       this.error = false;
       for(let desc of data.results)
@@ -107,32 +143,31 @@ differentiator2={};
     note()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/note','_self' );
+       window.open('https://angular2ap.azurewebsites.net/note','_self' );
    
   }
 
   onenote()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/onenote','_self' );
+       window.open('https://angular2ap.azurewebsites.net/onenote','_self' );
    
   }
    onenotelogout()
   {
-       window.open('http://localhost:3000/onenote/disconnect','_self' );
+       window.open('https://angular2ap.azurewebsites.net/onenote/disconnect','_self' );
    
   }
      logout()
   {
-       window.open('http://localhost:3000/note/logout','_self' );
+       window.open('https://angular2ap.azurewebsites.net/note/logout','_self' );
    
   }
 
     onSelect(data): void {
-      console.log('clicked query' + data.name + data.query);
+      console.log('clicked query' + data.name + data.query);          // Select topic and redirect to the article
       this.DataService.myquery.topic = data.query;
       this.DataService.myquery.chapter = data.name;
       this.router.navigate(['./posts']);
-       
   }
 }

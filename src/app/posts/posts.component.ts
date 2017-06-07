@@ -3,8 +3,8 @@ import { Http ,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
 import { DomSanitizer } from '@angular/platform-browser';
-import {Router } from '@angular/router';
-import {Image} from '../image.interface';
+import { Router } from '@angular/router';
+import { Image} from '../image.interface';
 
 @Component({
   selector: 'app-posts',
@@ -83,9 +83,20 @@ export class PostsComponent implements OnInit {
   }
   saveonenote()
   {
-       window.open('http://localhost:3000/onenote/writenote','_self');
+      // window.open('http://localhost:3000/onenote/writenote','_self');
        alert('Saved to One Note');
+        this.http.get('http://localhost:3000/onenote/writenote')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Write note', dataFromServer);
+        });
 
+  }
+  checknote()
+  {
+       this.http.get('http://localhost:3000/onenote/checknote')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Check note', dataFromServer);
+        });
   }
   showdata()
   { 
@@ -107,5 +118,9 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  
+
+
 
 }

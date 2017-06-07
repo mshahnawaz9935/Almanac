@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http ,Response} from '@angular/http'; 
 import 'rxjs/add/operator/map';
-import {Modules} from './Modules';
+import { DataService } from '../DataService';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-modules',
@@ -9,11 +10,9 @@ import {Modules} from './Modules';
   styleUrls: ['./modules.component.css']
 })
 export class ModulesComponent implements OnInit {
-
-  model = new Modules(0,'Geography');
   
   data=[];
-  constructor(private http:Http) { 
+  constructor(private http:Http , private DataService:DataService ,private router: Router) { 
       this.http.get('http://localhost:3000/api/instances')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
@@ -34,9 +33,10 @@ export class ModulesComponent implements OnInit {
       }
     }
   }
-  onclick(){
-    this.text= modules.name;
-    console.log('Module clicked');
+  onclick(moduleid){
+    console.log(moduleid, 'Module clicked');
+    this.DataService.moduleid = moduleid;
+    this.router.navigate(['/search']);
     
   }
 

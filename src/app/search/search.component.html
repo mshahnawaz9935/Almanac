@@ -52,7 +52,7 @@
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
                         <p>1 ) Enter the topic you're looking for:</p>
       
-                <form (ngSubmit)="onSubmit()">
+                 <form (ngSubmit)="onSubmit()">
                     <div class="row">
                   <div class="col-md-8">   
                   <div class="md-form">
@@ -67,15 +67,15 @@
                         <!--Ability-->
                        <div class="row">
                              <div class="col-md-1">
-                               <p>Low</p>
+                               <p>None</p>
                                 </div>
                                  <div class="col-md-7">
                                     <p>
-                                  <nouislider [min]="0" [max]="10" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
+                                  <nouislider [min]="0" [max]="2" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
                                     </p>
                                   </div>
                               <div class="col-md-2">
-                               <p>High</p>
+                               <p>Significant</p>
                                </div>
                              </div>
                               <br>
@@ -86,7 +86,7 @@
                                 </div>
                                  <div class="col-md-7">
                                     <p>
-                                  <nouislider [min]="0" [max]="10" [step]="1" name="noui2" [(ngModel)]="model.slider_value2" ></nouislider>
+                                  <nouislider [min]="0" [max]="2" [step]="1" name="noui2" [(ngModel)]="model.slider_value2" ></nouislider>
                                     </p>
                                   </div>
                               <div class="col-md-2">

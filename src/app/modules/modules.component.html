@@ -24,11 +24,11 @@
   </div>
   <br>
    <div class="row">
-            <div class="col-md-6" *ngFor="let modules of data">
-       <div class="card" (click)="onclick()">
+            <div class="col-md-6" *ngFor="let modules of data;let i=index">
+       <div class="card" (click)="onclick(modules.id)" >
            <div class="card-block">
         <!--Title-->
-              <h4 class="card-title" [(ngModel)]={{modules.name}} >{{modules.name}}</h4>
+              <h4 class="card-title" >{{modules.name}}</h4>
               <!--Text-->
               <p class="card-text">{{modules.id}}</p>
                </div>
@@ -66,7 +66,7 @@
           <!--Card image-->
           <div class="view overlay hm-white-slight">
               <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" alt="">
-              <a href="#">
+              <a >
                   <div class="mask waves-effect waves-light"></div>
               </a>
                 <div class="card-block">

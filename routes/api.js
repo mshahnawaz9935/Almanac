@@ -7,7 +7,8 @@ var mongoose   = require('mongoose');
 var session = require('express-session');
 
 var token = '';
-mongoose.connect('mongodb://127.0.0.1:27017/test');
+mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
+
 
  //   mongoose.connect('mongodb://127.0.0.1:27017/test');
 
@@ -16,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/test');
 var favourites ={};
 router.get('/getdata', (req, res) => {
 
-  MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {        //Run mongodb and its service mongod.exe
+  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
     if (err) {
         throw err;
     } else {
@@ -24,7 +25,7 @@ router.get('/getdata', (req, res) => {
     }
     db.close();
 });
-MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -112,7 +113,7 @@ router.get('/search', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b42274748a1b1c8e440f/articles?searchQuery=' + id+ '&differentiator=None',
+        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b41f74748a1b1c8e440e/articles?searchQuery=' + id+ '&differentiator=None',
         method: 'GET',
         headers: headers,
     }
@@ -217,8 +218,8 @@ request({
 
 router.get('/store', (req, res) => {
 
-     MongoClient.connect('mongodb://127.0.0.1:27017/test',
-  //     MongoClient.connect('mongodb://127.0.0.1:27017/test',
+     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+  //     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
