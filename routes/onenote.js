@@ -565,7 +565,7 @@ function writetonote(token,topic,chapter)
         "</html>";   
             
             createPage(token, htmlPayload, false); 
-        }, 1500);
+        }, 2000);
      
     }
 
