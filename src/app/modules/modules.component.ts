@@ -13,7 +13,7 @@ export class ModulesComponent implements OnInit {
   
   data=[];
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
-      this.http.get('http://localhost:3000/api/instances')
+      this.http.get('https://angular2ap.azurewebsites.net/api/instances')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
            this.data = dataFromServer;
