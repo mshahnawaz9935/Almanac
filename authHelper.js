@@ -12,7 +12,7 @@ var credentials = {
   client_secret: 'DrqO19XuXbGyHVz3oULCHdX',
   redirect_uri: 'https://angular2ap.azurewebsites.net/onenote/login',
   // client_id: 'fa64935f-0786-46d4-9a8d-b9e4b6d66fa9',
-  // client_secret: 'Wq1hqnD8Bg4HJX93bVt5hq7',
+  // client_secret: 'wMiUNne6zxtmmgTjb4CUOJ7',
   // redirect_uri: 'https://angular2ap.azurewebsites.net/onenote/login',
   scope: ['User.Read Mail.Send Mail.ReadWrite Notes.Create offline_access ']
 };

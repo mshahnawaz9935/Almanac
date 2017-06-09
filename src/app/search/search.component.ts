@@ -66,21 +66,21 @@ export class SearchComponent implements OnInit {
    }
 
   ngOnInit() {
-    //  if(this.DataService.moduleid != '')
-    //     {
-    //       console.log('Module selected' , this.DataService.moduleid);
-    //     this.http.get('https://angular2ap.azurewebsites.net/api/instances')
-    //           .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
-    //             console.log('Login status is ' + dataFromServer );
-    //             this.getInstance(dataFromServer);
+     if(this.DataService.moduleid != '')
+        {
+          console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
+        this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
+                console.log('Login status is ' + dataFromServer );
+                this.getInstance(dataFromServer);
 
-    //           });
+              });
                  
-    //     }
-    //     else
-    //     {  
-    //         this.router.navigate(['/modules']);
-    //     }
+        }
+        else
+        {  
+            this.router.navigate(['/modules']);
+        }
  
   }
 

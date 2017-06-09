@@ -17,8 +17,8 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'support', component: SupportComponent },
     { path: 'contact', component: ContactUsComponent },
-    { path: 'search', component: SearchComponent } ,// canActivate: [AuthGuard] },
-    { path: 'posts', component: PostsComponent },
+    { path: 'search', component: SearchComponent , canActivate: [AuthGuard] },
+    { path: 'posts', component: PostsComponent ,canActivate: [AuthGuard] },
     { path: 'account', component: AccountComponent },
     { path: 'pricing', component: PricingComponent },
     { path: 'modules', component: ModulesComponent }

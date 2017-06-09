@@ -6,6 +6,9 @@ var authHelper = require('../authHelper.js');
 
 /* GET home page. */
 var t=2,sec=2;
+var notebookid;
+var sectionid;
+
 router.get('/', function (req, res) {
   // check for token
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
@@ -26,11 +29,18 @@ router.get('/aboutme', function (req, res) {
   aboutme(req,res);
 });
 
-router.get('/checknote', function (req, res) {
+router.get('/checknote', function (req, res) {                // checknotebook exists or not
   // check for token
-  checknote(req,res);
-});
+  checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
+  {
+    if(t==1)
+    {
+      res.json('Notebook exists');
+    }
+    else res.json('Notebook doesnt exists');
 
+});
+});
 
 router.get('/checknote2', function (req, res) {
   // check for token
@@ -40,23 +50,23 @@ router.get('/checknote2', function (req, res) {
     console.log('t is', t);
     if(t == 1)
     {
-      checksection(req.cookies.ACCESS_TOKEN_CACHE_KEY);
+      checksection(req.cookies.ACCESS_TOKEN_CACHE_KEY , 'Almanac');
        setTimeout(function()
        {
           console.log( 'sec is ', sec);
       if(sec==1)
       {
         console.log('Both exists');
-       writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, 'lava', 'Volcanoes');
+       writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
 
       }
       else
       {
         console.log('Notebook exists and section created');
-        createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY , notebookid);
+        createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY , notebookid , req.session.modulename);
           setTimeout(function()
           {
-              writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, 'lava', 'Volcanoes');
+              writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
           },4700);
       }
        },1500);
@@ -66,7 +76,7 @@ router.get('/checknote2', function (req, res) {
      {
        console.log('Notebook and section created');
       // res.json('Notebook created');
-      createnotebook(req.cookies.ACCESS_TOKEN_CACHE_KEY);
+      createnotebook(req.cookies.ACCESS_TOKEN_CACHE_KEY ,req.session.modulename);
       setTimeout(function()
           {
               writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, 'lava', 'Volcanoes');
@@ -77,7 +87,56 @@ router.get('/checknote2', function (req, res) {
      
 });
 
-function createnotebook(token)
+router.get('/checknote3', function (req, res) {
+  
+  checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
+  {
+    if(t==1)
+    {
+       console.log('notebook id' ,notebookid);
+    checksection(req.cookies.ACCESS_TOKEN_CACHE_KEY , notebookid , req.session.modulename , function(sec, sectionid)
+    {
+     
+       if(sec == 1){
+         createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
+       res.json('Notebook exists id is ' + notebookid + 'Section exists id is' + sectionid);
+       }
+       else if(sec==0)
+       {
+         createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid , req.session.modulename , function(sectionid)
+         {
+           createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
+            res.json('Notebook exists and section created' + sectionid);
+         });
+
+       }
+
+    });
+    }
+    else if(t==0)
+    {
+       console.log('t=0');
+      createnotebook(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(notebookid){
+         console.log('notebook id' ,notebookid);
+      createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid ,req.session.modulename, function(sectionid)
+         {
+           createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
+            res.json('Notebook' + notebookid + 'and section created' + sectionid);
+         });
+         });
+    }
+
+
+
+  });
+
+     
+});
+
+
+
+
+function createnotebook(token ,callback)
 {
      var options = {
     url: 'https://graph.microsoft.com/beta/me/onenote/notebooks',
@@ -97,10 +156,8 @@ function createnotebook(token)
   }
   console.log('Succesfully Created notebook :', JSON.parse(body).id);
   notebookid =  JSON.parse(body).id;
+   callback(notebookid);
 });
-  setTimeout(function()
-        {   createsection(token , notebookid);
-        },2500);
  
 }
 
@@ -110,11 +167,12 @@ router.get('/writenote', function (req, res) {
   writetonote(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic , req.session.chapter);
    res.redirect('/search');
 });
-router.get('/checklogin', function (req, res) {
+router.get('/checklogin', function (req, res) {        // Wont work directly on angular, need to be executed on node
   // check for token
-  if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
+  if (req.cookies.ACCESS_TOKEN_CACHE_KEY === undefined) {
     req.session.login = '';
   }
+  console.log(req.session.login);
   if(req.session.login == 'Logged in')
   res.json('Logged in');
   else
@@ -197,7 +255,11 @@ function aboutme(req,res)
       error.innerError.code === 'InvalidAuthenticationToken' ||
       error.innerError.message === 'Access token has expired.')
       {     console.log('Disconnect');
-           res.redirect('/onenote/disconnect'); }
+            req.session.destroy();
+            res.clearCookie('nodecookie');
+            clearCookies(res);
+            res.status(200);
+            res.redirect('/search'); }
       }
     });
   }).on('error', function (e) {
@@ -205,7 +267,7 @@ function aboutme(req,res)
   });
 
 }
-function checknote(req,res)
+function checknote(token ,callback)                                // No use for now
 {
     var options = {
     host: 'graph.microsoft.com',
@@ -214,7 +276,7 @@ function checknote(req,res)
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY
+      Authorization: 'Bearer ' + token
     }
   };
 
@@ -226,8 +288,7 @@ function checknote(req,res)
     response.on('end', function () {
       var error;
       if (response.statusCode === 200) {
-                res.send(body);
-        //callback(null, JSON.parse(body));
+        callback(JSON.parse(body));
 
       } else {
         error = new Error();
@@ -236,8 +297,9 @@ function checknote(req,res)
         // The error body sometimes includes an empty space
         // before the first character, remove it or it causes an error.
         body = body.trim();
-     //   error.innerError = JSON.parse(body).error;
+        error.innerError = JSON.parse(body).error;
         console.log(body, null);
+        callback(error.innerError);
       }
     });
   }).on('error', function (e) {
@@ -245,7 +307,7 @@ function checknote(req,res)
   });
 
 }
-function checknote2(req,res)
+function checknote2(token, callback)
 {   t=0;
     var options = {
     host: 'graph.microsoft.com',
@@ -254,7 +316,7 @@ function checknote2(req,res)
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY
+      Authorization: 'Bearer ' + token
     }
   };
 
@@ -280,16 +342,14 @@ function checknote2(req,res)
             if(t==1)
             {
             console.log('notebook exists and t is', t);
-            res.json('Notebook exists');
             t=1;
             }
             else
             { console.log('notebook doesnt exists and t is', t);
-                        res.json('Notebook doesnt exists');
               t=0;
             }
              //  res.json('Creating and Updating notebooks');
-        //callback(null, JSON.parse(body));
+        callback(t, notebookid);
 
       } else {
         error = new Error();
@@ -309,8 +369,9 @@ function checknote2(req,res)
 
 }
 
-function checksection(token)
+function checksection(token , notebookid, modulename ,callback)
 {   sec=0;
+  console.log('Module name is' + modulename);
     var options = {
     host: 'graph.microsoft.com',
     path: '/beta/me/onenote/notebooks/'+ notebookid+ '/sections/?$select=displayName,id',
@@ -335,7 +396,7 @@ function checksection(token)
             for(var i=0; i< data.value.length; i++)
             {
                 console.log(data.value[i].displayName);
-                if(data.value[i].displayName == 'Almanac')
+                if(data.value[i].displayName == modulename)
                 {
                  sec=1;
                  sectionid = data.value[i].id;
@@ -351,7 +412,7 @@ function checksection(token)
               sec=0;
             }
              //  res.json('Creating and Updating notebooks');
-        //callback(null, JSON.parse(body));
+        callback(sec, sectionid);
 
       } else {
         error = new Error();
@@ -370,16 +431,16 @@ function checksection(token)
 
 }
 
-function createsection(token, notebookid)
+function createsection(token, notebookid ,modulename ,callback)
 {
-
+      console.log(modulename);
      var url = 'https://graph.microsoft.com/beta/me/onenote/notebooks/' + notebookid + '/sections';
      console.log('url is ' + url);
             console.log('notebook id' , notebookid);
         var options = {
         url: 'https://graph.microsoft.com/beta/me/onenote/notebooks/' + notebookid + '/sections',
         method: 'POST',
-        body : JSON.stringify({ "displayName" : "Almanac" }),
+        body : JSON.stringify({ "displayName" : modulename }),
         headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -394,11 +455,12 @@ function createsection(token, notebookid)
     }
     console.log('Post section Body :', body, JSON.parse(body).id)
     sectionid = JSON.parse(body).id;
+    callback(JSON.parse(body).id);
     });
 }
 
 
-function writespecific(token,topic,chapter)
+function writespecific(token,topic,chapter ,callback)
 {
    
     console.log('inside token' , topic,chapter);
@@ -441,18 +503,23 @@ function writespecific(token,topic,chapter)
                     url = url+ "<p><img src=" + "\"" + favourites.sections.section[i].images.image[j].url + "\"" + "/></p>";
                     }
                 }
+                callback(url);
             
         });
         
        
-       //  console.log(htmlPayload); 
-        setTimeout(function()
-        {   
-                var htmlPayload =
+     
+    }
+
+    function createarticle(token, topic, chapter)
+    {
+      writespecific(token, topic, chapter , function(url)
+      {
+        var htmlPayload =
         "<!DOCTYPE html>" +
         "<html>" +
         "<head>" +
-        "    <title>"+ favourites.title +"</title>" +
+        "    <title>"+ topic +"</title>" +
         "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
         "</head>" +
         "<body>" +
@@ -462,8 +529,10 @@ function writespecific(token,topic,chapter)
         "</html>";   
             
             createNewPage(token, htmlPayload, false); 
-        }, 1500);
-     
+
+      });
+       
+
     }
 
     function createNewPage(accessToken, payload, multipart) {

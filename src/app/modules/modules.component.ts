@@ -33,9 +33,10 @@ export class ModulesComponent implements OnInit {
       }
     }
   }
-  onclick(moduleid){
-    console.log(moduleid, 'Module clicked');
+  onclick(moduleid, modulename){
+    console.log(moduleid, modulename, 'Module clicked');
     this.DataService.moduleid = moduleid;
+    this.DataService.modulename = modulename;
     this.router.navigate(['/search']);
     
   }

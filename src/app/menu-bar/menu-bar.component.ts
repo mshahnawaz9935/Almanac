@@ -19,10 +19,13 @@ user = '';
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
+          {
+            console.log('Not logged in');
           this.authenticated1 = false;
+          }
           else
           { this.authenticated1 =true;
-          console.log(this.authenticated1);
+          console.log('Logged in' ,this.authenticated1);
 
           this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {

@@ -10,6 +10,7 @@ export class DataService {
 authenticated1;
 myquery = { topic: '' , chapter : '' };
 moduleid='';
+modulename='';
     constructor(private http: Http) {
 
     this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')

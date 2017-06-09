@@ -15,8 +15,8 @@ export class PostsComponent implements OnInit {
 
       private NextPhotoInterval:number = 3000;
       private NextPhotoInterval2:number = 100;
-    //Looping or not
-    private noLoopSlides:boolean = false;
+      //Looping or not
+      private noLoopSlides:boolean = false;
       private noLoopSlides2:boolean = true;
     saved = false;
     value='';
@@ -24,16 +24,19 @@ export class PostsComponent implements OnInit {
     saved_data = [];
     img_data = { x : ''};
     videoarray = [{url:'https://www.youtube.com/embed/tpYUAlZ64mE'},{url:'https://www.youtube.com/embed/tpYUAlZ64mE'}];
+    notebook_exists = true;
 
   constructor(private http:Http,private DataService: DataService, private sanitizer: DomSanitizer, private router:Router) { 
 
       this.data = this.DataService.myquery;
-    this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter)
+      console.log(this.DataService.modulename);
+    this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename)
         // this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
       });
+      this.checknote();
   }
 
     getdata(data){
@@ -91,11 +94,26 @@ export class PostsComponent implements OnInit {
         });
 
   }
+
+  saveonenote2()
+  {
+    alert('Save to One Note');
+    this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote3')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Data Saved to One Note', dataFromServer);
+        });
+  }
+
+
+
   checknote()
   {
        this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Check note', dataFromServer);
+          if(dataFromServer == 'Notebook exists')
+          this.notebook_exists = true;
+          else this.notebook_exists = false;
         });
   }
   showdata()

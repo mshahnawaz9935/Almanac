@@ -6,18 +6,40 @@ var User     = require('../models/user');
 var mongoose   = require('mongoose');
 var session = require('express-session');
 
-var token = '';
-mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
+
+//mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
 
  //   mongoose.connect('mongodb://127.0.0.1:27017/test');
 
-
-/* GET api listing. */
+var token = '';
 var favourites ={};
+
+   var qs = require("querystring");
+   var request = require('request');
+
+    var url = '';
+    var queryObject =  qs.stringify({ grant_type: 'client_credentials',
+    client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
+    client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
+    resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
+    var favourites = {};    
+    request({
+        url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
+        method: "POST",
+        body: queryObject,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
+        },
+        }, function (error, response){
+            console.log (JSON.parse(response.body).access_token);   
+             token =  JSON.parse(response.body).access_token;    
+        });
+
 router.get('/getdata', (req, res) => {
 
   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+   // MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -26,6 +48,7 @@ router.get('/getdata', (req, res) => {
     db.close();
 });
 MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
+ //  MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -70,29 +93,6 @@ router.get('/search', (req, res) => {
 //   console.dir(body)
 // })
 
-   var qs = require("querystring");
-   var request = require('request');
-
-    var url = '';
-    var queryObject =  qs.stringify({ grant_type: 'client_credentials',
-  client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
-  client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
-  resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
-    var favourites = {};    
-    request({
-        url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
-        method: "POST",
-        body: queryObject,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
-        },
-        }, function (error, response){
-            console.log( JSON.parse(response.body).access_token);   
-             token =  JSON.parse(response.body).access_token;    
-        });
-
- 
-
   var id = req.query.id;
 
   console.log('id is ' + id);
@@ -120,38 +120,17 @@ router.get('/search', (req, res) => {
 
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(JSON.parse(response.body));
+            console.log('Results are' , JSON.parse(response.body));
             res.send(response.body);
         }
         else console.log('nuffing' , error ,response.statusCode, response.headers);
     })
 
-    }, 800);
+    }, 300);
 
 
 });
 router.get('/instances', (req, res) => {
-
-    var qs = require("querystring");
-    var request = require('request');
-
-    var url = '';
-    var queryObject =  qs.stringify({ grant_type: 'client_credentials',
-    client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
-    client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
-    resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
-    var favourites = {};    
-    request({
-        url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
-        method: "POST",
-        body: queryObject,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
-        },
-        }, function (error, response){
-            console.log( JSON.parse(response.body).access_token);   
-             token =  JSON.parse(response.body).access_token;    
-        });
 
     setTimeout(function()
     {   
@@ -168,13 +147,13 @@ router.get('/instances', (req, res) => {
 
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(JSON.parse(response.body));
+            console.log('Instances', JSON.parse(response.body));
             res.send(response.body);
         }
         else console.log('nuffing' , error ,response.statusCode, response.headers);
     })
 
-    }, 800);
+    }, 300);
 
 
 });
@@ -182,6 +161,8 @@ router.get('/instances', (req, res) => {
 router.get('/posts', (req, res) => {
 var topic = req.query.topic;
 var chapter = req.query.chapter;
+var moduleid = req.query.moduleid;
+var modulename = req.query.modulename;
 var queryObject =  {
    "userID":"IOK_Postman_Testing",
    "parameters":{
@@ -195,21 +176,25 @@ var queryObject =  {
 } ;
 req.session.topic = topic;
 req.session.chapter = chapter;
+req.session.moduleid = moduleid;
+req.session.modulename = modulename;
 
 request({
     url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
+  //  url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b41f74748a1b1c8e440e/articles/200cdaf790414be08ce4b87cc34c68a5",
     method: "POST",
     json: true,   // <--Very important!!!
     body: queryObject,
      headers: {
         "content-type": "application/json",  // <--Very important!!!
+    //    "Authorization": "Bearer "+ token
     },
 }, function (error, response, body){
 
-     console.log('sdssd2' + response.body);
     console.log("post query" + response.body);
       favourites = response.body;
-      console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter);
+      console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+ req.session.moduleid
+      + 'Module Id is ' + req.session.modulename);
         res.send(response.body) +  req.session.topic;
     
 });
@@ -218,8 +203,8 @@ request({
 
 router.get('/store', (req, res) => {
 
-     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-  //     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+    // MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+      MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
