@@ -34,6 +34,13 @@ user = '';
               });
           }
         });
+         this.http.get('https://angular2ap.azurewebsites.net/api/token')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => 
+               dataFromServer
+              );
+
+
+
    }
 
   ngOnInit() {
