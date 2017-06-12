@@ -89,7 +89,6 @@ router.get('/checknote2', function (req, res) {
 
 router.get('/checknote3', function (req, res) {
   
-  console.log('Module name is asdsad' + req.session.modulename + req.session.topic + req.session.chapter);
   checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
   {
     if(t==1)
@@ -255,24 +254,12 @@ function aboutme(req,res)
            if(error.code === 401 &&
       error.innerError.code === 'InvalidAuthenticationToken' ||
       error.innerError.message === 'Access token has expired.')
-      {     
-            console.log('Disconnect');
+      {     console.log('Disconnect');
             req.session.destroy();
             res.clearCookie('nodecookie');
             clearCookies(res);
             res.status(200);
-            res.redirect('/search');
-          //    authHelper.getTokenFromRefreshToken(
-          // req.cookies.REFRESH_TOKEN_CACHE_KEY,
-          // function (refreshError, accessToken) {
-          //   res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
-          //   if (accessToken !== null) {
-          //     console.log('Refreshing token');
-          //     aboutme(req,res);
-              
-            //}
-         // });
-           }
+            res.redirect('/search'); }
       }
     });
   }).on('error', function (e) {
@@ -518,14 +505,12 @@ function writespecific(token,topic,chapter ,callback)
                     url = url+ "<p><img src=" + "\"" + favourites.sections.section[i].images.image[j].url + "\"" + "/></p>";
                     }
                 }
-            }
-     
+               }
                else{
                   favourites= { title: 'Page does not exists: Error 404' };
                   url = url + "<p> Contact your School or Teacher</p>";
                   console.log('I come here when i get error' , favourites.title);
                }
-
                 callback(url);
             
         });

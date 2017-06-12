@@ -12,6 +12,30 @@ var session = require('express-session');
 
  //   mongoose.connect('mongodb://127.0.0.1:27017/test');
 
+var token = '';
+var favourites ={};
+
+   var qs = require("querystring");
+   var request = require('request');
+
+    var url = '';
+    var queryObject =  qs.stringify({ grant_type: 'client_credentials',
+    client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
+    client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
+    resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
+    var favourites = {};    
+    request({
+        url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
+        method: "POST",
+        body: queryObject,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
+        },
+        }, function (error, response){
+            console.log (JSON.parse(response.body).access_token);   
+             token =  JSON.parse(response.body).access_token;    
+        });
+
 router.get('/getdata', (req, res) => {
 
   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
@@ -81,7 +105,7 @@ router.get('/search', (req, res) => {
     //     console.log(response.body);
     // res.send(response.body);
     // });
-    getToken(function(token)
+    setTimeout(function()
     {   
 
     var request = require('request');
@@ -102,45 +126,13 @@ router.get('/search', (req, res) => {
         else console.log('nuffing' , error ,response.statusCode, response.headers);
     })
 
-    });
+    }, 300);
 
 
 });
-
-function getToken(callback)
-{
-    var token = '';
-    var favourites ={};
-
-   var qs = require("querystring");
-   var request = require('request');
-
-    var url = '';
-    var queryObject =  qs.stringify({ grant_type: 'client_credentials',
-    client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
-    client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
-    resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
-    var favourites = {};    
-    request({
-        url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
-        method: "POST",
-        body: queryObject,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
-        },
-        }, function (error, response){
-            console.log (JSON.parse(response.body).access_token);   
-             token =  JSON.parse(response.body).access_token;    
-             callback(token);
-        });
-}
-
-
-
-
 router.get('/instances', (req, res) => {
 
-     getToken(function(token)
+    setTimeout(function()
     {   
 
     var request = require('request');
@@ -161,7 +153,7 @@ router.get('/instances', (req, res) => {
         else console.log('nuffing' , error ,response.statusCode, response.headers);
     })
 
-    });
+    }, 300);
 
 
 });
