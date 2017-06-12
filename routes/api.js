@@ -105,7 +105,7 @@ router.get('/search', (req, res) => {
     //     console.log(response.body);
     // res.send(response.body);
     // });
-    setTimeout(function()
+    getToken(function(token)
     {   
 
     var request = require('request');
@@ -126,7 +126,7 @@ router.get('/search', (req, res) => {
         else console.log('nuffing' , error ,response.statusCode, response.headers);
     })
 
-    }, 300);
+    });
 
 
 });
@@ -164,7 +164,7 @@ function getToken(callback)
 
 router.get('/instances', (req, res) => {
 
-    setTimeout(function()
+     getToken(function(token)
     {   
 
     var request = require('request');
@@ -185,7 +185,7 @@ router.get('/instances', (req, res) => {
         else console.log('nuffing' , error ,response.statusCode, response.headers);
     })
 
-    }, 300);
+    });
 
 
 });
