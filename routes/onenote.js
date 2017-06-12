@@ -89,7 +89,7 @@ router.get('/checknote2', function (req, res) {
 
 router.get('/checknote3', function (req, res) {
   
-  console.log('Module name is' + req.session.modulename);
+  console.log('Module name is asdsad' + req.session.modulename);
   checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
   {
     if(t==1)
