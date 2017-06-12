@@ -160,6 +160,7 @@ function getToken (callback)
         }, function (error, response){
             console.log (JSON.parse(response.body).access_token);   
              token =  JSON.parse(response.body).access_token;    
+             callback(token);
         });
 }
 
