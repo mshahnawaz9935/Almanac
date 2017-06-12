@@ -500,8 +500,6 @@ function writespecific(token,topic,chapter ,callback)
         },
         }, function (error, response, body){
             favourites = response.body;
-            if(favourites.sections != undefined)
-            {
             console.log(favourites.sections.section.length);
             for(var i=0; i< favourites.sections.section.length; i++) 
             {  
@@ -518,12 +516,6 @@ function writespecific(token,topic,chapter ,callback)
                     url = url+ "<p><img src=" + "\"" + favourites.sections.section[i].images.image[j].url + "\"" + "/></p>";
                     }
                 }
-               }
-               else{
-                  favourites= { title: 'Page does not exists: Error 404' };
-                  url = url + "<p> Contact your School or Teacher</p>";
-                  console.log('I come here when i get error' , favourites.title);
-               }
                 callback(url);
             
         });
