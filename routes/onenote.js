@@ -254,12 +254,24 @@ function aboutme(req,res)
            if(error.code === 401 &&
       error.innerError.code === 'InvalidAuthenticationToken' ||
       error.innerError.message === 'Access token has expired.')
-      {     console.log('Disconnect');
-            req.session.destroy();
-            res.clearCookie('nodecookie');
-            clearCookies(res);
-            res.status(200);
-            res.redirect('/search'); }
+      {     
+        // console.log('Disconnect');
+        //     req.session.destroy();
+        //     res.clearCookie('nodecookie');
+        //     clearCookies(res);
+        //     res.status(200);
+        //     res.redirect('/search'); 
+
+            authHelper.getTokenFromRefreshToken(
+          req.cookies.REFRESH_TOKEN_CACHE_KEY,
+          function (refreshError, accessToken) {
+            res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
+            if (accessToken !== null) {
+                aboutme(req,res);
+            } 
+          });
+          
+        }
       }
     });
   }).on('error', function (e) {
