@@ -207,6 +207,7 @@ router.get('/instances', (req, res) => {
         else console.log('nuffing' , error ,response.statusCode, response.headers);
 
     });
+    });
 
 
 
