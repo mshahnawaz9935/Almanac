@@ -187,30 +187,6 @@ router.get('/instances', (req, res) => {
 
     }, 300);
 
-    getToken(function(token)
-    {
-            var request = require('request');
-    var headers = {
-        Authorization: 'Bearer ' + token
-    }
-    var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances',
-        method: 'GET',
-        headers: headers,
-    }
-
-    request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log('Instances', JSON.parse(response.body));
-            res.send(response.body);
-        }
-        else console.log('nuffing' , error ,response.statusCode, response.headers);
-
-    });
-    });
-
-
-
 
 });
 
