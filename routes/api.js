@@ -11,7 +11,7 @@ var session = require('express-session');
 
 
  //   mongoose.connect('mongodb://127.0.0.1:27017/test');
-
+console.log('Api running check');
 
 
 router.get('/getdata', (req, res) => {
