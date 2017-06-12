@@ -36,7 +36,6 @@ export class PostsComponent implements OnInit {
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
       });
-      this.checknote();
   }
 
     getdata(data){
@@ -108,7 +107,7 @@ export class PostsComponent implements OnInit {
 
   checknote()
   {
-       this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote')
+       this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote2')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Check note', dataFromServer);
           if(dataFromServer == 'Notebook exists')
