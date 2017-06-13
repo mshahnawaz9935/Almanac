@@ -214,7 +214,7 @@ router.get('/login', function (req, res) {
 });
 
 
-function aboutme(token)
+function aboutme(req,res)
 {
     var options = {
     host: 'graph.microsoft.com',
@@ -223,7 +223,7 @@ function aboutme(token)
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY
     }
   };
 
@@ -261,13 +261,15 @@ function aboutme(token)
         //     clearCookies(res);
         //     res.status(200);
         //     res.redirect('/search'); 
+        console.log('token before' + req.cookies.ACCESS_TOKEN_CACHE_KEY);
 
             authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
           function (refreshError, accessToken) {
             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
             if (accessToken !== null) {
-                aboutme(req.cookies.ACCESS_TOKEN_CACHE_KEY);
+                      console.log('later' + accessToken);
+                aboutme(req, res);
             } 
           });
           
