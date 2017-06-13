@@ -18,6 +18,7 @@ router.get('/token', (req, res) => {
     getToken(function (t)
     {
         console.log(t);
+        token = t;
         res.json('ToKEN IS' + t);
     })
 
