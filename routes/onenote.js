@@ -26,7 +26,7 @@ router.get('/aboutmail', function (req, res) {
 });
 router.get('/aboutme', function (req, res) {
   
-  aboutme(req,res);
+  aboutme(req.cookies.ACCESS_TOKEN_CACHE_KEY);
 });
 
 router.get('/checknote', function (req, res) {                // checknotebook exists or not
@@ -214,7 +214,7 @@ router.get('/login', function (req, res) {
 });
 
 
-function aboutme(req,res)
+function aboutme(token)
 {
     var options = {
     host: 'graph.microsoft.com',
@@ -223,7 +223,7 @@ function aboutme(req,res)
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY
+      Authorization: 'Bearer ' + token
     }
   };
 
@@ -267,7 +267,7 @@ function aboutme(req,res)
           function (refreshError, accessToken) {
             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
             if (accessToken !== null) {
-                aboutme(req,res);
+                aboutme(req.cookies.ACCESS_TOKEN_CACHE_KEY);
             } 
           });
           
