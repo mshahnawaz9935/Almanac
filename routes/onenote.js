@@ -261,7 +261,7 @@ function aboutme(req,res)
         //     clearCookies(res);
         //     res.status(200);
         //     res.redirect('/search'); 
-        console.log('token before' + req.cookies.ACCESS_TOKEN_CACHE_KEY);
+        res.clearCookie(authHelper.ACCESS_TOKEN_CACHE_KEY);
 
             authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
