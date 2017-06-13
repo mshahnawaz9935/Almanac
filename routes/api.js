@@ -15,29 +15,11 @@ console.log('Api running check');
   var token = '';
 router.get('/token', (req, res) => {
 
-    
-    var favourites ={};
-
-   var qs = require("querystring");
-   var request = require('request');
-
-    var url = '';
-    var queryObject =  qs.stringify({ grant_type: 'client_credentials',
-    client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
-    client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
-    resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
-    var favourites = {};    
-    request({
-        url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
-        method: "POST",
-        body: queryObject,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
-        },
-        }, function (error, response){
-            console.log (JSON.parse(response.body).access_token);   
-             token =  JSON.parse(response.body).access_token;    
-        });
+    getToken(function (t)
+    {
+        console.log(t);
+        res.json('ToKEN IS' + t);
+    })
 
 });
 
@@ -185,7 +167,7 @@ function getToken (callback)
             "Content-Type": "application/x-www-form-urlencoded",  // <--Very important!!!
         },
         }, function (error, response){
-            console.log (JSON.parse(response.body).access_token);   
+            // console.log (JSON.parse(response.body).access_token);   
              token =  JSON.parse(response.body).access_token;    
              callback(token);
         });
