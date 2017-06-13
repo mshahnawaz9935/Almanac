@@ -261,12 +261,13 @@ function aboutme(req,res)
         //     clearCookies(res);
         //     res.status(200);
         //     res.redirect('/search'); 
-        req.clearCookie(authHelper.ACCESS_TOKEN_CACHE_KEY);
+
 
             authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
           function (refreshError, accessToken) {
-            req.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
+                    clearCookies(res);
+            res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
             if (accessToken !== null) {
                       console.log('later' + accessToken);
                 aboutme(req, res);
