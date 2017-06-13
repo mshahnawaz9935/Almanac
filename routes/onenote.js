@@ -26,7 +26,7 @@ router.get('/aboutmail', function (req, res) {
 });
 router.get('/aboutme', function (req, res) {
   
-  aboutme(req.cookies.ACCESS_TOKEN_CACHE_KEY);
+  aboutme(req,res);
 });
 
 router.get('/checknote', function (req, res) {                // checknotebook exists or not
