@@ -270,6 +270,7 @@ function aboutme(req,res)
             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
             if (accessToken !== null) {
                       console.log('later' + accessToken);
+                      req.cookies.ACCESS_TOKEN_CACHE_KEY = accessToken;
                 aboutme(req, res);
             } 
           });
