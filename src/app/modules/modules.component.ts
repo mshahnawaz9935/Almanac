@@ -13,11 +13,19 @@ export class ModulesComponent implements OnInit {
   
   data=[];
   exists = false;
+  user ='Welcome';
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
       
   }
   subscription = '';
   ngOnInit() {
+
+      this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+                console.log('Login status is ' + dataFromServer );
+                this.user = dataFromServer;
+              });
+
     this.http.get('https://angular2ap.azurewebsites.net/api/instances')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
