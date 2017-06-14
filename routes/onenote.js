@@ -12,6 +12,9 @@ var sectionid;
 router.get('/', function (req, res) {
   // check for token
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
+    req.session.destroy();
+    res.clearCookie('nodecookie');
+    clearCookies(res);
     req.session.login = '';
     res.redirect('/onenote/login');
   } else {
