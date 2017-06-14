@@ -12,6 +12,7 @@ import { Router} from '@angular/router';
 export class ModulesComponent implements OnInit {
   
   data=[];
+  exists = false;
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
       
   }
@@ -21,13 +22,19 @@ export class ModulesComponent implements OnInit {
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            this.data = dataFromServer;
-           this.getdata(dataFromServer);
+          
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'Subscription does not exists. Buy a product First';
+             this.exists = false;
 
            }
-           else this.subscription = 'View your subscribed modules below';
+           else 
+           {
+             this.exists = true;
+             this.subscription = 'View your subscribed modules below';
+              this.getdata(dataFromServer);
+           }
         });
   }
     getdata(data){

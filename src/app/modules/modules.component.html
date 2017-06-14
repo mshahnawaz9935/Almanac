@@ -26,7 +26,7 @@
     </div>
   </div>
   <br>
-   <div class="row">
+   <div class="row" *ngIf="!exists">
             <div class="col-md-6" *ngFor="let modules of data;let i=index">
        <div class="card" (click)="onclick(modules.id,modules.name)" >
            <div class="card-block">
