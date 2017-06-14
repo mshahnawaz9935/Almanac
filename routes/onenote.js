@@ -15,7 +15,6 @@ router.get('/', function (req, res) {
     req.session.destroy();
     res.clearCookie('nodecookie');
     clearCookies(res);
-    req.session.login = '';
     res.redirect('/onenote/login');
   } else {
       console.log('Logged in' );
