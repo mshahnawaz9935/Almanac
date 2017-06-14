@@ -25,8 +25,11 @@ router.get('/aboutmail', function (req, res) {
   aboutmail(req,res);
 });
 router.get('/aboutme', function (req, res) {
-  
-  aboutme(req,res);
+
+    if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
+      res.json = '';
+    }
+    else aboutme(req,res);
 });
 
 router.get('/checknote', function (req, res) {                // checknotebook exists or not
