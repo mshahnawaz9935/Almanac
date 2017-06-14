@@ -122,6 +122,8 @@ router.get('/search', (req, res) => {
 function subscription(token , email , callback){
 
 console.log('Email is ' + email + 'Token is' + token);
+if(email == 'shahnawm@tcd.ie')
+email = 'SHAHNAWM@tcd.ie';
  var exists = false;
  var request = require('request');
     var headers = {
