@@ -118,6 +118,57 @@ router.get('/search', (req, res) => {
 
 
 });
+
+function subscription(token , email , callback){
+
+ var exists = false;
+ var request = require('request');
+    var headers = {
+        Authorization: 'Bearer ' + token
+    }
+    var options = {
+        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + email,
+        method: 'GET',
+        headers: headers,
+    }
+
+    request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('Results found', JSON.parse(response.body));
+            if(JSON.parse(response.body).email == email)
+            {
+            exists = true;
+            callback(exists , JSON.parse(response.body).id );
+        }
+        else {
+            exists = false;
+            callback(exists , '');
+        }
+        
+        }
+        else console.log('nuffing' , error ,response.statusCode, response.headers);
+    });
+}
+
+
+router.get('/subscription', (req, res) => {
+
+subscription( token , req.session.email , function(exists , id)
+{
+    if(exists == true)
+    res.json('Subscription exists and id is' + id);
+    else res.json('Subscription does not exists');
+})
+
+   
+
+
+
+});
+
+
+
+
 router.get('/instances', (req, res) => {
 
     // getToken(function(token)
