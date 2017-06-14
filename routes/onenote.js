@@ -27,9 +27,14 @@ router.get('/aboutmail', function (req, res) {
 router.get('/aboutme', function (req, res) {
 
     if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
-      res.json = '';
+      console.log('empty');
+      res.json = 'no refresh token';
     }
-    else aboutme(req,res);
+    else
+    {
+      console.log('not empty');
+       aboutme(req,res);
+    }
 });
 
 router.get('/checknote', function (req, res) {                // checknotebook exists or not
