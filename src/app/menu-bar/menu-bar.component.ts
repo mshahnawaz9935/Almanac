@@ -34,10 +34,16 @@ user = '';
               });
           }
         });
-         this.http.get('https://angular2ap.azurewebsites.net/api/token')
+        setInterval(function(){
+
+           this.http.get('https://angular2ap.azurewebsites.net/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
+
+        },1000000);
+
+        
 
 
 
