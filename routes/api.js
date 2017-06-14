@@ -150,7 +150,10 @@ console.log('Email is ' + email + 'Token is' + token);
         }
         
         }
-        else console.log('nuffing' , error ,response.statusCode, response.headers);
+        else
+        { console.log('nuffing' , error ,response.statusCode, response.headers);
+            callback(false , '');
+        }
     });
 }
 
