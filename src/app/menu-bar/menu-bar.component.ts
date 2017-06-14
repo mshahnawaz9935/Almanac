@@ -34,6 +34,10 @@ user = '';
               });
           }
         });
+         this.http.get('https://angular2ap.azurewebsites.net/api/token')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => 
+               dataFromServer
+              );
         setInterval(function(){
 
            this.http.get('https://angular2ap.azurewebsites.net/api/token')
@@ -41,7 +45,7 @@ user = '';
                dataFromServer
               );
 
-        },1000000);
+        },600000);
 
         
 
