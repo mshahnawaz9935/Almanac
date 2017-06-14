@@ -180,13 +180,17 @@ router.get('/instances', (req, res) => {
 
     // getToken(function(token)
     // {   
-
-    var request = require('request');
+    
+    subscription( token , req.session.email , function(exists , id)
+{
+    if(exists == true && id!== '')
+    {
+         var request = require('request');
     var headers = {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances',
+        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/'+ id +'/instances',
         method: 'GET',
         headers: headers,
     }
@@ -194,12 +198,17 @@ router.get('/instances', (req, res) => {
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('Instances', JSON.parse(response.body));
-            res.send(response.body);
+            res.json(JSON.parse(response.body));
         }
         else console.log('nuffing' , error ,response.statusCode, response.headers);
-    })
+    });
+    }
+    
+    else res.json('Subscription does not exists');
 
-    // });
+   
+
+    });
 
 
 });
