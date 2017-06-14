@@ -21,17 +21,17 @@ export class ModulesComponent implements OnInit {
     this.http.get('https://angular2ap.azurewebsites.net/api/instances')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
-           this.data = dataFromServer;
-          
+           
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'Subscription does not exists. Buy a product First';
-             this.exists = false;
+             this.exists = true;
 
            }
            else 
            {
-             this.exists = true;
+              this.data = dataFromServer;
+             this.exists = false;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
            }
