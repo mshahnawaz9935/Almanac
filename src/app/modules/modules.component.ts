@@ -13,15 +13,22 @@ export class ModulesComponent implements OnInit {
   
   data=[];
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
-      this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+      
+  }
+  subscription = '';
+  ngOnInit() {
+    this.http.get('https://angular2ap.azurewebsites.net/api/instances')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Login status is ' + dataFromServer );
+          console.log('Module status is ' + dataFromServer );
            this.data = dataFromServer;
            this.getdata(dataFromServer);
-        });
-  }
+           if(dataFromServer == 'Subscription does not exists')
+           {
+             this.subscription = 'Subscription does not exists. Buy a product First';
 
-  ngOnInit() {
+           }
+           else this.subscription = 'View your subscribed modules below';
+        });
   }
     getdata(data){
     console.log('get ',data);
