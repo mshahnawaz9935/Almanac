@@ -10,6 +10,7 @@ import { AccountComponent } from './account/account.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { AuthGuard } from './AuthGuard';
 import { ModulesComponent } from './modules/modules.component';
+import { ResultsComponent } from './results/results.component';
 
 
 const routes: Routes = [
@@ -17,11 +18,12 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'support', component: SupportComponent },
     { path: 'contact', component: ContactUsComponent },
-    { path: 'search', component: SearchComponent , canActivate: [AuthGuard] },
+    { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
     { path: 'posts', component: PostsComponent ,canActivate: [AuthGuard] },
     { path: 'account', component: AccountComponent },
     { path: 'pricing', component: PricingComponent },
-    { path: 'modules', component: ModulesComponent ,canActivate: [AuthGuard] }
+    { path: 'modules', component: ModulesComponent ,canActivate: [AuthGuard] },
+    { path: 'results', component: ResultsComponent ,canActivate: [AuthGuard]}
 ];
 
 export const appRoutingProviders: any[] = [];

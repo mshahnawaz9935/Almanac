@@ -9,8 +9,11 @@ export class DataService {
 
 authenticated1;
 myquery = { topic: '' , chapter : '' };
+query = '';
 moduleid='';
 modulename='';
+slider1='';
+slider2='';
     constructor(private http: Http) {
 
     this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')

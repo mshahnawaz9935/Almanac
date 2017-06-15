@@ -25,6 +25,7 @@ import { ModulesComponent } from './modules/modules.component';
 import {CSSCarouselComponent} from './pricing/carousel.component2';
 import { Carousel } from './pricing/carousel.component';
 import { Slide } from './pricing/slide.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { Slide } from './pricing/slide.component';
     PricingComponent,
     ModulesComponent,
     CSSCarouselComponent,
-    Carousel,Slide
+    Carousel,Slide,
+    ResultsComponent
   ],
   entryComponents: [
     AppComponent,
