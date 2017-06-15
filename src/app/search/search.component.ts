@@ -79,7 +79,7 @@ export class SearchComponent implements OnInit {
         }
         else
         {  
-          //  this.router.navigate(['/modules']);
+          this.router.navigate(['/modules']);
         }
  
   }
