@@ -151,7 +151,7 @@ console.log('Email is ' + email + 'Token is' + token);
         
         }
         else
-        { console.log('nuffing email' , error ,response.statusCode, response.headers);
+        { console.log('nuffing email' , email, error ,response.statusCode, response.headers);
             callback(false , '');
         }
     });
