@@ -11,7 +11,13 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private DataService:DataService, private router:Router) { }
+  constructor(private DataService:DataService, private router:Router) {
+
+        if(this.DataService.authenticated1 == true)
+    {
+      this.router.navigate(['/modules']);
+    }
+   }
 
   ngOnInit() {
 
