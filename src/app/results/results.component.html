@@ -13,7 +13,6 @@
                 </div>
 
           <div *ngIf="!error" class="row">
-            <h4 class="card-title">Results are as under</h4>
              <div class="col-md-6"  *ngFor= "let result of results">
              <div class="card" (click)="onSelect(result)" >
                     <div class="card-block">
