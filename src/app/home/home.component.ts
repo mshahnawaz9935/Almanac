@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../DataService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private DataService:DataService, private router:Router) { }
 
   ngOnInit() {
+
+    if(this.DataService.authenticated1 == true)
+    {
+      this.router.navigate(['/modules']);
+    }
   }
 
 }
