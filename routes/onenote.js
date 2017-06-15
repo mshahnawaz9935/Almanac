@@ -30,6 +30,7 @@ router.get('/aboutme', function (req, res) {
 
     if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
       console.log('empty');
+      req.session.login='';
       res.json('No Login');
     }
     else
