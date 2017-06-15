@@ -151,7 +151,7 @@ console.log('Email is ' + email + 'Token is' + token);
         
         }
         else
-        { console.log('nuffing' , error ,response.statusCode, response.headers);
+        { console.log('nuffing email' , error ,response.statusCode, response.headers);
             callback(false , '');
         }
     });
@@ -200,7 +200,7 @@ router.get('/instances', (req, res) => {
             console.log('Instances', JSON.parse(response.body));
             res.json(JSON.parse(response.body));
         }
-        else console.log('nuffing' , error ,response.statusCode, response.headers);
+        else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
     });
     }
     
