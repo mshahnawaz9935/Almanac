@@ -28,17 +28,17 @@ router.get('/aboutmail', function (req, res) {
 });
 router.get('/aboutme', function (req, res) {
 
-    if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
-      console.log('empty');
-      req.session.destroy();
-      res.clearCookie('nodecookie');
-      clearCookies(res);
-    }
-    else
-    {
+    // if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
+    //   console.log('empty');
+    //   req.session.destroy();
+    //   res.clearCookie('nodecookie');
+    //   clearCookies(res);
+    // }
+    // else
+    // {
       console.log('not empty');
        aboutme(req,res);
-    }
+   // }
 });
 
 router.get('/checknote', function (req, res) {                // checknotebook exists or not
