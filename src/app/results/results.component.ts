@@ -18,7 +18,7 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.loading = false;
+    this.loading = true;
 
     if(this.DataService.query != '')
     {
