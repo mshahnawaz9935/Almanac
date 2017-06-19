@@ -10,12 +10,15 @@ import { Http ,Response} from '@angular/http';
 })
 export class ResultsComponent implements OnInit {
 
+  loading: Boolean;
   error = false;
   results;
   data = [];
   constructor(private http:Http , private DataService: DataService,private router: Router) { }
 
   ngOnInit() {
+
+    this.loading = false;
 
     if(this.DataService.query != '')
     {
@@ -24,6 +27,7 @@ export class ResultsComponent implements OnInit {
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
           this.data = dataFromServer;
+          this.loading = false;
           this.getdata(dataFromServer);
           console.log('Data from postman is ' + this.data);
         });
