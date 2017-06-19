@@ -245,6 +245,9 @@ function getToken (callback)
 
 
 router.get('/posts', (req, res) => {
+
+
+console.log('Post token ' + token);
 var topic = req.query.topic;
 var chapter = req.query.chapter;
 var moduleid = req.query.moduleid;
