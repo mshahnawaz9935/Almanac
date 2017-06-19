@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class DataService {
 
 authenticated1;
-myquery = { topic: '' , chapter : '' };
+myquery = { topic: '' , chapter : '' , id : '' };
 query = '';
 moduleid='';
 modulename='';

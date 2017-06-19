@@ -82,7 +82,8 @@ router.get('/search', (req, res) => {
 // })
 
   var id = req.query.id;
-
+  var moduleid = req.query.moduleid;
+  req.session.moduleid = moduleid;
   console.log('id is ' + id);
 
     // request.get('http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/search2?query='+ id,function(err,response,body){
@@ -101,7 +102,7 @@ router.get('/search', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b41f74748a1b1c8e440e/articles?searchQuery=' + id+ '&differentiator=None',
+        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=None',
         method: 'GET',
         headers: headers,
     }
@@ -185,6 +186,7 @@ router.get('/instances', (req, res) => {
 {
     if(exists == true && id!== '')
     {
+        req.session.studentid = id;
          var request = require('request');
     var headers = {
         Authorization: 'Bearer ' + token
@@ -247,6 +249,7 @@ var topic = req.query.topic;
 var chapter = req.query.chapter;
 var moduleid = req.query.moduleid;
 var modulename = req.query.modulename;
+var articleid =req.query.articleid;
 var queryObject =  {
    "userID":"IOK_Postman_Testing",
    "parameters":{
@@ -262,11 +265,12 @@ req.session.topic = topic;
 req.session.chapter = chapter;
 req.session.moduleid = moduleid;
 req.session.modulename = modulename;
+req.session.articleid = articleid;
 
 request({
-    url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-  //  url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b41f74748a1b1c8e440e/articles/200cdaf790414be08ce4b87cc34c68a5",
-    method: "POST",
+ //   url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
+    url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b41f74748a1b1c8e440e/articles/200cdaf790414be08ce4b87cc34c68a5",
+    method: "GET",
     json: true,   // <--Very important!!!
     body: queryObject,
      headers: {
