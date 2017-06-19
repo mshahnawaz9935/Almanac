@@ -58,7 +58,7 @@ export class ResultsComponent implements OnInit {
       console.log('clicked query' + data.name + data.query);          // Select topic and redirect to the article
       this.DataService.myquery.topic = data.query;
       this.DataService.myquery.chapter = data.name;
-      this.DataService.myquery.articleid = data.articleid;
+      this.DataService.myquery.articleid = data.id;
       this.router.navigate(['./posts']);
   }
 
