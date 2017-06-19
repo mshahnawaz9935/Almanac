@@ -14,12 +14,13 @@ export class ModulesComponent implements OnInit {
   data=[];
   exists = false;
   user ='Welcome';
+  loading: Boolean;
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
       
   }
   subscription = '';
   ngOnInit() {
-
+      this.loading = true;
       this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log('Login status is ' + dataFromServer );
@@ -34,11 +35,13 @@ export class ModulesComponent implements OnInit {
            {
              this.subscription = 'Subscription does not exists. Buy a product First';
              this.exists = true;
+             this.loading = false;
 
            }
            else 
            {
               this.data = dataFromServer;
+              this.loading = false;
              this.exists = false;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
