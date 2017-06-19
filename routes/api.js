@@ -269,20 +269,20 @@ req.session.articleid = articleid;
 
 request({
  //   url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-    url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b41f74748a1b1c8e440e/articles/200cdaf790414be08ce4b87cc34c68a5",
+    url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
     method: "GET",
     json: true,   // <--Very important!!!
-    body: queryObject,
+ //   body: queryObject,
      headers: {
         "content-type": "application/json",  // <--Very important!!!
-    //    "Authorization": "Bearer "+ token
+        "Authorization": "Bearer "+ token
     },
 }, function (error, response, body){
 
     console.log("post query" + response.body);
       favourites = response.body;
       console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+ req.session.moduleid
-      + 'Module Id is ' + req.session.modulename);
+      + 'Module Id is ' + req.session.modulename + 'Article id is' + req.session.articleid + 'Student id is' + req.session.studentid );
         res.send(response.body) +  req.session.topic;
     
 });
