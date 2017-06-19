@@ -270,25 +270,43 @@ req.session.moduleid = moduleid;
 req.session.modulename = modulename;
 req.session.articleid = articleid;
 
-request({
- //   url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-    url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
-    method: "GET",
-    json: true,   // <--Very important!!!
- //   body: queryObject,
-     headers: {
-        "content-type": "application/json",  // <--Very important!!!
-        "Authorization": "Bearer "+ token
-    },
-}, function (error, response, body){
+// request({
+//  //   url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
+//     url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
+//     method: "GET",
+//     json: true,   // <--Very important!!!
+//  //   body: queryObject,
+//      headers: {
+//         "content-type": "application/json",  // <--Very important!!!
+//         "Authorization": "Bearer "+ token
+//     },
+// }, function (error, response, body){
 
-    console.log("post query" + response.body);
-      favourites = response.body;
-      console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+ req.session.moduleid
-      + 'Module Id is ' + req.session.modulename + 'Article id is' + req.session.articleid + 'Student id is' + req.session.studentid );
-        res.send(response.body) +  req.session.topic;
+//     console.log("post query" + response.body);
+//       favourites = response.body;
+//       console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+ req.session.moduleid
+//       + 'Module Id is ' + req.session.modulename + 'Article id is' + req.session.articleid + 'Student id is' + req.session.studentid );
+//         res.send(response.body) +  req.session.topic;
     
-});
+// });
+
+    var headers = {
+        Authorization: 'Bearer ' + token
+    }
+    var options = {
+         url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
+        method: 'GET',
+        headers: headers,
+    }
+ request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+                console.log("post query" + response.body);
+                favourites = response.body;
+                console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+req.session.moduleid + 'Module Id is ' + req.session.modulename + 'Article id is' + req.session.articleid + 'Student id is' + req.session.studentid );
+            res.send(response.body) +  req.session.topic;
+        }
+        else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+    });
 });
 
 
