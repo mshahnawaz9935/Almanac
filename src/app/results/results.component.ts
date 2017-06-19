@@ -23,7 +23,7 @@ export class ResultsComponent implements OnInit {
     if(this.DataService.query != '')
     {
     // this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.DataService.query + '&articleid=' + this.DataService.myquery.id + '&moduleid=' + this.DataService.moduleid)
+      this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid)
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
           this.data = dataFromServer;
@@ -58,7 +58,7 @@ export class ResultsComponent implements OnInit {
       console.log('clicked query' + data.name + data.query);          // Select topic and redirect to the article
       this.DataService.myquery.topic = data.query;
       this.DataService.myquery.chapter = data.name;
-      this.DataService.myquery.id = data.id;
+      this.DataService.myquery.articleid = data.articleid;
       this.router.navigate(['./posts']);
   }
 
