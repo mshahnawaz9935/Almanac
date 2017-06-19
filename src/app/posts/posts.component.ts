@@ -98,10 +98,12 @@ export class PostsComponent implements OnInit {
 
   saveonenote2()
   {
-    alert('Save to One Note');
+    this.loading = true;
     this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote3')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
+          alert('Save to One Note');
+          this.loading = false;
         });
   }
 
