@@ -102,7 +102,7 @@ router.get('/search', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=None',
+        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=None&type=Web',
         method: 'GET',
         headers: headers,
     }
@@ -291,7 +291,7 @@ req.session.articleid = articleid;
 // });
 
     var headers = {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + token 
     }
     var options = {
          url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + req.session.studentid + '/instances/'+ req.session.moduleid +'/articles/' + req.session.articleid + '/',
