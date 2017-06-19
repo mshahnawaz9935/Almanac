@@ -294,7 +294,7 @@ req.session.articleid = articleid;
         Authorization: 'Bearer ' + token
     }
     var options = {
-         url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
+         url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + "/instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
         method: 'GET',
         headers: headers,
     }
