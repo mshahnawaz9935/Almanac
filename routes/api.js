@@ -298,6 +298,7 @@ req.session.articleid = articleid;
         method: 'GET',
         headers: headers,
     }
+    console.log(options.url);
  request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
                 console.log("post query" + response.body);
