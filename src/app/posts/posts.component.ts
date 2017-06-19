@@ -25,6 +25,7 @@ export class PostsComponent implements OnInit {
     img_data = { x : ''};
     videoarray = [{url:'https://www.youtube.com/embed/tpYUAlZ64mE'},{url:'https://www.youtube.com/embed/tpYUAlZ64mE'}];
     notebook_exists = true;
+    loading: Boolean;
 
   constructor(private http:Http,private DataService: DataService, private sanitizer: DomSanitizer, private router:Router) { 
 
@@ -35,6 +36,7 @@ export class PostsComponent implements OnInit {
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
+            this.loading = false;
       });
   }
 
@@ -118,11 +120,13 @@ export class PostsComponent implements OnInit {
   showdata()
   { 
           this.saved = true;
+          this.loading = true;
          this.http.get('https://angular2ap.azurewebsites.net/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( 'Saved data in db' , dataFromServer);
           this.saved_data = dataFromServer;
           console.log(this.saved_data);
+          this.loading = false;
             // for(let section of dataFromServer)
             // {     
             //     console.log('sections are', section.sections , section.title);
@@ -134,6 +138,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
   }
 
   
