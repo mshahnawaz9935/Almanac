@@ -291,6 +291,7 @@ req.session.articleid = articleid;
 // });
 
     var headers = {
+        "content-type": "application/json",
         Authorization: 'Bearer ' + token 
     }
     var options = {
