@@ -30,6 +30,17 @@ slider2='';
         });
         
     }
+
+    getInstances() {
+
+         // ...using get request
+         return this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+                        // ...and calling .json() on the response to return data
+                         .map((res:Response) => res.json())
+                         //...errors if any
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+     }
     
 
 

@@ -27,8 +27,9 @@ export class ModulesComponent implements OnInit {
                 this.user = dataFromServer;
               });
 
-    this.http.get('https://angular2ap.azurewebsites.net/api/instances')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+    // this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+    //     .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+           this.DataService.getInstances().subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
            if(dataFromServer == 'Subscription does not exists')
