@@ -47,7 +47,7 @@ export class PostsComponent implements OnInit {
     
     for(let section of data)
     {
-      console.log(section);
+      console.log(section , section.text ,section.text.text);
       let len =section.text.text.length;
       section.text.text = section.text.text.substring(9,len-3);
 
