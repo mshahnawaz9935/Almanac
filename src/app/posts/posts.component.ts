@@ -34,9 +34,11 @@ export class PostsComponent implements OnInit {
     this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
         // this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          this.loading = false;
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
-            this.loading = false;
+            console.log(dataFromServer ,'sections ', dataFromServer.sections);
+            
       });
   }
 
