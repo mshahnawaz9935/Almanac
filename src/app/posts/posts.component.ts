@@ -49,6 +49,7 @@ export class PostsComponent implements OnInit {
     {
       console.log(section , section.text ,section.text.text);
       let len =section.text.text.length;
+      console.log('Length of text is' ,len);
       section.text.text = section.text.text.substring(9,len-3);
 
          console.log(section.images.image);
