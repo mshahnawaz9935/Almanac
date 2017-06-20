@@ -44,7 +44,7 @@ export class PostsComponent implements OnInit {
 
     getdata(data){
     
-    for(let section of data.section)
+    for(let section of data)
     {
 
       let len =section.text.text.length;
