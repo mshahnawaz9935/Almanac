@@ -35,9 +35,10 @@ export class PostsComponent implements OnInit {
         // this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.loading = false;
+          console.log(dataFromServer ,'sections ', dataFromServer.sections);
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
-            console.log(dataFromServer ,'sections ', dataFromServer.sections);
+            
             
       });
   }
@@ -46,7 +47,7 @@ export class PostsComponent implements OnInit {
     
     for(let section of data)
     {
-
+      console.log(section);
       let len =section.text.text.length;
       section.text.text = section.text.text.substring(9,len-3);
 
