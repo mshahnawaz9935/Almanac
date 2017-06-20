@@ -5,6 +5,16 @@ import { DataService } from '../DataService';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Image} from '../image.interface';
+import {Pipe, PipeTransform} from '@angular/core';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
+
 
 @Component({
   selector: 'app-posts',
@@ -22,7 +32,7 @@ export class PostsComponent implements OnInit {
     value='';
     data;
     saved_data = [];
-    img_data = { x : ''};
+    img_data = [];
     videoarray = [{url:'https://www.youtube.com/embed/tpYUAlZ64mE'},{url:'https://www.youtube.com/embed/tpYUAlZ64mE'}];
     notebook_exists = true;
     loading: Boolean;
@@ -31,8 +41,8 @@ export class PostsComponent implements OnInit {
 
       this.data = this.DataService.myquery;
       console.log(this.DataService.modulename ,'Article id' , this.DataService.myquery.articleid);
-    this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
-        // this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic=erosion&chapter=Sea')
+    this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
+  
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.loading = false;
           console.log(dataFromServer ,'sections ', dataFromServer.sections);
@@ -55,7 +65,12 @@ export class PostsComponent implements OnInit {
          console.log(section.images);
          for(let image of section.images)
          {
-           if(image.caption!==undefined || image.caption != null)
+           console.log(image.caption);
+           if(image.caption == null){
+           image.caption = "Random picha";
+           continue; 
+           }
+           if(image.caption!==undefined || image.caption !== null)
            {
                  let len = image.caption.length;
                  image.caption = image.caption.substring(9,len-3);
@@ -77,7 +92,7 @@ export class PostsComponent implements OnInit {
 
   savedata()
   {
-        this.http.get('https://angular2ap.azurewebsites.net/api/store')
+        this.http.get('http://localhost:3000/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
         });
@@ -85,15 +100,15 @@ export class PostsComponent implements OnInit {
 
   savenote()
   {
-       window.open('https://angular2ap.azurewebsites.net/note/token','_self');
+       window.open('http://localhost:3000/note/token','_self');
        alert('Saved to Note');
 
   }
   saveonenote()
   {
-      // window.open('https://angular2ap.azurewebsites.net/onenote/writenote','_self');
+      // window.open('http://localhost:3000/onenote/writenote','_self');
        alert('Saved to One Note');
-        this.http.get('https://angular2ap.azurewebsites.net/onenote/writenote')
+        this.http.get('http://localhost:3000/onenote/writenote')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Write note', dataFromServer);
         });
@@ -103,7 +118,7 @@ export class PostsComponent implements OnInit {
   saveonenote2()
   {
     this.loading = true;
-    this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote3')
+    this.http.get('http://localhost:3000/onenote/checknote3')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
           alert('Save to One Note');
@@ -115,7 +130,7 @@ export class PostsComponent implements OnInit {
 
   checknote()
   {
-       this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote2')
+       this.http.get('http://localhost:3000/onenote/checknote2')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Check note', dataFromServer);
           if(dataFromServer == 'Notebook exists')
@@ -127,7 +142,7 @@ export class PostsComponent implements OnInit {
   { 
           this.saved = true;
           this.loading = true;
-         this.http.get('https://angular2ap.azurewebsites.net/api/getdata')
+         this.http.get('http://localhost:3000/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( 'Saved data in db' , dataFromServer);
           this.saved_data = dataFromServer;

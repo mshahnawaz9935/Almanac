@@ -15,21 +15,19 @@ export class ModulesComponent implements OnInit {
   exists = false;
   user ='Welcome';
   loading: Boolean;
-  constructor(private http:Http , private DataService:DataService ,private router: Router) { 
-      
-  }
   subscription = '';
-  ngOnInit() {
-      this.loading = true;
-      this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
+  constructor(private http:Http , private DataService:DataService ,private router: Router) { 
+    this.loading = true;
+      this.http.get('http://localhost:3000/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
               });
 
-    // this.http.get('https://angular2ap.azurewebsites.net/api/instances')
-    //     .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-           this.DataService.getInstances().subscribe((dataFromServer) => {
+              setTimeout(() => {
+        //          this.http.get('http://localhost:3000/api/instances')
+        // .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          this.DataService.getInstances().subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
            if(dataFromServer == 'Subscription does not exists')
@@ -48,6 +46,13 @@ export class ModulesComponent implements OnInit {
               this.getdata(dataFromServer);
            }
         });
+                 },500);
+   
+      
+  }
+  
+  ngOnInit() {
+      
   }
     getdata(data){
     console.log('get ',data);

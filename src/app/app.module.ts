@@ -26,6 +26,7 @@ import {CSSCarouselComponent} from './pricing/carousel.component2';
 import { Carousel } from './pricing/carousel.component';
 import { Slide } from './pricing/slide.component';
 import { ResultsComponent } from './results/results.component';
+import { SafePipe} from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ResultsComponent } from './results/results.component';
     ModulesComponent,
     CSSCarouselComponent,
     Carousel,Slide,
-    ResultsComponent
+    ResultsComponent ,
+    SafePipe
   ],
   entryComponents: [
     AppComponent,

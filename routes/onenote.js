@@ -117,7 +117,7 @@ router.get('/checknote3', function (req, res) {
        {
          createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid , req.session.modulename , function(sectionid)
          {
-           createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
+           createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
             res.json('Notebook exists and section created' + sectionid);
          });
 
@@ -547,9 +547,62 @@ function writespecific(token,topic,chapter ,callback)
      
     }
 
-    function createarticle(token, topic, chapter)
+
+function writespecific2(token,topic,chapter, articleid ,studentid, moduleid,callback)
+{
+   
+    console.log('inside token' , topic,chapter);
+    var url = '';
+    var favourites = {};
+    request({
+         url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
+        method: 'GET',
+        json: true,   // <--Very important!!!
+        headers: {
+            "content-type": "application/json",  // <--Very important!!!
+            "Authorization" : "Bearer " + token
+        },
+        }, function (error, response, body){
+            favourites = response.body;
+            console.log('response article' , response.body);
+            if(favourites.sections != undefined)
+            {
+            console.log(favourites.sections.length);
+            for(var i=0; i< favourites.sections.length; i++) 
+            {  
+                    url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
+                    url = url + "<h4>" +  favourites.sections[i].text.text + "</h4>";
+                    try{
+                        var image_len = favourites.sections[i].images.length;
+                    }
+                    catch(err)
+                    {    continue;  }
+                    finally { }
+                    for(var j=0; j< image_len;j++)
+                    {
+                    url = url+ "<p><img src=" + "\"" + favourites.sections[i].images[j].url + "\"" + "/><br>"+
+                    favourites.sections[i].images[j].caption +  "</p><p>" + favourites.sections[i].images[j].attribution
+                    + "</p>" ;
+                    }
+                }
+               }
+               else{
+                  favourites= { title: 'Page does not exists: Error 404' };
+                  url = url + "<p> Contact your School or Teacher</p>";
+                  console.log('I come here when i get error' , favourites.title);
+               }
+                callback(url);
+            
+        });
+        
+       
+     
+    }
+
+
+    function createarticle(token, topic, chapter ,articleid , studentid , moduleid)
     {
-      writespecific(token, topic, chapter , function(url)
+      writespecific2(token, topic, chapter ,articleid , studentid, moduleid,function(url)
       {
         var htmlPayload =
         "<!DOCTYPE html>" +
