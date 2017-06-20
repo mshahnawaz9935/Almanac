@@ -181,7 +181,7 @@ router.get('/instances', (req, res) => {
 
     // getToken(function(token)
     // {   
-    
+    console.log('Session email is' , req.session.email);
     subscription( token , req.session.email , function(exists , id)
 {
     if(exists == true && id!== '')
