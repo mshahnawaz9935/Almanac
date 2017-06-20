@@ -16,6 +16,11 @@ slider1='';
 slider2='';
     constructor(private http: Http) {
 
+        this.http.get('https://angular2ap.azurewebsites.net/api/token')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => 
+               dataFromServer
+              );
+
     this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Service Login status is ' + dataFromServer );

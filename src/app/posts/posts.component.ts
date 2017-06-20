@@ -55,7 +55,7 @@ export class PostsComponent implements OnInit {
          console.log(section.images);
          for(let image of section.images)
          {
-           if(image.caption!==undefined)
+           if(image.caption!==undefined || image.caption != null)
            {
                  let len = image.caption.length;
                  image.caption = image.caption.substring(9,len-3);
