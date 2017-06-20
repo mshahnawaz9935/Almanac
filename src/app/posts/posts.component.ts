@@ -52,8 +52,8 @@ export class PostsComponent implements OnInit {
       console.log('Length of text is' ,len);
       section.text.text = section.text.text.substring(9,len-3);
 
-         console.log(section.images.image);
-         for(let image of section.images.image)
+         console.log(section.images);
+         for(let image of section.images)
          {
            if(image.caption!==undefined)
            {
