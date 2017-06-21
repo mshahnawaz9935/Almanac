@@ -1,135 +1,72 @@
-<nav class="navbar navbar-toggleable-md navbar-dark default-color">
-                    <div class="container">
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <a class="navbar-brand" [routerLink]="['/']">
-                            <strong>ALMANAC</strong>
-                        </a>
-                        <div class="collapse navbar-collapse" id="navbarNav3">
-                            <ul class="navbar-nav ml-auto">
-                                 <!--<li class="nav-item active">
-                                    <a [routerLink]="['/modules']" class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> Modules</a>
-                                </li>-->
-                                 <li class="nav-item">
-                                    <a [routerLink]="['/pricing']" class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> Pricing</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a [routerLink]="['/about']" class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> How it Works</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a [routerLink]="['/account']" class="nav-link waves-effect waves-light"><i class="fa fa-gear"></i> My Account</a>
-                                </li>
-                                <!--<li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
-                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" [routerLink]="['/search']" >Search</a>
-                        <a class="dropdown-item">Posts</a>
+
+
+<div class="navbar general-navbar-header">
+ 
+                    <div class="logo-almanac">
+                        <a [routerLink]="['/']"><img src="./assets/img/almanac/header/logo-almanac-arrow.png" alt="ALMANAC" title="ALMANAC"></a>
                     </div>
-                </li>-->
-                <li *ngIf="authenticated1" class="nav-item">
+
+
+                <div class="menu">
+                    <ul class="nav navbar-nav pull-right">
+                      <li><a [routerLink]="['/modules']">Home</a></li>
+                      <li><a [routerLink]="['/pricing']" href="#">Pricing</a></li>
+                      <li><a [routerLink]="['/about']" href="#">How it works</a></li>
+                      <li><a [routerLink]="['/account']" href="#">My Account</a></li>
+                    <li *ngIf="authenticated1">
                                     <a  class="nav-link waves-effect waves-light"><i class="fa fa-gear"></i>{{user}}</a>
                                 </li>
-                 <li class="nav-item dropdown btn-group">
-                                       <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
-                                             <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  </a>  
-                                    <div class="dropdown-menu dropdown-warning dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <a [routerLink]="['/account']" *ngIf="!authenticated1" class="dropdown-item waves-effect waves-light" >Log In</a>
-                                        <a *ngIf="authenticated1" class="dropdown-item waves-effect waves-light" href="http://localhost:3000/onenote/disconnect">Disconnect</a>
+                    <li class="nav-item dropdown btn-group">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
+                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  </a>  
+                            <div class="dropdown-menu dropdown-warning dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <a [routerLink]="['/account']" *ngIf="!authenticated1" class="dropdown-item waves-effect waves-light" >Log In</a>
+                                    <a *ngIf="authenticated1" class="dropdown-item waves-effect waves-light" href="http://localhost:3000/onenote/disconnect">Disconnect</a>
                                     </div>
-                                </li>
-                            </ul>
-                           
-                        </div>
-                    </div>
-                </nav>
-  
-  <nav class="navbar navbar-toggleable-md navbar-light white">
-<div class="container">
-   <div class="collapse navbar-collapse" id="navbarNav1">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/']">SCIENCE <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/about']">BUSINESS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/contact']">GEOGRAPHY</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/contact']">MINECRAFT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/contact']">BROWSE</a>
-                </li>
-                <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
-                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" [routerLink]="['/search']" >Search</a>
-                        <a class="dropdown-item">Posts</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline waves-effect waves-light">
-                <input class="form-control" value="" #box (keyup.enter)="onEnter(box.value)" type="text" placeholder="Search">
-            </form>
-        </div>
-        </div>
-</nav>
-<!--/Angular Material 2 Nav-->
+                        </li>
+                    </ul>
+                </div>
 
-    <!--<md-toolbar color="primary" >
-   <span>
-        <button md-button [routerLink]="['/']">ALMANAC</button>
-    </span>
-     <span class="example-fill-remaining-space"></span>
-    <span>
-        <button md-button [routerLink]="['/about']">About</button>
-        <button md-button [routerLink]="['/contact']">Contact</button>
-        <button md-button [routerLink]="['/search']">Search</button>
-        <button md-button [routerLink]="['/posts']">Posts</button>
-    </span>
+                <div class="header-bg">
+                    <div class="header-bg-img"></div>
+                    <div class="header-bg-break"></div>
+                </div>
 
-    </md-toolbar>
-    <span>
-<md-tab-group>
-  <md-tab  label="Science"></md-tab>
-  <md-tab label="Business"></md-tab>
-    <md-tab label="Geography"></md-tab>
-      <md-tab  label="Minecraft"></md-tab>
-</md-tab-group>
-    </span>-->
-
-
- <!--Black Navbar 
-<nav class="navbar navbar-toggleable-md navbar-dark black">
-    <div class="container">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" [routerLink]="['/']" >
-            <strong>ALMANAC</strong>
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNav1">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/']">Pricing <span class="sr-only">(current)</span></a>
+            </div>
+          
+            
+        <div class="categories">
+            
+            <ul>
+              <li class="categories-list">Categories:</li>
+               <li>
+                    <a [routerLink]="['/']">SCIENCE <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/about']">How It Works</a>
+                <li>
+                    <a [routerLink]="['/about']">BUSINESS</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/contact']">My Account</a>
+                <li>
+                    <a  [routerLink]="['/contact']">GEOGRAPHY</a>
                 </li>
-                <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
-                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" [routerLink]="['/search']" >Search</a>
-                        <a class="dropdown-item">Posts</a>
+                <li>
+                    <a [routerLink]="['/contact']">MINECRAFT</a>
+                </li>
+                <li>
+                    <div class="browse">
+                        <ul class="browse-list">
+                            <li>
+                              <div class="categories-icon"><a href="#"><i class="fa fa-bars fa-lg"></i></a></div>
+                          </li>
+                            <li>
+                                <div class="md-form input-group">
+                                    <input type="text" class="form-control form-control-home" placeholder="Search for..." aria-describedby="basic-addon2">
+                                    <span class="input-group-addon input-group-search" id="basic-addon2"><i class="fa fa-search fa-lg"></i></span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </li>
             </ul>
+            <br />
         </div>
-    </div>
-</nav>-->
+

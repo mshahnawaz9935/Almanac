@@ -1,169 +1,256 @@
+  <hr class="categories" />
+        
+        <div class="card-block" *ngIf="loading == true">
+                     <h4 class="card-title" >Loading Modules...Please wait</h4>
+      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+      </div>
+        <div class="home-title">Learn Better<br> {{user}}</div>
+        <div class="home-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!<br>
+        {{subscription}}</div>
+        
+        <ul class="card-list" *ngIf="exists">
+            <li>
+                <div class="card">
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">Some category (11px)</div>
+                                <div class="title-card">Wonderful one-or-two 
+                                lines here. Make sure is 
+                                snappy (20px)</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
 
+                    </div>
+                </div>
+            </li>
+            
+            <li>
+                <div class="card">
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card-img3">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">Author's Name</div>
+                                <div class="title-card">Are you our next Author? Contact us!</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+            
+            <li>
+                <div class="card">
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card-img2">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">Age/Grade</div>
+                                <div class="title-card">Biology</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+            
+        </ul>
+        
+        <ul class="card-list" *ngIf="exists">
+            
+            <li>
+                <div class="card">
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card-img3">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">Author's Name</div>
+                                <div class="title-card">Are you our next Author? Contact us!</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+            
+            <li>
+                <div class="card">
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">Some category (11px)</div>
+                                <div class="title-card">Wonderful one-or-two 
+                                lines here. Make sure is 
+                                snappy (20px)</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+            
+            <li>
+                <div class="card">
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card-img2">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">Age/Grade</div>
+                                <div class="title-card">Biology</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+
+                
+            
+        </ul>
+
+        <ul class="card-list" *ngIf="!exists">
+               <li  *ngFor="let modules of data;let i=index" >
+                <div class="card" (click)="onclick(modules.id,modules.name)" >
+                    <div class="bg-card">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul>
+                            <li class="left-card-img2">
+                                <div class="transbox"></div>
+                            </li>
+                            <li class="right-card">
+                                <div class="category-card">{{modules.id}}</div>
+                                <div class="title-card">{{modules.name}}</div>
+                                
+                                <div class="tags-card">
+                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
+                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+            </ul>
+            
+   
   
   <br>
-  <div class="row">
+  <!--<div class="row">
        <div class="col-md-12">
           <div class="card">
-                    <!--Card image-->
+                
                     <div class="view overlay hm-white-slight">
                         <a>
                             <div class="mask"></div>
                         </a>
                     </div>
-                    <!--/.Card image-->
-                    <!--Card content-->
+                 
                     <div class="card-block">
-                        <!--Title-->
+                     
                         <h4 class="card-title">{{user}}</h4>
-                        <!--Text-->
+                      
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
                     
                     <p>{{subscription}}</p>
                     
                     </div>
                         
-                    <!--/.Card content-->
+                
                 </div>
     </div>
-  </div>
-  <br>
-  <div class="row" *ngIf="loading == true">
-       <div class="col-md-6" >
-           <div class="card">
-                        <div class="card-block">
-                     <h4 class="card-title" >Loading Modules...Please wait</h4>
-      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-      </div>
-                            </div>
-                            </div>
-
   </div>
   <br>
    <div class="row" *ngIf="!exists">
             <div class="col-md-6" *ngFor="let modules of data;let i=index">
        <div class="card" (click)="onclick(modules.id,modules.name)" >
            <div class="card-block">
-        <!--Title-->
+   
               <h4 class="card-title" >{{modules.name}}</h4>
-              <!--Text-->
+   
               <p class="card-text">{{modules.id}}</p>
                </div>
-          <!--Card image-->
+     
           <div class="view overlay hm-white-slight">
               <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" alt="">
               <a>
                   <div class="mask waves-effect waves-light"></div>
               </a>
                 <div class="card-block">
-                        <!--Name-->
+                
                         <h4 class="card-title">Anna Doe</h4>
                         <hr>
-                        <!--Quotation-->
+                    
                         <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
                     </div>
           </div>
       </div>
       </div>
-      </div>
+      </div>-->
       <br>
-
-
-
-
- <!--<div class="row">
-            <div class="col-md-6">
-       <div class="card">
-           <div class="card-block">
-    
-              <h4 class="card-title">Geography..</h4>
-            
-              <p class="card-text">Some Category</p>
-               </div>
-        
-          <div class="view overlay hm-white-slight">
-              <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" alt="">
-              <a >
-                  <div class="mask waves-effect waves-light"></div>
-              </a>
-                <div class="card-block">
-                     
-                        <h4 class="card-title">Anna Doe</h4>
-                        <hr>
-                     
-                        <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
-                    </div>
-          </div>
-      </div><br>  
-         <div class="card">
-           <div class="card-block">
-     
-        <h4 class="card-title">Age / Grade</h4>
-        
-        <p class="card-text">Biology.</p>
-    </div>
-  
-    <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid" alt="">
-        <a href="#">
-            <div class="mask waves-effect waves-light"></div>
-        </a>
-          <div class="card-block">
-                
-                  <h4 class="card-title">Anna Doe</h4>
-                  <hr>
-                
-                  <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
-              </div>
-    </div>
-
-</div> 
-      </div>
-      <div class="col-md-6">
-         <div class="card">
-           <div class="card-block">
-       
-        <h4 class="card-title">Business Studies</h4>
-     
-        <p class="card-text">Introduction to Business Studies.</p>
-    </div>
- 
-    <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" class="img-fluid" alt="">
-        <a href="#">
-            <div class="mask waves-effect waves-light"></div>
-        </a>
-          <div class="card-block">
-                 
-                  <h4 class="card-title">Anna Doe</h4>
-                  <hr>
-              
-                  <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
-              </div>
-    </div>
-
-</div>
-        <br>
-   <div class="card">
-           <div class="card-block">
-   
-        <h4 class="card-title">J K Rowlings</h4>
-       
-        <p class="card-text">Elements Of Chemistry.</p>
-    </div>
-   
-    <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid" alt="">
-        <a href="#">
-            <div class="mask waves-effect waves-light"></div>
-        </a>
-          <div class="card-block">
-                
-                  <h4 class="card-title">Anna Doe</h4>
-                  <hr>
-                 
-                  <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
-              </div>
-    </div>
-
-</div></div></div>-->
 <br>

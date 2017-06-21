@@ -6,7 +6,7 @@
  */
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -14,6 +14,19 @@ html {
 
 body {
   margin: 0;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  overflow: auto;
+  color: #616b70;
+  font-size: 0.875rem;
+  &:active {
+       color: #ffa402;
+  }
+  &:hover {
+       color: #ffa402;
+  }
+
 }
 
 article,
@@ -28,6 +41,7 @@ section {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  color: #aca084;
 }
 
 figcaption,
