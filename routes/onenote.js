@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var authHelper = require('../authHelper.js');
-var api = require('./api.js');
  var https = require ('https');
  var request = require('request');
 
@@ -68,7 +67,7 @@ router.get('/aboutme', function (req, res) {
     // }
     // else
     // {
-      console.log('not empty');
+      console.log('not empty' , 'acess token is ', req.cookies.ACCESS_TOKEN_CACHE_KEY);
        aboutme(req,res);
    // }
 });
@@ -242,6 +241,7 @@ router.get('/login', function (req, res) {
     authHelper.getTokenFromCode(req.query.code, function (e, accessToken, refreshToken) {
       if (e === null) {
         // cache the refresh token in a cookie and go back to index
+        console.log('REFRESH TOKEN during login' , refreshToken);
         res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
         res.cookie(authHelper.REFRESH_TOKEN_CACHE_KEY, refreshToken);
         req.session.login ='Logged in';
@@ -312,12 +312,15 @@ function aboutme(req,res)
             authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
           function (refreshError, accessToken) {
-                    clearCookies(res);
+                   // clearCookies(res);
+                    console.log('REFRESH TOKEN' ,req.cookies.REFRESH_TOKEN_CACHE_KEY ,'acess token is',accessToken)
             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
             if (accessToken !== null) {
                       console.log('later' + accessToken);
                       req.cookies.ACCESS_TOKEN_CACHE_KEY = accessToken;
                 aboutme(req, res);
+
+
             } 
           });
           
