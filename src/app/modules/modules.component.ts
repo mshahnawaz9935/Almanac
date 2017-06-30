@@ -18,14 +18,14 @@ export class ModulesComponent implements OnInit {
   subscription = '';
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
-      this.http.get('http://localhost:3000/onenote/aboutme')
+      this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
               });
 
               setTimeout(() => {
-        //          this.http.get('http://localhost:3000/api/instances')
+        //          this.http.get('https://angular2ap.azurewebsites.net/api/instances')
         // .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.DataService.getInstances().subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
