@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
     //     this.authenticated = true;
     // });
     console.log(this.DataService.moduleid);
-     this.http.get('https://angular2ap.azurewebsites.net/note/checklogin')               // Check Login
+     this.http.get('http://localhost:3000/note/checklogin')               // Check Login
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
           else this.authenticated =true;
           console.log(this.authenticated);
         });
-        this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
+        this.http.get('http://localhost:3000/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {      //Check if user is logged in
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit {
           { this.authenticated1 =true;
           console.log(this.authenticated1);
 
-          this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
+          this.http.get('http://localhost:3000/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {    // Get User details
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
@@ -69,7 +69,7 @@ export class SearchComponent implements OnInit {
      if(this.DataService.moduleid != '')
         {
           console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
-        this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+        this.http.get('http://localhost:3000/api/instances')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
                 console.log('Login status is ' + dataFromServer );
                 this.getInstance(dataFromServer);
@@ -99,8 +99,8 @@ export class SearchComponent implements OnInit {
       this.DataService.query = this.model.search;
       this.DataService.slider1 = this.slider1;
       this.DataService.slider2 = this.slider2;
-    // this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      // this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search)
+    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      // this.http.get('http://localhost:3000/api/search?id='+ this.model.search)
       //   .map((res: Response) => res.json())
       //   .subscribe((dataFromServer) => {
       //     this.data = dataFromServer;
@@ -149,24 +149,24 @@ export class SearchComponent implements OnInit {
     note()
   {
        console.log('Authenticated');
-       window.open('https://angular2ap.azurewebsites.net/note','_self' );
+       window.open('http://localhost:3000/note','_self' );
    
   }
 
   onenote()
   {
        console.log('Authenticated');
-       window.open('https://angular2ap.azurewebsites.net/onenote','_self' );
+       window.open('http://localhost:3000/onenote','_self' );
    
   }
    onenotelogout()
   {
-       window.open('https://angular2ap.azurewebsites.net/onenote/disconnect','_self' );
+       window.open('http://localhost:3000/onenote/disconnect','_self' );
    
   }
      logout()
   {
-       window.open('https://angular2ap.azurewebsites.net/note/logout','_self' );
+       window.open('http://localhost:3000/note/logout','_self' );
    
   }
 
