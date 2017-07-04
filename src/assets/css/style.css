@@ -45,7 +45,7 @@
     z-index: 2;
 }
 
-.menu {
+.menu-almanac {
     margin-top: 20px;
     color: #616b70;
     float: right;
@@ -55,7 +55,7 @@
 }
 
 .navbar-nav, ul li {
-    display: inline;
+    display: inline-table;
 }
 
 .navbar-nav a {
@@ -134,9 +134,7 @@
 
 .browse {
     float: right;
-    /* width: 30%; */
     line-height: 50px;
-    padding-right: 30px;
 }
 
 .browse-list, li {
@@ -203,7 +201,7 @@ h4, h5, h6 {
     margin: 0px;
 }
 
-.card {
+.card-home {
     width: 360px;
     height: 184px;
     margin-left: 0px;
