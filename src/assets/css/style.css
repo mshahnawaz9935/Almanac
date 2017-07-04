@@ -203,9 +203,13 @@ h4, h5, h6 {
 
 .card-home {
     width: 360px;
+}
+
+.card {
+    /*width: 360px;
     height: 184px;
     margin-left: 0px;
-    margin-right: 10px;
+    margin-right: 10px;*/
     background-color: transparent;
 }
 
