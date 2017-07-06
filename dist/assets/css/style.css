@@ -293,7 +293,58 @@ h4, h5, h6 {
     bottom: 10px;
 }
 
-/* BANNER */
+/* BANNER - responsive image */
+
+.box-image {
+    width: 80%;
+    height: auto;
+    align-content: center;
+    margin: auto;
+    margin-top: 50px;
+}
+ 
+.banner-image {
+    width: 1280px;
+    height: 354px;
+    background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
+    background-repeat: no-repeat;
+    align-content: center;
+}
+
+/* For devices 400px and smaller: */
+@media only screen and (max-width: 400px) {
+    .banner-image {
+    max-width: 100%;
+    height: auto;
+    background-image:url(../img/almanac/banner/Almanac-banner-400px.jpg);
+    cursor: pointer;
+    }
+}
+
+/* For devices 640px and larger: */
+@media only screen and (min-width: 640px) {
+    .banner-image {
+    max-width: 100%;
+    height: auto;
+    background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
+    cursor: pointer;
+    }
+}
+
+/*
+.img { background-image: url(medium.jpg); } 
+
+@media (min-width: 800px) { 
+    .img { background-image: url(large.jpg); 
+    } 
+} 
+
+@media (min-width: 1000px) { 
+    .img { background-image: url(extralarge.jpg); 
+    } 
+} */
+
+/* RESPONSIVE BANNER */
 
 .bg-banner {
     width: 97%;
