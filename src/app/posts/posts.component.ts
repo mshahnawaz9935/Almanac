@@ -125,6 +125,16 @@ export class PostsComponent implements OnInit {
           this.loading = false;
         });
   }
+  saveonenote4()
+  {
+    this.loading = true;
+    this.http.get('http://localhost:3000/onenote/checknote4')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Data Saved to One Note', dataFromServer);
+          alert('Save to One Note 4');
+          this.loading = false;
+        });
+  }
 
 
 

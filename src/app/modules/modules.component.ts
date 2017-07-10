@@ -40,15 +40,14 @@ export class ModulesComponent implements OnInit {
            else 
            {
               this.data = dataFromServer;
-              this.loading = false;
              this.exists = false;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
+                     this.loading = false;
            }
         });
                  },500);
-   this.exists = true;
-   this.loading =false;              
+            
    
       
   }

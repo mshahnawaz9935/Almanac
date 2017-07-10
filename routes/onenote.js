@@ -2,12 +2,17 @@ var express = require('express');
 var router = express.Router();
 var authHelper = require('../authHelper.js');
  var https = require ('https');
+ const http = require('http')
  var request = require('request');
+ var fs = require("fs");
+   var _ = require('underscore');
+  var base64Img = require('base64-img');
 
 /* GET home page. */
 var t=2,sec=2;
 var notebookid;
 var sectionid;
+
 
 
 function getToken (callback)
@@ -177,6 +182,53 @@ router.get('/checknote3', function (req, res) {
 
      
 });
+router.get('/checknote4', function (req, res) {
+
+  console.log('check token' , req.cookies.ACCESS_TOKEN_CACHE_KEY);
+  
+  checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
+  {
+    if(t==1)
+    {
+       console.log('notebook id' ,notebookid);
+    checksection(req.cookies.ACCESS_TOKEN_CACHE_KEY , notebookid , req.session.modulename , function(sec, sectionid)
+    {
+     
+       if(sec == 1){
+         createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+       res.json('Notebook exists id is ' + notebookid + 'Section exists id is' + sectionid);
+       }
+       else if(sec==0)
+       {
+         createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid , req.session.modulename , function(sectionid)
+         {
+            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+            res.json('Notebook exists and section created' + sectionid);
+         });
+
+       }
+
+    });
+    }
+    else if(t==0)
+    {
+       console.log('t=0');
+      createnotebook(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(notebookid){
+         console.log('notebook id' ,notebookid);
+      createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid ,req.session.modulename, function(sectionid)
+         {
+            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+            res.json('Notebook' + notebookid + 'and section created' + sectionid);
+         });
+         });
+    }
+
+
+
+  });
+
+     
+});
 
 
 
@@ -284,7 +336,7 @@ function aboutme(req,res)
                 console.log(body);
                 req.session.email = JSON.parse(body).userPrincipalName;
                 console.log(JSON.parse(body).displayName,'Session email' ,  req.session.email); 
-                res.json('Welcome ' + JSON.parse(body).displayName);
+                res.json(JSON.parse(body).displayName);
         //callback(null, JSON.parse(body));
 
       } else {
@@ -675,6 +727,129 @@ function writespecific2(token,topic,chapter, articleid ,studentid, moduleid,call
 
     }
 
+    
+function getarticle(token, topic, chapter ,articleid , studentid, moduleid, callback)
+{
+  getToken(function(token2){
+    var favourites ={};
+var url = '';
+var obj = [];
+var counter =0;
+
+    var headers = {
+        "content-type": "application/json",
+        Authorization: 'Bearer ' + token2 
+    }
+    var options = {
+             url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
+        method: 'GET',
+        headers: headers,
+    }
+    console.log(options.url);
+ request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+       //         console.log("post query" + response.body);
+                favourites = JSON.parse(response.body);
+       console.log('response article' , response.body.sections , favourites.sections);
+            if(favourites.sections != undefined)
+            {
+            console.log('Sections length' ,favourites.sections.length);
+            for(var i=0; i< favourites.sections.length; i++) 
+            {
+       
+                    url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
+                    url = url + "<h4>" +  favourites.sections[i].text.text + "</h4>";
+                    try{
+                        var image_len = favourites.sections[i].images.length;
+                    }
+                    catch(err)
+                    {    continue;  }
+                    finally { }
+                    var x=0;
+                    for(var j=0; j< image_len;j++)
+                    {
+                        if(favourites.sections[i].images[j].caption !==null)
+                        {
+                        favourites.sections[i].images[j].caption = favourites.sections[i].images[j].caption.substring(9,favourites.sections[i].images[j].caption.length-3 );
+                        }
+                        else favourites.sections[i].images[j].caption ='No Caption'+ Math.floor((Math.random() * 1000) + 1);
+                 //     console.log('Image url is ',favourites.sections[i].images[j].url);
+                        if(favourites.sections[i].images[j].attribution == 'cjfallon')
+                        {   
+                        
+                        console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
+                        var caption =  favourites.sections[i].images[j].caption;
+                        var fileurl =favourites.sections[i].images[j].url;
+                        var width = favourites.sections[i].images[j].width;
+                        var attr = 'cjfallon';
+                          console.log('File url is' ,fileurl );
+                          var details = {"attr" : attr , "fileurl" : fileurl , "width" : caption  };
+                          obj.push(details);
+                          x++;
+
+                        }
+                        else {
+                    
+                    url = url+ "<p><img src=" + "\"" + favourites.sections[i].images[j].url + "\"" + "/><br>"+
+                    favourites.sections[i].images[j].caption +  "</p><p>Source:" + favourites.sections[i].images[j].attribution
+                    + "</p>" ;
+                        }
+                    }
+                }
+               }
+               callback(url , obj);
+               
+        }
+        else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+        callback(url , obj);
+        }
+    });
+  });
+}
+
+
+    function writer(token, topic, chapter ,articleid , studentid, moduleid,  callback)
+    {   
+   // var fulldata;
+       getarticle(token, topic, chapter ,articleid , studentid, moduleid, function(data , obj){
+           var  fulldata = data;
+           console.log('Object Length' ,obj.length);   
+           if(obj.length >0)            
+            obj.forEach(function(obj) {
+         
+            // url = url+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + width +  "</p>"  + "<p>Source:" + attr;
+             writetofile(obj.width, obj.fileurl , function(result) {
+                            decode(obj.width, function(image){
+                                  console.log(' new creation is File url is' ,obj.fileurl, obj.width);
+                                fulldata = fulldata +"<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + obj.width +  "</p>"  + "<p>Source:" + obj.attr
+                        + "</p>" ;
+                            });
+                     
+                        });
+                      
+                        
+               });
+               setTimeout(function() {
+                    fulldata = 
+        "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "    <title>"+ topic +"</title>" +
+        "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
+        "</head>" +
+        "<body>" +
+        "    <p> View Your Page <i>formatted</i></p>" +
+         fulldata +
+        "</body>" +
+        "</html>";   
+                                   callback(fulldata);
+               }, obj.length * 500);
+            
+                      });
+                      
+}
+
+
     function createNewPage(accessToken, payload, multipart) {
             var options = {
                 url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
@@ -703,6 +878,48 @@ function writespecific2(token,topic,chapter, articleid ,studentid, moduleid,call
                 });
             }
 }
+
+    function createNewPage2(accessToken, payload, multipart) {
+      console.log('here');
+            var options = {
+                url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
+                headers: {
+                'Authorization': 'Bearer ' + accessToken
+                }
+            };
+            // Build simple request
+            if (!multipart) {
+                options.headers['Content-Type'] = 'text/html';
+                options.body = payload;
+            }
+            var r = request.post(options );
+            // Build multi-part request
+            if (multipart) {
+                var CRLF = '\r\n';
+                var form = r.form(); // FormData instance
+                _.each(payload, function(partData, partId) {
+                form.append(partId, partData.body, {
+                    // Use custom multi-part header
+                    header: CRLF +
+                    '--' + form.getBoundary() + CRLF +
+                    'Content-Disposition: form-data; name=\"' + partId + '\"' + CRLF +
+                    'Content-Type: ' + partData.contentType + CRLF + CRLF
+                });
+                });
+            }
+}
+
+ function createOneNoteArticle(token, topic, chapter ,articleid , studentid , moduleid) {
+
+
+         writer(token, topic, chapter ,articleid , studentid, moduleid,function(data){
+
+        createNewPage2(token, data , false);
+         });
+     
+
+    
+    }
 
 
 
@@ -977,5 +1194,83 @@ function renderError(res, e) {
     error: e
   });
 }
+
+var decodedImage='';
+
+var dest = 'file.jpg';
+var buf = new Buffer(1024);
+function writetofile(filename, url,callback)
+{
+var file = fs.createWriteStream(filename + ".jpg");
+var request = http.get(url, function(response) {
+  response.pipe(file);
+  response.on('end', () => {
+  console.log('There will be no more data.');
+});
+   fs.open(filename + '.jpg', 'r+', function(err, fd) {
+   if (err) {
+      return console.error(err);
+   }
+   console.log("File opened successfully!");
+   console.log("Going to read the file");
+   
+   fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
+      if (err){
+         console.log(err);
+      }
+
+      // Print only read bytes to avoid junk.
+      if(bytes > 0){
+         console.log(buf.slice(0, bytes).toString());
+      }
+
+      // Close the opened file.
+      fs.close(fd, function(err){
+         if (err){
+            console.log(err);
+         } 
+         console.log("File closed successfully.");
+          callback(url);
+      });
+   });
+});
+  
+});
+
+}
+
+
+
+function decode(filename , callback)
+{
+
+fs.readFile(filename+'.jpg', function(err, data) {
+  if (err) throw err;
+  console.log('raw data is' , data);
+  // Encode to base64
+       var encodedImage = new Buffer(data, 'binary').toString('base64');
+
+  // Decode from base64
+  decodedImage = new Buffer(encodedImage, 'base64').toString('binary');
+
+  
+  callback(encodedImage);
+  deletefile(filename);
+    });
+        
+ 
+}
+
+function deletefile(filename)
+{
+     fs.unlink(filename + '.jpg', function(err) {
+   if (err) {
+      return console.error(err);
+   }
+   console.log("File deleted successfully!" + filename);
+})
+}
+
+
 
 module.exports = router ;
