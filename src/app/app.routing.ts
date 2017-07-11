@@ -11,6 +11,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { AuthGuard } from './AuthGuard';
 import { ModulesComponent } from './modules/modules.component';
 import { ResultsComponent } from './results/results.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'posts', component: PostsComponent ,canActivate: [AuthGuard] },
     { path: 'account', component: AccountComponent },
     { path: 'pricing', component: PricingComponent },
+        { path: 'favourites', component: FavouritesComponent },
     { path: 'modules', component: ModulesComponent ,canActivate: [AuthGuard]  },
     { path: 'results', component: ResultsComponent ,canActivate: [AuthGuard]}
 ];
