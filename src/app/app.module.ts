@@ -26,6 +26,7 @@ import {CSSCarouselComponent} from './pricing/carousel.component2';
 import { Carousel } from './pricing/carousel.component';
 import { Slide } from './pricing/slide.component';
 import { ResultsComponent } from './results/results.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 import { SafePipe} from './posts/posts.component';
 
 @NgModule({
@@ -46,6 +47,7 @@ import { SafePipe} from './posts/posts.component';
     CSSCarouselComponent,
     Carousel,Slide,
     ResultsComponent ,
+    FavouritesComponent,
     SafePipe
   ],
   entryComponents: [
