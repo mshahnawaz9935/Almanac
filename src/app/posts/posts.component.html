@@ -63,7 +63,7 @@
                         <h4 class="card-title">ARTICLE Results showing for {{data.topic}} and {{data.chapter}}</h4>
                         <p class="card-text">    
                         <a class="btn btn-primary primary" (click)="savedata()">Save To Favourites</a>
-                          <a class="btn btn-primary primary" (click)="showdata()">View Favourites</a>
+                          <a class="btn btn-primary primary" (click)="showfav()">View Favourites</a>
                           <a class="btn btn-primary primary" (click)="saveonenote()">Save To One Note!</a>
                          <a class="btn btn-primary primary" (click)="saveonenote2()">Save To One Note2!</a>
                              <a class="btn btn-primary primary" (click)="saveonenote4()">Save To One Note4!</a>
@@ -96,7 +96,7 @@
                           </slide>
                           </div>
                         </carousel>
-                         <div  class="mask waves-effect waves-light">
+                         <div  class="mask waves-effect waves-light" *ngIf= "image.videos.length>0">
                            <iframe width="560" height="315" [src]="image.videos[0].url | safe" frameborder="0" allowfullscreen></iframe></div>
                    <!--<div class="view overlay hm-white-slight" *ngFor= "let url of image.images.image" >
                     

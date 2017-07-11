@@ -6,7 +6,7 @@ var User     = require('../models/user');
 var mongoose   = require('mongoose');
 var session = require('express-session');
 
-
+var favourites;
  //mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
 
@@ -218,7 +218,6 @@ router.get('/instances', (req, res) => {
 function getToken (callback)
 {
     var token = '';
-    var favourites ={};
 
    var qs = require("querystring");
    var request = require('request');
@@ -228,7 +227,6 @@ function getToken (callback)
     client_id: '150b9f0f-ab92-4565-a38e-4f28f3deb136',
     client_secret: 'Q1a09Fx13lEcU/RwM8AsVsBolhP/QRvGNJGqzLupivM=',
     resource: '150b9f0f-ab92-4565-a38e-4f28f3deb136' });
-    var favourites = {};    
     request({
         url: "https://login.microsoftonline.com/3105192b-76b3-4f26-816e-9b7e773ac262/oauth2/token",
         method: "POST",
@@ -292,10 +290,10 @@ req.session.articleid = articleid;
     console.log(options.url);
  request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-                console.log("post query" + response.body);
+                console.log("post query" + JSON.parse(response.body));
                 favourites = response.body;
                 console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+req.session.moduleid + 'Module Id is ' + req.session.modulename + 'Article id is' + req.session.articleid + 'Student id is' + req.session.studentid );
-            res.send(response.body) +  req.session.topic;
+            res.send(response.body);
         }
         else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
     });
@@ -304,6 +302,9 @@ req.session.articleid = articleid;
 
 router.get('/store', (req, res) => {
 
+// Delete all documents in a colection  db.test.remove({})
+
+
 //     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
       MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
@@ -311,9 +312,9 @@ router.get('/store', (req, res) => {
     if(err) throw err;
 
      var collection = db.collection('test');
-
+      favourites = JSON.parse(favourites);
      favourites['username']= req.session.email;
-          console.log('sdssd' + favourites.title + favourites.username);
+          console.log('sdssd' + favourites + favourites.title + favourites.username);
     collection.insert(favourites, function(err, docs) {
         collection.count(function(err, count) {
             console.log(format("count = %s", count));

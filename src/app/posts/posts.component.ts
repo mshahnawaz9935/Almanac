@@ -80,13 +80,7 @@ export class PostsComponent implements OnInit {
 
 
       }
-      // else
-      // {
-      //     console.log('yes');
-      //   let len =section.images.image.caption.length;
-      //   section.images.image.caption = section.images.image.caption.substring(2,len-1);
-
-      // }
+   
     }
 
 
@@ -148,23 +142,20 @@ export class PostsComponent implements OnInit {
           else this.notebook_exists = false;
         });
   }
-  showdata()
+  showfav()
   { 
-          this.saved = true;
-          this.loading = true;
-         this.http.get('http://localhost:3000/api/getdata')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log( 'Saved data in db' , dataFromServer);
-          this.saved_data = dataFromServer;
-          console.log(this.saved_data);
-          this.loading = false;
-            // for(let section of dataFromServer)
-            // {     
-            //     console.log('sections are', section.sections , section.title);
+        this.router.navigate(['/favourites']);
 
-            // }
+        //   this.saved = true;
+        //   this.loading = true;
+        //  this.http.get('http://localhost:3000/api/getdata')
+        // .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+        //   console.log( 'Saved data in db' , dataFromServer);
+        //   this.saved_data = dataFromServer;
+        //   console.log(this.saved_data);
+        //   this.loading = false;
 
-        });
+        // });
 
   }
 
