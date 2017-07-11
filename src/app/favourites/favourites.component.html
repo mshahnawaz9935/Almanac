@@ -1,7 +1,7 @@
 
  <div class="row" *ngIf="toggle == true">
             <div class="col-md-6" *ngFor="let data of saved_data; let index = index">
-        <div class="card" (click)="onSelect(index)" >
+        <div class="card" (click)="onSelect(index)"  >
                     <div class="card-block">
              
                         <h2 class="card-title">{{data.title}}</h2>
@@ -9,7 +9,7 @@
                         </div>
               
                       <div class="view overlay hm-white-slight" >{{data.sections[0].images[0].image}}
-                        <img [src]="data.sections[0].images[0].url" alt="" style="width:100%">
+                        <img  [src]="data.sections[0].images[0].url" alt="" style="width:100%">
                         <a>
                             <div class="mask waves-effect waves-light"></div>
                         </a>
@@ -19,9 +19,11 @@
                                   <hr>
                              
                                    <p class="card-text" [innerHTML]="data.sections[0].text.text"> </p>
+                                   <button  class="btn btn-primary primary" (click)="deleteArticle(index)" >Delete</button>
+                                       <a class="btn btn-primary primary" (click)="deleteArticle(index)">Delete 2!</a>
                           </div>
                         </div>
-                </div><br>
+                </div><button  class="btn btn-primary primary" (click)="deleteArticle(index)" >Delete</button><br>
      
   </div>
 </div>
