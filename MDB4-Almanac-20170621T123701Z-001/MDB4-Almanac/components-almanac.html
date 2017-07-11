@@ -60,6 +60,7 @@
             </div>    
             <br /><br />
             
+            <!-- 
             <h2>SLIDER BAR</h2>
             <form class="range-field">
                 <input type="range" min="0" max="100" />
@@ -72,19 +73,24 @@
               <span class="range-slider-active-segment"></span>
               <input type="hidden">
             </div>
-            <br /><br />
+            <br /><br /> -->
             
             <h2>INPUT GROUPS</h2>
             <div class="md-form input-group">
                 <input type="text" class="form-control" placeholder="Your e-mail..." aria-describedby="basic-addon2">
                 <span class="input-group-addon" id="basic-addon2"><i class="fa fa-chevron-right fa-lg"></i></span>
             </div>
+            <br />
+            <div class="md-form input-group">
+                <input type="text" class="form-control" placeholder="Leave us your e-mail..." aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2" style="color:#6d7270">Request Info</span>
+            </div>
             <br /><br />
             
             <h2>CARDS</h2>
             <ul class="card-list">
             <li>
-                <div class="card">
+                <div class="card-home">
                     <div class="bg-card">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
@@ -111,7 +117,7 @@
             </li>
             
             <li>
-                <div class="card">
+                <div class="card-home">
                     <div class="bg-card">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -136,7 +142,7 @@
             </li>
             
             <li>
-                <div class="card">
+                <div class="card-home">
                     <div class="bg-card">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -161,9 +167,100 @@
             </li>
         </ul>
             
-            <br /><br />        
+            <br /><br />  
+            
+            <h2>Favourites</h2>
+            
+                <ul> 
+                    <!-- FAVOURITES --> 
+                    <li class="card-fav">
+                            <div class="transbox-fav">
+                            <div class="card-fav-bg-category">
+                                <div class="fav-category">Some product category</div>
+                            </div>                    
+                            <div class="fav-content">
+
+                                <div class="fav-bg-title">
+                                    <div class="fav-title">Wonderful headlines 03 lines here here here here here.</div>
+                                </div>
+                                <div class="fav-button">
+                                    <button type="button" class="btn btn-signin btn-sm">Click me!</button>
+                                </div>
+                                <div class="fav-social">
+                                    <ul>
+                                        <li><button type="button" class="fav-icon fav-icon-orange"><i class="fa fa-star"></i></button>&nbsp;&nbsp;<button type="button" class="fav-icon fav-icon-blue fav-icon-1note "><img src="img/almanac/icons/one-note.png"  style="width:12px;height:12px;" /></button></li>
+                                        <li><i class="fa fa-thumbs-up"></i>&nbsp;33333</li>
+                                        <li><i class="fa fa-eye"></i>&nbsp;32233</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+                <!-- ONE NOTE -->    
+                <li class="card-1note">
+                            <div class="transbox-1note">
+                            <div class="card-1note-bg-category">
+                                <div class="fav-category">Some product category</div>
+                            </div>                    
+                            <div class="fav-content">
+
+                                <div class="fav-bg-title">
+                                    <div class="fav-title">Wonderful headlines 02 lines here.</div>
+                                </div>
+                                <div class="fav-button">
+                                    <button type="button" class="btn btn-1note btn-sm">Click me!</button>
+                                </div>
+                                <div class="fav-social">
+                                    <ul>
+                                        <li><button type="button" class="fav-icon fav-icon-blue"><i class="fa fa-star"></i></button></li>
+                                        <li><i class="fa fa-thumbs-up"></i>&nbsp;33333</li>
+                                        <li><i class="fa fa-eye"></i>&nbsp;32233</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+            </ul>
+            
+            
+             <br /><br />
                         
-            <h2>TAGS</h2>
+            
+            <h2>Speech Bubble</h2>
+            
+            <ul class="testimonial-list">
+                <li class="testimonial">
+                    <h6><b>Also, testimonials by teachers:</b></h6>
+                    <div class="speech-bubble-2">
+                    <div class="speech-text">[…] I am so thankful that Almanac has allowed me to learn about something that I'm truly passionate about. Love Almanac.</div>
+                    </div>
+                    <div class="nav-item dropdown btn-group">
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
+                            <div class="speech-user">
+                                    <b>Julie Farell</b><br />
+                                    Vancouver, Canada
+                            </div>
+                    </div>
+                </li>
+                <li class="testimonial">
+                    <h6><b>Also, testimonials by teachers:</b></h6>
+                    <div class="speech-bubble">
+                    <div class="speech-text">[…] I am so thankful that Almanac has allowed me to learn about something that I'm truly passionate about. Love Almanac.</div>  
+                </div>
+                <div class="nav-item dropdown btn-group">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
+                        <div class="speech-user">
+                                <b>Julie Farell</b><br />
+                                Vancouver, Canada
+                        </div>
+                </div>
+                </li>
+            
+            </ul>
+
+            <br /><br /> 
+            
+            <h2>Tags</h2>
             <div>
                 <button type="button" class="arrow-button arrow-orange">Tag A</button>
                 <button type="button" class="arrow-button arrow-beige">Tag B</button>
@@ -232,6 +329,14 @@
             </div>
             
         </div>
+            <br /><br />
+            
+            <div class="box-image">
+            <div class="banner-image">
+              
+               <img src="img/almanac/banner/Almanac-banner-1280px.jpg" />                          
+            </div></div>
+            
             <br /><br />
             
             <div class="bg-banner">
