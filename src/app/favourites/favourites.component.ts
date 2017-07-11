@@ -45,6 +45,15 @@ nodata = false;
     this.toggle = false;
     this.data = this.saved_data[index];
   }
+
+  removearticle;
+  deleteArticle(index)
+  {
+         console.log('Removed article is' , this.removearticle);
+     this.removearticle = this.saved_data[index];
+
+     
+  }
       
   getdata(data){
     

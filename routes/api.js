@@ -334,6 +334,28 @@ console.log('inside');
 res.json('favourites stored');
 });
 
+router.get('/delete', (req, res) => {
+
+    var id = req.query.topic;
+
+       MongoClient.connect('mongodb://127.0.0.1:27017/test',
+      function(err, db) {
+          console.log('connected');
+    if(err) throw err;
+    var collection = db.collection('test');
+       collection.remove({_id: ObjectID("59650231c7881050541e8d3c")} , function(err, results) {
+           if(!err)
+           {
+        console.dir('Deleted' , err);
+        res.json('deleted');
+        db.close();
+           }
+           else console.log('error occured' , err);
+      });
+
+});
+});
+
 router.route('/users')
 
      // the URL is  http://localhost:8080/api/users
