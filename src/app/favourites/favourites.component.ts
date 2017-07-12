@@ -51,6 +51,12 @@ nodata = false;
   {
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
+      this.http.get('http://localhost:3000/api/delete?id=' + this.removearticle._id)
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log( dataFromServer);
+          window.location.reload();
+        });
+
 
      
   }
