@@ -87,7 +87,7 @@
                         <h2> Images under this section </h2>
                     </div>
                      <carousel [noWrap]="noLoopSlides">
-                       <div class="view overlay hm-white-slight">
+                       <div class="view overlay hm-white-slight" >
                           <slide  *ngFor= "let url of image.images" [active]="url.active" >
                         <img [src]="url.url" alt="" style="width:100%;height:100%">
                         <a>

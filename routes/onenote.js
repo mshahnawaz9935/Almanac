@@ -55,7 +55,7 @@ router.get('/', function (req, res) {
   } else {
       console.log('Logged in' );
        req.session.login ='Logged in';
-        res.redirect('/');
+        res.redirect('/modules');
   }
 });
 router.get('/aboutmail', function (req, res) {

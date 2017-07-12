@@ -24,6 +24,26 @@ export class ModulesComponent implements OnInit {
                 this.user = dataFromServer;
               });
 
+              this.DataService.getInstances().subscribe((dataFromServer) => {
+          console.log('Module status is ' + dataFromServer );
+           
+           if(dataFromServer == 'Subscription does not exists')
+           {
+             this.subscription = 'Subscription does not exists. Buy a product First';
+             this.exists = true;
+             this.loading = false;
+
+           }
+           else 
+           {
+              this.data = dataFromServer;
+             this.exists = false;
+             this.subscription = 'View your subscribed modules below';
+              this.getdata(dataFromServer);
+                     this.loading = false;
+           }
+        });
+
               setTimeout(() => {
         //          this.http.get('http://localhost:3000/api/instances')
         // .map((res: Response) => res.json()).subscribe((dataFromServer) => {

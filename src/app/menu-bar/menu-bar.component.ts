@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class MenuBarComponent implements OnInit {
 authenticated1 = false;
 user = '';
+subscription;
+exists = false;
+
    constructor(private http:Http, private DataService: DataService, private router:Router)  {
 
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
@@ -32,6 +35,46 @@ user = '';
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
               });
+               this.DataService.getInstances().subscribe((dataFromServer) => {
+          console.log('Module status is ' + dataFromServer );
+           
+           if(dataFromServer == 'Subscription does not exists')
+           {
+             this.subscription = 'No Modules Subscribed';
+             this.exists = false;
+           }
+           else 
+           {
+             this.exists = true;
+             this.subscription = 'View your subscribed modules below';
+              this.getdata(dataFromServer);
+           }
+        });
+
+        setTimeout(()=> {
+
+             this.DataService.getInstances().subscribe((dataFromServer) => {
+          console.log('Module status is ' + dataFromServer );
+           
+           if(dataFromServer == 'Subscription does not exists')
+           {
+             this.subscription = 'No Modules Subscribed';
+             this.exists = false;
+           }
+           else 
+           {
+             this.exists = true;
+             this.subscription = 'View your subscribed modules below';
+              this.getdata(dataFromServer);
+           }
+        });
+
+
+        }, 300);
+
+        
+
+
           }
         });
          this.http.get('http://localhost:3000/api/token')
@@ -51,6 +94,16 @@ user = '';
 
 
 
+   }
+list=[];
+   getdata(data)
+   {
+     this.list = [];
+        console.log('Modules data is' , data);
+        data.forEach(element => {
+          console.log(element.name);
+          this.list.push(element.name);
+        });
    }
 
   ngOnInit() {

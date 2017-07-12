@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'account', component: AccountComponent },
     { path: 'pricing', component: PricingComponent },
         { path: 'favourites', component: FavouritesComponent },
-    { path: 'modules', component: ModulesComponent ,canActivate: [AuthGuard]  },
+    { path: 'modules', component: ModulesComponent },
     { path: 'results', component: ResultsComponent ,canActivate: [AuthGuard]}
 ];
 

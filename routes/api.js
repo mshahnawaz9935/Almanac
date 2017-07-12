@@ -314,7 +314,8 @@ router.get('/store', (req, res) => {
      var collection = db.collection('test');
       favourites = JSON.parse(favourites);
      favourites['username']= req.session.email;
-          console.log('sdssd' + favourites + favourites.title + favourites.username);
+     favourites['modulename'] = req.session.modulename;
+          console.log('sdssd' + favourites + favourites.title + favourites.username + favourites.modulename);
     collection.insert(favourites, function(err, docs) {
         collection.count(function(err, count) {
             console.log(format("count = %s", count));

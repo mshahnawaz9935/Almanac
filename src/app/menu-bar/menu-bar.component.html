@@ -15,7 +15,7 @@
                         <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="authenticated1" [routerLink]="['/favourites']" href="#">Favourites</a></li>
                       <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/pricing']" href="#">Pricing</a></li>
                       <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/about']" href="#">How it works</a></li>
-                      <li class="nav-item"><a class="nav-link waves-effect waves-light" [routerLink]="['/account']" href="#">My Account</a></li>
+                      <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/account']" href="#">My Account</a></li>
                     
               
                  <li class="nav-item dropdown btn-group">
@@ -49,7 +49,7 @@
                         <li><a *ngIf="authenticated1" [routerLink]="['/favourites']" href="#">Favourites</a></li>
                       <li><a *ngIf="!authenticated1" [routerLink]="['/pricing']" href="#">Pricing</a></li>
                       <li><a *ngIf="!authenticated1" [routerLink]="['/about']" href="#">How it works</a></li>
-                      <li><a [routerLink]="['/account']" href="#">My Account</a></li>
+                      <li><a *ngIf="!authenticated1" [routerLink]="['/account']" href="#">My Account</a></li>
                     
                     
                     <li class="nav-item dropdown btn-group" style="margin-left: 20px;">
@@ -75,22 +75,28 @@
           
             
         <div class="categories">
+
+              <ul *ngIf="exists"  >
+                   <li class="categories-list">Categories:</li>
+                <li class="categories-list" *ngFor="let name of list" > <a>{{name}} </a></li>
+
+                  </ul>
             
-            <ul>
+            <ul *ngIf="!exists" >
               <li class="categories-list">Categories:</li>
                <li class="categories-list">
                     <a [routerLink]="['/']">SCIENCE <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="categories-list">
+                <li  class="categories-list">
                     <a [routerLink]="['/about']">BUSINESS</a>
                 </li>
                 <li class="categories-list">
                     <a  [routerLink]="['/contact']">GEOGRAPHY</a>
                 </li>
-                <li class="categories-list">
+                <li  class="categories-list">
                     <a [routerLink]="['/contact']">MINECRAFT</a>
                 </li>
-                <li class="browse">
+                <li  class="browse">
                     <div>
                         <ul class="browse-list">
                             <li>
