@@ -336,14 +336,17 @@ res.json('favourites stored');
 
 router.get('/delete', (req, res) => {
 
-    var id = req.query.topic;
+//  db.test.remove({_id: ObjectId("59650231c7881050541e8d3c") })
+    var ObjectId = require('mongodb').ObjectID;
+    var id = req.query.id;
+    console.log(id);
 
        MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
     var collection = db.collection('test');
-       collection.remove({_id: ObjectID("59650231c7881050541e8d3c")} , function(err, results) {
+       collection.remove({_id: ObjectId(id)} , function(err, results) {
            if(!err)
            {
         console.dir('Deleted' , err);
