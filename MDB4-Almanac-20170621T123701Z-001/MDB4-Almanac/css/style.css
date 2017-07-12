@@ -301,8 +301,8 @@ h5 {
 /* CARDS - FAVOURITES */
 
 .card-fav {
-    width: 230px;
-    height: 230px;
+    width: 260px;
+    height: 260px;
     background-image: url("../img/almanac/cards/img-favourites-01.jpg");
     background-repeat: no-repeat;
     z-index: 0;
@@ -330,8 +330,8 @@ h5 {
 }
 
 .card-1note {
-    width: 230px;
-    height: 230px;
+    width: 260px;
+    height: 260px;
     background-image: url("../img/almanac/cards/img-favourites-02.jpg");
     background-repeat: no-repeat;
     z-index: 0;
@@ -390,16 +390,17 @@ h5 {
 
 .fav-button {
     margin-left: -5px;
+    margin-top: 0.625em;
     z-index: 4;
 }
 
 .fav-social {
     /* width: 100%;
-    margin-top: 2.188em; */
-    margin-bottom: 1.125em;
+    margin-top: 2.188em;
+    height: 1.563em; */
+    margin-bottom: 1.50em;
     bottom: 0;
     position: absolute;
-    height: 1.563em;
     font-size: 0.688em;
     z-index: 4;  
 }
@@ -411,8 +412,8 @@ h5 {
 }
 
 .fav-icon {
-    min-width: 22px;
-    min-height: 22px;
+    min-width: 25px;
+    min-height: 25px;
     border: 0;
     border-radius: 50%;
     transition: .3s;
@@ -425,11 +426,19 @@ h5 {
 }
 
 .fav-icon-orange {
+    background-color: #bfbcb4; 
+}
+
+.fav-icon-orange:hover, .fav-icon-orange:active {
     background-color: #ffa402; 
 }
 
 .fav-icon-blue {
     background-color: #00bcd9; 
+}
+
+.fav-icon-gray {
+    background-color: #bfbcb4; 
 }
 
 /* .fav-icon-1note {

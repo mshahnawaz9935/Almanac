@@ -298,8 +298,8 @@ h4, h5, h6 {
 /* CARDS - FAVOURITES */
 
 .card-fav {
-    width: 230px;
-    height: 230px;
+    width: 260px;
+    height: 260px;
     background-image: url("../img/almanac/cards/img-favourites-01.jpg");
     background-repeat: no-repeat;
     z-index: 0;
@@ -327,8 +327,8 @@ h4, h5, h6 {
 }
 
 .card-1note {
-    width: 230px;
-    height: 230px;
+    width: 260px;
+    height: 260px;
     background-image: url("../img/almanac/cards/img-favourites-02.jpg");
     background-repeat: no-repeat;
     z-index: 0;
@@ -387,16 +387,17 @@ h4, h5, h6 {
 
 .fav-button {
     margin-left: -5px;
+    margin-top: 0.625em;
     z-index: 4;
 }
 
 .fav-social {
     /* width: 100%;
-    margin-top: 2.188em; */
-    margin-bottom: 1.125em;
+    margin-top: 2.188em;
+    height: 1.563em; */
+    margin-bottom: 1.50em;
     bottom: 0;
     position: absolute;
-    height: 1.563em;
     font-size: 0.688em;
     z-index: 4;  
 }
@@ -408,8 +409,8 @@ h4, h5, h6 {
 }
 
 .fav-icon {
-    min-width: 22px;
-    min-height: 22px;
+    min-width: 25px;
+    min-height: 25px;
     border: 0;
     border-radius: 50%;
     transition: .3s;
@@ -422,12 +423,28 @@ h4, h5, h6 {
 }
 
 .fav-icon-orange {
+    background-color: #bfbcb4; 
+}
+
+.fav-icon-orange:hover, .fav-icon-orange:active {
     background-color: #ffa402; 
 }
 
 .fav-icon-blue {
     background-color: #00bcd9; 
 }
+
+.fav-icon-gray {
+    background-color: #bfbcb4; 
+}
+
+/* .fav-icon-1note {
+    width: 12px;
+    height: 12px;
+    background-image: url(../img/almanac/icons/one-note.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+} */
 
 
 /* BANNER - responsive image */
@@ -1021,4 +1038,17 @@ h4, h5, h6 {
     color: #6d7270;
     font-size: 0.813em;
     padding-left: 10px;
+}
+
+/* SLIDER */
+
+.noUi-handle {
+  border: 1px solid #ffd180;
+  border-radius: 3px;
+  background: #ffa402;
+  cursor: default;
+  box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #ffa402, 0 3px 6px -3px #BBB;
+}
+.noUi-active {
+  box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
 }
