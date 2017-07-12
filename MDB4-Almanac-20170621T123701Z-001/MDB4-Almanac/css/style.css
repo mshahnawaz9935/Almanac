@@ -205,6 +205,7 @@ h5 {
     display: inline-flex; 
     margin-bottom: 30px;
 }
+
 .card-list ul li {
     margin: 0px;
 }
@@ -212,6 +213,7 @@ h5 {
 .card-home {
     width: 360px;
     height: 184px;
+    margin: 0px;
     margin-left: 0px;
     margin-right: 10px;
     background-color: transparent;
@@ -223,6 +225,16 @@ h5 {
     height: 184px;
     border: solid #e3decf 1px;
     /* border-radius: 2px; */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card-result {
+    width: 90%;
+    height: 184px;
+    margin-left: 0px;
+    margin-right: 10px;
+    background-color: #ffffff;
+    border: solid #e3decf 1px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -253,7 +265,6 @@ h5 {
    z-index: 0;
 }
 
-
 .left-card-img3 {
    float: left;
    width: 148px;
@@ -263,7 +274,6 @@ h5 {
    z-index: 0;
 }
 
-
 .right-card {
     float: right;
     padding-top: 10px;
@@ -272,6 +282,22 @@ h5 {
     padding-right: 16px;
     padding-bottom: 16px;
     display: block;
+}
+
+.left-card-result {
+   width: 148px;
+   height: 180px;
+   background-image: url("../img/almanac/cards/img-favourites-01.jpg");
+   background-repeat: no-repeat;
+   z-index: 0;
+}
+
+.right-card-result {
+    width: 90%;
+    /* display: inline;
+    margin: 10px; */
+    height: 184px;
+    padding: 0.625em;
 }
 
 .category-card {
@@ -288,6 +314,12 @@ h5 {
 
 .title-card:hover, .title-card:active, .title-card:focus {
     color: #eb7839;
+}
+
+.text-card {
+    font-size: 0.813em;
+    color: #70787d;
+    cursor: pointer;
 }
 
 .tags-card {
