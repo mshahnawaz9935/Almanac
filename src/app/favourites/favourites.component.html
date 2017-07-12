@@ -1,4 +1,5 @@
-<ul> <li class="card-fav" *ngFor="let data of saved_data; let index = index" [style.background-image]="'url(' + data.sections[0].images[0].url + ')'"   >
+<ul> <li class="card-fav" *ngFor="let data of saved_data; let index = index" 
+[style.background-image]="'url(' + data.sections[0].images[0].url + ')'"   >
                             <div class="transbox-fav"  >
                             <div class="card-fav-bg-category">
                                 <div class="fav-category">{{data.title}}</div>
@@ -6,7 +7,7 @@
                             <div class="fav-content">
 
                                 <div class="fav-bg-title">
-                                    <div class="fav-title" [innerHTML]="data.sections[0].text.text.substring(0,55)"></div><p>Read More</p>
+                                    <div class="fav-title" [innerHTML]="data.sections[0].text.text.substring(0,35)"></div><p>Read More</p>
                                 </div>
                                 <div class="fav-button">
                                     <button type="button" class="btn btn-signin btn-sm">Click me!</button>
