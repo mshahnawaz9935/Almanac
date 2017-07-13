@@ -48,20 +48,27 @@ export class PostsComponent implements OnInit {
           console.log(dataFromServer ,'sections ', dataFromServer.sections);
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
+            this.getdata2(dataFromServer.sections);
             
             
       });
   }
-
+text=[];
+videos=[];
   getdata2(data)
   {
-    var text= [];
+   this.text= [];
+   this.videos= [];
+
         for(let section of data)
         {
-           text.push(section.text.text);
-           
+           this.text.push(section.text.text);
+           for(let videourl of section.videos)
+           {
+             this.videos.push(videourl.url);
+           }
         }
-
+                   console.log('Text array',this.text);
 
   }
 
