@@ -361,13 +361,23 @@
         </div>
             <br /><br />
             
+            <!-- RESPONSIVE IMAGE -->
+            <h2>Responsive image</h2>
+            
             <div class="box-image">
-            <div class="banner-image">
-              
-               <img src="img/almanac/banner/Almanac-banner-1280px.jpg" />                          
-            </div></div>
+        
+                <picture>
+                  <source srcset="img/almanac/banner/Almanac-banner-300px.jpg" media="(max-width: 400px)">
+                  <source srcset="img/almanac/banner/Almanac-banner-768px.jpg" media="(max-width: 1024px)">
+                  <source srcset="img/almanac/banner/Almanac-banner-1280px.jpg">
+                  <img src="img/almanac/banner/Almanac-banner-768px.jpg" alt="Learn Better" title="Learn Better">
+                </picture>
+
+            </div>
             
             <br /><br />
+            
+            <h2>Responsive banner</h2><br /><br />
             
             <div class="bg-banner">
                 
