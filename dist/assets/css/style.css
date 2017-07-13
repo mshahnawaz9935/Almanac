@@ -459,10 +459,18 @@ h4, h5, h6 {
 }
 
 .fav-icon-blue {
+    background-color: #bfbcb4; 
+}
+
+.fav-icon-blue:hover, .fav-icon-blue:active {
     background-color: #00bcd9; 
 }
 
 .fav-icon-gray {
+    background-color: #bfbcb4; 
+}
+
+.fav-icon-gray:hover, .fav-icon-gray:active {
     background-color: #bfbcb4; 
 }
 
@@ -822,6 +830,57 @@ h4, h5, h6 {
   color: black;
 }
 
+/* BUTTON ARROW LEFT */
+
+.arrow-left {
+  /* font-size: 1rem; */
+  font-size: 0.875em;
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px;
+  position: relative;
+  line-height: 37px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 2px;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.arrow-left:before {
+  content: "";
+  position: absolute;
+  border-radius: 2px;
+  border-right: 20px solid;
+  border-bottom: 18px solid transparent;
+  border-top: 20px solid transparent;
+  height: 0px;
+  width: 0px;
+  margin-left: -19px;
+  margin-top: -1px;
+  left: 0;
+}
+
+.arrow-left-beige {
+  background: #e2dccc;
+  color: #6d7270;
+}
+
+.arrow-left-beige:before {
+  border-right: 20px solid #e2dccc;
+}
+
+.arrow-left-beige:hover, .arrow-left-beige:active {
+  color: black;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* --------- */
+
+
 .btn-large {
     width: 55px;
     height: 55px;
@@ -1080,3 +1139,48 @@ h4, h5, h6 {
 .noUi-active {
   box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
 }
+
+/* ARTICLES */
+
+.post-video {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.post-img-left {
+    height: auto;
+    float: left;
+    margin: 1.563em;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.post-img-right {
+    height: auto;
+    float: right;
+    margin: 1.563em;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+
+.post-img-huge {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.post-img-grid {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 30px;
+    display: inline;
+}
+
+.post-img-grid li {
+    padding-bottom: 1.563em;
+}
+

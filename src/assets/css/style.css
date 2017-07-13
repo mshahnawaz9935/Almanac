@@ -167,6 +167,8 @@ hr.categories {
 h1 {
     color: #aca084;
     font-family: roboto slab, roboto;
+    font-size: 1.8em;
+    font-weight: 300;
 }
 
 h2, h3 {
@@ -1141,6 +1143,13 @@ h4, h5, h6 {
 }
 
 /* ARTICLES */
+
+.post-title {
+    color: #aca084;
+    font-family: roboto slab, roboto;
+    font-size: 1.5em;
+    font-weight: 300;
+}
 
 .post-video {
     width: 90%;
