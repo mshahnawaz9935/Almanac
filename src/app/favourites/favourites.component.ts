@@ -19,6 +19,7 @@ saved_data;
 toggle = true;
 data = {};
 nodata = false;
+favs_data = [];
   constructor(private http:Http) {
     this.toggle = true;
 
@@ -30,9 +31,10 @@ nodata = false;
           else this.nodata = false;
           this.getdata(dataFromServer);
             this.saved_data = dataFromServer;
+                 this.getdata2(dataFromServer);
           console.log(this.saved_data);
           this.loading = false;
-
+     
         });
    }
 
@@ -60,6 +62,41 @@ nodata = false;
 
      
   }
+imagesdata='';
+  getdata2(dataFromServer)
+  {
+    this.favs_data = [];
+
+    for(let data of dataFromServer)
+    {
+       let title = data.title;
+       let description = data.description;
+       let modulename = data.modulename;
+   
+       for(let section of data.sections)
+       {
+         if(section.images.length >0 )
+          {
+             for(let image of section.images)
+             {
+               if(image.url !== undefined)
+               {
+                this.imagesdata = image.url;
+                console.log('here image url', image);
+                break;
+               }
+             }
+          }
+
+        }
+            console.log('here image url', this.imagesdata);
+        this.favs_data.push({ 'title': title , 'description' : description , 'modulename' : modulename , 'image': this.imagesdata  });
+    }
+    console.log('Favs data is' , this.favs_data);
+
+  }  
+
+
       
   getdata(data){
     
@@ -75,6 +112,7 @@ nodata = false;
       section.text.text = section.text.text.substring(9,len-3);
 
          console.log(section.images);
+         if(section.images.length > 0)
          for(let image of section.images)
          {
            console.log(image.caption);

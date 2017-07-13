@@ -122,8 +122,10 @@
         <div class="categories">
 
               <ul *ngIf="exists"  >
+                   <!--<li class="categories-list">Categories:</li>
+                <li class="categories-list" *ngFor="let name of list" (click)="onclick(modules.id,modules.name)" > <a>{{name}} </a></li>-->
                    <li class="categories-list">Categories:</li>
-                <li class="categories-list" *ngFor="let name of list" > <a>{{name}} </a></li>
+                <li class="categories-list" *ngFor="let modules of moduledata" (click)="onclick(modules.id,modules.name)" > <a>{{modules.name}} </a></li>
 
                   </ul>
             
