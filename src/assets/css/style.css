@@ -196,12 +196,18 @@ h4, h5, h6 {
 .card-list {
     width: 90%;
     margin: 0px;
-    display: inline-flex; 
-    margin-bottom: 30px;
+    /* display: inline-flex;
+    margin-bottom: 30px; */
+    padding-bottom: 3.125em;
 }
 
 .card-list ul li {
     margin: 0px;
+}
+
+.card-list li {
+    margin-bottom: 1.250em;
+    margin-right: 1.250em;
 }
 
 .card-home {
@@ -491,7 +497,7 @@ h4, h5, h6 {
     height: auto;
     text-align: center;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 1.250em;
 }
 
 .banner-image {
@@ -1066,6 +1072,7 @@ h4, h5, h6 {
     display: inline-block;
     vertical-align: top; 
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .speech-bubble {

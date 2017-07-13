@@ -167,6 +167,8 @@ hr.categories {
 h1 {
     color: #aca084;
     font-family: roboto slab, roboto;
+    font-size: 1.8em;
+    font-weight: 300;
 }
 
 h2, h3 {
@@ -194,12 +196,18 @@ h4, h5, h6 {
 .card-list {
     width: 90%;
     margin: 0px;
-    display: inline-flex; 
-    margin-bottom: 30px;
+    /* display: inline-flex;
+    margin-bottom: 30px; */
+    padding-bottom: 3.125em;
 }
 
 .card-list ul li {
     margin: 0px;
+}
+
+.card-list li {
+    margin-bottom: 1.250em;
+    margin-right: 1.250em;
 }
 
 .card-home {
@@ -486,19 +494,36 @@ h4, h5, h6 {
 /* BANNER - responsive image */
 
 .box-image {
-    width: 80%;
     height: auto;
-    align-content: center;
+    text-align: center;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 1.250em;
 }
- 
+
 .banner-image {
-    width: 1280px;
-    height: 354px;
+    width: 768px;
+    height: 353px;
     background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
     background-repeat: no-repeat;
-    align-content: center;
+}
+ 
+@media only screen and (min-width: 1000px) {
+    .banner-image {
+    max-width: 100%;
+    height: auto;
+    background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
+    background-repeat: no-repeat;
+    }
+}
+
+/* For devices 640px and larger: */
+@media only screen and (min-width: 400px) {
+    .banner-image {
+    max-width: 100%;
+    height: auto;
+    background-image:url(../img/almanac/banner/Almanac-banner-768px.jpg);
+    background-repeat: no-repeat;
+    }
 }
 
 /* For devices 400px and smaller: */
@@ -507,32 +532,9 @@ h4, h5, h6 {
     max-width: 100%;
     height: auto;
     background-image:url(../img/almanac/banner/Almanac-banner-400px.jpg);
-    cursor: pointer;
+    background-repeat: no-repeat;
     }
 }
-
-/* For devices 640px and larger: */
-@media only screen and (min-width: 640px) {
-    .banner-image {
-    max-width: 100%;
-    height: auto;
-    background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
-    cursor: pointer;
-    }
-}
-
-/*
-.img { background-image: url(medium.jpg); } 
-
-@media (min-width: 800px) { 
-    .img { background-image: url(large.jpg); 
-    } 
-} 
-
-@media (min-width: 1000px) { 
-    .img { background-image: url(extralarge.jpg); 
-    } 
-} */
 
 /* RESPONSIVE BANNER */
 
@@ -1070,6 +1072,7 @@ h4, h5, h6 {
     display: inline-block;
     vertical-align: top; 
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .speech-bubble {
@@ -1141,6 +1144,13 @@ h4, h5, h6 {
 }
 
 /* ARTICLES */
+
+.post-title {
+    color: #aca084;
+    font-family: roboto slab, roboto;
+    font-size: 1.5em;
+    font-weight: 300;
+}
 
 .post-video {
     width: 90%;
