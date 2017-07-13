@@ -1,3 +1,29 @@
+       <h2>CARDS - Search Result</h2>
+            <ul *ngIf="!error">
+            <li *ngFor= "let result of results"   >
+                <div class="card-result">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul class="card-list">
+                            <li class="left-card-result" [style.background-image]="'url(' + result.image + ')'">
+                                <div class="transbox"></div>
+                            </li>
+                            <!-- <li style="width:16px">&nbsp;</li> -->
+                            <li class="right-card-result">
+                                <div class="category-card">{{DataService.modulename}}</div>
+                                <div class="title-card">{{result.name}}
+                                    <hr class="category" />
+
+                                    <p class="text-card">  {{result.description}}</p>
+                                
+                                </div>
+                            </li>
+                        </ul>
+                </div>
+            </li>
+            </ul>
+
 <br>
  <div class="row" *ngIf="loading == true">
        <div class="col-md-12" >

@@ -297,7 +297,7 @@ router.get('/login', function (req, res) {
         res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
         res.cookie(authHelper.REFRESH_TOKEN_CACHE_KEY, refreshToken);
         req.session.login ='Logged in';
-        res.redirect('/');
+        res.redirect('/modules');
       } else {
         console.log(JSON.parse(e.data).error_description);
         res.status(500);
