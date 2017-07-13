@@ -46,17 +46,19 @@
 }
 
 .menu-almanac {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     color: #616b70;
     float: right;
     position: relative;
     padding-right: 0px;
     margin-right: 20px;
+    width: 100%;
 }
 
+/*
 .navbar-nav, ul li {
-    /*display: inline-table;*/
-}
+    display: inline-table;
+} */
 
 .navbar-nav a {
     color: #616b70;
@@ -73,7 +75,7 @@
     margin-left: 0px;
     padding-left: 0;
     padding-right: 0;
-    /* margin-top: 15px; */
+    margin-top: 30px;
     z-index: 0;
     left: 0px;
 }
@@ -89,6 +91,7 @@
     position: absolute;
     z-index: 0;
     left: 0px;
+    margin-top: 15px;
 }
 
 .header-bg-break {
@@ -97,7 +100,8 @@
     float: right;
     position: relative;
     background-image: url("../img/almanac/header/header-breakpoint.png");
-    margin-right: -15px;
+    /* margin-right: -15px; */
+    margin-top: 15px;
     padding-right: 0;
     z-index: 4;
     left: 0px;
@@ -193,10 +197,10 @@ h4, h5, h6 {
 
 /* CARDS - HOME */
 
-.card-list {
-    width: 90%;
+.card-list {  
     margin: 0px;
-    /* display: inline-flex;
+    /* width: 90%;
+    display: inline-flex;
     margin-bottom: 30px; */
     padding-bottom: 3.125em;
 }
@@ -1132,14 +1136,14 @@ h4, h5, h6 {
 
 /* SLIDER */
 
-.noUi-handle {
-  border: 1px solid #ffd180;
+.noUi-handle-orange {
+  border: 1px solid #ffa402;
   border-radius: 3px;
   background: #ffa402;
   cursor: default;
   box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #ffa402, 0 3px 6px -3px #BBB;
 }
-.noUi-active {
+.noUi-active-orange {
   box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
 }
 
