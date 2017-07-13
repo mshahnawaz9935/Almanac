@@ -53,6 +53,20 @@ export class PostsComponent implements OnInit {
       });
   }
 
+  getdata2(data)
+  {
+    var text= [];
+        for(let section of data)
+        {
+           text.push(section.text.text);
+           
+        }
+
+
+  }
+
+
+
     getdata(data){
     
     for(let section of data)
