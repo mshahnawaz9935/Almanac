@@ -122,7 +122,6 @@ router.get('/search', (req, res) => {
 
 function subscription(token , email , callback){
 
-
 email = email.toLowerCase();
 console.log('Email is ' + email + 'Token is' + token);
 
@@ -210,8 +209,8 @@ router.get('/instances', (req, res) => {
 
    
 
-    });
-
+});
+ 
 
 });
 
