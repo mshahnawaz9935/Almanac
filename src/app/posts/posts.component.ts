@@ -31,6 +31,7 @@ export class PostsComponent implements OnInit {
     saved = false;
     value='';
     data;
+    hidden= false;
     saved_data = [];
     img_data = [];
     videoarray = [{url:'https://www.youtube.com/embed/tpYUAlZ64mE'},{url:'https://www.youtube.com/embed/tpYUAlZ64mE'}];
@@ -44,19 +45,24 @@ export class PostsComponent implements OnInit {
     this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
   
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          this.loading = false;
+         
           console.log(dataFromServer ,'sections ', dataFromServer.sections);
           this.img_data = dataFromServer.sections;
             this.getdata(dataFromServer.sections);
             this.getdata2(dataFromServer.sections);
-            
+             this.loading = false;
+             this.hidden = true;
             
       });
   }
 text=[];
 videos=[];
+images=[];
+hugeimage = 0;
+hugeimageurl = '';
   getdata2(data)
   {
+    this.images = [];
    this.text= [];
    this.videos= [];
 
@@ -67,8 +73,17 @@ videos=[];
            {
              this.videos.push(videourl.url);
            }
+           for(let image of section.images)
+           {
+             if(image.width > this.hugeimage)
+             {
+                this.hugeimageurl = image.url;
+             }
+           }
+           if(section.images.length > 0)
+            this.images.push(section.images[0].url);
         }
-                   console.log('Text array',this.text);
+     
 
   }
 
@@ -110,6 +125,7 @@ videos=[];
         this.http.get('http://localhost:3000/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
+             alert('Saved to Favourites');
         });
   }
 
@@ -122,10 +138,10 @@ videos=[];
   saveonenote()
   {
       // window.open('http://localhost:3000/onenote/writenote','_self');
-       alert('Saved to One Note');
         this.http.get('http://localhost:3000/onenote/writenote')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Write note', dataFromServer);
+           alert('Saved to One Note');
         });
 
   }

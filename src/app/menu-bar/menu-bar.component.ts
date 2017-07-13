@@ -96,10 +96,13 @@ exists = false;
 
    }
 list=[];
+moduledata;
    getdata(data)
    {
      this.list = [];
         console.log('Modules data is' , data);
+        this.moduledata = data;
+
         data.forEach(element => {
           console.log(element.name);
           this.list.push(element.name);
@@ -112,6 +115,13 @@ list=[];
   {
     this.router.navigate(['/search']);
     value='';
+  }
+    onclick(moduleid, modulename){
+    console.log(moduleid, modulename, 'Module clicked');
+    this.DataService.moduleid = moduleid;
+    this.DataService.modulename = modulename;
+    this.router.navigate(['/search']);
+    
   }
 
 }

@@ -1,5 +1,5 @@
       <md-progress-spinner *ngIf="loading == true" class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-      <div *ngIf="!saved">
+      <div *ngIf="hidden" class="col-md-12" >
             
             <div class="home-text" >
                 <p [innerHTML]= "text[0]"></p>
@@ -7,41 +7,41 @@
                 <br /><br />
                 
                 <div class="post-video">
-                    <iframe allowfullscreen="" frameborder="0" height="315" width="560" [src]="videos[0] | safe"></iframe>
+                    <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="videos[0] | safe"></iframe>
                 </div>
             
             </div>
-
-        <div class="home-title">Classification</div>
             
+
+       
         <div class="home-text" [innerHTML]= "text[1]">
                  
         </div> 
-
           <div class="post-img-right">
-                 <img src="assets/img/almanac/cards/picutre-02.jpg" />
-                 </div>
+                 <img [src]="images[1]" />
+                 </div>   
+          
         <div class="home-text" [innerHTML]= "text[2]">  </div>
            
             
-        <div class="home-title">More definitions</div>
-        
-        <div class="home-text">
-            
-            As above, so below: Rock or stone is a natural substance, a solid aggregate of one or more minerals or mineraloids. For example, granite, a common rock, is a combination of the minerals quartz, feldspar and biotite. The Earth's outer solid layer, the lithosphere, is made of rock.<br /><br />
 
-            Rock has been used by mankind throughout history. The minerals and metals found in rocks have been essential to human civilization.<br /><br />
+        
+        <div class="home-text">      </div>
+            
+            
+     
             
             <div class="post-video">
-                <iframe _ngcontent-xpd-50="" allowfullscreen="" frameborder="0" height="315" width="560" ng-reflect-src="http://www.youtube.com/embed/zUh3WeilFN4" src="http://www.youtube.com/embed/zUh3WeilFN4"></iframe>
+                 <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="videos[1] | safe"></iframe>
             </div>
             
-            Rocks are geologically classified according to characteristics such as mineral and chemical composition, permeability, the texture of the constituent particles, and particle size. These physical properties are the end result of the processes that formed the rocks. Over the course of time, rocks can transform from one type into another, as described by the geological model called the rock cycle. These events produce three general classes of rock: igneous, sedimentary, and metamorphic.<br /><br />
+            I repeat: Rock are geologically classified according to characteristics such as mineral and chemical composition, permeability, the texture of the constituent particles, and particle size. These physical properties are the end result of the processes that formed the rocks. Over the course of time, rocks can transform from one type into another, as described by the geological model called the rock cycle. These events produce three general classes of rock: igneous, sedimentary, and metamorphic.<br /><br />
             
-            <div class="post-img-huge"><img src="assets/img/almanac/cards/img-favourites-01.jpg" /></div>
+
+            <div class="post-img-huge"><img [src]="hugeimageurl" /></div>
             
-            I repeat: Rocks are geologically classified according to characteristics such as mineral and chemical composition, permeability, the texture of the constituent particles, and particle size. These physical properties are the end result of the processes that formed the rocks. Over the course of time, rocks can transform from one type into another, as described by the geological model called the rock cycle. These events produce three general classes of rock: igneous, sedimentary, and metamorphic.<br /><br />
-            
+              <div class="home-text" [innerHTML]= "text[3]">  </div>
+
             <ul class="post-img-grid">
                 <li><img src="assets/img/almanac/cards/img-favourites-02.jpg" /></li>
                 <li><img src="assets/img/almanac/cards/img-favourites-02.jpg" /></li>
@@ -49,15 +49,9 @@
                 <li><img src="assets/img/almanac/cards/img-favourites-02.jpg" /></li>
             </ul>
             
-        </div>
-            
-        <div class="home-title">More classification</div>
-        
-        <div class="home-text">
-            At a granular level, rocks are composed of grains of minerals, which, in turn, are homogeneous solids formed from a chemical compound that is arranged in an orderly manner. The aggregate minerals forming the rock are held together by chemical bonds. The types and abundance of minerals in a rock are determined by the manner in which the rock was formed. Many rocks contain silica (SiO2); a compound of silicon and oxygen that forms 74.3% of the Earth's crust. This material forms crystals with other compounds in the rock. The proportion of silica in rocks and minerals is a major factor in determining their name and properties.<br /><br />
-            
-            
-        </div>
+   
+          <div class="home-text" [innerHTML]= "text[3]">  </div>
+
         
         <h4>Was this article what you were looking for?</h4>
             
@@ -66,10 +60,10 @@
                         Yes! Save to your favourites or export to OneNote:
                     </li>
                     <li>
-                        <button type="button" class="icon-button" title="Save to Favourites"><i class="fa fa-star"></i></button>
+                        <button (click)="savedata()" type="button" class="icon-button" title="Save to Favourites"><i class="fa fa-star"></i></button>
                     </li>
                     <li>
-                        <button type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
+                        <button (click)="saveonenote4()" type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
                     </li>
             </ul>
             
@@ -87,7 +81,7 @@
                         No! Take me back:
                     </li>
                     <li>
-                        <button type="button" class="arrow-left arrow-left-beige">Back to Rocks</button>
+                        <button type="button" class="arrow-left arrow-left-beige">Back to Search</button>
                     </li>
                     <li>
                         <button type="button" class="arrow-left arrow-left-beige">Back to Geography</button>
