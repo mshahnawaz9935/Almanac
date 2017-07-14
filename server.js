@@ -32,7 +32,7 @@ app.use('/onenote', onenote);
 app.use(session({
   secret: '12345QWERTY-SECRET',
   name: 'nodecookie',
-  resave: false,
+  resave: true,
   saveUninitialized: false
 }));
 

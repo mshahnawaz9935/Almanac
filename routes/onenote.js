@@ -335,7 +335,7 @@ function aboutme(req,res)
       if (response.statusCode === 200) {
                 console.log(body);
                 req.session.email = JSON.parse(body).userPrincipalName;
-                console.log(JSON.parse(body).displayName,'Session email' ,  req.session.email); 
+                console.log(JSON.parse(body).displayName,'About email' ,  req.session.email); 
                 res.json(JSON.parse(body).displayName);
         //callback(null, JSON.parse(body));
 
