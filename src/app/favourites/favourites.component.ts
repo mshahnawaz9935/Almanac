@@ -50,12 +50,15 @@ favs_data = [];
 
   removearticle;
   deleteArticle(index)
-  {
+  { 
+    this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
       this.http.get('https://angular2ap.azurewebsites.net/api/delete?id=' + this.removearticle._id)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
+            this.loading = false;
+            alert('Successfully Deleted');
           window.location.reload();
         });
 

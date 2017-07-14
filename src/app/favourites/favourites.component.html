@@ -1,3 +1,8 @@
+   <div class="card-block" *ngIf="loading == true">
+                     <h4 class="card-title" >Loading Modules...Please wait</h4>
+      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+      </div>
+
 <ul> <li class="card-fav" *ngFor="let data of favs_data; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%"   >
                             <div class="transbox-fav"  >
