@@ -23,7 +23,7 @@ favs_data = [];
   constructor(private http:Http) {
     this.toggle = true;
 
-         this.http.get('http://localhost:3000/api/getdata')
+         this.http.get('https://angular2ap.azurewebsites.net/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( 'Saved data in db' , dataFromServer);
           if(dataFromServer.length == 0 )
@@ -53,7 +53,7 @@ favs_data = [];
   {
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
-      this.http.get('http://localhost:3000/api/delete?id=' + this.removearticle._id)
+      this.http.get('https://angular2ap.azurewebsites.net/api/delete?id=' + this.removearticle._id)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
           window.location.reload();

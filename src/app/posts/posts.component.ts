@@ -42,7 +42,7 @@ export class PostsComponent implements OnInit {
 
       this.data = this.DataService.myquery;
       console.log(this.DataService.modulename ,'Article id' , this.DataService.myquery.articleid);
-    this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
+    this.http.get('https://angular2ap.azurewebsites.net/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
   
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
          
@@ -122,7 +122,7 @@ hugeimageurl = '';
 
   savedata()
   {
-        this.http.get('http://localhost:3000/api/store')
+        this.http.get('https://angular2ap.azurewebsites.net/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
              alert('Saved to Favourites');
@@ -131,14 +131,14 @@ hugeimageurl = '';
 
   savenote()
   {
-       window.open('http://localhost:3000/note/token','_self');
+       window.open('https://angular2ap.azurewebsites.net/note/token','_self');
        alert('Saved to Note');
 
   }
   saveonenote()
   {
-      // window.open('http://localhost:3000/onenote/writenote','_self');
-        this.http.get('http://localhost:3000/onenote/writenote')
+      // window.open('https://angular2ap.azurewebsites.net/onenote/writenote','_self');
+        this.http.get('https://angular2ap.azurewebsites.net/onenote/writenote')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Write note', dataFromServer);
            alert('Saved to One Note');
@@ -149,7 +149,7 @@ hugeimageurl = '';
   saveonenote2()
   {
     this.loading = true;
-    this.http.get('http://localhost:3000/onenote/checknote3')
+    this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote3')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
           alert('Save to One Note');
@@ -159,7 +159,7 @@ hugeimageurl = '';
   saveonenote4()
   {
     this.loading = true;
-    this.http.get('http://localhost:3000/onenote/checknote4')
+    this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote4')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
           alert('Save to One Note 4');
@@ -171,7 +171,7 @@ hugeimageurl = '';
 
   checknote()
   {
-       this.http.get('http://localhost:3000/onenote/checknote2')
+       this.http.get('https://angular2ap.azurewebsites.net/onenote/checknote2')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Check note', dataFromServer);
           if(dataFromServer == 'Notebook exists')
@@ -185,7 +185,7 @@ hugeimageurl = '';
 
         //   this.saved = true;
         //   this.loading = true;
-        //  this.http.get('http://localhost:3000/api/getdata')
+        //  this.http.get('https://angular2ap.azurewebsites.net/api/getdata')
         // .map((res: Response) => res.json()).subscribe((dataFromServer) => {
         //   console.log( 'Saved data in db' , dataFromServer);
         //   this.saved_data = dataFromServer;

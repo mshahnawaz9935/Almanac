@@ -18,7 +18,7 @@ exists = false;
    constructor(private http:Http, private DataService: DataService, private router:Router)  {
 
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
-       this.http.get('http://localhost:3000/onenote/checklogin')
+       this.http.get('https://angular2ap.azurewebsites.net/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -30,7 +30,7 @@ exists = false;
           { this.authenticated1 =true;
           console.log('Logged in' ,this.authenticated1);
 
-          this.http.get('http://localhost:3000/onenote/aboutme')
+          this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
@@ -70,20 +70,20 @@ exists = false;
         });
 
 
-        }, 300);
+        }, 600);
 
         
 
 
           }
         });
-         this.http.get('http://localhost:3000/api/token')
+         this.http.get('https://angular2ap.azurewebsites.net/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
         setInterval(()=>{
 
-           this.http.get('http://localhost:3000/api/token')
+           this.http.get('https://angular2ap.azurewebsites.net/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );

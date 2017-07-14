@@ -24,23 +24,23 @@
 /* HEADER */
 
 .general-navbar-header {
-  width: 100%;
-  height: 73px;
+  /*width: 100%;*/
+  /*height: 73px;*/
   background-color: #ffffff;
-  padding: 0px;
+  /*padding: 0px;*/
   box-shadow: none;
   font-family: roboto slab, roboto; 
   font-size: 1em;
   padding-right: 15px;
-  position: relative;
+  /*position: relative;*/
 }
 
 .logo-almanac {
     width: 273px;
     height: 73px;
-    float: left;
-    margin-left: 70px;
-    position: absolute;
+    /*float: left;*/
+    margin-left: 40px;
+    /*position: absolute;*/
     text-decoration: none;
     z-index: 2;
 }
@@ -69,9 +69,9 @@
 }
 
 .header-bg {
-    width: 100%;
+    /*width: 100%;*/
     height: 14px;
-    float: left;
+    /*float: left;*/
     margin-left: 0px;
     padding-left: 0;
     padding-right: 0;
@@ -83,7 +83,7 @@
 .header-bg-img {
     width: 100%;
     height: 14px;
-    float: left;
+    /*float: left;*/
     margin-left: 0px;
     padding-left: 0;
     padding-right: 0;
