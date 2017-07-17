@@ -22,8 +22,8 @@ export class ResultsComponent implements OnInit {
 
     if(this.DataService.query != '')
     {
-    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      this.http.get('http://localhost:3000/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid)
+    // this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      this.http.get('https://angular2ap.azurewebsites.net/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid)
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
           this.data = dataFromServer;
@@ -47,7 +47,10 @@ export class ResultsComponent implements OnInit {
       for(let desc of data.results)
       {
         let len =desc.description.length;
-        desc.description = desc.description.substring(9,len-3);
+        // if(len > 50)
+        // desc.description = desc.description.substring(9, 70);
+        // else 
+        desc.description = desc.description.substring(9, len-3);
       }
       this.results = data.results;
     }

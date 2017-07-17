@@ -7,10 +7,10 @@ var mongoose   = require('mongoose');
 var session = require('express-session');
 
 var favourites;
- //mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
+ mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
 
-  mongoose.connect('mongodb://127.0.0.1:27017/test');
+ // mongoose.connect('mongodb://127.0.0.1:27017/test');
 console.log('Api running check');
   var token = '';
 router.get('/token', (req, res) => {
@@ -26,8 +26,8 @@ router.get('/token', (req, res) => {
 
 router.get('/getdata', (req, res) => {
 
- // MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
-   MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
+  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+  // MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -35,8 +35,8 @@ router.get('/getdata', (req, res) => {
     }
     db.close();
 });
- // MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
-  MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
+  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
+ // MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -90,7 +90,7 @@ router.get('/search', (req, res) => {
     //     console.log(response.body);
     // res.send(response.body);
     // });
-    //  request.get('http://services.almanac-learning.com/personalised-composition-service/composer/students/5922b40c74748a1b1c8e4408/instances/5922b42274748a1b1c8e440f/articles?searchQuery=' + id+ '&differentiator=None',function(err,response,body){
+    //  request.get('http://services.almanac-learning.com/composer/students/5922b40c74748a1b1c8e4408/instances/5922b42274748a1b1c8e440f/articles?searchQuery=' + id+ '&differentiator=None',function(err,response,body){
     //     console.log(response.body);
     // res.send(response.body);
     // });
@@ -102,7 +102,7 @@ router.get('/search', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=None&type=Web',
+        url: 'http://services.almanac-learning.com/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=None&type=Web',
         method: 'GET',
         headers: headers,
     }
@@ -132,7 +132,7 @@ console.log('Email is ' + email + 'Token is' + token);
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + email,
+        url: 'http://services.almanac-learning.com/composer/students/' + email,
         method: 'GET',
         headers: headers,
     }
@@ -151,8 +151,8 @@ console.log('Email is ' + email + 'Token is' + token);
         }
         
         }
-        else if(respone.statusCode == 500 && email !== undefined)
-        { console.log('nuffing email' , email, error ,response.statusCode, response.headers);
+        else if(response.statusCode == 500 && email !== undefined)
+        { console.log('nuffing 500' , email, error ,response.statusCode, response.headers);
             callback(false , '');
         }
          else
@@ -201,7 +201,7 @@ router.get('/instances', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/personalised-composition-service/composer/students/'+ id +'/instances',
+        url: 'http://services.almanac-learning.com/composer/students/'+ id +'/instances',
         method: 'GET',
         headers: headers,
     }
@@ -270,7 +270,7 @@ req.session.articleid = articleid;
 
 // request({
 //  //   url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-//     url:"http://services.almanac-learning.com/personalised-composition-service/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
+//     url:"http://services.almanac-learning.com/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
 //     method: "GET",
 //     json: true,   // <--Very important!!!
 //  //   body: queryObject,
@@ -293,7 +293,7 @@ req.session.articleid = articleid;
         Authorization: 'Bearer ' + token 
     }
     var options = {
-         url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + req.session.studentid + '/instances/'+ req.session.moduleid +'/articles/' + req.session.articleid + '/',
+         url:'http://services.almanac-learning.com/composer/students/' + req.session.studentid + '/instances/'+ req.session.moduleid +'/articles/' + req.session.articleid + '/',
         method: 'GET',
         headers: headers,
     }
@@ -315,8 +315,8 @@ router.get('/store', (req, res) => {
 // Delete all documents in a colection  db.test.remove({})
 
 
-  //  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-      MongoClient.connect('mongodb://127.0.0.1:27017/test',
+    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+  //    MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
@@ -351,8 +351,8 @@ router.get('/delete', (req, res) => {
     var ObjectId = require('mongodb').ObjectID;
     var id = req.query.id;
     console.log(id);
-  //   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-       MongoClient.connect('mongodb://127.0.0.1:27017/test',
+     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+   //    MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;

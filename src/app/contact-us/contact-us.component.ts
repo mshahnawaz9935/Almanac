@@ -25,7 +25,7 @@ export class ContactUsComponent implements OnInit {
   obj={};
   onclick()
   {
-    this.http.get('http://localhost:3000/api/users')
+    this.http.get('https://angular2ap.azurewebsites.net/api/users')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           this.data = dataFromServer;
           console.log(this.data);
@@ -40,7 +40,7 @@ export class ContactUsComponent implements OnInit {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.post('http://localhost:3000/api/users', { name : this.model.name , phone: this.model.phone } , options)
+        this.http.post('https://angular2ap.azurewebsites.net/api/users', { name : this.model.name , phone: this.model.phone } , options)
                         .map(this.extractData)
                         .subscribe((dataFromServer) => dataFromServer );
       }
@@ -52,7 +52,7 @@ export class ContactUsComponent implements OnInit {
     }
     ondelete()
     {
-      this.http.delete('http://localhost:3000/api/users/'+this.model.name) // ...using put request
+      this.http.delete('https://angular2ap.azurewebsites.net/api/users/'+this.model.name) // ...using put request
                          .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
                           .subscribe(
                                 data => {

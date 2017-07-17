@@ -648,7 +648,7 @@ function writespecific2(token,topic,chapter, articleid ,studentid, moduleid,call
         Authorization: 'Bearer ' + token2 
     }
     var options = {
-         url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
+         url:'http://services.almanac-learning.com/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
         method: 'GET',
         headers: headers,
     }
@@ -741,7 +741,7 @@ var counter =0;
         Authorization: 'Bearer ' + token2 
     }
     var options = {
-             url:'http://services.almanac-learning.com/personalised-composition-service/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
+             url:'http://services.almanac-learning.com/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
         method: 'GET',
         headers: headers,
     }
