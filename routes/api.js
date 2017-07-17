@@ -201,7 +201,7 @@ router.get('/instances', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://services.almanac-learning.com/composer/students/'+ id +'/instances',
+        url: 'https://services.almanac-learning.com/composer/students/'+ id +'/instances',
         method: 'GET',
         headers: headers,
     }
