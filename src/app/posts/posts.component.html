@@ -81,15 +81,15 @@
                         No! Take me back:
                     </li>
                     <li>
-                        <button type="button" class="arrow-left arrow-left-beige">Back to Search</button>
+                        <a class="arrow-left arrow-left-beige">Back to Search</a>
                     </li>
                     <li>
-                        <button type="button" class="arrow-left arrow-left-beige">Back to Geography</button>
+                        <a class="arrow-left arrow-left-beige">Back to Geography</a>
                     </li>
             </ul>
 </div>
 <br>
-<div class="row">
+<!--<div class="row">
              <div class="col-md-12"  >
                     <div class="card">
                     <div class="view overlay hm-white-slight">
@@ -114,9 +114,9 @@
                 </div>
              </div>  
              </div>
-             <br>
+             <br>-->
 
-
+<!--
  <div class="row" *ngIf="!saved" >
              <div class="col-md-12" *ngFor= "let image of img_data"  >
                    <div class="card">
@@ -138,23 +138,8 @@
                         </carousel>
                          <div  class="mask waves-effect waves-light" *ngIf= "image.videos.length>0">
                            <iframe width="560" height="315" [src]="image.videos[0].url | safe" frameborder="0" allowfullscreen></iframe></div>
-                   <!--<div class="view overlay hm-white-slight" *ngFor= "let url of image.images.image" >
-                    
-                  
-                     <div class="card-block" >
-                            
-                                  <h4 class="card-title">{{url.caption}}</h4>
-                                  <hr>
-                             
-                          </div>
-                        <img [src]="url.url" alt="" style="width:100%">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          
-                        </div>-->
-                         
-                         
+
+                                    
               </div>
               <br>
               </div>
@@ -192,43 +177,6 @@
               </div>       
               </div>     
                      
-            </div>
-           
-                        <!--<div *ngFor= "let video of videoarray" class="mask waves-effect waves-light">
-                           <iframe width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(video.url)" frameborder="0" allowfullscreen></iframe>
-                          {{video.url}}</div>-->
-                         
-
-
-
-
-   <!-- Article without carousel
-     <div class="row" >
-             <div class="col-md-12" *ngFor= "let image of img_data.section"  >
-                   <div class="card">
-          
-                        <div class="card-block" >
-                  
-                        <p [innerHTML]="image.text.text" class="card-text">    </p>      
-                    </div>
-                   <div class="view overlay hm-white-slight" *ngFor= "let url of image.images.image" >
-                  
-                     <div class="card-block" >
-                            
-                                  <h4 class="card-title">{{url.caption}}</h4>
-                                  <hr>
-                             
-                          </div>
-                        <img [src]="url.url" alt="" style="width:100%">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          
-                        </div>
-                         
-                         
-              </div>
-              <br>
-              </div>
-                     
             </div>-->
+           
+                  
