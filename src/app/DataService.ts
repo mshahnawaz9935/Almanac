@@ -16,12 +16,12 @@ slider1='';
 slider2='';
     constructor(private http: Http) {
 
-        this.http.get('http://angular2ap-testing.azurewebsites.net/api/token')
+        this.http.get('http://localhost:3000/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
 
-    this.http.get('http://angular2ap-testing.azurewebsites.net/onenote/checklogin')
+    this.http.get('http://localhost:3000/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Service Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -40,7 +40,7 @@ text= 'menu';
     getInstances() {
 
          // ...using get request
-         return this.http.get('http://angular2ap-testing.azurewebsites.net/api/instances?id='+this.text )
+         return this.http.get('http://localhost:3000/api/instances?id='+this.text )
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
                          //...errors if any

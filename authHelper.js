@@ -10,10 +10,10 @@ var credentials = {
   token_endpoint: '/oauth2/v2.0/token',
   // client_id: 'd23a1a63-2516-4822-bbef-ac9fbf1c05fa',
   // client_secret: 'DrqO19XuXbGyHVz3oULCHdX',
-  // redirect_uri: 'http://angular2ap-testing.azurewebsites.net/onenote/login',
+  // redirect_uri: 'http://localhost:3000/onenote/login',
   client_id: 'fa64935f-0786-46d4-9a8d-b9e4b6d66fa9',
   client_secret: 'wMiUNne6zxtmmgTjb4CUOJ7',
-  redirect_uri: 'http://angular2ap-testing.azurewebsites.net/onenote/login',
+  redirect_uri: 'http://localhost:3000/onenote/login',
   scope: ['User.Read Mail.Send Mail.ReadWrite Notes.Create offline_access ']
 };
 
