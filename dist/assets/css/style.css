@@ -206,6 +206,7 @@ h4, h5, h6 {
 
 .post-fav li {
     display: inline-table;
+    margin-right: 1.250em;
 }
 
 /* CARDS - HOME */
