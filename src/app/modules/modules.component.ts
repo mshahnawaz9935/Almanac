@@ -20,9 +20,9 @@ export class ModulesComponent implements OnInit {
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
       this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
-              .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-                console.log('Login status is ' + dataFromServer );
-                this.user = dataFromServer;
+              .map((res: Response) => res.json()).subscribe((Serverdata) => {
+                console.log('Login status is ' + Serverdata );
+                this.user = Serverdata;
                 
        //       this.DataService.getInstances().subscribe((dataFromServer) => {
           this.http.get('https://angular2ap.azurewebsites.net/api/instances?id=modules')
@@ -32,7 +32,6 @@ export class ModulesComponent implements OnInit {
                             console.log('Error instances is ', error);
                             if(error.status == '500')
                             {
-                              this.loading = true;
                             console.log('500 occured', error.status);
                             this.getInstances();
                             }
@@ -40,17 +39,18 @@ export class ModulesComponent implements OnInit {
                          })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
-           this.loading = false;
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'No Modules Subscribed';
              this.exists = false;
+             this.loading = false;
               
            }
            else 
            {
                this.data = dataFromServer;
              this.exists = false;
+             this.loading = false;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
            }
