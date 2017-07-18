@@ -61,18 +61,21 @@ images=[];
 images2=[];
 hugeimage = 0;
 hugeimageurl = '';
+title= [];
   getdata2(data)
   {
     this.images = [];
    this.text= [];
    this.videos= [];
    this.images2 = [];
+   this.title = [];
 
         for(let mode of data)
         {
           mode = mode.sections;
         for(let section of mode)
         {
+            this.title.push(section.title);
                 let len =section.text.text.length;
                 section.text.text = section.text.text.substring(9,len-3);
            this.text.push(section.text.text);
@@ -80,7 +83,8 @@ hugeimageurl = '';
            {
            for(let videourl of section.videos)
            {
-             videourl.url = 'https' + videourl.url.substring(4, videourl.url.length);
+             if(videourl.attribution == 'Youtube')
+             videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
              this.videos.push(videourl.url);
            }
           }
@@ -101,6 +105,7 @@ hugeimageurl = '';
         }
         }
         console.log('Videos' ,this.videos);
+           console.log('Images' ,this.images , this.images2);
      
 
   }

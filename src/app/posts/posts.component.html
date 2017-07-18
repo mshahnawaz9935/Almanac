@@ -2,6 +2,7 @@
       <div *ngIf="hidden" class="col-md-12" >
             
             <div  class="post-text" >
+                <h3> {{title[0]}} </h3>
                 <p [innerHTML]= "text[0]"></p>
                 
                 <br /><br />
@@ -13,7 +14,7 @@
             </div>
             
 
-       
+          <h3> {{title[1]}} </h3>
         <div class="post-text"  [innerHTML]= "text[1]">
                  
         </div> 
@@ -37,14 +38,16 @@
                   
 
             <div class="post-img-huge"><img [src]="hugeimageurl" /></div>
+
+               <h3> {{title[2]}} </h3>
             
               <div class="post-text" [innerHTML]= "text[3]">  </div>
 
             <ul class="post-img-grid">
-                <li><img [src]="images2[5]" /></li>
-                <li><img [src]="images2[6]" /></li>
-                <li><img [src]="images2[7]" /></li>
-                <li><img [src]="images2[8]" /></li>
+                <li><img [src]="images2[0]" /></li>
+                <li><img [src]="images2[1]" /></li>
+                <li><img [src]="images2[2]" /></li>
+                <li><img [src]="images2[3]" /></li>
             </ul>
             
    
