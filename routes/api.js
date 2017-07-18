@@ -110,6 +110,7 @@ router.get('/search', (req, res) => {
     }
 
     request(options, function (error, response, body) {
+        console.log(options.url);
         if (!error && response.statusCode == 200) {
             console.log('Results are' , JSON.parse(response.body));
             res.send(response.body);
