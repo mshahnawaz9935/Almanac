@@ -7,10 +7,10 @@ var mongoose   = require('mongoose');
 var session = require('express-session');
 
 var favourites;
- mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
+// mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
 
- // mongoose.connect('mongodb://127.0.0.1:27017/test');
+  mongoose.connect('mongodb://127.0.0.1:27017/test');
 console.log('Api running check');
   var token = '';
 router.get('/token', (req, res) => {
