@@ -75,8 +75,10 @@ imagesdata='';
        let title = data.title;
        let description = data.description;
        let modulename = data.modulename;
-   
-       for(let section of data.sections)
+       
+       for(let mode of data)
+       {
+       for(let section of mode.sections)
        {
          if(section.images.length >0 )
           {
@@ -92,6 +94,7 @@ imagesdata='';
           }
 
         }
+       }
             console.log('here image url', this.imagesdata);
         this.favs_data.push({ 'title': title , 'description' : description , 'modulename' : modulename , 'image': this.imagesdata  });
     }
@@ -105,10 +108,12 @@ imagesdata='';
     
     for(let data1 of data)
     {
-      console.log(data1 );
-      data1= data1.sections;
-      
-      for(let section of data1 )
+     
+     let mode= data1.modes;
+       console.log('Modes' , mode);
+      for(let data1 of mode)
+      {
+      for(let section of data1)
       {
       let len =section.text.text.length;
       console.log('Length of text is' ,len);
@@ -132,6 +137,7 @@ imagesdata='';
          }
 
 
+      }
       }
    
     }
