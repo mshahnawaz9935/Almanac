@@ -750,11 +750,13 @@ var counter =0;
         if (!error && response.statusCode == 200) {
        //         console.log("post query" + response.body);
                 favourites = JSON.parse(response.body);
-       console.log('response article' , response.body.sections , favourites.sections);
-            if(favourites.sections != undefined)
+       console.log('response article' , response.body.modes , favourites.modes);
+            if(favourites.modes != undefined)
             {
-            console.log('Sections length' ,favourites.sections.length);
-            for(var i=0; i< favourites.sections.length; i++) 
+            console.log('Modes length' ,favourites.modes.length);
+            favourites.modes.forEach(function (mode)
+            {
+            for(var i=0; i< mode.sections.length; i++) 
             {
        
                     url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
@@ -774,7 +776,7 @@ var counter =0;
                         }
                         else favourites.sections[i].images[j].caption ='No Caption'+ Math.floor((Math.random() * 1000) + 1);
                  //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(favourites.sections[i].images[j].attribution == 'cjfallon')
+                        if(favourites.sections[i].images[j].attribution == 'cjfallon1')   // changed name to stop check
                         {   
                         
                         console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
@@ -796,6 +798,7 @@ var counter =0;
                         }
                     }
                 }
+                })
                }
                callback(url , obj);
                

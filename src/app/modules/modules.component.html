@@ -1,20 +1,21 @@
  <!--  <hr class="categories" /> -->
         
+        
+        <div class="home-title">Welcome {{user}}</div>
+        <div class="home-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!<br>
+        {{subscription}}</div>
         <div class="card-block" *ngIf="loading == true">
                      <h4 class="card-title" >Loading Modules...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
-        <div class="home-title">Welcome {{user}}</div>
-        <div class="home-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!<br>
-        {{subscription}}</div>
         
         <ul class="card-list" *ngIf="exists">
             <li>
                 <div class="card">
                     <div class="bg-card">
-                        <div class="progress">
+                        <!--<div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        </div>-->
                         <ul>
                             <li class="left-card">
                                 <div class="transbox"></div>
@@ -175,15 +176,15 @@
                <li  *ngFor="let modules of data;let i=index" >
                 <div class="card" (click)="onclick(modules.id,modules.name)" >
                     <div class="bg-card">
-                        <div class="progress">
+                        <!--<div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        </div>-->
                         <ul>
                             <li class="left-card-img2">
                                 <div class="transbox"></div>
                             </li>
                             <li class="right-card">
-                                <div class="category-card">{{modules.id}}</div>
+                                <!--<div class="category-card">{{modules.id}}</div>-->
                                 <div class="title-card">{{modules.name}}</div>
                                 
                                 <div class="tags-card">
