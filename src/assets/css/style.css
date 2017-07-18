@@ -354,6 +354,8 @@ h4, h5, h6 {
 .card-fav {
     width: 260px;
     height: 260px;
+    display: inline-table;
+    margin-right: 1.250em;
     background-image: url("../img/almanac/cards/img-favourites-01.jpg");
     background-repeat: no-repeat;
     z-index: 0;
@@ -440,7 +442,7 @@ h4, h5, h6 {
 }
 
 .fav-button {
-    margin-left: -5px;
+    margin-left: 2px;
     margin-top: 0.625em;
     z-index: 4;
 }
@@ -460,6 +462,7 @@ h4, h5, h6 {
     color: white;
     display: inline; 
     line-height: 5px;
+    margin-right: 1.250em;
 }
 
 .fav-icon {
