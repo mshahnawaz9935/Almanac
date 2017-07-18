@@ -20,8 +20,10 @@
                  <form (ngSubmit)="onSubmit()">
                     <div class="row">
                   <div class="col-md-8">   
-                  <div class="md-form">
-                      <input type="text" id="form1" class="form-control" [(ngModel)]="model.search" name="search" value="{{value}}" #box ><!--(keyup.enter)="onEnter(box.value)">-->
+                  <div class="md-form input-group">
+                      <input type="text" id="form1" class="form-control" [(ngModel)]="model.search" name="search" value="{{value}}" #box >
+                      <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search fa-lg"></i></span>
+                      <!--(keyup.enter)="onEnter(box.value)">-->
                           <label for="form1" class="">{{model.search}}</label>
                       </div>
                       </div>
