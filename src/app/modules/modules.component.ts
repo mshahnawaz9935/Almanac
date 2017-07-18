@@ -19,13 +19,13 @@ export class ModulesComponent implements OnInit {
   subscription = '';
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
-      this.http.get('http://localhost:3000/onenote/aboutme')
+      this.http.get('https://angular2ap.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
                 
        //       this.DataService.getInstances().subscribe((dataFromServer) => {
-          this.http.get('http://localhost:3000/api/instances?id=modules')
+          this.http.get('https://angular2ap.azurewebsites.net/api/instances?id=modules')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
@@ -90,7 +90,7 @@ export class ModulesComponent implements OnInit {
 
       getInstances() {
 
-           this.http.get('http://localhost:3000/api/instances?id=modulesonerror')
+           this.http.get('https://angular2ap.azurewebsites.net/api/instances?id=modulesonerror')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
