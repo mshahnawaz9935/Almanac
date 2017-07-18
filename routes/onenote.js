@@ -760,9 +760,9 @@ var counter =0;
             {
        
                     url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
-                    url = url + "<h4>" +  favourites.sections[i].text.text + "</h4>";
+                    url = url + "<h4>" +  mode.sections[i].text.text.substring(9, mode.sections[i].text.text.length-3 ) + "</h4>";
                     try{
-                        var image_len = favourites.sections[i].images.length;
+                        var image_len = mode.sections[i].images.length;
                     }
                     catch(err)
                     {    continue;  }
@@ -770,19 +770,19 @@ var counter =0;
                     var x=0;
                     for(var j=0; j< image_len;j++)
                     {
-                        if(favourites.sections[i].images[j].caption !==null)
+                        if(mode.sections[i].images[j].caption !==null)
                         {
-                        favourites.sections[i].images[j].caption = favourites.sections[i].images[j].caption.substring(9,favourites.sections[i].images[j].caption.length-3 );
+                        mode.sections[i].images[j].caption = mode.sections[i].images[j].caption.substring(9,mode.sections[i].images[j].caption.length-3 );
                         }
-                        else favourites.sections[i].images[j].caption ='No Caption'+ Math.floor((Math.random() * 1000) + 1);
+                        else mode.sections[i].images[j].caption ='No Caption'+ Math.floor((Math.random() * 1000) + 1);
                  //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(favourites.sections[i].images[j].attribution == 'cjfallon1')   // changed name to stop check
+                        if(mode.sections[i].images[j].attribution == 'cjfallon1')   // changed name to stop check
                         {   
                         
                         console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
-                        var caption =  favourites.sections[i].images[j].caption;
-                        var fileurl =favourites.sections[i].images[j].url;
-                        var width = favourites.sections[i].images[j].width;
+                        var caption =  mode.sections[i].images[j].caption;
+                        var fileurl = mode.sections[i].images[j].url;
+                        var width =  mode.sections[i].images[j].width;
                         var attr = 'cjfallon';
                           console.log('File url is' ,fileurl );
                           var details = {"attr" : attr , "fileurl" : fileurl , "width" : caption  };
@@ -792,8 +792,8 @@ var counter =0;
                         }
                         else {
                     
-                    url = url+ "<p><img src=" + "\"" + favourites.sections[i].images[j].url + "\"" + "/><br>"+
-                    favourites.sections[i].images[j].caption +  "</p><p>Source:" + favourites.sections[i].images[j].attribution
+                    url = url+ "<p><img src=" + "\"" + mode.sections[i].images[j].url + "\"" + "/><br>"+
+                    mode.sections[i].images[j].caption +  "</p><p>Source:" + mode.sections[i].images[j].attribution
                     + "</p>" ;
                         }
                     }

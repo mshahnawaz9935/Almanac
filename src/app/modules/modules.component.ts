@@ -40,13 +40,12 @@ export class ModulesComponent implements OnInit {
                          })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
-           
+           this.loading = false;
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'No Modules Subscribed';
              this.exists = false;
-                  this.loading = false;
-
+              
            }
            else 
            {
@@ -54,7 +53,6 @@ export class ModulesComponent implements OnInit {
              this.exists = false;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
-                     this.loading = false;
            }
         }
         
