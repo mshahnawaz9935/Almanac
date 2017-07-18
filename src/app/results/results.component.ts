@@ -23,7 +23,8 @@ export class ResultsComponent implements OnInit {
     if(this.DataService.query != '')
     {
     // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      this.http.get('http://localhost:3000/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid)
+      this.http.get('http://localhost:3000/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid
+       + '&differentiator=' + this.DataService.slider1 + '&source=' + this.DataService.slider2 )
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
           this.data = dataFromServer;

@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
 
 
 export class SearchComponent implements OnInit {
-  model = new Search('', 1, 1);
+  model = new Search('', 0, 0);
   submitted = false;
   value=''; data=[];
   results;username='';password='';

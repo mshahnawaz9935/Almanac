@@ -46,10 +46,10 @@ export class PostsComponent implements OnInit {
   
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
          
-          console.log(dataFromServer ,'sections ', dataFromServer.sections);
-          this.img_data = dataFromServer.sections;
-            this.getdata(dataFromServer.sections);
-            this.getdata2(dataFromServer.sections);
+          console.log(dataFromServer );
+        //  this.img_data = dataFromServer.sections;
+          //  this.getdata(dataFromServer.sections);
+            this.getdata2(dataFromServer.modes);
              this.loading = false;
              this.hidden = true;
             
@@ -68,14 +68,24 @@ hugeimageurl = '';
    this.videos= [];
    this.images2 = [];
 
-        for(let section of data)
+        for(let mode of data)
         {
+          mode = mode.sections;
+        for(let section of mode)
+        {
+                let len =section.text.text.length;
+                section.text.text = section.text.text.substring(9,len-3);
            this.text.push(section.text.text);
+           if(section.videos !== undefined)
+           {
            for(let videourl of section.videos)
            {
              videourl.url = 'https' + videourl.url.substring(4, videourl.url.length);
              this.videos.push(videourl.url);
            }
+          }
+           if(section.images !== undefined)
+           {
            for(let image of section.images)
            {
              if(image.width > this.hugeimage)
@@ -87,6 +97,8 @@ hugeimageurl = '';
            }
            if(section.images.length > 0)
             this.images.push(section.images[0].url);
+           }
+        }
         }
         console.log('Videos' ,this.videos);
      

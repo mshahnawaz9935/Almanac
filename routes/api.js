@@ -83,6 +83,8 @@ router.get('/search', (req, res) => {
 
   var id = req.query.id;
   var moduleid = req.query.moduleid;
+  var differentiator = req.query.differentiator;
+  var publisher = req.query.source;
   req.session.moduleid = moduleid;
   console.log('id is ' + id);
 
@@ -90,7 +92,7 @@ router.get('/search', (req, res) => {
     //     console.log(response.body);
     // res.send(response.body);
     // });
-    //  request.get('http://almanaccomposer-testing.azurewebsites.net/composer/students/5922b40c74748a1b1c8e4408/instances/5922b42274748a1b1c8e440f/articles?searchQuery=' + id+ '&differentiator=None',function(err,response,body){
+    //  request.get('https://services.almanac-learning.com/composer/students/5922b40c74748a1b1c8e4408/instances/5922b42274748a1b1c8e440f/articles?searchQuery=' + id+ '&differentiator=None',function(err,response,body){
     //     console.log(response.body);
     // res.send(response.body);
     // });
@@ -102,7 +104,7 @@ router.get('/search', (req, res) => {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://almanaccomposer-testing.azurewebsites.net/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=None&type=Web',
+        url: 'https://services.almanac-learning.com/composer/students/'+ req.session.studentid +'/instances/'+ moduleid +'/articles?searchQuery=' + id+ '&differentiator=' + differentiator + '&type=' + publisher ,
         method: 'GET',
         headers: headers,
     }
@@ -132,7 +134,7 @@ console.log('Email is ' + email + 'Token is' + token);
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'http://almanaccomposer-testing.azurewebsites.net/composer/students/' + email,
+        url: 'https://services.almanac-learning.com/composer/students/' + email,
         method: 'GET',
         headers: headers,
     }
@@ -270,7 +272,7 @@ req.session.articleid = articleid;
 
 // request({
 //  //   url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-//     url:"http://almanaccomposer-testing.azurewebsites.net/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
+//     url:"https://services.almanac-learning.com/composer/students/" + req.session.studentid + " /instances/"+ req.session.moduleid +"/articles/" + req.session.articleid,
 //     method: "GET",
 //     json: true,   // <--Very important!!!
 //  //   body: queryObject,
@@ -293,7 +295,7 @@ req.session.articleid = articleid;
         Authorization: 'Bearer ' + token 
     }
     var options = {
-         url:'http://almanaccomposer-testing.azurewebsites.net/composer/students/' + req.session.studentid + '/instances/'+ req.session.moduleid +'/articles/' + req.session.articleid + '/',
+         url:'https://services.almanac-learning.com/composer/students/' + req.session.studentid + '/instances/'+ req.session.moduleid +'/articles/' + req.session.articleid + '/',
         method: 'GET',
         headers: headers,
     }
@@ -351,8 +353,8 @@ router.get('/delete', (req, res) => {
     var ObjectId = require('mongodb').ObjectID;
     var id = req.query.id;
     console.log(id);
-     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-   //    MongoClient.connect('mongodb://127.0.0.1:27017/test',
+  //   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+       MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
