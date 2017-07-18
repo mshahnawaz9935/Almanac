@@ -27,7 +27,7 @@
   /*width: 100%;*/
   /*height: 73px;*/
   background-color: #ffffff;
-  /*padding: 0px;*/
+  padding: 0px;
   box-shadow: none;
   font-family: roboto slab, roboto; 
   font-size: 1em;
@@ -112,7 +112,7 @@
 .categories { 
     width: 100%;
     /* height: 40px; */
-    color: #616b70;
+    color: #aca084;
     font-size: 0.938em;
     margin-top: 30px;
     line-height: 50px;
@@ -120,12 +120,12 @@
 
 .categories-list {
     float: left;
+    margin-right: 1.250em;
 }
 
-.categories-list > li {
+.categories-list li {
     color: #616b70;
-    margin-right: 20px;
-    display: inline-flex;
+    display: inline-table;
 }
 
 .categories a {
@@ -215,6 +215,7 @@ h4, h5, h6 {
 .card-list li {
     margin-bottom: 1.250em;
     margin-right: 1.250em;
+    display: inline-table;
 }
 
 .card-home {
