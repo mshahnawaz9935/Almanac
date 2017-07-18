@@ -74,7 +74,7 @@ router.get('/logout', function(req,res,next){
 
     req.session.destroy();
         token = undefined;
-        res.redirect('https://angular2ap.azurewebsites.net');
+        res.redirect('http://angular2ap-testing.azurewebsites.net');
 
 });
 
