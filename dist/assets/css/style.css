@@ -189,13 +189,23 @@ h4, h5, h6 {
     font-size: 2.2rem;
     font-weight: 300;
 }
+
+.home-text {
+    color: #616b70;
+    margin-bottom: 40px;
+}
+
 .post-text li {
     list-style: circle !important;
     display : block;
 }
-.home-text {
-    color: #616b70;
-    margin-bottom: 40px;
+
+.post-fav {
+    margin-right: 1.250em;
+}
+
+.post-fav li {
+    display: inline-table;
 }
 
 /* CARDS - HOME */
