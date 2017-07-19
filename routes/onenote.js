@@ -768,6 +768,10 @@ var counter =0;
                     {    continue;  }
                     finally { }
                     var x=0;
+                    if(mode.sections[i].videos !== undefined)
+                    if(mode.sections[i].videos.length > 0)
+                    url = url + "<iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + mode.sections[i].videos[0].url + "' />" ;
+                    console.log(url);
                     for(var j=0; j< image_len;j++)
                     {
                         if(mode.sections[i].images[j].caption !==null)
@@ -837,7 +841,7 @@ var counter =0;
         "<!DOCTYPE html>" +
         "<html>" +
         "<head>" +
-        "    <title>"+ topic +"</title>" +
+        "    <title>"+ topic + dateTimeNowISO() +"</title>" +
         "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
         "</head>" +
         "<body>" +

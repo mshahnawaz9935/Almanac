@@ -30,36 +30,36 @@
                              </div>
                              <br>
                                 <h5>2 ) Describe what results you want for this search:</h5>     
-                        <p>{{differentiator[0].name}}</p>
+                        <p>{{DataService.differentiator[0].name}}</p>
                         <!--Ability-->
                        <div class="row">
                              <div class="col-md-1">
-                               <p>{{differentiator[0].levels[0]}}</p>
+                               <p>{{DataService.differentiator[0].levels[0]}}</p>
                                 </div>
                                  <div class="col-md-7">
                                     <p>
-                                      <span style="margin-left:45%">{{differentiator[0].levels[1]}}</span>
+                                      <span style="margin-left:45%">{{DataService.differentiator[0].levels[1]}}</span>
                                   <nouislider [min]="0" [max]="2" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
                                     </p>
                                   </div>
                               <div class="col-md-2">
-                               <p>{{differentiator[0].levels[2]}}</p>
+                               <p>{{DataService.differentiator[0].levels[2]}}</p>
                                </div>
                              </div>
                               <br>
-                               <p>{{type.name}}</p>
+                               <p>{{DataService.type.name}}</p>
                             <div class="row">
                              <div class="col-md-1">
-                               <p>{{type.levels[0]}}</p>
+                               <p>{{DataService.type.levels[0]}}</p>
                                 </div>
                                  <div class="col-md-7">
                                     <p>
-                                      <span style="margin-left:45%">{{type.levels[1]}}</span>
+                                      <span style="margin-left:45%">{{DataService.type.levels[1]}}</span>
                                   <nouislider [min]="0" [max]="2" [step]="1" name="noui2" [(ngModel)]="model.slider_value2" ></nouislider>
                                     </p>
                                   </div>
                               <div class="col-md-2">
-                               <p>{{type.levels[2]}}</p>
+                               <p>{{DataService.type.levels[2]}}</p>
                                </div>
                              </div>   
                              <br>   

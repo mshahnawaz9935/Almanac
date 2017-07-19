@@ -15,6 +15,7 @@ export class PricingComponent implements OnInit {
     private slides:Array<any> = [];
 
     constructor() {
+        console.log('pricing');
             this.addNewSlide();
     }
 

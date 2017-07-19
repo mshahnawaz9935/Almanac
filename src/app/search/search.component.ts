@@ -33,7 +33,22 @@ export class SearchComponent implements OnInit {
     //     if(data['authenticated']== 'true')
     //     this.authenticated = true;
     // });
-    console.log(this.DataService.moduleid);
+    console.log('search module' ,this.DataService.moduleid);
+         if(this.DataService.moduleid != '')
+        {
+          console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
+        this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
+                console.log('Login status is ' + dataFromServer );
+                this.getInstance(dataFromServer);
+
+              });
+                 
+        }
+        else
+        {  
+          this.router.navigate(['/modules']);
+        }
      this.http.get('https://angular2ap.azurewebsites.net/note/checklogin')               // Check Login
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
@@ -66,21 +81,7 @@ export class SearchComponent implements OnInit {
    }
 
   ngOnInit() {
-     if(this.DataService.moduleid != '')
-        {
-          console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
-        this.http.get('https://angular2ap.azurewebsites.net/api/instances')
-              .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
-                console.log('Login status is ' + dataFromServer );
-                this.getInstance(dataFromServer);
 
-              });
-                 
-        }
-        else
-        {  
-          this.router.navigate(['/modules']);
-        }
  
   }
 
@@ -91,8 +92,8 @@ export class SearchComponent implements OnInit {
   {
     this.submitted = true;
     console.log('hello', this.model.search.length , this.model.slider_value1, this.model.slider_value2);
-    this.slider1= this.differentiator[0].levels[this.model.slider_value1];
-    this.slider2=this.type.levels[this.model.slider_value2];
+    this.slider1= this.DataService.differentiator[0].levels[this.model.slider_value1];
+    this.slider2=this.DataService.type.levels[this.model.slider_value2];
     console.log('Slider values are' ,this.slider1, this.slider2);
     if(this.model.search != '')
     {
@@ -119,8 +120,10 @@ export class SearchComponent implements OnInit {
       if(this.DataService.moduleid == module.id)
       {
         console.log('module found');
-        this.differentiator = module.differentiators;
-        this.type= module.type;
+        //this.differentiator = module.differentiators;
+       // this.type= module.type;
+             this.DataService.differentiator = module.differentiators;
+       this.DataService.type= module.type;
       }
       
       

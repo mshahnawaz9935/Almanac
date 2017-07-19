@@ -118,8 +118,33 @@ moduledata;
     console.log(moduleid, modulename, 'Module clicked');
     this.DataService.moduleid = moduleid;
     this.DataService.modulename = modulename;
-    this.router.navigate(['/search']);
+       this.http.get('https://angular2ap.azurewebsites.net/api/instances')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
+                console.log('Login status is ' + dataFromServer );
+                this.getsliders(dataFromServer);
+                this.router.navigate(['/search']);
+              });
+
     
+  }
+
+    getsliders(data)
+  {
+    console.log(data);
+    for(let module of data)
+    {
+      if(this.DataService.moduleid == module.id)
+      {
+        console.log('module found');
+        //this.differentiator = module.differentiators;
+       // this.type= module.type;
+             this.DataService.differentiator = module.differentiators;
+       this.DataService.type= module.type;
+      }
+      
+      
+    }
+
   }
 
     getInstances() {

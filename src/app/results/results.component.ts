@@ -27,10 +27,17 @@ export class ResultsComponent implements OnInit {
        + '&differentiator=' + this.DataService.slider1 + '&source=' + this.DataService.slider2 )
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
+                   this.loading = false;
+          if(dataFromServer !== 'Internal Server Error')
+          {
           this.data = dataFromServer;
-          this.loading = false;
+ 
           this.getdata(dataFromServer);
           console.log('Data from postman is ' + this.data);
+        }
+        else {
+          this.error = true;
+        }
         });
     }
     else

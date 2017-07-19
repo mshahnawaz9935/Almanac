@@ -14,6 +14,8 @@ moduleid='';
 modulename='';
 slider1='';
 slider2='';
+differentiator = [{name:'', levels:[]}];
+  type={name:'', levels:[]};
     constructor(private http: Http) {
 
         this.http.get('https://angular2ap.azurewebsites.net/api/token')

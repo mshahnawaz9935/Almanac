@@ -23,9 +23,10 @@ export class ModulesComponent implements OnInit {
               .map((res: Response) => res.json()).subscribe((Serverdata) => {
                 console.log('Login status is ' + Serverdata );
                 this.user = Serverdata;
-                
-       //       this.DataService.getInstances().subscribe((dataFromServer) => {
-          this.http.get('https://angular2ap.azurewebsites.net/api/instances?id=modules')
+
+
+                         setTimeout(()=> {  
+                 this.http.get('https://angular2ap.azurewebsites.net/api/instances?id=modules')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
@@ -58,8 +59,10 @@ export class ModulesComponent implements OnInit {
         
         
         );
-
+         }, 400);
               });
+
+     
 
 
             
