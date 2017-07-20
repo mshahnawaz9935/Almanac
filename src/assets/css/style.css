@@ -225,7 +225,7 @@ h4, h5, h6 {
 
 .card-list li {
     margin-bottom: 1.250em;
-    margin-right: 1.250em;
+    margin-right: 1.0em;
     display: inline-table;
 }
 
