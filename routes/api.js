@@ -61,17 +61,15 @@ router.get('/getdata', (req, res) => {
 
 function blob()
 {
-    var azure = require('azure-storage');
-const http = require('http')  
-const port = 3000
- var nconf = require('nconf');
- nconf.env()
-      .file({ file: 'config.json', search: true });
- var accountName = nconf.get("STORAGE_NAME");
- var accountKey = nconf.get("STORAGE_KEY");
- var connstring = nconf.get("STORAGE_CONNECTION_STRING");
- var host = nconf.get("HOST");
-    console.log('Blob');
+        var azure = require('azure-storage');
+        const http = require('http')  
+        var nconf = require('nconf');
+        nconf.env().file({ file: 'config.json', search: true });
+        var accountName = nconf.get("STORAGE_NAME");
+        var accountKey = nconf.get("STORAGE_KEY");
+        var connstring = nconf.get("STORAGE_CONNECTION_STRING");
+        var host = nconf.get("HOST");
+            console.log('Blob');
 }
 
 
