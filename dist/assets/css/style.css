@@ -1206,7 +1206,7 @@ h4, h5, h6 {
     margin-bottom: 30px;
 }
 
-.post-img-grid {
+.post-img-grid ul {
     width: 90%;
     height: auto;
     text-align: center;
