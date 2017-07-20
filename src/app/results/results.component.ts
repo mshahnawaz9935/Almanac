@@ -46,7 +46,7 @@ export class ResultsComponent implements OnInit {
     }
   }
 
-key = '?sv=2016-05-31&ss=b&srt=sco&sp=ra&se=2017-07-20T19:51:54Z&st=2017-07-20T11:51:54Z&spr=https&sig=meT4WvqqT7L4oNCrTAee5NwyxKrlKMxpuRCcdX1GGI8%3D';
+key = '?sv=2016-05-31&ss=bf&srt=sco&sp=rl&se=2017-07-20T19:51:54Z&st=2017-07-20T11:51:54Z&spr=https&sig=%2FhFfuHVcJYuHjgjyEUJvdblFCbLkBBlsehq8Asz3hHg%3D';
   getdata(data){                      
     console.log('get ',data);                    // Substring the text from the obtained data
     if(data.results.length >0)
