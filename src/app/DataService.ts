@@ -16,7 +16,15 @@ slider1='';
 slider2='';
 differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
+  key ='';
     constructor(private http: Http) {
+
+      this.http.get('http://localhost:3000/api/saskey')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => 
+              {
+                  this.key = dataFromServer;
+              }
+              );
 
         this.http.get('http://localhost:3000/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 

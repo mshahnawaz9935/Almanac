@@ -46,7 +46,7 @@ export class ResultsComponent implements OnInit {
     }
   }
 
-key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rl&se=2017-07-20T20:13:04Z&st=2017-07-20T12:13:04Z&spr=https&sig=Tj6oSDZp%2FIOz8LWYE1hoY8HdUXPs4Yq7UiY%2BJm7c99I%3D';
+
   getdata(data){                      
     console.log('get ',data);                    // Substring the text from the obtained data
     if(data.results.length >0)
@@ -59,7 +59,7 @@ key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rl&se=2017-07-20T20:13:04Z&st=2017-07-2
         // desc.description = desc.description.substring(9, 70);
         // else 
         desc.description = desc.description.substring(9, len-3);
-        desc.image = desc.image + this.key ;
+        desc.image = desc.image + this.DataService.key ;
         console.log(desc.image);
       }
       this.results = data.results;

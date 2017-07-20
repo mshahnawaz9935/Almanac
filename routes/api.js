@@ -59,18 +59,12 @@ router.get('/getdata', (req, res) => {
 });
 
 
-function blob()
-{
-        var azure = require('azure-storage');
-        const http = require('http')  
-        var nconf = require('nconf');
-        nconf.env().file({ file: 'config.json', search: true });
-        var accountName = nconf.get("STORAGE_NAME");
-        var accountKey = nconf.get("STORAGE_KEY");
-        var connstring = nconf.get("STORAGE_CONNECTION_STRING");
-        var host = nconf.get("HOST");
-            console.log('Blob');
-}
+router.get('/saskey', (req, res) => {
+
+    var key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D';
+    res.json(key);
+
+});
 
 
 
@@ -341,8 +335,8 @@ router.get('/store', (req, res) => {
 // Delete all documents in a colection  db.test.remove({})
 
 
-    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-  //   MongoClient.connect('mongodb://127.0.0.1:27017/test',
+ //   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+     MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
@@ -377,8 +371,8 @@ router.get('/delete', (req, res) => {
     var ObjectId = require('mongodb').ObjectID;
     var id = req.query.id;
     console.log(id);
-     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-  //     MongoClient.connect('mongodb://127.0.0.1:27017/test',
+   //  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+       MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
