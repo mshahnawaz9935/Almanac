@@ -74,7 +74,7 @@ router.get('/logout', function(req,res,next){
 
     req.session.destroy();
         token = undefined;
-        res.redirect('https://students.almanac-learning.com');
+        res.redirect('https://almanacstudentapp.azurewebsites.net');
 
 });
 

@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
          if(this.DataService.moduleid != '')
         {
           console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
-        this.http.get('https://students.almanac-learning.com/api/instances')
+        this.http.get('https://almanacstudentapp.azurewebsites.net/api/instances')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
                 console.log('Login status is ' + dataFromServer );
                 this.getInstance(dataFromServer);
@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit {
         {  
           this.router.navigate(['/modules']);
         }
-     this.http.get('https://students.almanac-learning.com/note/checklogin')               // Check Login
+     this.http.get('https://almanacstudentapp.azurewebsites.net/note/checklogin')               // Check Login
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -57,7 +57,7 @@ export class SearchComponent implements OnInit {
           else this.authenticated =true;
           console.log(this.authenticated);
         });
-        this.http.get('https://students.almanac-learning.com/onenote/checklogin')
+        this.http.get('https://almanacstudentapp.azurewebsites.net/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {      //Check if user is logged in
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -69,7 +69,7 @@ export class SearchComponent implements OnInit {
           { this.authenticated1 =true;
           console.log(this.authenticated1);
 
-          this.http.get('https://students.almanac-learning.com/onenote/aboutme')
+          this.http.get('https://almanacstudentapp.azurewebsites.net/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {    // Get User details
                 console.log('Login status is ' + dataFromServer );
                 this.user = dataFromServer;
@@ -100,8 +100,8 @@ export class SearchComponent implements OnInit {
       this.DataService.query = this.model.search;
       this.DataService.slider1 = this.slider1;
       this.DataService.slider2 = this.slider2;
-    // this.http.get('https://students.almanac-learning.com/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      // this.http.get('https://students.almanac-learning.com/api/search?id='+ this.model.search)
+    // this.http.get('https://almanacstudentapp.azurewebsites.net/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      // this.http.get('https://almanacstudentapp.azurewebsites.net/api/search?id='+ this.model.search)
       //   .map((res: Response) => res.json())
       //   .subscribe((dataFromServer) => {
       //     this.data = dataFromServer;
@@ -152,24 +152,24 @@ export class SearchComponent implements OnInit {
     note()
   {
        console.log('Authenticated');
-       window.open('https://students.almanac-learning.com/note','_self' );
+       window.open('https://almanacstudentapp.azurewebsites.net/note','_self' );
    
   }
 
   onenote()
   {
        console.log('Authenticated');
-       window.open('https://students.almanac-learning.com/onenote','_self' );
+       window.open('https://almanacstudentapp.azurewebsites.net/onenote','_self' );
    
   }
    onenotelogout()
   {
-       window.open('https://students.almanac-learning.com/onenote/disconnect','_self' );
+       window.open('https://almanacstudentapp.azurewebsites.net/onenote/disconnect','_self' );
    
   }
      logout()
   {
-       window.open('https://students.almanac-learning.com/note/logout','_self' );
+       window.open('https://almanacstudentapp.azurewebsites.net/note/logout','_self' );
    
   }
 

@@ -18,12 +18,12 @@ differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
     constructor(private http: Http) {
 
-        this.http.get('https://students.almanac-learning.com/api/token')
+        this.http.get('https://almanacstudentapp.azurewebsites.net/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
 
-    this.http.get('https://students.almanac-learning.com/onenote/checklogin')
+    this.http.get('https://almanacstudentapp.azurewebsites.net/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Service Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -42,7 +42,7 @@ text= 'menu';
     getInstances() {
 
          // ...using get request
-         return this.http.get('https://students.almanac-learning.com/api/instances?id='+this.text )
+         return this.http.get('https://almanacstudentapp.azurewebsites.net/api/instances?id='+this.text )
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
                          //...errors if any

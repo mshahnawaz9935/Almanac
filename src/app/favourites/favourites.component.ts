@@ -23,7 +23,7 @@ favs_data = [];
   constructor(private http:Http) {
     this.toggle = true;
 
-         this.http.get('https://students.almanac-learning.com/api/getdata')
+         this.http.get('https://almanacstudentapp.azurewebsites.net/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( 'Saved data in db' , dataFromServer);
           if(dataFromServer.length == 0 )
@@ -54,7 +54,7 @@ favs_data = [];
     this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
-      this.http.get('https://students.almanac-learning.com/api/delete?id=' + this.removearticle._id)
+      this.http.get('https://almanacstudentapp.azurewebsites.net/api/delete?id=' + this.removearticle._id)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             this.loading = false;

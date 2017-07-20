@@ -24,7 +24,7 @@ import { DataService } from '../DataService';
   onenote() 
   {
        console.log('Authenticated');
-       window.open('https://students.almanac-learning.com/onenote','_self' );
+       window.open('https://almanacstudentapp.azurewebsites.net/onenote','_self' );
     }
     create()
     {
