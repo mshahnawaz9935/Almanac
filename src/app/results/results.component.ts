@@ -59,8 +59,8 @@ key = '?sv=2016-05-31&ss=b&srt=sco&sp=ra&se=2017-07-20T19:51:54Z&st=2017-07-20T1
         // desc.description = desc.description.substring(9, 70);
         // else 
         desc.description = desc.description.substring(9, len-3);
-        data.image = data.image + this.key ;
-        console.log(data.image);
+        desc.image = desc.image + this.key ;
+        console.log(desc.image);
       }
       this.results = data.results;
     }
