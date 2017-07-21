@@ -24,17 +24,19 @@ app.use(cookieParser());
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use('/api', api);
-app.use('/note', note);
-app.use('/onenote', onenote);
-
-
 app.use(session({
   secret: '12345QWERTY-SECRET',
   name: 'nodecookie',
   // resave: true,
   // saveUninitialized: false
 }));
+
+
+app.use('/api', api);
+app.use('/note', note);
+app.use('/onenote', onenote);
+
+
 
 
 // Catch all other routes and return the index file
