@@ -19,6 +19,7 @@ export class ModulesComponent implements OnInit {
   subscription = '';
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
+
       this.http.get('https://student.almanac-learning.com/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((Serverdata) => {
                 console.log('Login status is ' + Serverdata );
@@ -59,7 +60,7 @@ export class ModulesComponent implements OnInit {
         
         
         );
-         }, 400);
+         }, 800);
               });
 
      
