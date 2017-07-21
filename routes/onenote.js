@@ -12,8 +12,7 @@ var authHelper = require('../authHelper.js');
 var t=2,sec=2;
 var notebookid;
 var sectionid;
-
-
+var key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D';
 
 function getToken (callback)
 {
@@ -770,28 +769,31 @@ var counter =0;
                     var x=0;
                     if(mode.sections[i].videos !== undefined)
                     if(mode.sections[i].videos.length > 0)
-                    url = url + "<iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + mode.sections[i].videos[0].url + "' />" ;
-                    console.log(url);
+                    url = url + "<iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + mode.sections[i].videos[0].url + "' /><br>" ;
                     for(var j=0; j< image_len;j++)
                     {
                         if(mode.sections[i].images[j].caption !==null)
                         {
                         mode.sections[i].images[j].caption = mode.sections[i].images[j].caption.substring(9,mode.sections[i].images[j].caption.length-3 );
                         }
-                        else mode.sections[i].images[j].caption ='No Caption'+ Math.floor((Math.random() * 1000) + 1);
+                        else mode.sections[i].images[j].caption ='Caption '+ Math.floor((Math.random() * 1000) + 1);
                  //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(mode.sections[i].images[j].attribution == 'cjfallon1')   // changed name to stop check
+                        if(mode.sections[i].images[j].attribution == 'Publisher')   // changed name to stop check
                         {   
                         
-                        console.log('Image attribute cj fallon found' ,favourites.sections[i].images[j].attribution,favourites.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
+                        console.log('Image attribute cj fallon found' ,mode.sections[i].images[j].attribution,mode.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
                         var caption =  mode.sections[i].images[j].caption;
-                        var fileurl = mode.sections[i].images[j].url;
+                        var fileurl = mode.sections[i].images[j].url + key;
                         var width =  mode.sections[i].images[j].width;
                         var attr = 'cjfallon';
                           console.log('File url is' ,fileurl );
-                          var details = {"attr" : attr , "fileurl" : fileurl , "width" : caption  };
-                          obj.push(details);
-                          x++;
+                          // var details = {"attr" : attr , "fileurl" : fileurl , "width" : caption  };
+                          // obj.push(details);
+                          // x++;
+
+                              url = url+ "<p><img src=" + "\"" + fileurl + "\"" + "/><br>"+
+                    mode.sections[i].images[j].caption +  "</p><p>Source:" + mode.sections[i].images[j].attribution
+                    + "</p>" ;
 
                         }
                         else {
@@ -800,6 +802,7 @@ var counter =0;
                     mode.sections[i].images[j].caption +  "</p><p>Source:" + mode.sections[i].images[j].attribution
                     + "</p>" ;
                         }
+                        url = url + '<br>';
                     }
                 }
                 })
@@ -814,22 +817,25 @@ var counter =0;
   });
 }
 
-
+// Old code for writing to file and reading the binary code of image
     function writer(token, topic, chapter ,articleid , studentid, moduleid,  callback)
     {   
    // var fulldata;
        getarticle(token, topic, chapter ,articleid , studentid, moduleid, function(data , obj){
            var  fulldata = data;
+           console.log(fulldata);
            console.log('Object Length' ,obj.length);   
            if(obj.length >0)            
             obj.forEach(function(obj) {
          
             // url = url+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + width +  "</p>"  + "<p>Source:" + attr;
              writetofile(obj.width, obj.fileurl , function(result) {
+                console.log('Result is' ,result);
                             decode(obj.width, function(image){
                                   console.log(' new creation is File url is' ,obj.fileurl, obj.width);
                                 fulldata = fulldata +"<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + obj.width +  "</p>"  + "<p>Source:" + obj.attr
                         + "</p>" ;
+                        console.log(fulldata);
                             });
                      
                         });
@@ -845,12 +851,12 @@ var counter =0;
         "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
         "</head>" +
         "<body>" +
-        "    <p> View Your Page <i>formatted</i></p>" +
+        "    <p> View Your Saved Article <i>formatted</i></p>" +
          fulldata +
         "</body>" +
         "</html>";   
                                    callback(fulldata);
-               }, obj.length * 500);
+               }, obj.length * 3200);
             
                       });
                       
@@ -919,7 +925,25 @@ var counter =0;
  function createOneNoteArticle(token, topic, chapter ,articleid , studentid , moduleid) {
 
 
-         writer(token, topic, chapter ,articleid , studentid, moduleid,function(data){
+        //  writer(token, topic, chapter ,articleid , studentid, moduleid,function(data){
+
+        // createNewPage2(token, data , false);
+        //  });
+
+        getarticle(token, topic, chapter ,articleid , studentid, moduleid,function(data , obj){
+
+          data = 
+        "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "    <title>"+ topic + dateTimeNowISO() +"</title>" +
+        "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
+        "</head>" +
+        "<body>" +
+        "    <p> View Your Saved Article <i>formatted</i></p>" +
+         data +
+        "</body>" +
+        "</html>";   
 
         createNewPage2(token, data , false);
          });
@@ -1205,42 +1229,50 @@ function renderError(res, e) {
 var decodedImage='';
 
 var dest = 'file.jpg';
-var buf = new Buffer(1024);
+
 function writetofile(filename, url,callback)
 {
+  var buf = new Buffer(1024);
 var file = fs.createWriteStream(filename + ".jpg");
-var request = http.get(url, function(response) {
+// Setting http to be the default client to retrieve the URI.
+var client = http;
+// You can use url.protocol as well 
+if (url.toString().indexOf("https") === 0){
+            client = https;
+}
+var request = client.get(url, function(response) {
   response.pipe(file);
-  response.on('end', () => {
+  file.on('close', function() { 
   console.log('There will be no more data.');
+    callback(url);
 });
-   fs.open(filename + '.jpg', 'r+', function(err, fd) {
-   if (err) {
-      return console.error(err);
-   }
-   console.log("File opened successfully!");
-   console.log("Going to read the file");
+//    fs.open(filename + '.jpg', 'r+', function(err, fd) {
+//    if (err) {
+//       return console.error(err);
+//    }
+//    console.log("File opened successfully!");
+//    console.log("Going to read the file");
    
-   fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
-      if (err){
-         console.log(err);
-      }
+//    fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
+//       if (err){
+//          console.log(err);
+//       }
 
-      // Print only read bytes to avoid junk.
-      if(bytes > 0){
-         console.log(buf.slice(0, bytes).toString());
-      }
+//       // Print only read bytes to avoid junk.
+//       if(bytes > 0){
+//          console.log(buf.slice(0, bytes).toString());
+//       }
 
-      // Close the opened file.
-      fs.close(fd, function(err){
-         if (err){
-            console.log(err);
-         } 
-         console.log("File closed successfully.");
-          callback(url);
-      });
-   });
-});
+//       // Close the opened file.
+//       fs.close(fd, function(err){
+//          if (err){
+//             console.log(err);
+//          } 
+//          console.log("File closed successfully.");
+//           callback(url);
+//       });
+//    });
+// });
   
 });
 
@@ -1253,7 +1285,7 @@ function decode(filename , callback)
 
 fs.readFile(filename+'.jpg', function(err, data) {
   if (err) throw err;
-  console.log('raw data is' , data);
+//  console.log('raw data is' , data);
   // Encode to base64
        var encodedImage = new Buffer(data, 'binary').toString('base64');
 
@@ -1262,7 +1294,7 @@ fs.readFile(filename+'.jpg', function(err, data) {
 
   
   callback(encodedImage);
-  deletefile(filename);
+  //deletefile(filename);
     });
         
  

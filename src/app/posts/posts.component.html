@@ -19,7 +19,7 @@
                  
         </div> 
           <div class="post-img-right">
-                 <img [src]="images[1]" />
+                 <img style="max-width: 500px;max-height: auto" [src]="images[1]" />
                  </div>   
           
         <div class="post-text"  [innerHTML]= "text[2]">  </div>
@@ -89,7 +89,7 @@
                         <a [routerLink]="['/search']" class="arrow-left arrow-left-beige">Back to Search</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/modules']" class="arrow-left arrow-left-beige">Back to Geography</a>
+                        <a [routerLink]="['/modules']" class="arrow-left arrow-left-beige">Back to Collections</a>
                     </li>
             </ul>
 </div>
