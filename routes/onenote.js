@@ -336,6 +336,9 @@ function aboutme(req,res)
       if (response.statusCode === 200) {
                 console.log(body);
                 req.session.email = JSON.parse(body).userPrincipalName;
+                req.session.save(function(err) {
+                  // session saved
+                })
                 console.log(JSON.parse(body).displayName,'About email' ,  req.session.email); 
                 res.cookie(authHelper.sessionemail, JSON.parse(body).userPrincipalName);
                 res.json(JSON.parse(body).displayName);

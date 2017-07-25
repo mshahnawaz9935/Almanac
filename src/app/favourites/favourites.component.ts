@@ -16,12 +16,11 @@ export class FavouritesComponent implements OnInit {
 array = new Array(6);
 loading = true;
 saved_data;
-toggle = true;
+toggle = false;
 data = {};
 nodata = false;
 favs_data = [];
   constructor(private http:Http , private DataService:DataService) {
-    this.toggle = true;
 
          this.http.get('http://localhost:3000/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
@@ -32,7 +31,7 @@ favs_data = [];
           this.getdata(dataFromServer);
             this.saved_data = dataFromServer;
                  this.getdata2(dataFromServer);
-          console.log(this.saved_data);
+          console.log('Saved_data' , this.saved_data);
           this.loading = false;
      
         });
@@ -44,8 +43,8 @@ favs_data = [];
   onSelect(index)
   {
     console.log('Index is' ,index);
-    this.toggle = false;
-    this.data = this.saved_data[index];
+    this.toggle = true;
+    this.saved_data = this.saved_data[index];
   }
 
   removearticle;
@@ -110,23 +109,24 @@ imagesdata='';
     
     for(let data1 of data)
     {
-     
-     let mode= data1.modes;
-       console.log('Modes' , mode);
-      for(let data1 of mode)
+      for(let mode of data1.modes)
       {
-      for(let section of data1)
+      for(let section of mode.sections)
       {
       let len =section.text.text.length;
       console.log('Length of text is' ,len);
       section.text.text = section.text.text.substring(9,len-3);
 
-         console.log(section.images);
-         if(section.images.length > 0)
+         if(section.images !== undefined)
          for(let image of section.images)
          {
            console.log(image.caption);
-           if(image.caption == null){
+       
+           if(image.attribution == 'Publisher'){
+           image.url = image.url + this.DataService.key;
+           console.log('key added' + this.DataService.key);
+          }
+              if(image.caption == null){
            image.caption = "Random picha";
            continue; 
            }

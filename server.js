@@ -10,10 +10,12 @@ var cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(session({
+
   secret: '12345QWERTY-SECRET',
   name: 'nodecookie',
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false
+
 }));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -31,10 +33,12 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 
 
-
 app.use('/api', api);
 app.use('/note', note);
 app.use('/onenote', onenote);
+
+
+
 
 
 
