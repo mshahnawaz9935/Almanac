@@ -14,7 +14,7 @@
                             <ul class="navbar-nav ml-auto">
                             
 
-                                <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/']" href="#">Home</a></li>
+                                <li class="nav-item navbar-nav"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/']" href="#">Home</a></li>
                                 <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="authenticated1" [routerLink]="['/account']" href="#">My Collections</a></li>
                         <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="authenticated1" [routerLink]="['/favourites']" href="#">Favourites</a></li>
                       <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/pricing']" href="#">Pricing</a></li>
@@ -146,12 +146,13 @@
                 <li  class="categories-list">
                     <a [routerLink]="['/contact']">MINECRAFT</a>
                 </li>
+                <!-- 
                 <li  class="browse">
                     <div>
                         <ul class="browse-list">
-                           <!--  <li>
+                           <li>
                               <div class="categories-icon"><a href="#"><i class="fa fa-bars fa-lg"></i></a></div>
-                          </li> -->
+                          </li>
                             <li>
                                 <div class="md-form input-group">
                                     <input type="text" class="form-control form-control-home" placeholder="Search for..." aria-describedby="basic-addon2">
@@ -160,7 +161,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
             </ul>
             <br />
         </div>

@@ -15,10 +15,10 @@
 } */
  
 .container-content { 
-    width: 90%;
+    width: 80%;
     height: auto;
     margin: 0;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 /* HEADER */
@@ -55,10 +55,11 @@
     width: 100%;
 }
 
-/*
-.navbar-nav, ul li {
-    display: inline-table;
-} */
+
+.navbar-nav {
+    /* display: inline-table; */
+    font-family: roboto slab, roboto; 
+}
 
 .navbar-nav a {
     color: #616b70;
@@ -139,6 +140,7 @@
 .browse {
     float: right;
     line-height: 50px;
+    margin-right: 20px;
 }
 
 .browse-list > li {
@@ -225,13 +227,13 @@ h4, h5, h6 {
 
 .card-list li {
     margin-bottom: 1.250em;
-    /* margin-right: 1.0em; */
+    margin-right: 1.250em;
     display: inline-table;
 }
 
 .card-home {
     width: 360px;
-    height: 184px;
+    height: 182px;
     margin: 0px;
     margin-left: 0px;
     margin-right: 10px;
@@ -241,7 +243,7 @@ h4, h5, h6 {
 .bg-card {
     background-color: #ffffff;
     width: 360px;
-    height: 184px;
+    height: 182px;
     border: solid #e3decf 1px;
     /* border-radius: 2px; */
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -249,7 +251,7 @@ h4, h5, h6 {
 
 .card-result {
     width: 90%;
-    height: 184px;
+    height: 182px;
     margin-left: 0px;
     margin-right: 10px;
     background-color: #ffffff;
@@ -269,7 +271,7 @@ h4, h5, h6 {
 .left-card {
    float: left;
    width: 148px;
-   height: 184px;
+   height: 182px;
    background-image: url("../img/almanac/cards/picutre-01.jpg");
    background-repeat: no-repeat;
    z-index: 0;
@@ -278,7 +280,7 @@ h4, h5, h6 {
 .left-card-img2 {
    float: left;
    width: 148px;
-   height: 184px;
+   height: 182px;
    background-image: url("../img/almanac/cards/picutre-02.jpg");
    background-repeat: no-repeat;
    z-index: 0;
@@ -287,7 +289,7 @@ h4, h5, h6 {
 .left-card-img3 {
    float: left;
    width: 148px;
-   height: 184px;
+   height: 182px;
    background-image: url("../img/almanac/cards/picutre-03.jpg");
    background-repeat: no-repeat;
    z-index: 0;
@@ -297,7 +299,7 @@ h4, h5, h6 {
     float: right;
     padding-top: 10px;
     width: 192px;
-    height: 184px;
+    height: 182px;
     padding-right: 16px;
     padding-bottom: 16px;
     display: block;
@@ -305,7 +307,7 @@ h4, h5, h6 {
 
 .left-card-result {
    width: 148px;
-   height: 180px;
+   height: 182px;
    background-image: url("../img/almanac/cards/img-favourites-01.jpg");
    background-repeat: no-repeat;
    z-index: 0;
@@ -315,7 +317,7 @@ h4, h5, h6 {
     width: 90%;
     /* display: inline;
     margin: 10px; */
-    height: 184px;
+    height: 182px;
     padding: 0.625em;
 }
 
