@@ -7,10 +7,10 @@ var mongoose   = require('mongoose');
 var session = require('express-session');
 
 var favourites;
- mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
+ //mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
 
- // mongoose.connect('mongodb://127.0.0.1:27017/test');
+  mongoose.connect('mongodb://127.0.0.1:27017/test');
 console.log('Api running check');
   var token = '';
 router.get('/token', (req, res) => {
@@ -25,8 +25,8 @@ router.get('/token', (req, res) => {
 });
 
 router.get('/getdata', (req, res) => {
- MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
-  // MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
+ //MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+   MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -34,8 +34,8 @@ router.get('/getdata', (req, res) => {
     }
     db.close();
 });
- MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
- // MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
+// MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
+  MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -172,7 +172,8 @@ console.log('Email is ' + email + 'Token is' + token);
         }
         else if(response.statusCode == 500 && email !== undefined)
         { console.log('nuffing 500' , email, error ,response.statusCode, response.headers);
-            callback(false , '');
+            exists = true;
+            callback(exists , '500 Occured' );
         }
          else
         { console.log('nuffing email2' , email, error ,response.statusCode, response.headers);
@@ -205,10 +206,10 @@ router.get('/instances', (req, res) => {
     // getToken(function(token)
     // {   
     var id= req.query.id; 
-    console.log('Session email is' , req.session.email , id);
-    if(req.session.email !== undefined)
+    console.log('Session email is' , req.cookies.sessionemail , id);
+    if(req.cookies.sessionemail !== undefined)
     {
-    subscription( token , req.session.email , function(exists , id)
+    subscription( token , req.cookies.sessionemail , function(exists , id)
 {
     
     if(exists == true && id!== '')
@@ -229,6 +230,11 @@ router.get('/instances', (req, res) => {
         if (!error && response.statusCode == 200) {
             console.log('Instances', JSON.parse(response.body));
             res.json(JSON.parse(response.body));
+        }
+           else if(response.statusCode == 500 && email !== undefined)
+        { console.log('nuffing 500' , email, error ,response.statusCode, response.headers);
+            callback(false , '');
+            res.json('500 Occured');
         }
         else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
     });
@@ -335,8 +341,8 @@ router.get('/store', (req, res) => {
 // Delete all documents in a colection  db.test.remove({})
 
 
-    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-   //  MongoClient.connect('mongodb://127.0.0.1:27017/test',
+  //  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+     MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;
@@ -345,7 +351,8 @@ router.get('/store', (req, res) => {
       favourites = JSON.parse(favourites);
      favourites['username']= req.session.email;
      favourites['modulename'] = req.session.modulename;
-          console.log('sdssd' + favourites + favourites.title + favourites.username + favourites.modulename);
+     favourites['topic'] = req.session.topic;
+          console.log('sdssd' + favourites + favourites.title + favourites.username + favourites.modulename + favourites.topic);
     collection.insert(favourites, function(err, docs) {
         collection.count(function(err, count) {
             console.log(format("count = %s", count));
@@ -371,8 +378,8 @@ router.get('/delete', (req, res) => {
     var ObjectId = require('mongodb').ObjectID;
     var id = req.query.id;
     console.log(id);
-     MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-    //   MongoClient.connect('mongodb://127.0.0.1:27017/test',
+ //    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+       MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;

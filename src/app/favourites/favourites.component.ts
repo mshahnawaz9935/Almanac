@@ -20,10 +20,10 @@ toggle = true;
 data = {};
 nodata = false;
 favs_data = [];
-  constructor(private http:Http) {
+  constructor(private http:Http , private DataService:DataService) {
     this.toggle = true;
 
-         this.http.get('https://student.almanac-learning.com/api/getdata')
+         this.http.get('http://localhost:3000/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( 'Saved data in db' , dataFromServer);
           if(dataFromServer.length == 0 )
@@ -54,7 +54,7 @@ favs_data = [];
     this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
-      this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle._id)
+      this.http.get('http://localhost:3000/api/delete?id=' + this.removearticle._id)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             this.loading = false;
@@ -75,7 +75,7 @@ imagesdata='';
        let title = data.title;
        let description = data.description;
        let modulename = data.modulename;
-       
+       let topic = data.topic;
        for(let mode of data)
        {
        for(let section of mode.sections)
@@ -83,20 +83,22 @@ imagesdata='';
          if(section.images.length >0 )
           {
              for(let image of section.images)
-             {
+             { let bool = false;
                if(image.url !== undefined)
                {
                 this.imagesdata = image.url;
-                console.log('here image url', image);
-                break;
+                console.log('here image url', image.url);
+                bool = true;
                }
+               if(bool == true)
+               break;
              }
           }
 
         }
        }
-            console.log('here image url', this.imagesdata);
-        this.favs_data.push({ 'title': title , 'description' : description , 'modulename' : modulename , 'image': this.imagesdata  });
+            console.log('here imagedata url', this.imagesdata);
+        this.favs_data.push({ 'title': title , 'topic':topic , 'description' : description , 'modulename' : modulename , 'image': this.imagesdata  });
     }
     console.log('Favs data is' , this.favs_data);
 

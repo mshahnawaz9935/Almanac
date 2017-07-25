@@ -9,7 +9,12 @@ const onenote = require('./routes/onenote');
 var cookieParser = require('cookie-parser');
 const app = express();
 
-app.use(session({secret:'insert your things'}));
+app.use(session({
+  secret: '12345QWERTY-SECRET',
+  name: 'nodecookie',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -24,12 +29,7 @@ app.use(cookieParser());
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use(session({
-  secret: '12345QWERTY-SECRET',
-  name: 'nodecookie',
-  // resave: true,
-  // saveUninitialized: false
-}));
+
 
 
 app.use('/api', api);

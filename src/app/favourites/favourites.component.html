@@ -7,12 +7,12 @@
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%"   >
                             <div class="transbox-fav"  >
                             <div class="card-fav-bg-category">
-                                <div class="fav-category">{{data.modulename}}</div>
+                                <div class="fav-category">{{data.image}}{{data.modulename}}</div>
                             </div>                    
                             <div class="fav-content">
 
                                 <div class="fav-bg-title">
-                                    <div class="fav-title" >{{data.modes[0].title}}</div>
+                                    <div class="fav-title" >{{data.topic}}</div>
                                 </div>
                                 <div class="fav-button">
                                     <button type="button" (click)="onSelect(index)" class="btn btn-signin btn-sm">READ MORE</button>
@@ -37,8 +37,8 @@
                  
                         </div>
               
-                      <div *ngIf="data.sections[0].images.length>0" class="view overlay hm-white-slight" >{{data.sections[0].images[0].image}}
-                        <img  [src]="data.sections[0].images[0].url" alt="" style="width:100%">
+                      <div *ngIf="data.modes[0].sections[0].images !== undefined" class="view overlay hm-white-slight" >{{data.modes[0].sections[0].images[0].image}}
+                        <img  [src]="data.modes[0].sections[0].images[0].url" alt="" style="width:100%">
                         <a>
                             <div class="mask waves-effect waves-light"></div>
                         </a>
@@ -51,8 +51,8 @@
                                 
                           </div>
                         </div>
-                         <div *ngIf="data.sections[0].images.length == 0" class="view overlay hm-white-slight" >{{data.sections[1].images[0].url}}
-                        <img  [src]="data.sections[1].images[0].url" alt="" style="width:100%">
+                         <div *ngIf="data.modes[0].sections[0].images.length !== undefined" class="view overlay hm-white-slight" >{{data.sections[1].images[0].url}}
+                        <img  [src]="data.modes[0].sections[1].images[0].url" alt="" style="width:100%">
                         <a>
                             <div class="mask waves-effect waves-light"></div>
                         </a>
@@ -61,7 +61,7 @@
                                   <h4 class="card-title">Description</h4>
                                   <hr>
                              
-                                   <p class="card-text" [innerHTML]="data.sections[0].text.text"> </p>
+                                   <p class="card-text" [innerHTML]="data.modes[0].sections[0].text.text"> </p>
                                 
                           </div>
                         </div>
