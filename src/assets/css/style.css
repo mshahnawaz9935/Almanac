@@ -139,6 +139,7 @@
 .browse {
     float: right;
     line-height: 50px;
+    margin-right: 20px;
 }
 
 .browse-list > li {
@@ -225,7 +226,7 @@ h4, h5, h6 {
 
 .card-list li {
     margin-bottom: 1.250em;
-    /* margin-right: 1.0em; */
+    margin-right: 0.875em;
     display: inline-table;
 }
 
