@@ -215,8 +215,8 @@ h4, h5, h6 {
     margin: 0px;
     /* width: 90%;
     display: inline-flex;
-    margin-bottom: 30px; */
-    padding-bottom: 3.125em;
+    margin-bottom: 30px;
+    padding-bottom: 3.125em; */
 }
 
 .card-list ul li {
@@ -225,7 +225,7 @@ h4, h5, h6 {
 
 .card-list li {
     margin-bottom: 1.250em;
-    margin-right: 1.0em;
+    /* margin-right: 1.0em; */
     display: inline-table;
 }
 
