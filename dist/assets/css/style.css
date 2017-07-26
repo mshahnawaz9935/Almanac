@@ -336,10 +336,14 @@ h4, h5, h6 {
 .title-card {
     font-size: 1.125em;
     color: #70787d;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-.title-card:hover, .title-card:active, .title-card:focus {
+.title-card a {
+    color: #70787d;
+}
+
+.title-card a:hover, .title-card a:active, .title-card a:focus {
     color: #eb7839;
 }
 
