@@ -47,8 +47,9 @@ export class PostsComponent implements OnInit {
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
          
           console.log(dataFromServer );
-        //  this.img_data = dataFromServer.sections;
-          //  this.getdata(dataFromServer.sections);
+      
+           this.getdata3(dataFromServer);
+             this.img_data = dataFromServer;
             this.getdata2(dataFromServer.modes);
              this.loading = false;
              this.hidden = true;
@@ -109,12 +110,52 @@ getdata2(data)
      
 
   }
+  getdata3(data){
+    
+    for(let data1 of data)
+    {
+      for(let mode of data1.modes)
+      {
+      for(let section of mode.sections)
+      {
+      let len =section.text.text.length;
+      console.log('Length of text is' ,len);
+      section.text.text = section.text.text.substring(9,len-3);
 
+         if(section.images !== undefined)
+         for(let image of section.images)
+         {
+           console.log(image.caption);
+       
+           if(image.attribution == 'Publisher'){
+           image.url = image.url + this.DataService.key;
+           console.log('key added' + this.DataService.key);
+          }
+              if(image.caption == null){
+           image.caption = "Random picha";
+           continue; 
+           }
+           if(image.caption!==undefined || image.caption !== null)
+           {
+                 let len = image.caption.length;
+                 image.caption = image.caption.substring(9,len-3);
+           }
+           else { image.caption = "Random picha"; }
+         }
+
+
+      }
+      }
+   
+    }
+  }
 
 
     getdata(data){
-    
-    for(let section of data)
+
+  for(let mode of data.modes)
+    {
+    for(let section of mode.sections)
     {
       console.log(section , section.text ,section.text.text);
       let len =section.text.text.length;
@@ -139,6 +180,7 @@ getdata2(data)
 
 
       }
+    }
    
     }
 

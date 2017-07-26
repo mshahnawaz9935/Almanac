@@ -14,11 +14,27 @@ export class ModulesComponent implements OnInit {
   
   data=[];
   exists = false;
-  user ='Welcome';
+  user ='User';
   loading: Boolean;
   subscription = '';
+  authenticated1;
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
+           console.log("Menu bar Data Service login", this.DataService.authenticated1);
+       this.http.get('http://localhost:3000/onenote/checklogin')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Login status is ' + dataFromServer );
+          if(dataFromServer == 'No Login')
+          {
+            console.log('Not logged in');
+          this.authenticated1 = false;
+          this.loading = false;
+          this.subscription = 'Please Login to view the collections';
+          }
+          else
+          { this.authenticated1 =true;
+          console.log('Logged in' ,this.authenticated1);
+
 
       this.http.get('http://localhost:3000/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((Serverdata) => {
@@ -43,7 +59,7 @@ export class ModulesComponent implements OnInit {
           console.log('Module status is ' + dataFromServer );
            if(dataFromServer == 'Subscription does not exists')
            {
-             this.subscription = 'No Modules Subscribed';
+             this.subscription = 'No Collections Subscribed';
              this.exists = false;
              this.loading = false;
               
@@ -57,7 +73,7 @@ export class ModulesComponent implements OnInit {
                this.data = dataFromServer;
              this.exists = false;
              this.loading = false;
-             this.subscription = 'View your subscribed modules below';
+             this.subscription = 'View your subscribed collections below';
               this.getdata(dataFromServer);
            }
         }
@@ -66,7 +82,8 @@ export class ModulesComponent implements OnInit {
         );
          }, 800);
            
-
+          }
+        });
      
 
 
