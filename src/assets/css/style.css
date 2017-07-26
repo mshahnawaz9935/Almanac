@@ -59,6 +59,7 @@
 .navbar-nav {
     /* display: inline-table; */
     font-family: roboto slab, roboto; 
+    font-weight: 500;
 }
 
 .navbar-nav a {
@@ -67,6 +68,12 @@
 
 .navbar-nav a:hover, a:active {
     color: #eb7839;
+}
+
+.navbar-user {
+    color: #aca084; 
+    margin-left: 1.250em;
+    font-weight: lighter;
 }
 
 .header-bg {
@@ -128,6 +135,7 @@
 .categories-list {
     float: left;
     margin-right: 1.250em;
+    font-size: 1.125em;
 }
 
 .categories-list li {

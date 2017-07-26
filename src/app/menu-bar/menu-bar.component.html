@@ -22,14 +22,14 @@
                       <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/account']" href="#">My Account</a></li>
                     
                  <li *ngIf="authenticated1" class="nav-item">
-                        <a class="nav-link waves-effect waves-light" style="color: #aca084; margin-left: 1.250em">{{user}}</a>
+                        <a class="nav-link waves-effect waves-light navbar-user">{{user}}</a>
                  </li>
                  <li class="nav-item dropdown btn-group">
                         <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #aca084">  </a>  
-                        <div class="dropdown-menu dropdown-warning dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                        <a [routerLink]="['/account']" *ngIf="!authenticated1" class="dropdown-item waves-effect waves-light" >Log In</a>
-                        <a *ngIf="authenticated1" class="dropdown-item waves-effect waves-light" href="http://localhost:3000/onenote/disconnect">Log Out</a>
+                        <div class="dropdown-menu dropdown-warning dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" style="padding:0.375em;text-align:center">
+                        <a [routerLink]="['/account']" *ngIf="!authenticated1" class="dropdown-item waves-effect waves-light" ><i class="fa fa-sign-in"></i>&nbsp; Log In</a>
+                        <a *ngIf="authenticated1" class="dropdown-item waves-effect waves-light" href="http://localhost:3000/onenote/disconnect"><i class="fa fa-sign-out"></i>&nbsp; Log Out</a>
                         </div>
                     </li>
 
