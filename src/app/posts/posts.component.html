@@ -129,6 +129,24 @@
              </div>  
              </div>
              <br>-->
+<div class="row" *ngFor= "let mode of img_data.modes" >
+             <div class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
+                        <div class="post-text" >
+                    <h2 [innerHTML]="section.title" class="card-text">    </h2>   
+                        <p [innerHTML]="section.text.text" class="card-text">    </p>      
+                        {{i}}
+                    </div>
+                    <div class="post-text" *ngIf="section.images !== undefined"> </div>   
+                <!--<div  *ngIf="section.images !== undefined"> 
+                          </div>-->
+                         <div class="row" *ngIf="section.images !== undefined">
+                             <div class="col-md-8"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               <div class="col-md-4"><img style="max-width: 500px;max-height: auto" [src]="section.images[0].url" /></div>
+                               </div>
+                     <!--<img style="float:right; margin: 0 0 10px 10px;max-width: 500px;max-height: auto" [src]="section.images[0].url" /> -->
+            </div>
+
+
 
 
  <div class="row" *ngFor= "let mode of img_data.modes" >

@@ -93,12 +93,14 @@ getdata2(data)
            {
            for(let image of section.images)
            {
+               if(image.attribution == 'Publisher')
+           image.url = image.url + this.DataService.key;
              if(image.width > this.hugeimage)
              {
-                this.hugeimageurl = image.url + this.DataService.key;
+                this.hugeimageurl = image.url;
              }
              if(image.url !== null)
-             this.images2.push(image.url + this.DataService.key);
+             this.images2.push(image.url);
            }
            if(section.images.length > 0)
             this.images.push(section.images[0].url + this.DataService.key);
