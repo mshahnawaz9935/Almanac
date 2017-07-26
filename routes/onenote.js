@@ -900,8 +900,10 @@ var counter =0;
             // {
               mode.sections.forEach(function(section)
               {
+                  url = url + "<h1>" + section.title + "</h1>";
+                    url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
+                     if(section.images !==  undefined)
                     url = url + " <h3>Images from this section are as under</h3>";
-                    url = url + "<h4>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h4>";
                     try{
                         var image_len = section.images.length;
                     }
@@ -939,7 +941,7 @@ var counter =0;
                                    console.log('matched');
                        
                                url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
-                    obj.caption +  "</p><p>Source:" + obj.attr
+                    obj.width +  "</p><p>Source:" + obj.attr
                     + "</p>" ;
                                  }
                      
@@ -1065,7 +1067,6 @@ var counter =0;
                         console.log('Image attribute cj fallon found' ,image.attribution,image.url);
                         var caption =  image.caption;
                         var fileurl = image.url + key;
-                        var width =  image.width;
                         var attr = 'Publisher';
                           console.log('File url is' ,fileurl );
                        

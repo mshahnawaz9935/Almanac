@@ -78,25 +78,27 @@
             <div *ngIf="toggle == true">
             <div class="row" >
                 <div class="col-md-12">
-                  <div class="card">    <h2> {{saved_data.topic}}</h2></div>
+                  <div class="card">      <div class="card-block" >   <h2 class="card-text"> {{data.topic}}</h2></div>
+                  </div>
                    <br>
                   </div>
-                 <div class="col-md-6" *ngFor="let mode of saved_data.modes" >
-             <div  *ngFor= "let image of mode.sections"  >
+                 <div class="col-md-6" *ngFor="let mode of data.modes" >
+             <div  *ngFor= "let section of mode.sections"  >
 
                    <div class="card">
-
                         <div class="card-block" >
-                          
-                        <p [innerHTML]="image.text.text" class="card-text">    </p>      
+                    <h2 [innerHTML]="section.title" class="card-text">    </h2>   
+                        <p [innerHTML]="section.text.text" class="card-text">    </p>      
                         
                     </div>
-                       <div *ngFor= "let url of image.images" class="view overlay hm-white-slight">
-                           <h2 *ngIf="image.images !== undefined"> Images under this section </h2>
+                    <div class="card-block" >   
+                       <div *ngFor= "let url of section.images" class="view overlay hm-white-slight">
+                           <h2 class="card-text" *ngIf="section.images !== undefined"> Images under this section </h2>
                         <img [src]="url.url" alt="" style="width:100%;height:100%">
                         <a>
                             <div class="mask waves-effect waves-light"></div>
                         </a>
+                          </div>
                           </div>
                          
               </div>

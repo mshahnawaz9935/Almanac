@@ -44,7 +44,7 @@ favs_data = [];
   {
     console.log('Index is' ,index);
     this.toggle = true;
-    this.saved_data = this.saved_data[index];
+    this.data = this.saved_data[index];
   }
 
   removearticle;
