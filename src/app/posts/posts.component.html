@@ -1,5 +1,4 @@
-      <md-progress-spinner *ngIf="loading == true" class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-      <div *ngIf="hidden" class="col-md-12" >
+     <!--<div *ngIf="hidden" class="col-md-12" >
             
             <div  class="post-text" >
                 <h3> {{title[0]}} </h3>
@@ -42,13 +41,7 @@
                <h3> {{title[2]}} </h3>
             
               <div class="post-text" [innerHTML]= "text[3]">  </div>
-<!--
-            <ul class="post-img-grid">
-                <li><img style="max-width: 500px;max-height: auto" [src]="images2[0]" /></li>
-                <li><img style="max-width: 500px;max-height: auto" [src]="images2[1]" /></li>
-                <li><img style="max-width: 500px;max-height: auto" [src]="images2[2]" /></li>
-                <li><img style="max-width: 500px;max-height: auto" [src]="images2[3]" /></li>
-            </ul>-->
+
             <div style="padding:30px">
             <div class="row">
             <div class="col-md-6"><img style="width:100%" [src]="images2[0]" /></div>
@@ -63,46 +56,8 @@
           <div class="post-text" [innerHTML]= "text[3]">  </div>
 
         
-        <h4>Was this article what you were looking for?</h4>
-            
-             <ul style="margin-top:40px" class="post-fav">
-                    <li style="width: 30%">
-                        Yes! Save to your favourites or export to OneNote:
-                    </li>
-                    <li style="margin-right: 1.250em">
-                        <button (click)="savedata()" type="button" class="icon-button" title="Save to Favourites"><i class="fa fa-star"></i></button>
-                    </li>
-                    <li>
-                        <button (click)="saveonenote4()" type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
-                    </li>
-            </ul>
-               <div class="card-block" *ngIf="loading == true">
-                     <h4 class="card-title" >Saving To One Note...Please wait</h4>
-      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-      </div>
-            
-            <ul style="margin-top:40px" class="post-fav">
-                    <li style="width: 30%">
-                        Almost! But I want to re-configure it:
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-signin">Options</button>
-                    </li>
-            </ul>
-            
-            <ul style="margin-top:40px" class="post-fav">
-                    <li style="width: 30%">
-                        No! Take me back:
-                    </li>
-                    <li>
-                        <a [routerLink]="['/search']" class="arrow-left arrow-left-beige">Back to Search</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/modules']" class="arrow-left arrow-left-beige">Back to Collections</a>
-                    </li>
-            </ul>
-</div>
-<br>
+       
+</div>-->
 <!--<div class="row">
              <div class="col-md-12"  >
                     <div class="card">
@@ -129,27 +84,75 @@
              </div>  
              </div>
              <br>-->
-<div class="row" *ngFor= "let mode of img_data.modes" >
-             <div class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
-                        <div class="post-text" >
-                    <h2 [innerHTML]="section.title" class="card-text">    </h2>   
-                        <p [innerHTML]="section.text.text" class="card-text">    </p>      
-                        {{i}}
-                    </div>
-                    <div class="post-text" *ngIf="section.images !== undefined"> </div>   
-                <!--<div  *ngIf="section.images !== undefined"> 
-                          </div>-->
+<md-progress-spinner *ngIf="loading == true" class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+<div class="row"  *ngFor= "let mode of img_data.modes" >
+             <div  class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
+                    <h2 [innerHTML]="section.title" class="card-text">    </h2>      
                          <div class="row" *ngIf="section.images !== undefined">
-                             <div class="col-md-8"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
-                               <div class="col-md-4"><img style="max-width: 500px;max-height: auto" [src]="section.images[0].url" /></div>
+                             <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               <div class="col-md-3"><img style="max-width: 500px;max-height: auto" [src]="section.images[0].url" /></div>
+                           
                                </div>
-                     <!--<img style="float:right; margin: 0 0 10px 10px;max-width: 500px;max-height: auto" [src]="section.images[0].url" /> -->
+                    <div class="row" *ngIf="section.images == undefined">
+                             <div class="col-md-12"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               </div>
+                  
+              <div class="post-video" *ngIf="section.videos !== undefined">
+                      <br>
+                          <br>
+                    <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="section.videos[0].url | safe"></iframe>
+               <br>
+                </div>
+                     </div>
+                     
+</div>
+<div *ngIf="hidden" class="row">
+    <div class="col-md-12">
+                          <h4>Was this article what you were looking for?</h4>
+            
+             <ul style="margin-top:40px" class="post-fav">
+                    <li style="width: 30%">
+                        Yes! Save to your favourites or export to OneNote:
+                    </li>
+                    <li style="margin-right: 1.250em">
+                        <button (click)="savedata()" type="button" class="icon-button" title="Save to Favourites"><i class="fa fa-star"></i></button>
+                    </li>
+                    <li>
+                        <button (click)="saveonenote4()" type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
+                    </li>
+            </ul>
+               <div class="card-block" *ngIf="onenoteloader == true">
+                     <h4 class="card-title" >Saving To One Note...Please wait</h4>
+      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+      </div>
+            
+            <ul style="margin-top:40px" class="post-fav">
+                    <li style="width: 30%">
+                        Almost! But I want to re-configure it:
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-signin">Options</button>
+                    </li>
+            </ul>
+            
+            <ul style="margin-top:40px" class="post-fav">
+                    <li style="width: 30%">
+                        No! Take me back:
+                    </li>
+                    <li>
+                        <a [routerLink]="['/search']" class="arrow-left arrow-left-beige">Back to Search</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/modules']" class="arrow-left arrow-left-beige">Back to Collections</a>
+                    </li>
+            </ul> 
             </div>
+                         </div>
 
 
 
 
- <div class="row" *ngFor= "let mode of img_data.modes" >
+ <!--<div class="row" *ngFor= "let mode of img_data.modes" >
              <div class="col-md-12" *ngFor= "let section of mode.sections"   >
                         <div class="post-text" >
                     <h2 [innerHTML]="section.title" class="card-text">    </h2>   
@@ -167,14 +170,11 @@
                           </div>
                          
  
-                         <!--<div  class="mask waves-effect waves-light" *ngIf= "image.videos.length>0">
-                           <iframe width="560" height="315" [src]="image.videos[0].url | safe" frameborder="0" allowfullscreen></iframe>
-                           </div>-->
-
+              
               <br>
               </div>
                      
-            </div>
+            </div>-->
 
            
                   
