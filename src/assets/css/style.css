@@ -31,8 +31,8 @@
   box-shadow: none;
   font-family: roboto slab, roboto; 
   font-size: 1em;
-  padding-right: 15px;
-  /*position: relative;*/
+  /*padding-right: 15px;
+  position: relative;*/
 }
 
 .logo-almanac {
@@ -79,6 +79,12 @@
     margin-top: 30px;
     z-index: 0;
     left: 0px;
+}
+
+@media only screen and (max-width: 768px) {
+    .header-bg {
+        margin-top: 0px;
+    }
 }
 
 .header-bg-img {
@@ -226,8 +232,8 @@ h4, h5, h6 {
 }
 
 .card-list li {
-    margin-bottom: 1.250em;
-    margin-right: 1.250em;
+    margin-bottom: 1.875em;
+    margin-right: 1.0em;
     display: inline-table;
 }
 
@@ -621,10 +627,10 @@ h4, h5, h6 {
 }
 
 .footer-content {
-    width: 90%;
+    width: 80%;
     height: auto;
     margin: 0;
-    margin-left: 5%;
+    margin-left: 10%;
     padding-top: 20px;
     margin-bottom: 40px;
     padding: 0px;
@@ -644,8 +650,8 @@ h4, h5, h6 {
     display: inline-table;
     color: #c7985c;
     font-size: 0.875em;
-    margin-top: 20px;
-    padding-right: 40px;
+    margin-top: 1.875em;
+    padding-right: 2.500em;
 }
 
 .footer-content-menu a {
@@ -677,12 +683,21 @@ h4, h5, h6 {
     font-weight: bold;
 }
 
+/* PRICING */
+
+.pricing-div {
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+}
+
 /* ICONS */
 
 .features {
     width: 100%;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 3.750em;
+    color: #616b70;
 }
 
 .icon-list {
@@ -723,8 +738,8 @@ h4, h5, h6 {
 .icon-title {
     text-align: center;
     padding-top: 10px;
-    cursor: pointer;
-    /* color: #ffa402; */
+    /* cursor: pointer;
+    color: #ffa402; */
     font-size: 1.250em;
 }
 
@@ -733,7 +748,7 @@ h4, h5, h6 {
 }
 
 .icon-text {
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .icon-text:hover, .icon-text:active, .icon-text:focus {
