@@ -333,18 +333,19 @@ h4, h5, h6 {
     line-height: 20px;
 }
 
-.title-card {
+..title-card {
     font-size: 1.125em;
     color: #70787d;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
-.title-card a {
-    color: #70787d;
-}
-
-.title-card a:hover, .title-card a:active, .title-card a:focus {
+.title-card:hover, .title-card:active, .title-card:focus {
     color: #eb7839;
+}
+
+.title-card-home {
+    font-size: 1.125em;
+    color: #70787d;
 }
 
 .text-card {
