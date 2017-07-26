@@ -49,15 +49,16 @@
                 <li><img style="max-width: 500px;max-height: auto" [src]="images2[2]" /></li>
                 <li><img style="max-width: 500px;max-height: auto" [src]="images2[3]" /></li>
             </ul>-->
+            <div style="padding:30px">
             <div class="row">
-            <div class="col-md-6"><img style="width:100%;height:100%" [src]="images2[0]" /></div>
-            <div class="col-md-6"><img style="width:100%;height:100%" [src]="images2[1]" /></div>
+            <div class="col-md-6"><img style="width:100%" [src]="images2[0]" /></div>
+            <div class="col-md-6"><img style="width:100%" [src]="images2[1]" /></div>
             </div>
              <div class="row">
-            <div class="col-md-6"><img style="width:100%;height:100%" [src]="images2[2]" /></div>
-            <div class="col-md-6"> <img style="width:100%;height:100%" [src]="images2[3]" /></div>
+            <div class="col-md-6"><img style="width:100%" [src]="images2[2]" /></div>
+            <div class="col-md-6"> <img style="width:100%" [src]="images2[3]" /></div>
              </div>
-            
+            <div>
    
           <div class="post-text" [innerHTML]= "text[3]">  </div>
 
@@ -129,67 +130,33 @@
              </div>
              <br>-->
 
-<!--
- <div class="row" *ngIf="!saved" >
-             <div class="col-md-12" *ngFor= "let image of img_data"  >
-                   <div class="card">
-          
-                        <div class="card-block" >
-                  
-                        <p [innerHTML]="image.text.text" class="card-text">    </p>      
-                        <h2> Images under this section </h2>
+
+ <div class="row" *ngFor= "let mode of img_data.modes" >
+             <div class="col-md-12" *ngFor= "let section of mode.sections"   >
+                        <div class="post-text" >
+                    <h2 [innerHTML]="section.title" class="card-text">    </h2>   
+                        <p [innerHTML]="section.text.text" class="card-text">    </p>      
+                        
                     </div>
-                     <carousel [noWrap]="noLoopSlides">
-                       <div class="view overlay hm-white-slight" >
-                          <slide  *ngFor= "let url of image.images" [active]="url.active" >
+                    <div class="post-text" >   
+                       <div *ngFor= "let url of section.images" class="view overlay hm-white-slight">
+                           <h2 class="card-text" *ngIf="section.images !== undefined"> Images under this section </h2>
                         <img [src]="url.url" alt="" style="width:100%;height:100%">
                         <a>
                             <div class="mask waves-effect waves-light"></div>
                         </a>
-                          </slide>
                           </div>
-                        </carousel>
-                         <div  class="mask waves-effect waves-light" *ngIf= "image.videos.length>0">
-                           <iframe width="560" height="315" [src]="image.videos[0].url | safe" frameborder="0" allowfullscreen></iframe></div>
+                          </div>
+                         
+ 
+                         <!--<div  class="mask waves-effect waves-light" *ngIf= "image.videos.length>0">
+                           <iframe width="560" height="315" [src]="image.videos[0].url | safe" frameborder="0" allowfullscreen></iframe>
+                           </div>-->
 
-                                    
-              </div>
               <br>
               </div>
                      
             </div>
-            <div *ngIf="saved">
-            <div class="row" *ngFor= "let data of saved_data;let i=index">
-                <div class="col-md-12">
-                  <div class="card">    <h2>Saved Article {{i+1}}</h2></div>
-                   <br>
-                  </div>
-                 
-             <div class="col-md-12" *ngFor= "let image of data.sections.section"  >
 
-                   <div class="card">
-
-                        <div class="card-block" >
-                          
-                        <p [innerHTML]="image.text.text" class="card-text">    </p>      
-                        <h2> Images under this section </h2>
-                    </div>
-                     <carousel [noWrap]="noLoopSlides">
-                       <div class="view overlay hm-white-slight">
-                          <slide  *ngFor= "let url of image.images.image" [active]="url.active" >
-                        <img [src]="url.url" alt="" style="width:100%;height:100%">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          </slide>
-                          </div>
-                        </carousel>
-                         
-              </div>
-              <br>
-              </div>       
-              </div>     
-                     
-            </div>-->
            
                   
