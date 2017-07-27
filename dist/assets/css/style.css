@@ -90,7 +90,7 @@
 
 @media only screen and (max-width: 768px) {
     .header-bg {
-        margin-top: 0px;
+        margin-top: -30px;
     }
 }
 
@@ -223,6 +223,13 @@ h4, h5, h6 {
 .post-fav li {
     display: inline-table;
     margin-right: 1.250em;
+}
+
+.search-values {
+    font-size: 1.125em;
+    color: #aca084;
+    margin-left: 5%;
+    width: 80%;
 }
 
 /* CARDS - HOME */

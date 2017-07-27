@@ -15,6 +15,7 @@
                           
                         <!--Text-->
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
+                       <hr class="categories" />
                         <p>1 ) Enter the topic you're looking for:</p>
       
                  <form (ngSubmit)="onSubmit()">
@@ -28,11 +29,12 @@
                       </div>
                       </div>
                              </div>
-                             <br>
+                      
+                       <hr class="categories" />
                                 <h5>2 ) Describe what results you want for this search:</h5>     
-                        <p>{{DataService.differentiator[0].name}}</p>
+                        <h4 class="card-title">{{DataService.differentiator[0].name}}</h4>
                         <!--Ability-->
-                       <div class="row">
+                       <div class="row search-values">
                              <div class="col-md-1">
                                <p>{{DataService.differentiator[0].levels[0]}}</p>
                                 </div>
@@ -46,9 +48,9 @@
                                <p>{{DataService.differentiator[0].levels[2]}}</p>
                                </div>
                              </div>
-                              <br>
-                               <p>{{DataService.type.name}}</p>
-                            <div class="row">
+                              <br><br>
+                               <h4 class="card-title">{{DataService.type.name}}</h4>
+                            <div class="row  search-values">
                              <div class="col-md-1">
                                <p>{{DataService.type.levels[0]}}</p>
                                 </div>
@@ -62,7 +64,8 @@
                                <p>{{DataService.type.levels[2]}}</p>
                                </div>
                              </div>   
-                             <br>   
+                           
+                       <hr class="categories" /> 
                           <h5>3 ) And … Go!</h5>   
                         <button class="btn btn-primary" type="submit" color="warn" >Search</button>
                         </form>
