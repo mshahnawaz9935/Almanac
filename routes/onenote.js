@@ -60,6 +60,8 @@ MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQM
             //     });
             // });
              collection.find().toArray(function(err, results) {
+               if(results.length > 0)
+               {
                  console.log(results[0]);
                 if(results[0].username == username && results[0].password == password)
                 {
@@ -68,8 +70,8 @@ MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQM
                     req.session.email = results[0].username;
                 res.json('User exists');
                 console.log(req.session.email);
-               
-                }
+                 }
+               }
                 else res.json('User doesnt exists' );
             });
 
