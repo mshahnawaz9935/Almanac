@@ -88,13 +88,18 @@
 <div class="row"  *ngFor= "let mode of img_data.modes" >
              <div  class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
                     <h2 [innerHTML]="section.title" class="card-text">    </h2>      
-                         <div class="row" *ngIf="section.images !== undefined">
+                         <div class="row" *ngIf="section.images !== undefined && i%2 == 0">
                              <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
-                               <div class="col-md-3"><img style="max-width: 500px;max-height: auto" [src]="section.images[0].url" /></div>
+                               <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" /></div>
                            
                                </div>
                     <div class="row" *ngIf="section.images == undefined">
                              <div class="col-md-12"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               </div>
+    
+                         <div class="row" *ngIf="section.images !== undefined && i%2 == 1">
+                             <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" /></div>
+                             <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
                                </div>
                   
               <div class="post-video" *ngIf="section.videos !== undefined">
