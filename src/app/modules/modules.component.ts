@@ -21,7 +21,7 @@ export class ModulesComponent implements OnInit {
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
-       this.http.get('https://student.almanac-learning.com/onenote/checklogin')
+       this.http.get('http://localhost:3000/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -36,14 +36,14 @@ export class ModulesComponent implements OnInit {
           console.log('Logged in' ,this.authenticated1);
 
 
-      this.http.get('https://student.almanac-learning.com/onenote/aboutme')
+      this.http.get('http://localhost:3000/onenote/aboutme')
               .map((res: Response) => res.json()).subscribe((Serverdata) => {
                 console.log('Login status is ' + Serverdata );
                 this.user = Serverdata;
 
                    });
                          setTimeout(()=> {  
-                 this.http.get('https://student.almanac-learning.com/api/instances?id=modules')
+                 this.http.get('http://localhost:3000/api/instances?id=modules')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
@@ -115,7 +115,7 @@ export class ModulesComponent implements OnInit {
 
       getInstances() {
 
-           this.http.get('https://student.almanac-learning.com/api/instances?id=modulesonerror')
+           this.http.get('http://localhost:3000/api/instances?id=modulesonerror')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
