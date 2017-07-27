@@ -7,6 +7,7 @@ var authHelper = require('../authHelper.js');
  var fs = require("fs");
    var _ = require('underscore');
   var base64Img = require('base64-img');
+  var MongoClient = require('mongodb').MongoClient , format = require('util').format;
 
 /* GET home page. */
 var t=2,sec=2;
@@ -41,6 +42,41 @@ function getToken (callback)
              callback(token);
         });
 }
+
+router.get('/userlogin', (req, res) => {
+
+    var username = req.query.username;
+    var password = req.query.password;
+
+MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+    if (err) {
+        throw err;
+    } else {
+        console.log("successfully connected to the database");
+            var collection = db.collection('login');
+            // collection.insert({ username: username , password : password}, function(err, docs) {
+            //     collection.count(function(err, count) {
+            //         console.log(format("count = %s", count));
+            //     });
+            // });
+             collection.find().toArray(function(err, results) {
+                 console.log(results[0]);
+                if(results[0].username == username && results[0].password == password)
+                {
+                   req.session.login = 'Logged in via database';
+                console.log(req.session.login);
+                    req.session.email = results[0].username;
+                res.json('User exists');
+                console.log(req.session.email);
+               
+                }
+                else res.json('User doesnt exists' );
+            });
+
+    }
+    db.close();
+});
+});
 
 
 
@@ -266,12 +302,15 @@ router.get('/writenote', function (req, res) {
 });
 router.get('/checklogin', function (req, res) {        // Wont work directly on angular, need to be executed on node
   // check for token
-  if (req.cookies.ACCESS_TOKEN_CACHE_KEY === undefined) {
-    req.session.login = '';
-  }
-  console.log(req.session.login);
+  // if (req.cookies.ACCESS_TOKEN_CACHE_KEY === undefined) {  // for testing very importnat to neutralize session
+  //   req.session.login = '';
+  //   console.log('here');
+  // }
+  console.log(req.session.login , req.session.email);
   if(req.session.login == 'Logged in')
   res.json('Logged in');
+  else if(req.session.login == 'Logged in via database')
+  res.json('Logged in via database');
   else
   res.json('No Login');
 });

@@ -30,7 +30,51 @@ export class ModulesComponent implements OnInit {
           this.authenticated1 = false;
           this.loading = false;
           this.subscription = 'Please Login to view the collections';
-          }
+        }
+         else if(dataFromServer == 'Logged in via database')
+        {
+          this.authenticated1 =true;
+           console.log('Logged in via database');
+             this.http.get('http://localhost:3000/api/instances?id=menu')
+              .map((res: Response) => res.json())
+              .catch((error:any) => 
+                        {
+                            console.log('Error instances is ', error);
+                            if(error.status == '500')
+                            {
+                            console.log('500 occured', error.status);
+                            this.getInstances();
+                            }
+                          return Observable.throw(error.json().error || 'Server error') 
+                         })
+              .subscribe((dataFromServer) => {
+          console.log('Module status is ' + dataFromServer );
+           
+           if(dataFromServer == 'Subscription does not exists')
+           {
+             this.subscription = 'No Collections Subscribed';
+             this.exists = false;
+             this.loading = false;
+              
+           }
+             else if(dataFromServer == '500 Occured')
+           {
+             this.getInstances();
+           }
+           else 
+           {
+               this.data = dataFromServer;
+             this.exists = false;
+             this.loading = false;
+             this.subscription = 'View your subscribed collections below';
+              this.getdata(dataFromServer);
+           }
+        }
+        
+        
+        );
+
+        }
           else
           { this.authenticated1 =true;
           console.log('Logged in' ,this.authenticated1);

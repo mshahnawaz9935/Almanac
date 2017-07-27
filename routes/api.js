@@ -23,6 +23,73 @@ router.get('/token', (req, res) => {
     })
 
 });
+router.get('/userlogin', (req, res) => {
+
+    var username = req.query.username;
+    var password = req.query.password;
+
+MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+    if (err) {
+        throw err;
+    } else {
+        console.log("successfully connected to the database");
+            var collection = db.collection('login');
+            // collection.insert({ username: username , password : password}, function(err, docs) {
+            //     collection.count(function(err, count) {
+            //         console.log(format("count = %s", count));
+            //     });
+            // });
+             collection.find().toArray(function(err, results) {
+                 console.log(results[0]);
+                if(results[0].username == username && results[0].password == password)
+                {
+                    req.session.email = results[0].username;
+                res.json('User exists');
+                console.log(req.session.email);
+                req.session.login = 'Logged in via database';
+                console.log(req.session.login);
+                }
+                else res.json('User doesnt exists' );
+            });
+
+
+
+
+    }
+    db.close();
+});
+});
+
+router.get('/insert_user', (req, res) => {
+
+    var username = req.query.username;
+    var password = req.query.password;
+
+MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+    if (err) {
+        throw err;
+    } else {
+        console.log("successfully connected to the database");
+            var collection = db.collection('login');
+            collection.insert({ username: username , password : password}, function(err, docs) {
+                collection.count(function(err, count) {
+                    console.log(format("count = %s", count));
+                });
+            });
+             collection.find().toArray(function(err, results) {
+                 console.log(results);
+                 res.json(results);
+            });
+
+
+
+
+    }
+    db.close();
+});
+});
+
+
 
 router.get('/getdata', (req, res) => {
 // MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe

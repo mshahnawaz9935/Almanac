@@ -26,7 +26,57 @@ exists = false;
           {
             console.log('Not logged in');
           this.authenticated1 = false;
-          }
+        }
+        else if(dataFromServer == 'Logged in via database')
+        {
+          this.authenticated1 =true;
+           console.log('Logged in via database');
+           this.http.get('http://localhost:3000/api/aboutme')
+              .map((res: Response) => res.json()). 
+
+              subscribe((dataFromServer) => {
+                console.log('Login status is ' + dataFromServer );
+                this.user = dataFromServer;
+
+              })
+
+
+             this.http.get('http://localhost:3000/api/instances?id=menu')
+              .map((res: Response) => res.json())
+              .catch((error:any) => 
+                        {
+                            console.log('Error instances is ', error);
+                            if(error.status == '500')
+                            {
+                            console.log('500 occured', error.status);
+                            this.getInstances();
+                            }
+                          return Observable.throw(error.json().error || 'Server error') 
+                         })
+              .subscribe((dataFromServer) => {
+          console.log('Module status is ' + dataFromServer );
+           
+           if(dataFromServer == 'Subscription does not exists')
+           {
+             this.subscription = 'No Modules Subscribed';
+             this.exists = false;
+           }
+           else if(dataFromServer == '500 Occured')
+           {
+             this.getInstances();
+           }
+           else 
+           {
+             this.exists = true;
+             this.subscription = 'View your subscribed modules below';
+              this.getdata(dataFromServer);
+           }
+        }
+        
+        
+        );
+
+        }
           else
           { this.authenticated1 =true;
           console.log('Logged in' ,this.authenticated1);
