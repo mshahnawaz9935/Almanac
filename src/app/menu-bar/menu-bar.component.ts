@@ -63,6 +63,7 @@ exists = false;
            }
            else if(dataFromServer == '500 Occured')
            {
+             this.exists = false;
              this.getInstances();
            }
            else 
@@ -114,6 +115,7 @@ exists = false;
            }
            else if(dataFromServer == '500 Occured')
            {
+                this.exists = false;
              this.getInstances();
            }
            else 
@@ -205,7 +207,8 @@ moduledata;
 
     getInstances() {
 
-           this.http.get('https://student.almanac-learning.com/api/instances?id=menu')
+      console.log('on error');
+           this.http.get('https://student.almanac-learning.com/api/instances?id=menuerror')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
