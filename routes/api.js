@@ -300,7 +300,7 @@ router.get('/instances', (req, res) => {
         }
            else if(response.statusCode == 500 && req.cookies.sessionemail !== undefined)
         { console.log('nuffing 500' , req.cookies.sessionemail, error ,response.statusCode, response.headers);
-            callback(false , '');
+           // callback(false , '');
             res.json('500 Occured');
         }
         else {
