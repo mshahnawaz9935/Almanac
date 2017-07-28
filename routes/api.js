@@ -303,7 +303,10 @@ router.get('/instances', (req, res) => {
             callback(false , '');
             res.json('500 Occured');
         }
-        else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+        else {
+                 res.json('No collections found');
+            console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+    }
     });
     }
     
