@@ -48,8 +48,8 @@ export class SearchComponent implements OnInit {
         if(this.DataService.query !== '')
         {
         this.model.search =  this.DataService.query ;
-        this.model.slider_value1= this.DataService.slider1 ;
-        this.model.slider_value2 = this.DataService.slider2 ;
+        this.model.slider_value1=  this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) ;
+        this.model.slider_value2 = this.DataService.type.levels.indexOf(this.DataService.slider2) ;
         }
 
        
@@ -69,7 +69,7 @@ export class SearchComponent implements OnInit {
     this.submitted = true;
     console.log('hello', this.model.search.length , this.model.slider_value1, this.model.slider_value2);
     this.slider1= this.DataService.differentiator[0].levels[this.model.slider_value1];
-    this.slider2=this.DataService.type.levels[this.model.slider_value2];
+    this.slider2= this.DataService.type.levels[this.model.slider_value2];
     console.log('Slider values are' ,this.slider1, this.slider2);
     if(this.model.search != '')
     {
