@@ -174,6 +174,7 @@ export class ModulesComponent implements OnInit {
 
       getInstances() {
 
+        console.log('on error');
            this.http.get('https://student.almanac-learning.com/api/instances?id=modulesonerror')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
