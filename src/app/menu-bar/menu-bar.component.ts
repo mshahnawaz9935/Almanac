@@ -221,7 +221,6 @@ moduledata;
              else if(dataFromServer == '500 Occured')
            {
                 this.exists = false;
-             this.getInstances();
            }
            else 
            {
