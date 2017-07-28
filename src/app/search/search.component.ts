@@ -27,12 +27,7 @@ export class SearchComponent implements OnInit {
   differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
   constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
-    //    route.queryParams.subscribe(
-    //   data =>{ 
-    //     console.log('queryParams', data['authenticated']) ;   //Read Query string from Url
-    //     if(data['authenticated']== 'true')
-    //     this.authenticated = true;
-    // });
+ 
     console.log('search module' ,this.DataService.moduleid);
          if(this.DataService.moduleid != '')
         {
@@ -49,33 +44,7 @@ export class SearchComponent implements OnInit {
         {  
           this.router.navigate(['/modules']);
         }
-     this.http.get('https://student.almanac-learning.com/note/checklogin')               // Check Login
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Login status is ' + dataFromServer );
-          if(dataFromServer == 'No Login')
-          this.authenticated = false;
-          else this.authenticated =true;
-          console.log(this.authenticated);
-        });
-        this.http.get('https://student.almanac-learning.com/onenote/checklogin')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {      //Check if user is logged in
-          console.log('Login status is ' + dataFromServer );
-          if(dataFromServer == 'No Login')
-          {
-          this.authenticated1 = false;
-         // this.router.navigate(['/account']);
-          }
-          else
-          { this.authenticated1 =true;
-          console.log(this.authenticated1);
 
-          this.http.get('https://student.almanac-learning.com/onenote/aboutme')
-              .map((res: Response) => res.json()).subscribe((dataFromServer) => {    // Get User details
-                console.log('Login status is ' + dataFromServer );
-                this.user = dataFromServer;
-              });
-          }
-        });
        
          
    }
