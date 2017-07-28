@@ -31,12 +31,12 @@ exists = false;
         {
           this.authenticated1 =true;
            console.log('Logged in via database');
-           this.http.get('https://student.almanac-learning.com/api/aboutme')
+           this.http.get('https://student.almanac-learning.com/api/subscription')
               .map((res: Response) => res.json()). 
 
               subscribe((dataFromServer) => {
-                console.log('Login status is ' + dataFromServer );
-                this.user = dataFromServer;
+                console.log('Subscription status is ' + dataFromServer );
+                this.user = dataFromServer.name;
 
               })
 

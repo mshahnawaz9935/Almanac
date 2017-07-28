@@ -35,6 +35,15 @@ export class ModulesComponent implements OnInit {
         {
           this.authenticated1 =true;
            console.log('Logged in via database');
+            this.http.get('https://student.almanac-learning.com/api/subscription')
+              .map((res: Response) => res.json()). 
+
+              subscribe((dataFromServer) => {
+                console.log('Subscription status is ' + dataFromServer );
+                this.user = dataFromServer.name;
+
+              })
+
              this.http.get('https://student.almanac-learning.com/api/instances?id=menu')
               .map((res: Response) => res.json())
               .catch((error:any) => 
