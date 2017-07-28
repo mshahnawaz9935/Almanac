@@ -256,9 +256,13 @@ router.get('/subscription', (req, res) => {
 subscription( token , req.session.email , function(exists , data)
 {
     if(exists == true)
-    res.json('Subscription exists and id is' + data.id);
-    else res.json(data);
+    res.json(data);
+    else res.json('Subscription does not exists');
 })
+
+   
+
+
 
 });
 
