@@ -210,16 +210,6 @@ moduledata;
       console.log('on error');
            this.http.get('https://student.almanac-learning.com/api/instances?id=menuerror')
               .map((res: Response) => res.json())
-              .catch((error:any) => 
-                        {
-                            console.log('Error instances is ', error);
-                            if(error.status == '500')
-                            {
-                            console.log('500 occured', error.status);
-                            this.getInstances();
-                            }
-                          return Observable.throw(error.json().error || 'Server error') 
-                         })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
@@ -227,6 +217,11 @@ moduledata;
            {
              this.subscription = 'No Modules Subscribed';
              this.exists = false;
+           }
+             else if(dataFromServer == '500 Occured')
+           {
+                this.exists = false;
+             this.getInstances();
            }
            else 
            {

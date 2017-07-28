@@ -122,7 +122,7 @@ export class ModulesComponent implements OnInit {
            }
              else if(dataFromServer == '500 Occured')
            {
-               this.subscription = '<h3>Internal Server Occured. Refresh Again<h3>';
+               this.subscription = 'Internal Server Occured. Refresh Again';
                this.loading = false;
              this.getInstances();
            }
@@ -188,7 +188,7 @@ export class ModulesComponent implements OnInit {
            }
             else if(dataFromServer == '500 Occured')
            {
-               this.subscription = '<h3>Internal Server Occured. Refresh Again<h3>';
+               this.subscription = 'Internal Server Occured. Refresh Again';
                this.loading = false;
            }
            else 
