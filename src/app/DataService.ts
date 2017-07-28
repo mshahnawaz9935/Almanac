@@ -17,6 +17,7 @@ slider2='';
 differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
   key ='';
+  dblogin = false;
     constructor(private http: Http) {
 
       this.http.get('https://student.almanac-learning.com/api/saskey')

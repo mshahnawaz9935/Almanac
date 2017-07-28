@@ -124,7 +124,7 @@
                         <button (click)="savedata()" type="button" class="icon-button" title="Save to Favourites"><i class="fa fa-star"></i></button>
                     </li>
                     <li>
-                        <button (click)="saveonenote4()" type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
+                        <button *ngIf= "!DataService.dblogin" (click)="saveonenote4()" type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
                     </li>
             </ul>
                <div class="card-block" *ngIf="onenoteloader == true">

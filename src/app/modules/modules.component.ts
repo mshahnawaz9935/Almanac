@@ -34,6 +34,7 @@ export class ModulesComponent implements OnInit {
         }
          else if(dataFromServer == 'Logged in via database')
         {
+          this.DataService.dblogin = true;
           this.authenticated1 =true;
            console.log('Logged in via database');
             this.http.get('https://student.almanac-learning.com/api/subscription')
