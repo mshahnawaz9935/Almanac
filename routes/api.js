@@ -304,7 +304,7 @@ router.get('/instances', (req, res) => {
             res.json('500 Occured');
         }
         else {
-                 res.json('No collections found');
+                 res.json('Subscription does not exists');
             console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
     }
     });
