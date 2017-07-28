@@ -230,7 +230,7 @@ console.log('Email is ' + email + 'Token is' + token);
             if(JSON.parse(response.body).email == email)
             {
             exists = true;
-            callback(exists , JSON.parse(response.body).id );
+            callback(exists , JSON.parse(response.body) );
         }
         else {
             exists = false;
@@ -253,16 +253,12 @@ console.log('Email is ' + email + 'Token is' + token);
 
 router.get('/subscription', (req, res) => {
 
-subscription( token , req.session.email , function(exists , id)
+subscription( token , req.session.email , function(exists , data)
 {
     if(exists == true)
-    res.json('Subscription exists and id is' + id);
-    else res.json('Subscription does not exists');
+    res.json('Subscription exists and id is' + data.id);
+    else res.json(data);
 })
-
-   
-
-
 
 });
 
@@ -277,19 +273,19 @@ router.get('/instances', (req, res) => {
     console.log('Session email is' , req.cookies.sessionemail , id);
     if(req.cookies.sessionemail !== undefined)
     {
-    subscription( token , req.cookies.sessionemail , function(exists , id)
+    subscription( token , req.cookies.sessionemail , function(exists , data)
 {
     
-    if(exists == true && id!== '')
+    if(exists == true && data.id!== '')
     {
         console.log('Subscription exists');
-        req.session.studentid = id;
+        req.session.studentid = data.id;
          var request = require('request');
     var headers = {
         Authorization: 'Bearer ' + token
     }
     var options = {
-        url: 'https://services.almanac-learning.com/composer/students/'+ id +'/instances',
+        url: 'https://services.almanac-learning.com/composer/students/'+ data.id +'/instances',
         method: 'GET',
         headers: headers,
     }
