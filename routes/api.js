@@ -279,7 +279,7 @@ router.get('/instances', (req, res) => {
     {
     subscription( token , req.cookies.sessionemail , function(exists , data)
 {
-    
+    req.cookies.sessionemail = '';
     if(exists == true && data.id!== '')
     {
         console.log('Subscription exists');
