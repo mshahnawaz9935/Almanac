@@ -32,19 +32,19 @@ export class SearchComponent implements OnInit {
          if(this.DataService.moduleid != '')
         {
           console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
-        // this.http.get('https://student.almanac-learning.com/api/instances')
-        //       .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
-        //         console.log('Login status is ' + dataFromServer );
-        //         this.getInstance(dataFromServer);
+        this.http.get('https://student.almanac-learning.com/api/instances')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
+                console.log('Login status is ' + dataFromServer );
+                this.getInstance(dataFromServer);
 
-        //       });
+              });
                  
         }
         else
         {  
           this.router.navigate(['/modules']);
         }
-        
+
         if(this.DataService.query !== '')
         this.model.search =  this.DataService.query ;
 
