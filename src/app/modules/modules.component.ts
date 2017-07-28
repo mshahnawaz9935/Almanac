@@ -17,6 +17,7 @@ export class ModulesComponent implements OnInit {
   user ='User';
   loading: Boolean;
   subscription = '';
+  error : Boolean;
   authenticated1;
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
     this.loading = true;
@@ -46,16 +47,16 @@ export class ModulesComponent implements OnInit {
 
              this.http.get('https://student.almanac-learning.com/api/instances?id=menu')
               .map((res: Response) => res.json())
-              .catch((error:any) => 
-                        {
-                            console.log('Error instances is ', error);
-                            if(error.status == '500')
-                            {
-                            console.log('500 occured', error.status);
-                            this.getInstances();
-                            }
-                          return Observable.throw(error.json().error || 'Server error') 
-                         })
+              // .catch((error:any) => 
+              //           {
+              //               console.log('Error instances is ', error);
+              //               if(error.status == '500')
+              //               {
+              //               console.log('500 occured', error.status);
+              //               this.getInstances();
+              //               }
+              //             return Observable.throw(error.json().error || 'Server error') 
+              //            })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
@@ -68,6 +69,7 @@ export class ModulesComponent implements OnInit {
            }
              else if(dataFromServer == '500 Occured')
            {
+             this.error = true;
              this.getInstances();
            }
            else 
@@ -98,16 +100,16 @@ export class ModulesComponent implements OnInit {
                          setTimeout(()=> {  
                  this.http.get('https://student.almanac-learning.com/api/instances?id=modules')
               .map((res: Response) => res.json())
-              .catch((error:any) => 
-                        {
-                            console.log('Error instances is ', error);
-                            if(error.status == '500')
-                            {
-                            console.log('500 occured', error.status);
-                            this.getInstances();
-                            }
-                          return Observable.throw(error.json().error || 'Server error') 
-                         })
+              // .catch((error:any) => 
+              //           {
+              //               console.log('Error instances is ', error);
+              //               if(error.status == '500')
+              //               {
+              //               console.log('500 occured', error.status);
+              //               this.getInstances();
+              //               }
+              //             return Observable.throw(error.json().error || 'Server error') 
+              //            })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            if(dataFromServer == 'Subscription does not exists')
@@ -119,6 +121,8 @@ export class ModulesComponent implements OnInit {
            }
              else if(dataFromServer == '500 Occured')
            {
+               this.error = true;
+               this.loading = false;
              this.getInstances();
            }
            else 
@@ -170,16 +174,6 @@ export class ModulesComponent implements OnInit {
 
            this.http.get('https://student.almanac-learning.com/api/instances?id=modulesonerror')
               .map((res: Response) => res.json())
-              .catch((error:any) => 
-                        {
-                            console.log('Error instances is ', error);
-                            if(error.status == '500')
-                            {
-                            console.log('500 occured', error.status);
-                            this.getInstances();
-                            }
-                          return Observable.throw(error.json().error || 'Server error') 
-                         })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
@@ -189,6 +183,11 @@ export class ModulesComponent implements OnInit {
              this.subscription = 'No Modules Subscribed';
              this.exists = false;
              
+           }
+            else if(dataFromServer == '500 Occured')
+           {
+               this.error = true;
+               this.loading = false;
            }
            else 
            {

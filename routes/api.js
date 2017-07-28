@@ -299,7 +299,7 @@ router.get('/instances', (req, res) => {
             console.log('Instances', JSON.parse(response.body));
             res.json(JSON.parse(response.body));
         }
-           else if(response.statusCode == 500 && email !== undefined)
+           else if(response.statusCode == 500 && req.cookies.sessionemail !== undefined)
         { console.log('nuffing 500' , email, error ,response.statusCode, response.headers);
             callback(false , '');
             res.json('500 Occured');

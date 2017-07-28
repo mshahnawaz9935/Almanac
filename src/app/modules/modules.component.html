@@ -8,6 +8,20 @@
                      <h4 class="card-title" >Loading Collections...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
+
+      <div *ngIf="error"  class="row">
+              <div class="col-md-12">
+                <div class="card">
+                 <div class="card-block">
+             
+                        <h4 class="card-title">Server Error Occured</h4>
+                        <a [routerLink]="['/search']"  class="btn btn-primary primary" >BACK</a>
+                     <br><br><br><br><br><br><br>
+                        </div>
+                        </div>
+                        <br>
+                </div>
+                </div>
         
         <ul class="card-list" *ngIf="exists">
             <li>
