@@ -3,9 +3,8 @@
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
 
-<ul> <li class="card-fav" *ngFor="let data of favs_data; let index = index" 
+<ul> <li (click)="onSelect(index)" class="card-fav" *ngFor="let data of favs_data; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%"   >
-                        <div (click)="onSelect(index)">
                             <div class="transbox-fav"  >
                             <div class="card-fav-bg-category">
                                 <div class="fav-category">{{data.image}}{{data.modulename}}</div>
@@ -17,7 +16,6 @@
                                 </div>
                                 <div class="fav-button">
                                     <button type="button"  class="btn btn-signin btn-sm">CLICK ME!</button>
-                                </div>
                                 </div>
                                 <div class="fav-social">
                                     <ul>
