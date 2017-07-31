@@ -104,9 +104,7 @@ imagesdata='';
 
   }  
 
-
-      
-  getdata(data){
+getdata(data){
     
     for(let data1 of data)
     {
@@ -117,6 +115,15 @@ imagesdata='';
       let len =section.text.text.length;
       console.log('Length of text is' ,len);
       section.text.text = section.text.text.substring(9,len-3);
+
+      if(section.videos !== undefined)
+           {
+           for(let videourl of section.videos)
+           {
+             if(videourl.attribution == 'Youtube')
+             videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
+           }
+          }
 
          if(section.images !== undefined)
          for(let image of section.images)
@@ -145,6 +152,10 @@ imagesdata='';
    
     }
   }
+
+
+      
+
 
 
 
