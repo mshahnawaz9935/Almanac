@@ -51,7 +51,7 @@ export class PostsComponent implements OnInit {
       
            this.getdata3(dataFromServer);
              this.img_data = dataFromServer;
-       //     this.getdata2(dataFromServer.modes);
+            this.getdata2(dataFromServer.modes);
              this.loading = false;
              this.hidden = true;
             
