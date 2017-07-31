@@ -54,12 +54,15 @@ export class ResultsComponent implements OnInit {
       this.error = false;
       for(let desc of data.results)
       {
+        if(desc.description !== null && desc.description !== undefined)
+        {
         let len =desc.description.length;
-        // if(len > 50)
-        // desc.description = desc.description.substring(9, 70);
-        // else 
         desc.description = desc.description.substring(9, len-3);
+        }
+      if(desc.image !== null && desc.image !== undefined)
+        {
         desc.image = desc.image + this.DataService.key ;
+        }
         console.log(desc.image);
       }
       this.results = data.results;
