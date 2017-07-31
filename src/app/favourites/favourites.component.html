@@ -5,6 +5,7 @@
 
 <ul> <li class="card-fav" *ngFor="let data of favs_data; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%"   >
+                        <div (click)="onSelect(index)">
                             <div class="transbox-fav"  >
                             <div class="card-fav-bg-category">
                                 <div class="fav-category">{{data.image}}{{data.modulename}}</div>
@@ -15,7 +16,8 @@
                                     <div class="fav-title" >{{data.topic}}</div>
                                 </div>
                                 <div class="fav-button">
-                                    <button type="button" (click)="onSelect(index)" class="btn btn-signin btn-sm">CLICK ME!</button>
+                                    <button type="button"  class="btn btn-signin btn-sm">CLICK ME!</button>
+                                </div>
                                 </div>
                                 <div class="fav-social">
                                     <ul>
