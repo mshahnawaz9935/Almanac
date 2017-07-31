@@ -9,16 +9,16 @@
                             <li><a *ngIf="!authenticated1" [routerLink]="['/']">Home</a></li>
                             <li><a *ngIf="!authenticated1" [routerLink]="['/about']" href="#">How it Works</a></li>
                             <li><a *ngIf="!authenticated1" [routerLink]="['/pricing']" href="#">Pricing</a></li>
-                            <li><a *ngIf="authenticated1" href="#">How it Works</a></li>
-                            <li><a *ngIf="authenticated1" href="#">Pricing</a></li>
+                            <li><a *ngIf="authenticated1" >How it Works</a></li>
+                            <li><a *ngIf="authenticated1" >Pricing</a></li>
                             <li><a href="#">CJ Fallon</a></li>
                         </ul>
                     </li>
                  <li><b>COLLECTIONS</b>
                         <ul *ngIf="!exists" class="footer-list">
-                            <li><a href="#">Science</a></li>
-                            <li><a href="#">Geography</a></li>
-                            <li><a href="#">Business</a></li>
+                            <li><a [routerLink]="['/account']">Science</a></li>
+                            <li><a [routerLink]="['/account']" >Geography</a></li>
+                            <li><a [routerLink]="['/account']" href=>Business</a></li>
                         </ul>
                 <ul *ngIf="exists" class="footer-list"  >
                    <li *ngFor="let modules of moduledata" (click)="onclick(modules.id,modules.name)" > <a>{{modules.name}} </a></li>
