@@ -13,11 +13,14 @@
                         </ul>
                     </li>
                  <li><b>COLLECTIONS</b>
-                        <ul class="footer-list">
+                        <ul *ngIf="!exists" class="footer-list">
                             <li><a href="#">Science</a></li>
                             <li><a href="#">Geography</a></li>
                             <li><a href="#">Business</a></li>
                         </ul>
+                <ul *ngIf="exists"  >
+                   <li class="categories-list" *ngFor="let modules of moduledata" (click)="onclick(modules.id,modules.name)" > <a>{{modules.name}} </a></li>
+                  </ul>
                     </li>
                  <!-- <li><b>FOLLOW US</b>
                         <ul class="footer-list">
