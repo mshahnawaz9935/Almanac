@@ -75,6 +75,7 @@ imagesdata='';
        let description = data.description;
        let modulename = data.modulename;
        let topic = data.topic;
+       let chapter = data.chapter;
        for(let mode of data)
        {
        for(let section of mode.sections)
@@ -97,7 +98,7 @@ imagesdata='';
         }
        }
             console.log('here imagedata url', this.imagesdata);
-        this.favs_data.push({ 'title': title , 'topic':topic , 'description' : description , 'modulename' : modulename , 'image': this.imagesdata  });
+        this.favs_data.push({ 'title': title , 'topic':topic , 'chapter' : chapter ,'description' : description , 'modulename' : modulename , 'image': this.imagesdata  });
     }
     console.log('Favs data is' , this.favs_data);
 
