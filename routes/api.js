@@ -260,25 +260,25 @@ subscription( token , req.session.email , function(exists , data)
     else res.json('Subscription does not exists');
 })
 
-   
-
-
-
 });
-
-
-
 
 router.get('/instances', (req, res) => {
 
     // getToken(function(token)
     // {   
+        var email = '';
     var id= req.query.id; 
     console.log('Session email is' , req.cookies.sessionemail , id);
     if(req.cookies.sessionemail !== undefined)
     {
-    subscription( token , req.cookies.sessionemail , function(exists , data)
-{
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+     
+        var k=  re.test(req.cookies.sessionemail);
+        if(k == false)
+        email = sha256(); 
+        else email = req.cookies.sessionemail;
+    subscription( token , email , function(exists , data)
+    {
     if(exists == true && data.id!== '')
     {
         console.log('Subscription exists');
@@ -298,8 +298,8 @@ router.get('/instances', (req, res) => {
             console.log('Instances', JSON.parse(response.body));
             res.json(JSON.parse(response.body));
         }
-           else if(response.statusCode == 500 && req.cookies.sessionemail !== undefined)
-        { console.log('nuffing 500' , req.cookies.sessionemail, error ,response.statusCode, response.headers);
+           else if(response.statusCode == 500 && email !== undefined)
+        { console.log('nuffing 500' , email, error ,response.statusCode, response.headers);
            // callback(false , '');
             res.json('500 Occured');
         }
