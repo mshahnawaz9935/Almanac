@@ -18,7 +18,7 @@
                         <ul *ngIf="!exists" class="footer-list">
                             <li><a [routerLink]="['/account']">Science</a></li>
                             <li><a [routerLink]="['/account']" >Geography</a></li>
-                            <li><a [routerLink]="['/account']" href=>Business</a></li>
+                            <li><a [routerLink]="['/account']" >Business</a></li>
                         </ul>
                 <ul *ngIf="exists" class="footer-list"  >
                    <li *ngFor="let modules of moduledata" (click)="onclick(modules.id,modules.name)" > <a>{{modules.name}} </a></li>
