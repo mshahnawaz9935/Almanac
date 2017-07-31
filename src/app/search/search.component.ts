@@ -95,7 +95,7 @@ export class SearchComponent implements OnInit {
     {
       if(this.DataService.moduleid == module.id)
       {
-        console.log('module found');
+        console.log('module found' , module);
         //this.differentiator = module.differentiators;
        // this.type= module.type;
              this.DataService.differentiator = module.differentiators;
