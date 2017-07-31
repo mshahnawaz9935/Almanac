@@ -105,7 +105,7 @@ export class SearchComponent implements OnInit {
       
     }
 
-    console.log('difff and type', this.type.name, this.differentiator[0].name, this.type.levels);
+    console.log('difff and type', this.DataService.type.name, this.DataService.differentiator[0].name, this.DataService.type.levels);
   }
 
 
