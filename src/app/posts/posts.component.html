@@ -85,7 +85,9 @@
              </div>
              <br>-->
 <md-progress-spinner *ngIf="loading == true" class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-<h2 class="card-text">{{DataService.myquery.chapter}} </h2>
+<h2 *ngIf="hidden" class="card-text">{{DataService.myquery.chapter}} </h2>
+<br>
+<br>
 <div class="row"  *ngFor= "let mode of img_data.modes" >
              <div  class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
                     <h2 [innerHTML]="section.title" class="card-text">    </h2>      
