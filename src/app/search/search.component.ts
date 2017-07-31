@@ -48,8 +48,11 @@ export class SearchComponent implements OnInit {
         if(this.DataService.query !== '')
         {
         this.model.search =  this.DataService.query ;
+        if(this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) >= 0 && this.DataService.type.levels.indexOf(this.DataService.slider2) >= 0  )
+        {
         this.model.slider_value1=  this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) ;
         this.model.slider_value2 = this.DataService.type.levels.indexOf(this.DataService.slider2) ;
+        }
         }
 
        
