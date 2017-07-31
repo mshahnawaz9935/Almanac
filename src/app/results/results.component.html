@@ -41,7 +41,7 @@
                         <br>
                 </li>
 </ul>
- <a *ngIf="loading == false" [routerLink]="['/search']"  class="btn btn-primary primary" >RECONFIGURE ARTICLE</a>
+ <a *ngIf="loading == false && error == false" [routerLink]="['/search']"  class="btn btn-primary primary" >RECONFIGURE ARTICLE</a>
 
 
 <br>
@@ -63,7 +63,7 @@
              
                         <h4 class="card-title">No Results Found</h4>
                         <a *ngIf="loading == false" [routerLink]="['/search']"  class="btn btn-primary primary" >New Search</a>
-                     <br><br><br><br><br><br><br>
+                     <br>
                         </div>
                         </div>
                         <br>
