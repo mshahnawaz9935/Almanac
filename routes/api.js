@@ -40,7 +40,7 @@ MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQM
             //     });
             // });
              collection.find().toArray(function(err, results) {
-                 console.log(results[0]);
+                 console.log(results);
                 if(results[0].username == username && results[0].password == password)
                 {
                     req.session.email = results[0].username;
