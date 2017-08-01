@@ -316,6 +316,15 @@ h4, h5, h6 {
    z-index: 0;
 }
 
+.left-card-business {
+   float: left;
+   width: 148px;
+   height: 182px;
+   background-image: url("../img/almanac/cards/business.jpg");
+   background-repeat: no-repeat;
+   z-index: 0;
+}
+
 .right-card {
     float: right;
     padding-top: 10px;
