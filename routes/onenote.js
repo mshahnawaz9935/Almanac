@@ -61,12 +61,12 @@ router.get('/userlogin', (req, res) => {
             // });
              collection.find().toArray(function(err, results) {
                if(results.length > 0)
-               {
-                 console.log(results[0]);
+               {   
                  results.forEach(function (result)
                 {
                 if(result.username == username && result.password == password)
                 {
+                  console.log(result);
                    req.session.login = 'Logged in via database';
                 console.log(req.session.login);
                     req.session.email = result.username;
