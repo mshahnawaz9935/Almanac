@@ -47,8 +47,8 @@ router.get('/userlogin', (req, res) => {
 
     var username = req.query.username;
     var password = req.query.password;
-    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
-  // MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+ //   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+   MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -73,6 +73,7 @@ router.get('/userlogin', (req, res) => {
                 res.json('User exists');
                 console.log(req.session.email);
                  }
+                 else res.json('User doesnt exists' );
                 })
                }
                 else res.json('User doesnt exists' );
