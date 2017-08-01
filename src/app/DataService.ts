@@ -12,26 +12,27 @@ myquery = { topic: '' , chapter : '' , articleid : '' };
 query = '';
 moduleid='';
 modulename='';
-slider1='';
-slider2='';
+slider1 : number;
+slider2: number;
 differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
   key ='';
+  dblogin = false;
     constructor(private http: Http) {
 
-      this.http.get('http://localhost:3000/api/saskey')
+      this.http.get('https://student.almanac-learning.com/api/saskey')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
               {
                   this.key = dataFromServer;
               }
               );
 
-        this.http.get('http://localhost:3000/api/token')
+        this.http.get('https://student.almanac-learning.com/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
 
-    this.http.get('http://localhost:3000/onenote/checklogin')
+    this.http.get('https://student.almanac-learning.com/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Service Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -50,7 +51,7 @@ text= 'menu';
     getInstances() {
 
          // ...using get request
-         return this.http.get('http://localhost:3000/api/instances?id='+this.text )
+         return this.http.get('https://student.almanac-learning.com/api/instances?id='+this.text )
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
                          //...errors if any

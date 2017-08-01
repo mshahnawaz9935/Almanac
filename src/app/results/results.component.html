@@ -41,6 +41,7 @@
                         <br>
                 </li>
 </ul>
+ <a *ngIf="loading == false && error == false" [routerLink]="['/search']"  class="btn btn-primary primary" >RECONFIGURE ARTICLE</a>
 
 
 <br>
@@ -62,14 +63,14 @@
              
                         <h4 class="card-title">No Results Found</h4>
                         <a *ngIf="loading == false" [routerLink]="['/search']"  class="btn btn-primary primary" >New Search</a>
-                     <br><br><br><br><br><br><br>
+                     <br>
                         </div>
                         </div>
                         <br>
                 </div>
                 </div>
 
-          <div *ngIf="!error" class="row">
+          <!--<div *ngIf="!error" class="row">
              <div class="col-md-4"  *ngFor= "let result of results">
              <div class="card" (click)="onSelect(result)" >
                     <div class="card-block">
@@ -96,6 +97,5 @@
                       </div>
                                       
                      
-            </div>
-                    <!-- 
-                    <a  class="arrow-left arrow-left-beige" [routerLink]="['/search']"  >BACK</a> -->
+            </div>-->
+                    

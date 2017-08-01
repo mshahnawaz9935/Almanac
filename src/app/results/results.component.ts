@@ -22,8 +22,8 @@ export class ResultsComponent implements OnInit {
 
     if(this.DataService.query != '')
     {
-    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      this.http.get('http://localhost:3000/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid
+    // this.http.get('https://student.almanac-learning.com/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      this.http.get('https://student.almanac-learning.com/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid
        + '&differentiator=' + this.DataService.slider1 + '&source=' + this.DataService.slider2 )
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
@@ -54,12 +54,15 @@ export class ResultsComponent implements OnInit {
       this.error = false;
       for(let desc of data.results)
       {
+        if(desc.description !== null)
+        {
         let len =desc.description.length;
-        // if(len > 50)
-        // desc.description = desc.description.substring(9, 70);
-        // else 
         desc.description = desc.description.substring(9, len-3);
+        }
+      if(desc.image !== null)
+        {
         desc.image = desc.image + this.DataService.key ;
+        }
         console.log(desc.image);
       }
       this.results = data.results;

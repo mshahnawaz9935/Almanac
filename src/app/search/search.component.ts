@@ -27,17 +27,12 @@ export class SearchComponent implements OnInit {
   differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
   constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
-    //    route.queryParams.subscribe(
-    //   data =>{ 
-    //     console.log('queryParams', data['authenticated']) ;   //Read Query string from Url
-    //     if(data['authenticated']== 'true')
-    //     this.authenticated = true;
-    // });
+ 
     console.log('search module' ,this.DataService.moduleid);
          if(this.DataService.moduleid != '')
         {
           console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
-        this.http.get('http://localhost:3000/api/instances')
+        this.http.get('https://student.almanac-learning.com/api/instances')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
                 console.log('Login status is ' + dataFromServer );
                 this.getInstance(dataFromServer);
@@ -49,33 +44,17 @@ export class SearchComponent implements OnInit {
         {  
           this.router.navigate(['/modules']);
         }
-     this.http.get('http://localhost:3000/note/checklogin')               // Check Login
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Login status is ' + dataFromServer );
-          if(dataFromServer == 'No Login')
-          this.authenticated = false;
-          else this.authenticated =true;
-          console.log(this.authenticated);
-        });
-        this.http.get('http://localhost:3000/onenote/checklogin')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {      //Check if user is logged in
-          console.log('Login status is ' + dataFromServer );
-          if(dataFromServer == 'No Login')
-          {
-          this.authenticated1 = false;
-         // this.router.navigate(['/account']);
-          }
-          else
-          { this.authenticated1 =true;
-          console.log(this.authenticated1);
 
-          this.http.get('http://localhost:3000/onenote/aboutme')
-              .map((res: Response) => res.json()).subscribe((dataFromServer) => {    // Get User details
-                console.log('Login status is ' + dataFromServer );
-                this.user = dataFromServer;
-              });
-          }
-        });
+        if(this.DataService.query !== '')
+        {
+        this.model.search =  this.DataService.query ;
+        if(this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) >= 0 && this.DataService.type.levels.indexOf(this.DataService.slider2) >= 0  )
+        {
+        this.model.slider_value1=  this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) ;
+        this.model.slider_value2 = this.DataService.type.levels.indexOf(this.DataService.slider2) ;
+        }
+        }
+
        
          
    }
@@ -93,15 +72,15 @@ export class SearchComponent implements OnInit {
     this.submitted = true;
     console.log('hello', this.model.search.length , this.model.slider_value1, this.model.slider_value2);
     this.slider1= this.DataService.differentiator[0].levels[this.model.slider_value1];
-    this.slider2=this.DataService.type.levels[this.model.slider_value2];
+    this.slider2= this.DataService.type.levels[this.model.slider_value2];
     console.log('Slider values are' ,this.slider1, this.slider2);
     if(this.model.search != '')
     {
       this.DataService.query = this.model.search;
       this.DataService.slider1 = this.slider1;
       this.DataService.slider2 = this.slider2;
-    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      // this.http.get('http://localhost:3000/api/search?id='+ this.model.search)
+    // this.http.get('https://student.almanac-learning.com/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      // this.http.get('https://student.almanac-learning.com/api/search?id='+ this.model.search)
       //   .map((res: Response) => res.json())
       //   .subscribe((dataFromServer) => {
       //     this.data = dataFromServer;
@@ -119,7 +98,7 @@ export class SearchComponent implements OnInit {
     {
       if(this.DataService.moduleid == module.id)
       {
-        console.log('module found');
+        console.log('module found' , module);
         //this.differentiator = module.differentiators;
        // this.type= module.type;
              this.DataService.differentiator = module.differentiators;
@@ -129,7 +108,7 @@ export class SearchComponent implements OnInit {
       
     }
 
-    console.log('difff and type', this.type.name, this.differentiator[0].name, this.type.levels);
+    console.log('difff and type', this.DataService.type.name, this.DataService.differentiator[0].name, this.DataService.type.levels);
   }
 
 
@@ -152,24 +131,24 @@ export class SearchComponent implements OnInit {
     note()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/note','_self' );
+       window.open('https://student.almanac-learning.com/note','_self' );
    
   }
 
   onenote()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/onenote','_self' );
+       window.open('https://student.almanac-learning.com/onenote','_self' );
    
   }
    onenotelogout()
   {
-       window.open('http://localhost:3000/onenote/disconnect','_self' );
+       window.open('https://student.almanac-learning.com/onenote/disconnect','_self' );
    
   }
      logout()
   {
-       window.open('http://localhost:3000/note/logout','_self' );
+       window.open('https://student.almanac-learning.com/note/logout','_self' );
    
   }
 

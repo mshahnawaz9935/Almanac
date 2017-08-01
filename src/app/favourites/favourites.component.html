@@ -3,7 +3,7 @@
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
 
-<ul> <li class="card-fav" *ngFor="let data of favs_data; let index = index" 
+<ul> <li (click)="onSelect(index)" class="card-fav" *ngFor="let data of favs_data; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%"   >
                             <div class="transbox-fav"  >
                             <div class="card-fav-bg-category">
@@ -12,10 +12,10 @@
                             <div class="fav-content">
 
                                 <div class="fav-bg-title">
-                                    <div class="fav-title" >{{data.topic}}</div>
+                                    <div class="fav-title" >{{data.chapter}}</div>
                                 </div>
                                 <div class="fav-button">
-                                    <button type="button" (click)="onSelect(index)" class="btn btn-signin btn-sm">CLICK ME!</button>
+                                    <button type="button"  class="btn btn-signin btn-sm">CLICK ME!</button>
                                 </div>
                                 <div class="fav-social">
                                     <ul>
@@ -31,7 +31,7 @@
 
 
 
-            <div *ngIf="toggle == true">
+            <!--<div *ngIf="toggle == true">
             <div class="row" >
                 <div class="col-md-12">
                   <div class="card">      <div class="card-block" >   <h2 class="card-text"> {{data.topic}}</h2></div>
@@ -63,51 +63,39 @@
               </div>   
               </div>     
                      
-            </div>
-
-
-
-
-
-
-
-
-           <!--<div *ngIf="toggle == false  ">
-          
-            <div class="row">
-                <div class="col-md-12">
-                  <div class="card">    <h2>{{data.title}}</h2></div>
-                   <br>
-                  </div>
-                 
-             <div class="col-md-12" *ngFor= "let image of data.sections"  >
-
-                   <div class="card">
-
-                        <div class="card-block" >
-                          
-                        <p [innerHTML]="image.text.text" class="card-text">    </p>      
-                        <h2> Images under this section </h2>
-                    </div>
-                    <div *ngIf="image.images.length > 0">
-                     <carousel [noWrap]="noLoopSlides">
-                       <div class="view overlay hm-white-slight">
-                          <slide  *ngFor= "let url of image.images" [active]="url.active" >
-                        <img  [src]="url.url" alt="" style="width:100%;height:100%">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          </slide>
-                          </div>
-                        </carousel>
-                        </div>
-                         
-              </div>
-              <br>
-              </div>       
-              </div>     
-                     
             </div>-->
+<br>
+   <div *ngIf="toggle == true">
+       <h2 class="card-text" style="font-size:2.5rem">{{data.chapter}} </h2>
+       <br><br>
+<div class="row"  *ngFor= "let mode of data.modes" >
+             <div  class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
+                    <h2 [innerHTML]="section.title" class="card-text">    </h2>      
+                         <div class="row" *ngIf="section.images !== undefined && i%2 == 0">
+                             <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" /></div>
+                           
+                               </div>
+                    <div class="row" *ngIf="section.images == undefined">
+                             <div class="col-md-12"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               </div>
+    
+                         <div class="row" *ngIf="section.images !== undefined && i%2 == 1">
+                             <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" /></div>
+                             <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
+                               </div>
+                  
+              <div class="post-video" *ngIf="section.videos !== undefined">
+                      <br>
+                          <br>
+                    <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="section.videos[0].url | safe"></iframe>
+               <br>
+                </div>
+                <br>
+                     </div>
+                     
+</div>
+</div>
                 <div *ngIf="nodata"  class="row">
               <div class="col-md-12">
                 <div class="card">
