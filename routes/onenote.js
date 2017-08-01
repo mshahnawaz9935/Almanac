@@ -63,14 +63,17 @@ router.get('/userlogin', (req, res) => {
                if(results.length > 0)
                {
                  console.log(results[0]);
-                if(results[0].username == username && results[0].password == password)
+                 results.forEach(function (result)
+                {
+                if(result.username == username && result.password == password)
                 {
                    req.session.login = 'Logged in via database';
                 console.log(req.session.login);
-                    req.session.email = results[0].username;
+                    req.session.email = result.username;
                 res.json('User exists');
                 console.log(req.session.email);
                  }
+                })
                }
                 else res.json('User doesnt exists' );
             });
