@@ -5,8 +5,8 @@
 
 <ul> <li (click)="onSelect(index)" class="card-fav" *ngFor="let data of favs_data; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%"   >
-                            <div class="transbox-fav"  >
-                            <div class="card-fav-bg-category">
+                            <div class="transbox-fav2"  >
+                            <div class="card-fav2-bg-category">
                                 <div class="fav-category">{{data.image}}{{data.modulename}}</div>
                             </div>                    
                             <div class="fav-content">
@@ -15,11 +15,11 @@
                                     <div class="fav-title" >{{data.chapter}}</div>
                                 </div>
                                 <div class="fav-button">
-                                    <button type="button"  class="btn btn-signin btn-sm">CLICK ME!</button>
+                                    <button type="button"  class="btn btn-fav2 btn-sm">CLICK ME!</button>
                                 </div>
                                 <div class="fav-social">
                                     <ul>
-                                        <li><button (click)="deleteArticle(index)"  type="button" class="fav-icon fav-icon-orange"><i class="fa fa-star"></i></button><!-- &nbsp;&nbsp;<button type="button" class="fav-icon fav-icon-blue fav-icon-1note "><img src="img/almanac/icons/one-note.png"  style="width:12px;height:12px;" /></button></li>
+                                        <li><button (click)="deleteArticle(index)"  type="button" class="fav-icon fav-icon-blue"><i class="fa fa-star"></i></button><!-- &nbsp;&nbsp;<button type="button" class="fav-icon fav-icon-blue fav-icon-1note "><img src="img/almanac/icons/one-note.png"  style="width:12px;height:12px;" /></button></li>
                                         <li><i class="fa fa-thumbs-up"></i>&nbsp;33333</li>
                                         <li><i class="fa fa-eye"></i>&nbsp;32233</li> -->
                                     </ul>
