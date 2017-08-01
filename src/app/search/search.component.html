@@ -16,6 +16,7 @@
                         <!--Text-->
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
                        <hr class="categories" />
+                       
                         <p>1 ) Enter the topic you're looking for:</p>
       
                  <form (ngSubmit)="onSubmit()">
@@ -29,8 +30,8 @@
                       </div>
                       </div>
                              </div>
-                      
-                       <hr class="categories" />
+                        <br>
+                   
                                 <h5>2 ) Describe what results you want for this search:</h5>     
                         <h4 class="card-title">{{DataService.differentiator[0].name}}</h4>
                         <!--Ability-->
@@ -44,7 +45,8 @@
                                   <nouislider [min]="0" [max]="2" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
                                     </p>
                                   </div>
-                              <div class="col-md-2">
+                              <br>
+                      
                                <p>{{DataService.differentiator[0].levels[2]}}</p>
                                </div>
                              </div>
@@ -64,8 +66,8 @@
                                <p>{{DataService.type.levels[2]}}</p>
                                </div>
                              </div>   
-                           
-                       <hr class="categories" /> 
+                             <br>
+                      
                           <h5>3 ) And … Go!</h5>   
                         <button class="btn btn-primary" type="submit" color="warn" >Search</button>
                         </form>
