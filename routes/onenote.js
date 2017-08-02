@@ -60,6 +60,7 @@ router.get('/userlogin', (req, res) => {
             //     });
             // });
              collection.find().toArray(function(err, results) {
+               var counter = 0;
                if(results.length > 0)
                {   
                  results.forEach(function (result)
@@ -70,11 +71,13 @@ router.get('/userlogin', (req, res) => {
                    req.session.login = 'Logged in via database';
                 console.log(req.session.login);
                     req.session.email = result.username;
-                res.json('User exists');
+                counter++;
                 console.log(req.session.email);
                  }
-                 else res.json('User doesnt exists' );
                 })
+                if(counter > 0)
+                 res.json('User exists');
+                else res.json('User doesnt exists' );
                }
                 else res.json('User doesnt exists' );
             });

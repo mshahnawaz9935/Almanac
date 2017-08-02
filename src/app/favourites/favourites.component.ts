@@ -29,10 +29,11 @@ favs_data = [];
           this.nodata =true;
           else this.nodata = false;
           this.getdata(dataFromServer);
+                    this.loading = false;
             this.saved_data = dataFromServer;
                  this.getdata2(dataFromServer);
           console.log('Saved_data' , this.saved_data);
-          this.loading = false;
+
      
         });
    }
