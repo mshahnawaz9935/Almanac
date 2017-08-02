@@ -191,6 +191,11 @@ hr.categories {
   width: 100%;
 }
 
+.vertical-line {
+    border-left: 1px solid #ffd180;
+    height: 100%;
+}
+
 h1 {
     color: #aca084;
     font-family: roboto slab, roboto;
@@ -566,7 +571,7 @@ h4, h5, h6 {
 .fav-bg-title {
     background-color: #2e2e2e;
     width: 100%;
-    height: 5.0em;
+    height: 4.0em;
     z-index: 6;
     line-height: 1.250em;
 }

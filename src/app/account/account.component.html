@@ -33,23 +33,29 @@
                         <h2 class="card-title">Sign Up for Almanac</h2>
                         
                         <p class="card-text">
-                          Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
+                            Select the Login type to connect with our amazing Digital Content Collections® and find out about your favourite topics!
+                          <!-- Select from our amazing Digital Content Collections® and find out about your favourite topics! --></p>
                       <br>
                        <div class="row">
-                       <div class="col-md-5">
+                       <div class="col-md-4" style="margin-top: 2.50em">
                     <div class="md-form">
-                          <a (click)="onenote()" class="btn btn-primary">Login / Connect To Office 365</a>
+                          <a (click)="onenote()" class="btn btn-primary">Connect via Office 365</a>
                     </div>
               
                     <div class="md-form">
-                        <span class="btn btn-inactive">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Connect To Wriggle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="btn btn-inactive">&nbsp;&nbsp;Connect via Wriggle&nbsp;&nbsp;</span>
                     </div>   
                       <div class="md-form">
-                        <p>By creating an account you agree to our Terms Of Use and Privacy Policy. </p>
+                        <!-- <p>By creating an account you agree to our Terms Of Use and Privacy Policy. </p> -->
                     </div>   
     
                     </div>
-                        <div class="col-md-7">
+                           
+                    <div class="col-md-1">
+                          <div class="vertical-line"></div> 
+                    </div>
+                           
+                    <div class="col-md-7">
                             <form (ngSubmit)="onSubmit()" >
                                     <label for="form9" data-error="wrong" data-success="right">Type your email</label>
   <input type="text" id="form1" class="form-control" [(ngModel)]="model.username" name="username" value="{{value}}" #box >
@@ -62,10 +68,11 @@
               
                     <br>
                 
-                              <button class="btn btn-primary" type="submit" color="warn" >LOGIN</button>
+                              <button class="btn btn-primary" type="submit" color="warn" ><i class="fa fa-sign-in"></i>&nbsp; LOGIN</button>
                         </form>
                     </div>
                     </div>
+                        <br><br>
                     <hr>
                       <div class="row">
                           <div class="col-md-4">
