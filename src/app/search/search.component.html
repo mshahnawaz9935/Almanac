@@ -6,12 +6,13 @@
                 <a *ngIf="!authenticated1" class="btn btn-primary primary" (click)="onenote()">Login Office 365</a>
                 <a *ngIf="authenticated1" class="btn btn-primary primary" (click)="onenotelogout()">Disconnect Office 365</a>
                 <button md-button *ngIf="authenticated" (click)="logout()">Logged in / Click To Log Out</button>-->
-                <h2>{{DataService.modulename}}</h2>
+                
                 <!--Card-->
                 <div class="card">
                    <div class="card-block">
+                       <h2>{{DataService.modulename}}</h2>
                         <!--Title-->
-                        <h4 class="card-title">Learn Better</h4>
+                        <!-- <h4 class="card-title">Learn Better</h4> -->
                           
                         <!--Text-->
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
