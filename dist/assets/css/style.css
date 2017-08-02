@@ -21,6 +21,13 @@
     margin-left: 10%;
 }
 
+@media only screen and (max-width: 991px) {
+    .container-content {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
 /* HEADER */
 
 .general-navbar-header {
@@ -226,7 +233,7 @@ h4, h5, h6 {
 }
 
 .search-values {
-    font-size: 1.125em;
+    font-size: 1.0em;
     color: #aca084;
     margin-left: 5%;
     width: 80%;
@@ -293,36 +300,32 @@ h4, h5, h6 {
    float: left;
    width: 148px;
    height: 182px;
-   background-image: url("../img/almanac/cards/picutre-01.jpg");
-   background-repeat: no-repeat;
    z-index: 0;
 }
 
-.left-card-img2 {
-   float: left;
-   width: 148px;
-   height: 182px;
+.left-card-science {
    background-image: url("../img/almanac/cards/picutre-02.jpg");
    background-repeat: no-repeat;
-   z-index: 0;
 }
 
-.left-card-img3 {
-   float: left;
-   width: 148px;
-   height: 182px;
+.left-card-geography {
+   background-image: url("../img/almanac/cards/picutre-01.jpg");
+   background-repeat: no-repeat;
+}
+
+.left-card-geography2 {
    background-image: url("../img/almanac/cards/picutre-03.jpg");
    background-repeat: no-repeat;
-   z-index: 0;
+}
+
+.left-card-history {
+   background-image: url("../img/almanac/cards/history.jpg");
+   background-repeat: no-repeat;
 }
 
 .left-card-business {
-   float: left;
-   width: 148px;
-   height: 182px;
    background-image: url("../img/almanac/cards/business.jpg");
    background-repeat: no-repeat;
-   z-index: 0;
 }
 
 .right-card {
@@ -782,7 +785,7 @@ h4, h5, h6 {
     color: #c7985c;
     font-size: 0.875em;
     margin-top: 1.875em;
-    padding-right: 2.500em;
+    padding-right: 1.500em;
 }
 
 .footer-content-menu a {
