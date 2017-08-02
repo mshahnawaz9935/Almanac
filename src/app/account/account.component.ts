@@ -32,7 +32,7 @@ import { Login } from './login';
   onenote() 
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/onenote','_self' );
+       window.open('https://student.almanac-learning.com/onenote','_self' );
     }
     create()
     {
@@ -41,7 +41,7 @@ import { Login } from './login';
     login()
     {
        
-        this.http.get('http://localhost:3000/onenote/userlogin?username=shahnawaz1234&password=123456789')
+        this.http.get('https://student.almanac-learning.com/onenote/userlogin?username=shahnawaz1234&password=123456789')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                  { console.log(dataFromServer);
                    if(dataFromServer == 'User exists')
@@ -54,7 +54,7 @@ import { Login } from './login';
         this.submitted = true;
         console.log(this.model.username + '  ' +  this.model.password);
         
-           this.http.get('http://localhost:3000/onenote/userlogin?username=' + this.model.username+ '&password=' + this.model.password)
+           this.http.get('https://student.almanac-learning.com/onenote/userlogin?username=' + this.model.username+ '&password=' + this.model.password)
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                  { console.log(dataFromServer);
                    if(dataFromServer == 'User exists')
