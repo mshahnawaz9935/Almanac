@@ -426,7 +426,7 @@ h4, h5, h6 {
 }
 
 
-/* CARDS - FAVOURITES */
+/* CARDS - POST - OPTIONS */
 
 
 .options-card {
@@ -491,6 +491,24 @@ h4, h5, h6 {
     margin-left: 0px;
     z-index: 4;
 }
+
+.options-title {
+    font-size: 1.0em;
+    padding: 0.375em;
+    margin-left: 10px;
+    color: white;
+    text-align: center;
+}
+
+.options-text {
+    font-size: 0.875em;
+    padding: 5%;
+    padding-left: 0px;
+    color: white;
+}
+
+/* CARDS - RESULTS and FAVOURITES */
+
 
 .card-fav {
     width: 260px;
@@ -574,21 +592,6 @@ h4, h5, h6 {
     padding: 0.875em;
     margin-left: 10px;
     z-index: 4;
-}
-
-.options-title {
-    font-size: 1.0em;
-    padding: 0.375em;
-    margin-left: 10px;
-    color: white;
-    text-align: center;
-}
-
-.options-text {
-    font-size: 0.875em;
-    padding: 5%;
-    padding-left: 0px;
-    color: white;
 }
 
 .fav-content {
@@ -682,15 +685,6 @@ h4, h5, h6 {
 .fav-icon-gray:hover, .fav-icon-gray:active {
     background-color: #bfbcb4; 
 }
-
-/* .fav-icon-1note {
-    width: 12px;
-    height: 12px;
-    background-image: url(../img/almanac/icons/one-note.png);
-    background-repeat: no-repeat;
-    cursor: pointer;
-} */
-
 
 /* BANNER - responsive image */
 
