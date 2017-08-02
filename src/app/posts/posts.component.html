@@ -117,9 +117,76 @@
 </div>
 <div *ngIf="hidden" class="row">
     <div class="col-md-12">
-                          <h4>Was this article what you were looking for?</h4>
+        <br /><br /><br />
+
+            <h1>Was this article what you were looking for?</h1>
+            <br />
             
-             <ul style="margin-top:40px" class="post-fav">
+            <ul style="margin-left: 2.50em;display: inline-flex">
+                <li class="options-card">
+                            <div class="options-transbox-green">
+                            <div class="options-bg-green">
+                                <div class="options-title">YES!</div>
+                            </div>                    
+                            <div class="fav-content">
+
+                                    <div class="options-text">Save to your favourites<br>
+                                    or export to OneNote:</div>
+
+                                <div class="fav-button">
+                                    <button (click)="savedata()" type="button" class="btn btn-yes btn-sm"><i class="fa fa-star"></i>&nbsp; Favourites</button>
+
+                                    <button *ngIf= "!DataService.dblogin" (click)="saveonenote4()" type="button" class="btn btn-yes btn-sm"><i class="fa fa-share-square-o"></i>&nbsp;&nbsp;&nbsp;OneNote&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+                
+                <li class="options-card">
+                            <div class="options-transbox-yellow">
+                            <div class="options-bg-yellow">
+                                <div class="options-title">ALMOST!</div>
+                            </div>                    
+                            <div class="fav-content">
+
+                                    <div class="options-text">But I want to do a new search:</div>
+
+                                <div class="fav-button">
+                                    <br>
+                                    <button [routerLink]="['/search']" type="button" class="btn btn-almost btn-sm"><i class="fa fa-search"></i>&nbsp; New Search</button>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+                
+                <li class="options-card">
+                            <div class="options-transbox-red">
+                            <div class="options-bg-red">
+                                <div class="options-title">NO!</div>
+                            </div>                    
+                            <div class="fav-content">
+
+                                    <div class="options-text">Take me back:</div>
+
+                                <div class="fav-button">
+                                    <br>
+                                    <button [routerLink]="['/search']" type="button" class="btn btn-no btn-sm"><i class="fa fa-angle-double-left"></i>&nbsp; Back to Results</button>
+                                    <button [routerLink]="['/modules']" type="button" class="btn btn-no btn-sm"><i class="fa fa-angle-double-left"></i>&nbsp; Back to Collections</button>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+            
+            </ul>
+            <div class="card-block" *ngIf="onenoteloader == true">
+                <h4 class="card-title" >Saving To One Note...Please wait</h4>
+                <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+            </div>
+         
+            <br /><br />
+            
+            <!--
+            <ul style="margin-top:40px" class="post-fav">
                     <li style="width: 30%">
                         Yes! Save to your favourites or export to OneNote:
                     </li>
@@ -154,9 +221,10 @@
                     <li>
                         <a [routerLink]="['/modules']" class="arrow-left arrow-left-beige">Back to Collections</a>
                     </li>
-            </ul> 
+            </ul> -->
+        
             </div>
-                         </div>
+        </div>
 
 
 

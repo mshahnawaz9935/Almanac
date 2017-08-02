@@ -402,6 +402,7 @@ h4, h5, h6 {
     border-radius: 2px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
+    margin-right: 1.250em;
 }
 
 .options-transbox-green {
@@ -785,7 +786,19 @@ h4, h5, h6 {
     color: #c7985c;
     font-size: 0.875em;
     margin-top: 1.875em;
-    padding-right: 1.500em;
+    padding-right: 3.125em;
+}
+
+@media only screen and (max-width: 1056px) {
+    .footer-content-menu li {
+        padding-right: 1.50em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .footer-content-menu li {
+        display: block;
+    }
 }
 
 .footer-content-menu a {
