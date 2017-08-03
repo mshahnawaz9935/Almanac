@@ -181,11 +181,11 @@
     }
 }
 
-.categories a {
+.categories-list a {
     color: #aca084;
 }
 
-.categories a:hover, a:active {
+.categories-list:hover {
     color: #eb7839;
 }
 
