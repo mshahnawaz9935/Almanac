@@ -41,7 +41,7 @@ exists = false;
               })
 
 
-             this.http.get('http://localhost:3000/api/instances?id=menu')
+             this.http.get('http://localhost:3000/api/instances?id=db')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {

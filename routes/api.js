@@ -5,6 +5,7 @@ var MongoClient = require('mongodb').MongoClient , format = require('util').form
 var User     = require('../models/user');
 var mongoose   = require('mongoose');
 var session = require('express-session');
+var authHelper = require('../authHelper.js');
 
 var favourites;
 // mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
@@ -78,7 +79,9 @@ router.get('/getdata', (req, res) => {
     // });
 
     // Locate all the entries using find
-    console.log(req.session.email);
+    console.log(req.session.email);  
+
+
     collection.find({"username":req.session.email}).toArray(function(err, results) {
         console.dir(results);
         // Let's close the db
@@ -232,6 +235,8 @@ router.get('/instances', (req, res) => {
     // {   
         var email = '';
     var id= req.query.id; 
+    if(id == 'db')
+      res.cookie(authHelper.sessionemail, req.session.email);
     console.log('Session email is' , req.cookies.sessionemail , id);
     if(req.cookies.sessionemail !== undefined)
     {

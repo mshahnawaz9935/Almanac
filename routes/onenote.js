@@ -72,6 +72,7 @@ router.get('/userlogin', (req, res) => {
                 console.log(req.session.login);
                     req.session.email = result.username;
                 counter++;
+                req.session.save();
                 console.log(req.session.email);
                  }
                 })

@@ -77,5 +77,20 @@ export class ResultsComponent implements OnInit {
       this.DataService.myquery.articleid = data.id;
       this.router.navigate(['./posts']);
   }
+  img_data;
+  savefavs(data)
+  {
+     this.http.get('http://localhost:3000/api/posts?topic='+ data.query + '&chapter='+ data.name + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + data.id )
+  
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+         
+          console.log(dataFromServer );  
+           this.http.get('http://localhost:3000/api/store')
+              .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+                console.log(dataFromServer);
+                  alert('Saved to Favourites');
+              });
+      });
+  }
 
 }
