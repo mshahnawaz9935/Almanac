@@ -20,11 +20,11 @@
                         </ul>
                 </div>
             </li>
-            </ul>-->
+            </ul>-->  
             <h2>{{DataService.modulename}}</h2>
 
             <ul class="card-list"> 
-                <li class="card-fav" (click)="onSelect(data)" *ngFor= "let data of results; let index = index" 
+                <li class="card-fav"  *ngFor= "let data of results; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%;margin-bottom:30px;"   >
                             <div class="transbox-fav"  >
                             <div class="card-fav-bg-category">
@@ -36,7 +36,12 @@
                                     <div class="fav-title" >{{data.name}}</div>
                                 </div>
                                 <div class="fav-button">
-                                    <button type="button"  class="btn btn-signin btn-sm">CLICK ME</button>
+                                    <button type="button" (click)="onSelect(data)"  class="btn btn-signin btn-sm">CLICK ME</button>
+                                </div>
+                                <div class="fav-social">
+                                    <ul>
+                                        <li><button style="z-index:5" (click)="savefavs(data)"  type="button" class="fav-icon fav-icon-blue"><i class="fa fa-star"></i></button>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
