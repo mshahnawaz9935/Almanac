@@ -709,6 +709,17 @@ h4, h5, h6 {
     margin-top: 1.250em;
 }
 
+/*
+@-moz-document url-prefix() {
+    .box-image {
+        max-width: 100%;
+        height: auto;
+        background-image:url(../img/almanac/banner/Almanac-banner-768px.jpg);
+        background-repeat: no-repeat;
+    }
+} */
+
+/*
 .banner-image {
     width: 768px;
     height: 353px;
@@ -725,7 +736,6 @@ h4, h5, h6 {
     }
 }
 
-/* For devices 640px and larger: */
 @media only screen and (min-width: 400px) {
     .banner-image {
     max-width: 100%;
@@ -735,7 +745,6 @@ h4, h5, h6 {
     }
 }
 
-/* For devices 400px and smaller: */
 @media only screen and (max-width: 400px) {
     .banner-image {
     max-width: 100%;
@@ -743,57 +752,9 @@ h4, h5, h6 {
     background-image:url(../img/almanac/banner/Almanac-banner-400px.jpg);
     background-repeat: no-repeat;
     }
-}
+} 
+*/
 
-/* RESPONSIVE BANNER */
-
-.bg-banner {
-    width: 97%;
-    height: 354px;
-    background-image:url(../img/almanac/banner/bg-banner.jpg);
-    background-repeat: repeat-x;
-    background-color: #f6f5f1;
-    margin-top: -20px;
-}
-
-.hr-banner {
-    border-top: 1px solid #ffd180;
-    margin: 10px 0px;
-    width: 100%;
-}
-
-.content-banner {
-    color: #60676d;
-    font-size: 1.125em;
-    float: left;
-    margin-left: 30px;
-    margin-top: 30px;
-    width: 55%;
-    z-index: 2;
-    position: absolute;
-}
-
-.text-banner {
-    float: left;
-    width: 50%;
-}
-
-.bt-banner {
-    float: right;
-    margin-right: 0;
-}
-
-.img-banner {
-    float: right;
-    margin-right: 0;
-    width: 495px;
-    height: 354px;
-    background-image: url(../img/almanac/banner/learner-bn.png);
-    background-repeat: no-repeat;
-    opacity: 0.9;
-    z-index: 0;
-    position: relative;
-}
 
 /* FOOTER */
 
