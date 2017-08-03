@@ -183,7 +183,7 @@ export class ModulesComponent implements OnInit {
            if(dataFromServer == 'Subscription does not exists')
            {
              this.loading = false;
-             this.subscription = 'No Modules Subscribed';
+             this.subscription = 'No Collections Subscribed';
              this.exists = false;
              
            }
