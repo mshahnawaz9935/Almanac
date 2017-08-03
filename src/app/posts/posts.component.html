@@ -178,10 +178,15 @@
                 </li>
             
             </ul>
-             <button (click)="scrolltop()" type="button" class="btn btn-no btn-sm"><i class="fa fa-angle-double-left"></i>Scroll To TOP</button>
+
             <div class="card-block" *ngIf="onenoteloader == true">
                 <h4 class="card-title" >Saving To One Note...Please wait</h4>
                 <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+            </div>
+        
+            <!-- BUTTON TOP -->            
+            <div class="btn-top">
+                 <button (click)="scrolltop()" type="button" class="icon-top waves-effect waves-light"><i class="fa fa-chevron-up"></i></button>
             </div>
          
             <br /><br />
