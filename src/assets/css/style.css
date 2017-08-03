@@ -669,11 +669,11 @@ h4, h5, h6 {
 }
 
 .fav-icon-orange {
-    background-color: #bfbcb4; 
+    background-color: #ffa402;
 }
 
 .fav-icon-orange:hover, .fav-icon-orange:active {
-    background-color: #ffa402; 
+    background-color: #eb7839; 
 }
 
 .fav-icon-blue {
