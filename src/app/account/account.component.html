@@ -57,12 +57,13 @@
                            
                     <div class="col-md-7">
                             <form (ngSubmit)="onSubmit()" >
-                                    <label for="form9" data-error="wrong" data-success="right">Type your email</label>
+  <i class="fa fa-envelope prefix"></i>
+  <label for="form9" data-error="wrong" data-success="right">Type your email</label>
   <input type="text" id="form1" class="form-control" [(ngModel)]="model.username" name="username" value="{{value}}" #box >
                         <!--<input type="email" id="form9" class="form-control validate">-->
                 
-             
-                         <label for="form10" data-error="wrong" data-success="right">Type your password</label>
+        <i class="fa fa-lock prefix"></i>
+        <label for="form10" data-error="wrong" data-success="right">Type your password</label>
          <input type="password" id="form1" class="form-control" [(ngModel)]="model.password" name="password" value="{{value}}" #box >
               
               

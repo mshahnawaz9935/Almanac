@@ -6963,7 +6963,7 @@ body.scrollable {
   width: 400px; }
 
 .modal-dialog .btn .fa {
-  color: #fff !important; }
+  color: #fff; }
 
 .modal-dialog [class*="btn-outline-"] .fa {
   color: inherit !important; }
