@@ -22,8 +22,8 @@ export class ResultsComponent implements OnInit {
 
     if(this.DataService.query != '')
     {
-    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      this.http.get('http://localhost:3000/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid
+    // this.http.get('https://student.almanac-learning.com/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      this.http.get('https://student.almanac-learning.com/api/search?id='+ this.DataService.query + '&moduleid=' + this.DataService.moduleid
        + '&differentiator=' + this.DataService.slider1 + '&source=' + this.DataService.slider2 )
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
@@ -78,16 +78,19 @@ export class ResultsComponent implements OnInit {
       this.router.navigate(['./posts']);
   }
   img_data;
+  saving =false;
   savefavs(data)
   {
-     this.http.get('http://localhost:3000/api/posts?topic='+ data.query + '&chapter='+ data.name + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + data.id )
+        this.saving = true;
+     this.http.get('https://student.almanac-learning.com/api/posts?topic='+ data.query + '&chapter='+ data.name + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + data.id )
   
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
          
           console.log(dataFromServer );  
-           this.http.get('http://localhost:3000/api/store')
+           this.http.get('https://student.almanac-learning.com/api/store')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log(dataFromServer);
+                this.saving = false;
                   alert('Saved to Favourites');
               });
       });

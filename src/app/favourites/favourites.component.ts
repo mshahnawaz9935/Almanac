@@ -22,7 +22,7 @@ nodata = false;
 favs_data = [];
   constructor(private http:Http , private DataService:DataService) {
 
-         this.http.get('http://localhost:3000/api/getdata')
+         this.http.get('https://student.almanac-learning.com/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( 'Saved data in db' , dataFromServer);
           if(dataFromServer.length == 0 )
@@ -41,6 +41,15 @@ favs_data = [];
   ngOnInit() {
   }
 
+   scrolltop()
+  {
+    console.log('takes you to top');
+    window.scrollTo(0,0);
+  }
+  showfavs()
+  {
+    this.toggle = false;
+  }
   onSelect(index)
   {
     console.log('Index is' ,index);
@@ -54,7 +63,7 @@ favs_data = [];
     this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
-      this.http.get('http://localhost:3000/api/delete?id=' + this.removearticle._id)
+      this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             this.loading = false;
@@ -69,7 +78,29 @@ imagesdata='';
   getdata2(dataFromServer)
   {
     this.favs_data = [];
+    let arr = dataFromServer;
+    let end = arr.length;
 
+    for (let i = 0; i < end; i++) {
+        for (let j = i + 1; j < end; j++) {
+            if (arr[i].chapter == arr[j].chapter) {                  
+                let shiftLeft = j;
+                for (let k = j+1; k < end; k++, shiftLeft++) {
+                    arr[shiftLeft] = arr[k];
+                }
+                end--;
+                j--;
+            }
+        }
+    }
+
+    let whitelist = [];
+    for(let i = 0; i < end; i++){
+        whitelist[i] = arr[i];
+    }
+    console.log( whitelist);
+    dataFromServer = whitelist;
+  
     for(let data of dataFromServer)
     {
        let title = data.title;
@@ -106,6 +137,29 @@ imagesdata='';
   }  
 
 getdata(data){
+
+   let arr = data;
+    let end = arr.length;
+
+    for (let i = 0; i < end; i++) {
+        for (let j = i + 1; j < end; j++) {
+            if (arr[i].chapter == arr[j].chapter) {                  
+                let shiftLeft = j;
+                for (let k = j+1; k < end; k++, shiftLeft++) {
+                    arr[shiftLeft] = arr[k];
+                }
+                end--;
+                j--;
+            }
+        }
+    }
+
+    let whitelist = [];
+    for(let i = 0; i < end; i++){
+        whitelist[i] = arr[i];
+    }
+    console.log( whitelist);
+      data =  whitelist;
     
     for(let data1 of data)
     {

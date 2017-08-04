@@ -23,7 +23,7 @@
             </ul>-->  
             <h2>{{DataService.modulename}}</h2>
 
-            <ul class="card-list"> 
+            <ul *ngIf="!saving == true" class="card-list"> 
                 <li class="card-fav"  *ngFor= "let data of results; let index = index" 
 [style.background-image]="'url(' + data.image + ')'" style=" background-size: 100% 100%;margin-bottom:30px;"   >
                             <div class="transbox-fav"  >
@@ -32,11 +32,11 @@
                             </div>                    
                             <div class="fav-content">
 
-                                <div class="fav-bg-title">
+                                <div (click)="onSelect(data)" class="fav-bg-title">
                                     <div class="fav-title" >{{data.name}}</div>
                                 </div>
-                                <div class="fav-button">
-                                    <button type="button" (click)="onSelect(data)"  class="btn btn-signin btn-sm">CLICK ME</button>
+                                <div (click)="onSelect(data)" class="fav-button">
+                                    <button type="button"   class="btn btn-signin btn-sm">CLICK ME</button>
                                 </div>
                                 <div class="fav-social">
                                     <ul>
@@ -48,7 +48,7 @@
                         <br>
                 </li>
 </ul>
- <a *ngIf="loading == false && error == false" [routerLink]="['/search']"  class="btn btn-primary primary" ><i class="fa fa-search"></i>&nbsp; New Search</a>
+ <a *ngIf="loading == false && error == false && saving == false" [routerLink]="['/search']"  class="btn btn-primary primary" ><i class="fa fa-search"></i>&nbsp; New Search</a>
 
 
 <br>
@@ -57,6 +57,17 @@
            <div class="card">
               <div class="card-block">
                      <h4 class="card-title" >Loading Results...Please wait</h4>
+      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+      </div>
+                            </div>
+                            </div>
+
+  </div>
+  <div class="row" *ngIf="saving == true">
+       <div class="col-md-12" >
+           <div class="card">
+              <div class="card-block">
+                     <h4 class="card-title" >Saving To Favourites...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
                             </div>
