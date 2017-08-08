@@ -21,10 +21,16 @@ import { Login } from './login';
   authenticated1 = false;
   user = '';
   constructor(private http:Http , private router:Router , private DataService:DataService) {
-        if(this.DataService.authenticated1 == true)
-    {
-      this.router.navigate(['/modules']);
-    }
+    console.log('in account');
+    
+     setTimeout(()=> { 
+          if(this.DataService.authenticated1 == true)
+          {
+            this.router.navigate(['/modules']);
+          }
+          else  console.log('variable null');
+      },800
+        );
   }
 
   ngOnInit() {}
@@ -40,7 +46,6 @@ import { Login } from './login';
     }
     login()
     {
-       
         this.http.get('http://localhost:3000/onenote/userlogin?username=shahnawaz1234&password=123456789')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                  { console.log(dataFromServer);

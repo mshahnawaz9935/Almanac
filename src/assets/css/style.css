@@ -89,6 +89,19 @@
     margin-left: 0;
     }
 
+    .logo-almanac {
+    margin-left: 20px;
+
+}
+
+   
+}
+@media only screen and (max-width: 500px) {
+
+    iframe {
+        width: 100%;
+    }
+
    
 }
 
@@ -162,6 +175,7 @@
     line-height: 50px;
 }
 
+
 .categories-list {
     float: left;
     margin-right: 1.250em;
@@ -172,7 +186,12 @@
     color: #616b70;
     display: inline-table;
 }
+
 @media only screen and (max-width: 780px) {
+
+    .categories {
+    line-height: 40px;
+    }
 
       .categories-list {
     float: none;
@@ -216,10 +235,19 @@
     background-color: #ffa402;
 } */
 
-hr.categories {
+hr.categories1 {
+  border-top: 1px solid #ffd180;
+  margin-top: 100px;
+  margin-bottom:40px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 780px) {
+    hr.categories1 {
   border-top: 1px solid #ffd180;
   margin: 40px 0px;
   width: 100%;
+}
 }
 
 .vertical-line {
@@ -396,7 +424,7 @@ h4, h5, h6 {
     line-height: 20px;
 }
 
-..title-card {
+.title-card {
     font-size: 1.125em;
     color: #70787d;
     cursor: pointer;
@@ -507,6 +535,67 @@ h4, h5, h6 {
     color: white;
 }
 
+
+
+@media only screen and (max-width: 1025px) {
+    .options-card {
+    width: 200px;
+}
+
+.options-transbox-green {
+    width: 200px;
+   
+}
+
+.options-transbox-yellow {
+    width: 200px;
+}
+
+.options-transbox-red {
+    width: 200px;
+}
+
+}
+
+@media only screen and (max-width: 769px) {
+    .options-card {
+    width: 180px;
+}
+
+.options-transbox-green {
+    width: 180px;
+   
+}
+
+.options-transbox-yellow {
+    width: 180px;
+}
+
+.options-transbox-red {
+    width: 180px;
+}
+
+}
+
+@media only screen and (max-width: 500px) {
+    .options-card {
+    width: 260px;
+}
+
+.options-transbox-green {
+    width: 260px;
+   
+}
+
+.options-transbox-yellow {
+    width: 260px;
+}
+
+.options-transbox-red {
+    width: 260px;
+}
+
+}
 /* CARDS - RESULTS and FAVOURITES */
 
 
@@ -538,6 +627,25 @@ h4, h5, h6 {
     position: relative;
     background-repeat: no-repeat;
 }
+@media only screen and (max-width: 1024px) {
+
+    .card-fav {
+    width: 240px;
+   height: 240px;
+}
+
+.transbox-fav {
+    width: 240px;
+    height: 240px;
+}
+
+.transbox-fav2 {
+    width: 240px;
+    height: 240px;
+}
+    
+}
+
 
 .card-fav2-bg-category {
     width: 100%;
