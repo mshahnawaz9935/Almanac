@@ -703,8 +703,9 @@ h4, h5, h6 {
 /* BANNER - responsive image */
 
 .box-image {
+    max-width: 100%;
     height: auto;
-    text-align: center;
+    text-align: center !important;
     margin: auto;
     margin-top: 1.250em;
 }
@@ -720,43 +721,66 @@ h4, h5, h6 {
         background-image:url(../img/almanac/banner/Almanac-banner-768px.jpg);
         background-repeat: no-repeat;
     }
-} */
-
+}
+*/
 
 .banner-image {
     max-width: 100%;
     height: auto;
-    background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
+    background-image:url(../img/almanac/banner/Almanac-banner-1024px.jpg);
     background-repeat: no-repeat;
+    text-align: center;
 }
  
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1501px) {
     .banner-image {
-    max-width: 100%;
-    height: auto;
+    width: 1280px;
+    height: 353px;
     background-image:url(../img/almanac/banner/Almanac-banner-1280px.jpg);
     background-repeat: no-repeat;
+    text-align: center;
     }
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (max-width: 1500px) {
     .banner-image {
-    max-width: 100%;
-    height: auto;
-    background-image:url(../img/almanac/banner/Almanac-banner-768px.jpg);
+    width: 1024px;
+    height: 353px;
+    background-image:url(../img/almanac/banner/Almanac-banner-1024px.jpg);
     background-repeat: no-repeat;
+    text-align: center;
     }
 }
+
+@media only screen and (max-width: 1100px) {
+    .banner-image {
+    width: 768px;
+    height: 353px;
+    background-image:url(../img/almanac/banner/Almanac-banner-768px.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .banner-image {
+    width: 400px;
+    height: 600px;
+    background-image:url(../img/almanac/banner/Almanac-banner-400px.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    }
+} 
 
 @media only screen and (max-width: 400px) {
     .banner-image {
-    max-width: 100%;
-    height: auto;
-    background-image:url(../img/almanac/banner/Almanac-banner-400px.jpg);
+    width: 300px;
+    height: 555px;
+    background-image:url(../img/almanac/banner/Almanac-banner-300px.jpg);
     background-repeat: no-repeat;
+    text-align: center;
     }
-} 
-*/
+}
 
 
 /* FOOTER */
