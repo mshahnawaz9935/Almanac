@@ -1472,8 +1472,8 @@ h4, h5, h6 {
 .icon-top {
     color: white;
     background-color: #ffa402;
-    width: 60px;
-    height: 60px;
+    width: 3.750em;
+    height: 3.750em;
     color: white;
     font-size: 1.875rem;
     border: 0;
@@ -1489,6 +1489,39 @@ h4, h5, h6 {
     background-color: #eb7839;
     outline: 0;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.btn-back {
+    position: relative;
+    z-index: 10;
+}
+
+.icon-back {
+    color: white;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    color: #e2dccc;
+    font-size: 1.50em;
+    border: 3px solid #e2dccc;
+    border-radius: 50%;
+    transition: .3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.icon-back:hover, .icon-back:active, .icon-back:focus {
+    @extend .z-depth-1-half;
+    color: #eb7839;
+    border: 3px solid #eb7839;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.icon-back .fa {
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 18px;
 }
 
 
