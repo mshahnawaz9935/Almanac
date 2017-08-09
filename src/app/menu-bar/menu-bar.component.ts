@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-menu-bar',
@@ -16,7 +17,7 @@ user = '';
 subscription;
 exists = false;
 
-   constructor(private http:Http, private DataService: DataService, private router:Router)  {
+   constructor(private location: Location , private http:Http, private DataService: DataService, private router:Router)  {
 
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
        this.http.get('http://localhost:3000/onenote/checklogin')
@@ -153,6 +154,10 @@ exists = false;
    }
 list=[];
 moduledata;
+  back() {
+      console.log('back');
+      this.location.back(); // <-- go back to previous location on cancel
+    }
    getdata(data)
    {
      this.list = [];
