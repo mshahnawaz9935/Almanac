@@ -926,7 +926,8 @@ h4, h5, h6 {
     color: #c7985c;
     font-size: 0.875em;
     margin-top: 1.875em;
-    padding-right: 3.125em;
+    padding-right: 3.750em;
+    /* padding-right: 3.125em; */
 }
 
 @media only screen and (max-width: 1056px) {
