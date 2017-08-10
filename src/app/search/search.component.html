@@ -18,14 +18,14 @@
                         <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
                        <br>
                        
-                        <p>1 ) Enter the topic you're looking for:</p>
+                       <p><span class="badge badge-beige"style="font-size: 0.875em;">1</span>&nbsp;&nbsp;&nbsp;Enter the topic you're looking for:</p>
       
                  <form (ngSubmit)="onSubmit()">
                     <div class="row">
                   <div class="col-md-8">   
                   <div class="md-form input-group">
                       <input type="text" id="form1" class="form-control" [(ngModel)]="model.search" name="search" value="{{value}}" #box >
-                      <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search fa-lg"></i></span>
+                      <span class="input-group-addon" id="basic-addon2"><i class="fa fa-chevron-right fa-lg"></i></span>
                       <!--(keyup.enter)="onEnter(box.value)">-->
                           <!--<label for="form1" class="">{{model.search}}</label>-->
                       </div>
@@ -33,7 +33,7 @@
                              </div>
                         <br>
                    
-                                <h5>2 ) Describe what results you want for this search:</h5><br>     
+                                <p><span class="badge badge-beige"style="font-size: 0.875em;">2</span>&nbsp;&nbsp;&nbsp;Describe what results you want for this search:</p><br>     
                         <h5 class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
                         <!--Ability-->
                        <div class="row search-values">
@@ -69,7 +69,7 @@
                              </div>   
                              <br>
                       
-                          <h5>3 ) And … Go!</h5>   
+                          <p><span class="badge badge-beige" style="font-size: 0.875em;">3</span>&nbsp;&nbsp;&nbsp;And … Go!</p>   
                         <button class="btn btn-primary" type="submit" color="warn" ><i class="fa fa-search"></i>&nbsp; Search</button>
                         </form>
                              

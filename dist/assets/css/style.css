@@ -1043,6 +1043,24 @@ h4, h5, h6 {
     color: #eb7839;
 }
 
+/* BADGE */
+
+.badge-beige {
+    color: #6d7270;
+    font-size: 0.75em;
+    font-weight: 400;
+    background-color: #e2dccc;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.16),0 2px 2px 0 rgba(0,0,0,.12);
+}
+
+.badge-orange {
+    color: white;
+    font-size: 0.75em;
+    font-weight: 400;
+    background-color: #ffa402;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.16),0 2px 2px 0 rgba(0,0,0,.12);
+}
+
 /* BUTTONS */
 
 .btn {
@@ -1485,7 +1503,7 @@ h4, h5, h6 {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.icon-top:hover, .icon-top:active, .icon-top:focus {
+.icon-top:hover, .icon-top:active {
     @extend .z-depth-1-half;
     background-color: #eb7839;
     outline: 0;
@@ -1512,7 +1530,7 @@ h4, h5, h6 {
     text-decoration: none;
 }
 
-.icon-back:hover, .icon-back:active, .icon-back:focus {
+.icon-back:hover, .icon-back:active {
     @extend .z-depth-1-half;
     color: #eb7839;
     border: 3px solid #eb7839;
