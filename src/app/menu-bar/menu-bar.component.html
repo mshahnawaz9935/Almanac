@@ -22,7 +22,9 @@
                       <li class="nav-item"><a class="nav-link waves-effect waves-light" *ngIf="!authenticated1" [routerLink]="['/account']" href="#">My Account</a></li>
                     
                  <li *ngIf="authenticated1" class="nav-item">
-                        <a class="nav-link waves-effect waves-light navbar-user">{{user}}</a>
+                        <span class="nav-link navbar-user">{{user}}</span>
+                     <!-- 
+                    <a class="nav-link waves-effect waves-light navbar-user">{{user}}</a> -->
                  </li>
                  <li class="nav-item dropdown btn-group">
                         <img src="https://nop4you.com/Themes/QuickTemplate/Content/images/thumbs/no-avatar.png" style="height:30px;width:30px;" class="img-fluid rounded-circle z-depth-1" />
