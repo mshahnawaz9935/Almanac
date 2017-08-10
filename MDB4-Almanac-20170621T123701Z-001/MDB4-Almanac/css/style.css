@@ -305,7 +305,7 @@ h5 {
 .category-card {
     font-size: 0.688em;
     color: #aca084;
-    line-height: 20px;
+    /* line-height: 20px; */
 }
 
 .title-card {
@@ -328,8 +328,8 @@ h5 {
     padding: 0px;
     margin: 0px;
     height: 26px;
-    position: absolute;
-    margin-bottom: 1.125em;
+    /* position: absolute;
+    margin-bottom: 1.125em; */
 }
 
 /* CARDS - FAVOURITES */
@@ -831,6 +831,24 @@ h5 {
     color: #eb7839;
 }
 
+/* BADGE */
+
+.badge-beige {
+    color: #6d7270;
+    font-size: 0.75em;
+    font-weight: 400;
+    background-color: #e2dccc;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.16),0 2px 2px 0 rgba(0,0,0,.12);
+}
+
+.badge-orange {
+    color: white;
+    font-size: 0.75em;
+    font-weight: 400;
+    background-color: #ffa402;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.16),0 2px 2px 0 rgba(0,0,0,.12);
+}
+
 /* BUTTONS */
 
 .btn-browse {
@@ -1253,35 +1271,38 @@ h5 {
 }
 
 .icon-top {
-    color: white;
-    background-color: #ffa402;
-    width: 60px;
-    height: 60px;
-    color: white;
+    color: #e2dccc;
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
     font-size: 1.875rem;
-    border: 0;
+    border: 3px solid #e2dccc;
     border-radius: 50%;
     transition: .3s;
     cursor: pointer;
     text-decoration: none;
+    /* box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+}
+
+.icon-top:hover, .icon-top:active {
+    @extend .z-depth-1-half;
+    color: #eb7839;
+    border: 3px solid #eb7839;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.icon-top:hover, .icon-top:active, .icon-top:focus {
-    @extend .z-depth-1-half;
-    background-color: #eb7839;
-    outline: 0;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+.icon-top .fa {
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 18px;
 }
 
 .btn-back {
     position: relative;
     z-index: 10;
-    margin-bottom: 10px;
 }
 
 .icon-back {
-    color: white;
     background-color: #fff;
     width: 40px;
     height: 40px;
@@ -1294,7 +1315,7 @@ h5 {
     text-decoration: none;
 }
 
-.icon-back:hover, .icon-back:active, .icon-back:focus {
+.icon-back:hover, .icon-back:active {
     @extend .z-depth-1-half;
     color: #eb7839;
     border: 3px solid #eb7839;
@@ -1306,8 +1327,6 @@ h5 {
     vertical-align: middle;
     margin-bottom: 18px;
 }
-
-
 
 /* SLIDER BAR */
 
