@@ -74,7 +74,7 @@ router.get('/logout', function(req,res,next){
 
     req.session.destroy();
         token = undefined;
-        res.redirect('http://localhost:3000');
+        res.redirect('https://student.almanac-learning.com/');
 
 });
 

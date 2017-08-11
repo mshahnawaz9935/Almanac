@@ -5,7 +5,7 @@ module.exports = {
   baseSite :'https://login.live.com',
   authorizePath : '/oauth20_authorize.srf',
   tokenURL : '/oauth20_token.srf',
-  redirectUrl: 'http://localhost:3000/note/callback',
+  redirectUrl: 'https://student.almanac-learning.com//note/callback',
   authURLParams: {
     scope: ['wl.signin', 'wl.basic', 'wl.offline_access', 'office.onenote_create', 'Office.onenote', 'Office.onenote_update', 'Office.onenote_update_by_app'],
     display: 'page',

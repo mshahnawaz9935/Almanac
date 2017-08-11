@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
          if(this.DataService.moduleid != '')
         {
           console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
-        this.http.get('http://localhost:3000/api/instances')
+        this.http.get('https://student.almanac-learning.com//api/instances')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
                 console.log('Login status is ' + dataFromServer );
                 this.getInstance(dataFromServer);
@@ -79,8 +79,8 @@ export class SearchComponent implements OnInit {
       this.DataService.query = this.model.search;
       this.DataService.slider1 = this.slider1;
       this.DataService.slider2 = this.slider2;
-    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      // this.http.get('http://localhost:3000/api/search?id='+ this.model.search)
+    // this.http.get('https://student.almanac-learning.com//api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
+      // this.http.get('https://student.almanac-learning.com//api/search?id='+ this.model.search)
       //   .map((res: Response) => res.json())
       //   .subscribe((dataFromServer) => {
       //     this.data = dataFromServer;
@@ -131,24 +131,24 @@ export class SearchComponent implements OnInit {
     note()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/note','_self' );
+       window.open('https://student.almanac-learning.com//note','_self' );
    
   }
 
   onenote()
   {
        console.log('Authenticated');
-       window.open('http://localhost:3000/onenote','_self' );
+       window.open('https://student.almanac-learning.com//onenote','_self' );
    
   }
    onenotelogout()
   {
-       window.open('http://localhost:3000/onenote/disconnect','_self' );
+       window.open('https://student.almanac-learning.com//onenote/disconnect','_self' );
    
   }
      logout()
   {
-       window.open('http://localhost:3000/note/logout','_self' );
+       window.open('https://student.almanac-learning.com//note/logout','_self' );
    
   }
 
