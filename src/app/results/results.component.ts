@@ -14,7 +14,9 @@ export class ResultsComponent implements OnInit {
   error = false;
   results;
   data = [];
-  constructor(private http:Http , private DataService: DataService,private router: Router) { }
+  constructor(private http:Http , private DataService: DataService,private router: Router) {
+    window.scrollTo(0,0);
+   }
 
   ngOnInit() {
 

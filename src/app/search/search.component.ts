@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
   constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
- 
+    window.scrollTo(0,0);
     console.log('search module' ,this.DataService.moduleid);
          if(this.DataService.moduleid != '')
         {

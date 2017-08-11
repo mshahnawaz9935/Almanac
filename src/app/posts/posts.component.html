@@ -93,7 +93,10 @@
                     <h2 [innerHTML]="section.title" class="card-text">    </h2>      
                          <div class="row" *ngIf="section.images !== undefined && i%2 == 0">
                              <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
-                               <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" /></div>
+                               <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" />
+                               <br>
+                               <p *ngIf="section.images[0].attribution!== null">Source : {{section.images[0].attribution}}</p><p *ngIf="section.images[0].caption!== null">Caption: {{section.images[0].caption}}</p>
+                               </div>
                            
                                </div>
                     <div class="row" *ngIf="section.images == undefined">
@@ -101,7 +104,10 @@
                                </div>
     
                          <div class="row" *ngIf="section.images !== undefined && i%2 == 1">
-                             <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" /></div>
+                             <div class="col-md-5"><img style="width:100%" [src]="section.images[0].url" />
+                             <br>
+                             <p *ngIf="section.images[0].attribution!== null">Source : {{section.images[0].attribution}}</p><p *ngIf="section.images[0].caption!== null">Caption: {{section.images[0].caption}}</p>
+                             </div>
                              <div class="col-md-7"  ><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
                                </div>
                   
@@ -134,8 +140,7 @@
                                     or export to OneNote:</div>
 
                                 <div class="fav-button">
-                                    <button (click)="savedata()" type="button" class="btn btn-yes btn-sm"><i class="fa fa-star"></i>&nbsp; Favourites</button>
-
+                                     <button type="button" class="btn btn-yes btn-sm" data-toggle="modal" data-target="#savetofavs"><i class="fa fa-star"></i>&nbsp; Favourites</button>
                                     <button *ngIf= "!DataService.dblogin" (click)="saveonenote4()" type="button" class="btn btn-yes btn-sm"><i class="fa fa-share-square-o"></i>&nbsp;&nbsp;&nbsp;OneNote&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>
@@ -232,32 +237,35 @@
             </div>
         </div>
 
-
-
-
- <!--<div class="row" *ngFor= "let mode of img_data.modes" >
-             <div class="col-md-12" *ngFor= "let section of mode.sections"   >
-                        <div class="post-text" >
-                    <h2 [innerHTML]="section.title" class="card-text">    </h2>   
-                        <p [innerHTML]="section.text.text" class="card-text">    </p>      
-                        
+        <!-- Modal -->
+        <div class="modal fade" id="savetofavs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="myModalLabel">Save to Favourites</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="post-text" >   
-                       <div *ngFor= "let url of section.images" class="view overlay hm-white-slight">
-                           <h2 class="card-text" *ngIf="section.images !== undefined"> Images under this section </h2>
-                        <img [src]="url.url" alt="" style="width:100%;height:100%">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          </div>
-                          </div>
-                         
- 
-              
-              <br>
-              </div>
-                     
-            </div>-->
+                    <!--Body-->
+                    <div class="modal-body">
+                        <h6>Do you want to save this article to your Favourites?</h6>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-close btn-sm" data-dismiss="modal">CANCEL</button>
+                        <button type="button" (click)="savedata()" class="btn btn-primary btn-sm" data-dismiss="modal">SAVE TO FAVOURITES</button>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- Modal -->
+
+
+
 
            
                   

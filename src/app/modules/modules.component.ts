@@ -17,30 +17,33 @@ export class ModulesComponent implements OnInit {
   user ='User';
   loading: Boolean;
   subscription = '';
+  list = ['random-img-01.jpg','random-img-02.jpg','random-img-03.jpg','random-img-04.jpg','random-img-05.jpg','random-img-06.jpg','random-img-07.jpg','random-img-08.jpg','random-img-09.jpg','random-img-10.jpg'];
   error : Boolean;
   authenticated1;
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
-    this.loading = true;
-           console.log("Menu bar Data Service login", this.DataService.authenticated1);
-       this.http.get('http://localhost:3000/onenote/checklogin')
+      window.scrollTo(0,0);
+      this.loading = true;               // Spinner 
+      console.log("Menu bar Data Service login", this.DataService.authenticated1);            
+      this.http.get('http://localhost:3000/onenote/checklogin')               
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
-          if(dataFromServer == 'No Login')
+                this.generateimages();
+          if(dataFromServer == 'No Login')         // No Login
           {
             console.log('Not logged in');
             this.authenticated1 = false;
             this.loading = false;
             this.subscription = 'Please Login to view the collections';
           }
-          else if(dataFromServer == 'Logged in via database')
+          else if(dataFromServer == 'Logged in via database')       // Check Login via DB
           {
           this.DataService.dblogin = true;
-          this.authenticated1 =true;
+          this.authenticated1 = true;
            console.log('Logged in via database');
             this.http.get('http://localhost:3000/api/subscription')
               .map((res: Response) => res.json()). 
 
-              subscribe((dataFromServer) => {
+              subscribe((dataFromServer) => {       // Get username
                 console.log('Subscription status is ' + dataFromServer );
                 this.user = dataFromServer.name;
 
@@ -48,16 +51,6 @@ export class ModulesComponent implements OnInit {
                 setTimeout(()=> { 
              this.http.get('http://localhost:3000/api/instances?id=db')
               .map((res: Response) => res.json())
-              // .catch((error:any) => 
-              //           {
-              //               console.log('Error instances is ', error);
-              //               if(error.status == '500')
-              //               {
-              //               console.log('500 occured', error.status);
-              //               this.getInstances();
-              //               }
-              //             return Observable.throw(error.json().error || 'Server error') 
-              //            })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
@@ -68,7 +61,7 @@ export class ModulesComponent implements OnInit {
              this.loading = false;
               
            }
-             else if(dataFromServer == '500 Occured' )
+             else if(dataFromServer == '500 Occured' )                // Internal Server Error Occured
            {
              this.loading = false;
              this.subscription = 'Internal Server Error Occured';
@@ -93,7 +86,7 @@ export class ModulesComponent implements OnInit {
           console.log('Logged in' ,this.authenticated1);
 
 
-      this.http.get('http://localhost:3000/onenote/aboutme')
+      this.http.get('http://localhost:3000/onenote/aboutme')             // Check Login via Office365
               .map((res: Response) => res.json()).subscribe((Serverdata) => {
                 console.log('Login status is ' + Serverdata );
                 this.user = Serverdata;
@@ -102,16 +95,6 @@ export class ModulesComponent implements OnInit {
                          setTimeout(()=> {  
                  this.http.get('http://localhost:3000/api/instances?id=modules')
               .map((res: Response) => res.json())
-              // .catch((error:any) => 
-              //           {
-              //               console.log('Error instances is ', error);
-              //               if(error.status == '500')
-              //               {
-              //               console.log('500 occured', error.status);
-              //               this.getInstances();
-              //               }
-              //             return Observable.throw(error.json().error || 'Server error') 
-              //            })
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            if(dataFromServer == 'Subscription does not exists')
@@ -164,15 +147,24 @@ export class ModulesComponent implements OnInit {
       }
     }
   }
-  onclick(moduleid, modulename){
+  onclick(moduleid, modulename){                             // Select a Module
     console.log(moduleid, modulename, 'Module clicked');
     this.DataService.moduleid = moduleid;
     this.DataService.modulename = modulename;
     this.router.navigate(['/search']);
     
   }
+  image_list = [];
+      generateimages()
+      {
+        for(let image of this.list) {
+          image = 'assets//img//almanac//cards//random-imgs//' + image;
+          this.image_list.push(image);
+        }
+        console.log(this.image_list);
+      }
 
-      getInstances() {
+      getInstances() {                                // Get Modules again if Internal Server occurs
 
         console.log('on error');
            this.http.get('http://localhost:3000/api/instances?id=modulesonerror')
@@ -180,30 +172,23 @@ export class ModulesComponent implements OnInit {
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
            
-           if(dataFromServer == 'Subscription does not exists')
-           {
+           if(dataFromServer == 'Subscription does not exists')  {
              this.loading = false;
              this.subscription = 'No Collections Subscribed';
-             this.exists = false;
-             
+             this.exists = false;  
            }
-            else if(dataFromServer == '500 Occured')
-           {
+            else if(dataFromServer == '500 Occured')  {
                this.subscription = 'Internal Server Occured. Refresh Again';
                this.loading = false;
-           }
-           else 
-           {
+             }
+           else {
              this.exists = true;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
                this.loading = false;
-           }
+               }
         }
         
-        
-        );
-
-     }
+        )}
 
 }

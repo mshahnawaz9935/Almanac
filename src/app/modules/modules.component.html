@@ -169,15 +169,15 @@
             
         </ul>
 
-        <ul class="card-list" *ngIf="!exists">
-               <li  *ngFor="let modules of data;let i=index" >
+ <ul class="card-list" *ngIf="!exists">
+  <li  *ngFor="let modules of data;let i=index"  >
                 <div class="card" (click)="onclick(modules.id,modules.name)" >
                     <div class="bg-card">
                         <!--<div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>-->
                         <ul>
-                            <li class="left-card left-card-geography">
+                            <li [style.background-image]="'url(' + image_list[i] + ')'" class="left-card left-card-geography">
                                 <div class="transbox"></div>
                             </li>
                             <li class="right-card">

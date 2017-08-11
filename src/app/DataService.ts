@@ -38,6 +38,11 @@ differentiator = [{name:'', levels:[]}];
           if(dataFromServer == 'No Login')
           {
           this.authenticated1 = false;
+        }
+        else if(dataFromServer == 'Logged in via database')       // Check Login via DB
+          {
+          this.dblogin = true;
+          this.authenticated1 =true;
           }
           else
           { this.authenticated1 =true;

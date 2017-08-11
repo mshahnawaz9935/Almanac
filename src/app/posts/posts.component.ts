@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { Image} from '../image.interface';
 import {Pipe, PipeTransform} from '@angular/core';
 
+
+
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
@@ -14,7 +16,6 @@ export class SafePipe implements PipeTransform {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
-
 
 @Component({
   selector: 'app-posts',
@@ -40,7 +41,7 @@ export class PostsComponent implements OnInit {
     loading: Boolean;
 
   constructor(private http:Http,private DataService: DataService, private sanitizer: DomSanitizer, private router:Router) { 
-
+      window.scrollTo(0,0);
       this.data = this.DataService.myquery;
       console.log(this.DataService.modulename ,'Article id' , this.DataService.myquery.articleid);
     this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
@@ -202,7 +203,6 @@ getdata2(data)
         this.http.get('http://localhost:3000/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-             alert('Saved to Favourites');
         });
   }
 

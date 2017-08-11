@@ -432,7 +432,7 @@ router.get('/delete', (req, res) => {
              collection.remove({chapter: id} , function(err, results) {
            if(!err)
            {
-        console.dir('Deleted' , err);
+        console.dir('Deleted' , err , results);
         res.json('deleted');
         db.close();
            }
