@@ -20,19 +20,19 @@ differentiator = [{name:'', levels:[]}];
   dblogin = false;
     constructor(private http: Http) {
 
-      this.http.get('https://student.almanac-learning.com//api/saskey')
+      this.http.get('https://student.almanac-learning.com/api/saskey')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
               {
                   this.key = dataFromServer;
               }
               );
 
-        this.http.get('https://student.almanac-learning.com//api/token')
+        this.http.get('https://student.almanac-learning.com/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
 
-    this.http.get('https://student.almanac-learning.com//onenote/checklogin')
+    this.http.get('https://student.almanac-learning.com/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Service Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -56,7 +56,7 @@ text= 'menu';
     getInstances() {
 
          // ...using get request
-         return this.http.get('https://student.almanac-learning.com//api/instances?id='+this.text )
+         return this.http.get('https://student.almanac-learning.com/api/instances?id='+this.text )
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
                          //...errors if any
