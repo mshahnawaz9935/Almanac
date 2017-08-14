@@ -115,7 +115,7 @@ getdata2(data)
 
   }
   getdata3(data){
-    
+    let videos = [];
     for(let data1 of data)
     {
       for(let mode of data1.modes)
@@ -126,14 +126,32 @@ getdata2(data)
       console.log('Length of text is' ,len);
       section.text.text = section.text.text.substring(9,len-3);
 
-      if(section.videos !== undefined)
-           {
-           for(let videourl of section.videos)
-           {
-             if(videourl.attribution == 'Youtube')
-             videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
-           }
-          }
+            if(section.videos !== undefined)
+            {
+                  if(videos.length == 0)
+                  {
+                  videos.push(section.videos[0].url);
+                  }
+           
+                
+                  for(let videourl of section.videos)
+                  {
+                    for(let i=0 ; i < videos.length, i++;)
+                    { 
+                    if(videos[i] == videourl.url)
+                    continue;
+                    else
+                    {
+                          if(videourl.attribution == 'Youtube')
+                          {
+                          videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
+                          videos.push(videourl.url);
+                          }
+                      }
+                        }
+                }
+                
+              }
 
          if(section.images !== undefined)
          for(let image of section.images)
