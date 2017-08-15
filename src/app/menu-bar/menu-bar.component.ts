@@ -20,7 +20,7 @@ exists = false;
    constructor(private location: Location , private http:Http, private DataService: DataService, private router:Router)  {
 
            console.log("Menu bar Data Service login", this.DataService.authenticated1);
-       this.http.get('https://student.almanac-learning.com/onenote/checklogin')
+       this.http.get('http://localhost:3000/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
           if(dataFromServer == 'No Login')
@@ -32,17 +32,23 @@ exists = false;
         {
           this.authenticated1 =true;
            console.log('Logged in via database');
-           this.http.get('https://student.almanac-learning.com/api/subscription')
+           this.http.get('http://localhost:3000/api/subscription')
               .map((res: Response) => res.json()). 
 
               subscribe((dataFromServer) => {
                 console.log('Subscription status is ' + dataFromServer );
+                if(dataFromServer == '500 Occured')
+                {
+                  this.getsubscription();
+                  
+                }
+                else
                 this.user = dataFromServer.name;
 
               })
 
 
-             this.http.get('https://student.almanac-learning.com/api/instances?id=db')
+             this.http.get('http://localhost:3000/api/instances?id=db')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
@@ -84,7 +90,7 @@ exists = false;
           console.log('Logged in' ,this.authenticated1);
 
          
-          this.http.get('https://student.almanac-learning.com/onenote/aboutme')
+          this.http.get('http://localhost:3000/onenote/aboutme')
               .map((res: Response) => res.json()). 
 
               subscribe((dataFromServer) => {
@@ -94,7 +100,7 @@ exists = false;
               })
 
               setTimeout( () => {
-               this.http.get('https://student.almanac-learning.com/api/instances?id=menu')
+               this.http.get('http://localhost:3000/api/instances?id=menu')
               .map((res: Response) => res.json())
               .catch((error:any) => 
                         {
@@ -134,13 +140,13 @@ exists = false;
 
           }
         });
-         this.http.get('https://student.almanac-learning.com/api/token')
+         this.http.get('http://localhost:3000/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
         setInterval(()=>{
 
-           this.http.get('https://student.almanac-learning.com/api/token')
+           this.http.get('http://localhost:3000/api/token')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => 
                dataFromServer
               );
@@ -181,7 +187,7 @@ moduledata;
     console.log(moduleid, modulename, 'Module clicked');
     this.DataService.moduleid = moduleid;
     this.DataService.modulename = modulename;
-       this.http.get('https://student.almanac-learning.com/api/instances')
+       this.http.get('http://localhost:3000/api/instances')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
                 console.log('Login status is ' + dataFromServer );
                 this.getsliders(dataFromServer);
@@ -190,6 +196,24 @@ moduledata;
 
     
   }
+
+    getsubscription()
+    {
+      this.http.get('http://localhost:3000/api/subscription')
+              .map((res: Response) => res.json()). 
+
+              subscribe((dataFromServer) => {
+                console.log('Subscription status is ' + dataFromServer );
+                if(dataFromServer == '500 Occured')
+                {
+                  this.getsubscription();
+                }
+                else
+                this.user = dataFromServer.name;
+
+              })
+
+    }
 
     getsliders(data)
   {
@@ -211,7 +235,7 @@ moduledata;
   }
 
     getInstances() {
-       this.http.get('https://student.almanac-learning.com/api/subscription')
+       this.http.get('http://localhost:3000/api/subscription')
               .map((res: Response) => res.json()). 
 
               subscribe((dataFromServer) => {
@@ -221,7 +245,7 @@ moduledata;
               })
 
       console.log('on error');
-           this.http.get('https://student.almanac-learning.com/api/instances?id=menuerror')
+           this.http.get('http://localhost:3000/api/instances?id=menuerror')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );

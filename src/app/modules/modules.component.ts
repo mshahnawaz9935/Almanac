@@ -24,7 +24,7 @@ export class ModulesComponent implements OnInit {
       window.scrollTo(0,0);
       this.loading = true;               // Spinner 
       console.log("Menu bar Data Service login", this.DataService.authenticated1);            
-      this.http.get('https://student.almanac-learning.com/onenote/checklogin')               
+      this.http.get('http://localhost:3000/onenote/checklogin')               
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
                 this.generateimages();
@@ -40,7 +40,7 @@ export class ModulesComponent implements OnInit {
           this.DataService.dblogin = true;
           this.authenticated1 = true;
            console.log('Logged in via database');
-            this.http.get('https://student.almanac-learning.com/api/subscription')
+            this.http.get('http://localhost:3000/api/subscription')
               .map((res: Response) => res.json()). 
 
               subscribe((dataFromServer) => {       // Get username
@@ -49,7 +49,7 @@ export class ModulesComponent implements OnInit {
 
               })
                 setTimeout(()=> { 
-             this.http.get('https://student.almanac-learning.com/api/instances?id=db')
+             this.http.get('http://localhost:3000/api/instances?id=db')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
@@ -57,13 +57,13 @@ export class ModulesComponent implements OnInit {
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'No Collections Subscribed';
-             this.exists = false;
+             this.exists = true; 
              this.loading = false;
               
            }
              else if(dataFromServer == '500 Occured' )                // Internal Server Error Occured
            {
-             this.loading = false;
+             this.loading = false;  
              this.subscription = 'Internal Server Error Occured';
              this.getInstances();
            }
@@ -86,14 +86,14 @@ export class ModulesComponent implements OnInit {
           console.log('Logged in' ,this.authenticated1);
 
 
-      this.http.get('https://student.almanac-learning.com/onenote/aboutme')             // Check Login via Office365
+      this.http.get('http://localhost:3000/onenote/aboutme')             // Check Login via Office365
               .map((res: Response) => res.json()).subscribe((Serverdata) => {
                 console.log('Login status is ' + Serverdata );
                 this.user = Serverdata;
 
                    });
                          setTimeout(()=> {  
-                 this.http.get('https://student.almanac-learning.com/api/instances?id=modules')
+                 this.http.get('http://localhost:3000/api/instances?id=modules')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
@@ -167,7 +167,7 @@ export class ModulesComponent implements OnInit {
       getInstances() {                                // Get Modules again if Internal Server occurs
 
         console.log('on error');
-           this.http.get('https://student.almanac-learning.com/api/instances?id=modulesonerror')
+           this.http.get('http://localhost:3000/api/instances?id=modulesonerror')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
           console.log('Module status is ' + dataFromServer );
@@ -175,14 +175,15 @@ export class ModulesComponent implements OnInit {
            if(dataFromServer == 'Subscription does not exists')  {
              this.loading = false;
              this.subscription = 'No Collections Subscribed';
-             this.exists = false;  
+             this.exists = true;  
            }
             else if(dataFromServer == '500 Occured')  {
                this.subscription = 'Internal Server Occured. Refresh Again';
                this.loading = false;
+                this.exists = true;  
              }
            else {
-             this.exists = true;
+             this.exists = false;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
                this.loading = false;

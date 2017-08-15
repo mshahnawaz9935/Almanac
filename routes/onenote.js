@@ -47,8 +47,8 @@ router.get('/userlogin', (req, res) => {
 
     var username = req.query.username;
     var password = req.query.password;
-    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
- //  MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+  //  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+   MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -108,6 +108,17 @@ router.get('/aboutmail', function (req, res) {
 
   aboutmail(req,res);
 });
+
+router.get('/getpages', function (req, res) {
+
+    getonenotearticles(req.cookies.ACCESS_TOKEN_CACHE_KEY, function(data)
+    {
+        res.json(data);
+
+    })
+});
+
+
 router.get('/aboutme', function (req, res) {
 
     // if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
@@ -478,6 +489,7 @@ function checknote(token ,callback)                                // No use for
   });
 
 }
+
 function checknote2(token, callback)
 {   t=0;
     var options = {
@@ -539,6 +551,118 @@ function checknote2(token, callback)
   });
 
 }
+
+
+
+
+function getonenotearticles(token, callback)
+{
+    var options = {
+    host: 'graph.microsoft.com',
+    path: '/v1.0/me/onenote/pages?top=100&select=id,title&expand=parentSection(select=name),parentNotebook(select=name)',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    }
+  };
+
+  https.get(options, function (response) {
+    var body = '';
+    response.on('data', function (d) {
+      body += d;
+    });
+    response.on('end', function () {
+      var error;
+      if (response.statusCode === 200) {
+            console.log(JSON.parse(body).value.length);
+            var data = JSON.parse(body);
+          
+        callback(JSON.parse(body));
+
+      } else {
+        error = new Error();
+        error.code = response.statusCode;
+        error.message = response.statusMessage;
+        // The error body sometimes includes an empty space
+        // before the first character, remove it or it causes an error.
+        body = body.trim();
+     //   error.innerError = JSON.parse(body).error;
+        console.log(body, null);
+      }
+    });
+  }).on('error', function (e) {
+    console.log((e, null));
+     res.json('Error occured');
+  });
+
+}
+
+function checksection(token , notebookid, modulename ,callback)
+{   sec=0;
+  console.log('Module name is' + modulename);
+    var options = {
+    host: 'graph.microsoft.com',
+    path: '/beta/me/onenote/notebooks/'+ notebookid+ '/sections/?$select=displayName,id',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    }
+  };
+
+  https.get(options, function (response) {
+    var body = '';
+    response.on('data', function (d) {
+      body += d;
+    });
+    response.on('end', function () {
+      var error;
+      if (response.statusCode === 200) {
+            console.log(JSON.parse(body).value.length);
+            var data = JSON.parse(body);
+            for(var i=0; i< data.value.length; i++)
+            {
+                console.log(data.value[i].displayName);
+                if(data.value[i].displayName == modulename)
+                {
+                 sec=1;
+                 sectionid = data.value[i].id;
+                }
+            }
+            if(sec==1)
+            {
+            console.log('section exists and id is',sectionid ,'and sec is ' , sec );
+            sec=1;
+            }
+            else
+            { console.log('section doesnt exists and sec is ', sec);
+              sec=0;
+            }
+             //  res.json('Creating and Updating notebooks');
+        callback(sec, sectionid);
+
+      } else {
+        error = new Error();
+        error.code = response.statusCode;
+        error.message = response.statusMessage;
+        // The error body sometimes includes an empty space
+        // before the first character, remove it or it causes an error.
+        body = body.trim();
+     //   error.innerError = JSON.parse(body).error;
+        console.log(body, null);
+      }
+    });
+  }).on('error', function (e) {
+    console.log((e, null));
+  });
+
+}
+
+
+
 
 function checksection(token , notebookid, modulename ,callback)
 {   sec=0;
@@ -1228,7 +1352,7 @@ var counter =0;
              "<!DOCTYPE html>" +
         "<html>" +
         "<head>" +
-        "    <title>"+ topic + dateTimeNowISO() +"</title>" +
+        "    <title>"+ chapter + " " + dateTimeNowISO() +"</title>" +
         "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
         "</head>" +
         "<body>" +
@@ -1318,11 +1442,12 @@ function writetonote(token,topic,chapter)
        //  console.log(htmlPayload); 
         setTimeout(function()
         {   
+   
                 var htmlPayload =
         "<!DOCTYPE html>" +
         "<html>" +
         "<head>" +
-        "    <title>"+ favourites.title +"</title>" +
+        "    <title>"+ favourites.title +"&nbsp;</title>" +
         "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
         "</head>" +
         "<body>" +
@@ -1335,9 +1460,9 @@ function writetonote(token,topic,chapter)
         }, 2000);
      
     }
-
-        function dateTimeNowISO() {
-            return new Date().toISOString();
+ 
+        function dateTimeNowISO() {             // replace T with a space
+            return new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');  // delete the dot and everything after
             }
 
     function createPage(accessToken, payload, multipart) {

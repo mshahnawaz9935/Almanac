@@ -28,6 +28,40 @@
                         </div>
                 </li>
 </ul>
+  <div *ngIf="nodata"  class="row">
+              <div class="col-md-12">
+                <div class="card">
+                 <div class="card-block">
+             
+                        <h4 class="card-title">‘You don’t have any favourites yet’</h4>
+        <a  class="arrow-left arrow-left-beige" [routerLink]="['/search']"  >BACK</a>
+                        </div>
+                        </div>
+                        <br><br><br>
+                </div>
+                </div>
+
+<h2 *ngIf="toggle == false" class="card-text" style="font-size:2.5rem">One Note</h2>
+<br>
+<div class="card-block" *ngIf="loading1 == true">
+                     <h4 class="card-title" >Loading One Note Articles...Please wait</h4>
+      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
+      </div>
+
+<ul *ngIf="toggle == false" class="card-list"> 
+    <li class="card-fav" *ngFor="let p of page; let index = index" [style.background-image]="'url('+ image + ')'" style=" background-size: 100% 100%"   >
+                            <div class="transbox-fav2"  >
+                            <div class="card-fav2-bg-category">
+                                <div class="fav-category">{{p.section}}</div>
+                            </div>                    
+                            <div class="fav-content">
+                                <div (click)="onSelect(index)" class="fav-bg-title">
+                                    <div class="fav-title" >{{p.title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+</ul>
 
 
 
@@ -101,20 +135,14 @@
                      </div>
                      
 </div>
+
+
+
+
+
  <button (click)="showfavs()" type="button" class="arrow-left arrow-left-beige">BACK TO FAVOURITES</button>
 </div>
   <div *ngIf="toggle == true" class="btn-top">
     <button (click)="scrolltop()" type="button" class="icon-top waves-effect waves-light"><i class="fa fa-chevron-up"></i></button>
 </div>
-                <div *ngIf="nodata"  class="row">
-              <div class="col-md-12">
-                <div class="card">
-                 <div class="card-block">
-             
-                        <h4 class="card-title">‘You don’t have any favourites yet’</h4>
-        <a  class="arrow-left arrow-left-beige" [routerLink]="['/search']"  >BACK</a>
-                        </div>
-                        </div>
-                        <br><br><br><br><br><br><br>
-                </div>
-                </div>
+              
