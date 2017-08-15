@@ -24,7 +24,7 @@ favs_data = [];
 image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   constructor(private http:Http , private DataService:DataService) {
 
-         this.http.get('http://localhost:3000/api/getdata')
+         this.http.get('https://student.almanac-learning.com/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                     console.log( 'Saved data in db' , dataFromServer);
                     if(dataFromServer.length == 0 )
@@ -37,13 +37,13 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
                     console.log('Saved_data' , this.saved_data);
         });
 
-          this.http.get('http://localhost:3000/onenote/checklogin')
+          this.http.get('https://student.almanac-learning.com/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
 
               if(dataFromServer == 'Logged in')
               {
-                    this.http.get('http://localhost:3000/onenote/getpages')
+                    this.http.get('https://student.almanac-learning.com/onenote/getpages')
                         .map((res: Response) => res.json()).subscribe((Serverdata) => {
                           console.log('Pages are ' + Serverdata );
                           this.getpages(Serverdata);
@@ -99,7 +99,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
     this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
-      this.http.get('http://localhost:3000/api/delete?id=' + this.removearticle.chapter)
+      this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             this.loading = false;
