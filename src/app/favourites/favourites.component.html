@@ -41,8 +41,9 @@
                 </div>
                 </div>
 
-<h2 *ngIf="toggle == false" class="card-text" style="font-size:2.5rem">One Note</h2>
-<br>
+<h2 *ngIf="toggle == false" class="card-text" style="font-size:2.5rem">Articles exported to One Note</h2>
+<br><br>
+
 <div class="card-block" *ngIf="loading1 == true">
                      <h4 class="card-title" >Loading One Note Articles...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
@@ -50,8 +51,8 @@
 
 <ul *ngIf="toggle == false" class="card-list"> 
     <li class="card-fav" *ngFor="let p of page; let index = index" [style.background-image]="'url('+ image + ')'" style=" background-size: 100% 100%"   >
-                            <div class="transbox-fav2"  >
-                            <div class="card-fav2-bg-category">
+                            <div class="transbox-1note"  >
+                            <div class="card-1note-bg-category">
                                 <div class="fav-category">{{p.section}}</div>
                             </div>                    
                             <div class="fav-content">

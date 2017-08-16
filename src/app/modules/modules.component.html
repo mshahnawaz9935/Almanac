@@ -11,9 +11,6 @@
   <li  *ngFor="let modules of data;let i=index"  >
                 <div class="card" (click)="onclick(modules.id,modules.name)" >
                     <div class="bg-card">
-                        <!--<div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>-->
                         <ul>
                             <li [style.background-image]="'url(' + image_list[i] + ')'" class="left-card left-card-geography">
                                 <div class="transbox"></div>
@@ -22,10 +19,11 @@
                                 <div class="category-card">Collection:</div>
                                 <!--<div class="category-card">{{modules.id}}</div>-->
                                 <div class="title-card" style="cursor:pointer">{{modules.name}}</div>
+                                <br>
                                 
                                 <div class="tags-card">
-                                    <button type="button" class="arrow-button arrow-orange">Tag A</button>
-                                    <button type="button" class="arrow-button arrow-beige">Tag B</button>
+                                    <button type="button" class="arrow-button arrow-beige">Author Name</button>
+                                    <button type="button" class="arrow-button arrow-beige">Type of Cycle</button>
                                 </div>
                             </li>
                         </ul>

@@ -368,27 +368,27 @@ h4, h5, h6 {
 }
 
 .left-card-science {
-   background-image: url("../img/almanac/cards/picutre-02.jpg");
+   background-image: url("../img/almanac/cards/random-imgs/random-img-04.jpg");
    background-repeat: no-repeat;
 }
 
 .left-card-geography {
-   background-image: url("../img/almanac/cards/picutre-01.jpg");
+   background-image: url("../img/almanac/cards/random-imgs/random-img-02.jpg");
    background-repeat: no-repeat;
 }
 
 .left-card-geography2 {
-   background-image: url("../img/almanac/cards/picutre-03.jpg");
+   background-image: url("../img/almanac/cards/random-imgs/random-img-01.jpg");
    background-repeat: no-repeat;
 }
 
 .left-card-history {
-   background-image: url("../img/almanac/cards/history.jpg");
+   background-image: url("../img/almanac/cards/random-imgs/random-img-05.jpg");
    background-repeat: no-repeat;
 }
 
 .left-card-business {
-   background-image: url("../img/almanac/cards/business.jpg");
+   background-image: url("../img/almanac/cards/random-imgs/random-img-03.jpg");
    background-repeat: no-repeat;
 }
 
@@ -630,22 +630,18 @@ h4, h5, h6 {
 @media only screen and (max-width: 1024px) {
 
     .card-fav {
-    width: 240px;
-   height: 240px;
+        width: 240px;
+        height: 240px;
+    }
+    .transbox-fav {
+        width: 240px;
+        height: 240px;
+    }
+    .transbox-fav2 {
+        width: 240px;
+        height: 240px;
+    }   
 }
-
-.transbox-fav {
-    width: 240px;
-    height: 240px;
-}
-
-.transbox-fav2 {
-    width: 240px;
-    height: 240px;
-}
-    
-}
-
 
 .card-fav2-bg-category {
     width: 100%;
@@ -1173,9 +1169,10 @@ h4, h5, h6 {
   border-left: 20px solid #e2dccc;
 }
 
+/*
 .arrow-beige:hover, .arrow-beige:active {
   color: black;
-}
+} */
 
 /* BUTTON ARROW LEFT */
 
@@ -1650,6 +1647,34 @@ h4, h5, h6 {
 }
 .noUi-active-orange {
   box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
+}
+
+.noUi-handle {
+    
+  border: 1px solid #ffd180;
+  border-radius: 3px;
+  background: #ffa402;
+  cursor: default;
+  box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #ffa402, 0 3px 6px -3px #BBB;
+}
+.noUi-active {
+  box-shadow: inset 0 0 1px #ffa402, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
+}
+/* Handle stripes;
+ */
+.noUi-handle:before,
+.noUi-handle:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 14px;
+  width: 1px;
+  background: #ffa402;
+  left: 14px;
+  top: 6px;
+}
+.noUi-handle:after {
+  left: 17px;
 }
 
 /* ARTICLES */
