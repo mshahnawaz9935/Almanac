@@ -1,89 +1,4 @@
-     <!--<div *ngIf="hidden" class="col-md-12" >
-            
-            <div  class="post-text" >
-                <h3> {{title[0]}} </h3>
-                <p [innerHTML]= "text[0]"></p>
-                
-                <br /><br />
-                
-                <div class="post-video" *ngIf="videos.length>0">
-                    <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="videos[0] | safe"></iframe>
-                </div>
-            
-            </div>
-            
 
-          <h3> {{title[1]}} </h3>
-        <div class="post-text"  [innerHTML]= "text[1]">
-                 
-        </div> 
-          <div class="post-img-right">
-                 <img style="max-width: 500px;max-height: auto" [src]="images[1]" />
-                 </div>   
-          
-        <div class="post-text"  [innerHTML]= "text[2]">  </div>
-           
-            
-
-        
-        <div class="home-text">      </div>
-            
-            
-     
-            
-            <div class="post-video" *ngIf="videos.length>0">
-                 <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="videos[1] | safe"></iframe>
-            </div>
-                  
-
-            <div class="post-img-huge" ><img style="max-width: 1000px;max-height: auto" [src]="hugeimageurl" /></div>
-
-               <h3> {{title[2]}} </h3>
-            
-              <div class="post-text" [innerHTML]= "text[3]">  </div>
-
-            <div style="padding:30px">
-            <div class="row">
-            <div class="col-md-6"><img style="width:100%" [src]="images2[0]" /></div>
-            <div class="col-md-6"><img style="width:100%" [src]="images2[1]" /></div>
-            </div>
-             <div class="row">
-            <div class="col-md-6"><img style="width:100%" [src]="images2[2]" /></div>
-            <div class="col-md-6"> <img style="width:100%" [src]="images2[3]" /></div>
-             </div>
-            <div>
-   
-          <div class="post-text" [innerHTML]= "text[3]">  </div>
-
-        
-       
-</div>-->
-<!--<div class="row">
-             <div class="col-md-12"  >
-                    <div class="card">
-                    <div class="view overlay hm-white-slight">
-                        <a>
-                            <div class="mask"></div>
-                        </a>
-                    </div>
-
-                    <div class="card-block">
-  
-                        <h4 class="card-title">ARTICLE Results showing for {{data.topic}} and {{data.chapter}}</h4>
-                        <p class="card-text">    
-                        <a class="btn btn-primary primary" (click)="savedata()">Save To Favourites</a>
-                          <a class="btn btn-primary primary" (click)="showfav()">View Favourites</a>
-                          <a class="btn btn-primary primary" (click)="saveonenote()">Save To One Note!</a>
-                         <a class="btn btn-primary primary" (click)="saveonenote2()">Save To One Note2!</a>
-                             <a class="btn btn-primary primary" (click)="saveonenote4()">Save To One Note4!</a>
-                         <br>
-                          <md-progress-spinner *ngIf="loading == true" class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-                          </p>
-                    </div>
-                </div>
-             </div>  
-             </div>
-             <br>-->
 <md-progress-spinner *ngIf="loading == true" class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
 <h2 *ngIf="hidden" class="card-text" style="font-size:2.5rem">{{DataService.myquery.chapter}} </h2>
 <br>
@@ -140,8 +55,8 @@
                                     or export to OneNote:</div>
 
                                 <div class="fav-button">
-                                     <button type="button" class="btn btn-yes btn-sm" data-toggle="modal" data-target="#savetofavs"><i class="fa fa-star"></i>&nbsp; Favourites</button>
-                                    <button *ngIf= "!DataService.dblogin" (click)="saveonenote4()" type="button" class="btn btn-yes btn-sm"><i class="fa fa-share-square-o"></i>&nbsp;&nbsp;&nbsp;OneNote&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                     <button type="button" (click)="onenotemodal = false" class="btn btn-yes btn-sm" data-toggle="modal" data-target="#savetofavs"><i class="fa fa-star"></i>&nbsp; Favourites</button>
+                                    <button *ngIf= "!DataService.dblogin" (click)="onenotemodal = true" data-toggle="modal" data-target="#savetofavs" type="button" class="btn btn-yes btn-sm"><i class="fa fa-share-square-o"></i>&nbsp;&nbsp;&nbsp;OneNote&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>
                         </div>
@@ -196,43 +111,6 @@
          
             <br /><br />
             
-            <!--
-            <ul style="margin-top:40px" class="post-fav">
-                    <li style="width: 30%">
-                        Yes! Save to your favourites or export to OneNote:
-                    </li>
-                    <li style="margin-right: 1.250em">
-                        <button (click)="savedata()" type="button" class="icon-button" title="Save to Favourites"><i class="fa fa-star"></i></button>
-                    </li>
-                    <li>
-                        <button *ngIf= "!DataService.dblogin" (click)="saveonenote4()" type="button" class="icon-button" title="Export to OneNote"><i class="fa fa-share-square-o"></i></button>
-                    </li>
-            </ul>
-               <div class="card-block" *ngIf="onenoteloader == true">
-                     <h4 class="card-title" >Saving To One Note...Please wait</h4>
-      <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
-      </div>
-            
-            <ul style="margin-top:40px" class="post-fav">
-                    <li style="width: 30%">
-                        Almost! But I want to re-configure it:
-                    </li>
-                    <li>
-                        <a [routerLink]="['/search']" class="btn btn-signin">Options</a>
-                    </li>
-            </ul>
-            
-            <ul style="margin-top:40px" class="post-fav">
-                    <li style="width: 30%">
-                        No! Take me back:
-                    </li>
-                    <li>
-                        <a [routerLink]="['/search']" class="arrow-left arrow-left-beige">Back to Search</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/modules']" class="arrow-left arrow-left-beige">Back to Collections</a>
-                    </li>
-            </ul> -->
         
             </div>
         </div>
@@ -244,19 +122,23 @@
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title w-100" id="myModalLabel">Save to Favourites</h4>
+                        <h4 *ngIf="!onenotemodal" class="modal-title w-100" id="myModalLabel">Save to Favourites</h4>
+                          <h4 *ngIf="onenotemodal" class="modal-title w-100" id="myModalLabel">Save to One Note</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <!--Body-->
                     <div class="modal-body">
-                        <h6>Do you want to save this article to your Favourites?</h6>
+                        <h6 *ngIf="!onenotemodal">Do you want to save this article to your Favourites?</h6>
+                         <h6 *ngIf="onenotemodal">Do you want to save this article to your One Note?</h6>
                     </div>
                     <!--Footer-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-close btn-sm" data-dismiss="modal">CANCEL</button>
-                        <button type="button" (click)="savedata()" class="btn btn-primary btn-sm" data-dismiss="modal">SAVE TO FAVOURITES</button>
+                        <button type="button" *ngIf="!onenotemodal" (click)="savedata()" class="btn btn-primary btn-sm" data-dismiss="modal">SAVE TO FAVOURITES</button>
+                    <button type="button" *ngIf="onenotemodal" (click)="saveonenote4()" class="btn btn-primary btn-sm" data-dismiss="modal">SAVE TO ONE NOTE</button>
+        
                     </div>
                 </div>
                 <!--/.Content-->

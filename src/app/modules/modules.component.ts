@@ -100,7 +100,7 @@ export class ModulesComponent implements OnInit {
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'No Collections Subscribed';
-             this.exists = false;
+             this.exists = true;
              this.loading = false;
               
            }
@@ -180,7 +180,7 @@ export class ModulesComponent implements OnInit {
             else if(dataFromServer == '500 Occured')  {
                this.subscription = 'Internal Server Occured. Refresh Again';
                this.loading = false;
-                this.exists = true;  
+                this.exists = false;  
              }
            else {
              this.exists = false;

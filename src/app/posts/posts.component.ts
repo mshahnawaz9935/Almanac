@@ -50,7 +50,7 @@ export class PostsComponent implements OnInit {
          
           console.log(dataFromServer );
       
-           this.getdata3(dataFromServer);
+        //   this.getdata3(dataFromServer);
              this.img_data = dataFromServer;
             this.getdata2(dataFromServer.modes);
              this.loading = false;
@@ -115,10 +115,9 @@ getdata2(data)
 
   }
   getdata3(data){
-    let videos = [];
-    for(let data1 of data)
-    {
-      for(let mode of data1.modes)
+    let videos2 = [];
+      console.log(data);
+      for(let mode of data.modes)
       {
       for(let section of mode.sections)
       {
@@ -128,30 +127,34 @@ getdata2(data)
 
             if(section.videos !== undefined)
             {
-                  if(videos.length == 0)
+                  if(videos2.length == 0)
                   {
-                  videos.push(section.videos[0].url);
+                  videos2.push('https://www.youtube.com/embed/' + section.videos[0].url);
                   }
-           
-                
-                  for(let videourl of section.videos)
-                  {
-                    for(let i=0 ; i < videos.length, i++;)
-                    { 
-                    if(videos[i] == videourl.url)
-                    continue;
-                    else
-                    {
-                          if(videourl.attribution == 'Youtube')
-                          {
-                          videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
-                          videos.push(videourl.url);
-                          }
-                      }
-                        }
-                }
+                //   for(let videourl of section.videos)
+                //   {
+                //     for(let i of videos2)
+                //     { 
+                //       console.log(i);
+                //     if(i == videourl.url)
+                //     {
+                //         // section.videos.delete(videourl);
+                //         console.log(' matched and deleted');
+                //         continue;
+                //     }
+                //     else
+                //     {
+                //           if(videourl.attribution == 'Youtube')
+                //           {
+                //           videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
+                //           videos2.push(videourl.url);
+                //           }
+                //       }
+                //         }
+                // }
                 
               }
+
 
          if(section.images !== undefined)
          for(let image of section.images)
@@ -177,8 +180,6 @@ getdata2(data)
 
       }
       }
-   
-    }
   }
 
 
@@ -224,44 +225,21 @@ getdata2(data)
         });
   }
 
-  savenote()
-  {
-       window.open('http://localhost:3000/note/token','_self');
-       alert('Saved to Note');
 
-  }
-  saveonenote()
-  {
-      // window.open('http://localhost:3000/onenote/writenote','_self');
-        this.http.get('http://localhost:3000/onenote/writenote')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Write note', dataFromServer);
-           alert('Saved to One Note');
-        });
 
-  }
 
-  saveonenote2()
-  {
-    this.loading = true;
-    this.http.get('http://localhost:3000/onenote/checknote3')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Data Saved to One Note', dataFromServer);
-          alert('Save to One Note');
-          this.loading = false;
-        });
-  }
+
   saveonenote4()
   {
     this.onenoteloader = true;
     this.http.get('http://localhost:3000/onenote/checknote4')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
-          alert('Save to One Note 4');
+          alert('Save to One Note');
           this.onenoteloader = false;
         });
   }
-
+  onenotemodal = false;
 
 
   checknote()
