@@ -20,6 +20,7 @@ saved_data;
 toggle = false;
 data = {};
 nodata = false;
+noonenotedata=false;
 favs_data = [];
 image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   constructor(private http:Http , private DataService:DataService) {
@@ -67,12 +68,14 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
             let k = pages.title.indexOf(" ");
             if(k>0 && k !== -1)
             pages.title =  pages.title.substring(0,k);
-            let obj = { title : pages.title, section :  pages.parentSection.displayName  };
+            let obj = { id: pages.id, title : pages.title, section :  pages.parentSection.displayName  };
             this.page.push(obj);
           }
 
      }
      console.log(this.page);
+     if(this.page.length == 0)
+     this.noonenotedata =true;
   }
 
 
@@ -106,16 +109,27 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
             alert('Successfully Deleted');
           window.location.reload();
         });
-
-
-     
   }
+
+  deleteOneNoteArticle(index)
+  { 
+      console.log('Page id is', index);
+      this.http.get('http://localhost:3000/onenote/deletepages?pageid=' + index)
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log( dataFromServer);
+            alert('Successfully Deleted');
+          window.location.reload();
+        });
+  }
+
+
+
 imagesdata='';
   getdata2(dataFromServer)
   {
     this.favs_data = [];
     let arr = dataFromServer;
-    let end = arr.length;
+    let end = arr.length;                  // Remove duplicates
 
     for (let i = 0; i < end; i++) {
         for (let j = i + 1; j < end; j++) {
@@ -177,7 +191,7 @@ getdata(data){
    let arr = data;
     let end = arr.length;
 
-    for (let i = 0; i < end; i++) {
+    for (let i = 0; i < end; i++) {              // Remove duplicates
         for (let j = i + 1; j < end; j++) {
             if (arr[i].chapter == arr[j].chapter) {                  
                 let shiftLeft = j;

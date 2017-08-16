@@ -118,6 +118,18 @@ router.get('/getpages', function (req, res) {
     })
 });
 
+router.get('/deletepages', function (req, res) {
+
+    var pageid = req.query.pageid;
+    console.log(pageid);
+    deleteonenotearticles(req.cookies.ACCESS_TOKEN_CACHE_KEY, pageid, function(data)
+    {
+        res.json(data);
+
+    })
+});
+
+
 
 router.get('/aboutme', function (req, res) {
 
@@ -598,6 +610,32 @@ function getonenotearticles(token, callback)
   });
 
 }
+
+function deleteonenotearticles(token, pageid , callback)
+{
+        var url = 'https://graph.microsoft.com/beta/me/onenote/pages/' + pageid;
+        var options = {
+        url: url,
+        method: 'DELETE',
+        headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + token
+        }
+    };
+
+    request(options, function (err, res, body) {
+    if (err) {
+        console.log('Failed to delete page', err)
+        return
+    }
+    console.log('Deleted Page')
+    callback('Deleted Page');
+    });
+
+
+}
+
 
 function checksection(token , notebookid, modulename ,callback)
 {   sec=0;
