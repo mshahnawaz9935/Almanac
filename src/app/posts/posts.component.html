@@ -29,7 +29,7 @@
               <div class="post-video" *ngIf="section.videos !== undefined">
                       <br>
                           <br>
-                    <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="section.videos[0].url | safe"></iframe>
+                    <iframe *ngIf="section.videos[0] !== undefined" allowfullscreen frameborder="0" height="315" width="560" [src]="section.videos[0].url | safe"></iframe>
                <br>
                 </div>
                 <br>

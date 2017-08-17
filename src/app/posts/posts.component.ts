@@ -11,8 +11,9 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {}
-  transform(url) {
+  constructor(private sanitizer: DomSanitizer) { 
+  }
+  transform( url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
@@ -65,6 +66,7 @@ images2=[];
 hugeimage = 0;
 hugeimageurl = '';
 title= [];
+videos2 = [];
 getdata2(data)
   {
     this.images = [];
@@ -76,20 +78,43 @@ getdata2(data)
         for(let mode of data)
         {
           mode = mode.sections;
+          
         for(let section of mode)
         {
+          if(this.videos2.length == 0)
+          this.videos2.push('https://www.youtube.com/embed/'+ section.videos[0].url);
             this.title.push(section.title);
                 let len =section.text.text.length;
                 section.text.text = section.text.text.substring(9,len-3);
            this.text.push(section.text.text);
            if(section.videos !== undefined)
            {
-           for(let videourl of section.videos)
-           {
-             if(videourl.attribution == 'Youtube')
-             videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
-             this.videos.push(videourl.url);
-           }
+                    for(let videourl of section.videos)
+                    {   
+                       if(videourl.attribution == 'Youtube')
+                          {
+                          videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
+                        }
+                        let found = false;
+                        for(let vid of this.videos2)
+                        {
+                            if(vid == videourl.url )
+                            {
+                                section.videos.splice(section.videos.indexOf(videourl), 1);
+                                found = true;
+                                break;
+                            }
+                        }
+                        if(found == false)
+                         this.videos2.push(videourl.url);
+
+                    }
+                    for(let videourl of section.videos)
+                    {
+                        console.log(videourl); 
+                    }
+
+              
           }
            if(section.images !== undefined)
            {
@@ -111,9 +136,38 @@ getdata2(data)
         }
         console.log('Videos' ,this.videos);
            console.log('Images' ,this.images , this.images2);
+                             console.log('Removed videos' , this.videos2);
+
      
 
   }
+
+  list = [];
+  removedups(data)
+  {    
+         let arr = data;
+                  let end = arr.length;                  // Remove duplicates
+
+                  for (let i = 0; i < end; i++) {
+                      for (let j = i + 1; j < end; j++) {
+                          if (arr[i].url == arr[j].url) {                  
+                              let shiftLeft = j;
+                              for (let k = j+1; k < end; k++, shiftLeft++) {
+                                  arr[shiftLeft] = arr[k];
+                              }
+                              end--;
+                              j--;
+                          }
+                      }
+                  }
+                  for(let i = 0; i < end; i++){
+                      this.list[i] = arr[i];
+                  }
+                  console.log(this.list);
+  }
+
+
+
   getdata3(data){
     let videos2 = [];
       console.log(data);

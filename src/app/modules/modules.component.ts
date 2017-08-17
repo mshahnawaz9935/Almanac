@@ -96,7 +96,7 @@ export class ModulesComponent implements OnInit {
                  this.http.get('http://localhost:3000/api/instances?id=modules')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
-          console.log('Module status is ' + dataFromServer );
+          console.log('Module status is ' + dataFromServer + this.exists );
            if(dataFromServer == 'Subscription does not exists')
            {
              this.subscription = 'No Collections Subscribed';
@@ -170,7 +170,7 @@ export class ModulesComponent implements OnInit {
            this.http.get('http://localhost:3000/api/instances?id=modulesonerror')
               .map((res: Response) => res.json())
               .subscribe((dataFromServer) => {
-          console.log('Module status is ' + dataFromServer );
+          console.log('Module status is ' + dataFromServer + this.exists );
            
            if(dataFromServer == 'Subscription does not exists')  {
              this.loading = false;
@@ -184,6 +184,7 @@ export class ModulesComponent implements OnInit {
              }
            else {
              this.exists = false;
+              this.data = dataFromServer;
              this.subscription = 'View your subscribed modules below';
               this.getdata(dataFromServer);
                this.loading = false;
