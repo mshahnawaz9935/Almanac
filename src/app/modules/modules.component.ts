@@ -112,11 +112,12 @@ export class ModulesComponent implements OnInit {
            }
            else 
            {
-               this.data = dataFromServer;
+             this.getdata(dataFromServer);
+             this.data = dataFromServer;
              this.exists = false;
              this.loading = false;
              this.subscription = 'View your subscribed collections below';
-              this.getdata(dataFromServer);
+              
            }
         }
         
@@ -183,11 +184,11 @@ export class ModulesComponent implements OnInit {
                 this.exists = false;  
              }
            else {
+             this.data = dataFromServer;
              this.exists = false;
-              this.data = dataFromServer;
-             this.subscription = 'View your subscribed modules below';
+             this.loading = false;
+             this.subscription = 'View your subscribed collections below';
               this.getdata(dataFromServer);
-               this.loading = false;
                }
         }
         

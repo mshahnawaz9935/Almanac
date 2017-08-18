@@ -74,47 +74,55 @@ getdata2(data)
    this.videos= [];
    this.images2 = [];
    this.title = [];
-
+   
         for(let mode of data)
         {
-          mode = mode.sections;
-          
+         mode = mode.sections;
+          let i = 0;
         for(let section of mode)
-        {
-          if(this.videos2.length == 0)
-          this.videos2.push('https://www.youtube.com/embed/'+ section.videos[0].url);
-            this.title.push(section.title);
-                let len =section.text.text.length;
-                section.text.text = section.text.text.substring(9,len-3);
+        {  
+          this.title.push(section.title);
+          let len =section.text.text.length;
+          section.text.text = section.text.text.substring(9,len-3);
            this.text.push(section.text.text);
            if(section.videos !== undefined)
            {
                     for(let videourl of section.videos)
-                    {   
-                       if(videourl.attribution == 'Youtube')
+                    {
+                      if(videourl.attribution == 'Youtube')
                           {
                           videourl.url = 'https://www.youtube.com/embed/' + videourl.url;
                         }
+                    }
+                    // for(let videourl of section.videos)
+                    let del = false; let k = 0;
+                    for(let i=0 ; i < section.videos.length; i++)
+                    {   
+                       let videourl = section.videos[i];
+                      if(del == true)
+                      {
+                   //       videourl = section.videos[k];
+                          del = false;
+                          k=0;
+                      }
+                     
                         let found = false;
                         for(let vid of this.videos2)
                         {
                             if(vid == videourl.url )
-                            {
-                                section.videos.splice(section.videos.indexOf(videourl), 1);
-                                found = true;
-                                break;
+                            {    
+                                      k = section.videos.indexOf(videourl);
+                                   section.videos.splice(section.videos.indexOf(videourl), 1);
+                                        found = true;
+                                        console.log('found and deleted', videourl , vid);
+                                        del = true;
+                                        i = k - 1;
+                                         break;
                             }
                         }
                         if(found == false)
                          this.videos2.push(videourl.url);
-
                     }
-                    for(let videourl of section.videos)
-                    {
-                        console.log(videourl); 
-                    }
-
-              
           }
            if(section.images !== undefined)
            {
@@ -132,6 +140,7 @@ getdata2(data)
            if(section.images.length > 0)
             this.images.push(section.images[0].url + this.DataService.key);
            }
+           i++;
         }
         }
         console.log('Videos' ,this.videos);

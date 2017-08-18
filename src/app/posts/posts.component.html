@@ -3,7 +3,7 @@
 <h2 *ngIf="hidden" class="card-text" style="font-size:2.5rem">{{DataService.myquery.chapter}} </h2>
 <br>
 <br>
-<div class="row"  *ngFor= "let mode of img_data.modes" >
+<div class="row"  *ngFor= "let mode of img_data.modes; " >
              <div  class="col-md-12" *ngFor= "let section of mode.sections;let i= index"   >
                     <h2 [innerHTML]="section.title" class="card-text">    </h2>      
                          <div class="row" *ngIf="section.images !== undefined && i%2 == 0">
