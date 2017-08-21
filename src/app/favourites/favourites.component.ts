@@ -113,11 +113,13 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
 
   deleteOneNoteArticle(index)
   { 
+    this.loading1 = true;
       console.log('Page id is', index);
       this.http.get('https://student.almanac-learning.com/onenote/deletepages?pageid=' + index)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             alert('Successfully Deleted');
+            this.loading1 = false;
           window.location.reload();
         });
   }
