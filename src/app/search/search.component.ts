@@ -26,11 +26,13 @@ export class SearchComponent implements OnInit {
   user='';
   differentiator = [{name:'', levels:[]}];
   type={name:'', levels:[]};
+
+
   constructor(private http:Http , private DataService: DataService,private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0,0);
     console.log('search module' ,this.DataService.moduleid);
          if(this.DataService.moduleid != '')
-        {
+          {
           console.log('Module selected' , this.DataService.moduleid , this.DataService.modulename);
         this.http.get('http://localhost:3000/api/instances')
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {   // View instances
@@ -39,29 +41,25 @@ export class SearchComponent implements OnInit {
 
               });
                  
-        }
-        else
-        {  
-          this.router.navigate(['/modules']);
-        }
+             }
+           else
+            {  
+              this.router.navigate(['/modules']);
+            }
 
         if(this.DataService.query !== '')
         {
         this.model.search =  this.DataService.query ;
-        if(this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) >= 0 && this.DataService.type.levels.indexOf(this.DataService.slider2) >= 0  )
-        {
-        this.model.slider_value1=  this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) ;
-        this.model.slider_value2 = this.DataService.type.levels.indexOf(this.DataService.slider2) ;
+            if(this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) >= 0 || this.DataService.type.levels.indexOf(this.DataService.slider2) >= 0  )
+            {
+            this.model.slider_value1=  this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) ;
+            this.model.slider_value2 = this.DataService.type.levels.indexOf(this.DataService.slider2) ;
+            }
         }
-        }
-
-       
-         
+   
    }
 
   ngOnInit() {
-
- 
   }
 
     error:boolean = false;
@@ -79,14 +77,6 @@ export class SearchComponent implements OnInit {
       this.DataService.query = this.model.search;
       this.DataService.slider1 = this.slider1;
       this.DataService.slider2 = this.slider2;
-    // this.http.get('http://localhost:3000/api/search?id='+ this.model.search + '&differentiator='+ this.slider1+ '&type=' + this.slider2)     
-      // this.http.get('http://localhost:3000/api/search?id='+ this.model.search)
-      //   .map((res: Response) => res.json())
-      //   .subscribe((dataFromServer) => {
-      //     this.data = dataFromServer;
-      //   //  this.getdata(dataFromServer);
-      //     console.log('Data from postman is ' + this.data);
-      //   });
         this.router.navigate(['./results']);
     }
   }
@@ -100,12 +90,10 @@ export class SearchComponent implements OnInit {
       {
         console.log('module found' , module);
         //this.differentiator = module.differentiators;
-       // this.type= module.type;
+        // this.type= module.type;
              this.DataService.differentiator = module.differentiators;
-       this.DataService.type= module.type;
-      }
-      
-      
+        this.DataService.type= module.type;
+      } 
     }
 
     console.log('difff and type', this.DataService.type.name, this.DataService.differentiator[0].name, this.DataService.type.levels);
@@ -128,34 +116,28 @@ export class SearchComponent implements OnInit {
   //     else this.error =true;
   // }
 
-    note()
-  {
-       console.log('Authenticated');
-       window.open('http://localhost:3000/note','_self' );
+  //   note()
+  // {
+  //      console.log('Authenticated');
+  //      window.open('http://localhost:3000/note','_self' );
    
-  }
-
-  onenote()
-  {
-       console.log('Authenticated');
-       window.open('http://localhost:3000/onenote','_self' );
-   
-  }
-   onenotelogout()
-  {
-       window.open('http://localhost:3000/onenote/disconnect','_self' );
-   
-  }
-     logout()
-  {
-       window.open('http://localhost:3000/note/logout','_self' );
-   
-  }
-
-  //   onSelect(data): void {
-  //     console.log('clicked query' + data.name + data.query);          // Select topic and redirect to the article
-  //     this.DataService.myquery.topic = data.query;
-  //     this.DataService.myquery.chapter = data.name;
-  //     this.router.navigate(['./posts']);
   // }
+
+  // onenote()
+  // {
+  //      console.log('Authenticated');
+  //      window.open('http://localhost:3000/onenote','_self' );
+   
+  // }
+  //  onenotelogout()
+  // {
+  //      window.open('http://localhost:3000/onenote/disconnect','_self' );
+   
+  // }
+  //    logout()
+  // {
+  //      window.open('http://localhost:3000/note/logout','_self' );
+   
+  // }
+
 }

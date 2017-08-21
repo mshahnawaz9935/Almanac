@@ -2,82 +2,99 @@
    <div class="row">
          <div class="col-md-12">
            <br>
-                <!--<a *ngIf="!authenticated1" class="btn btn-primary primary" (click)="note()">Authenticate to One Note</a>
-                <a *ngIf="!authenticated1" class="btn btn-primary primary" (click)="onenote()">Login Office 365</a>
-                <a *ngIf="authenticated1" class="btn btn-primary primary" (click)="onenotelogout()">Disconnect Office 365</a>
-                <button md-button *ngIf="authenticated" (click)="logout()">Logged in / Click To Log Out</button>-->
-                
-                <!--Card-->
-                <div class="card">
-                   <div class="card-block">
-                       <h2>{{DataService.modulename}}</h2>
-                        <!--Title-->
-                        <!-- <h4 class="card-title">Learn Better</h4> -->
-                          
-                        <!--Text-->
-                        <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
-                       <br>
-                       
-                       <p><span class="badge badge-beige"style="font-size: 0.875em;">1</span>&nbsp;&nbsp;&nbsp;Enter the topic you're looking for:</p>
+            <div class="card">
+                <div class="card-block">
+                    <h2>{{DataService.modulename}}</h2>
+                    <p class="card-text">Select from our amazing Digital Content Collections® and find out about your favourite topics!</p>
+                    <br>
+                    <p><span class="badge badge-beige"style="font-size: 0.875em;">1</span>&nbsp;&nbsp;&nbsp;Enter the topic you're looking for:</p>
       
-                 <form (ngSubmit)="onSubmit()">
-                    <div class="row">
-                  <div class="col-md-8">   
-                  <div class="md-form input-group">
-                      <input type="text" id="form1" class="form-control" [(ngModel)]="model.search" name="search" value="{{value}}" #box >
-                      <span class="input-group-addon" id="basic-addon2"><i class="fa fa-chevron-right fa-lg"></i></span>
-                      <!--(keyup.enter)="onEnter(box.value)">-->
-                          <!--<label for="form1" class="">{{model.search}}</label>-->
-                      </div>
-                      </div>
-                             </div>
-                        <br>
+        <form (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-8">   
+              <div class="md-form input-group">
+                <input type="text" id="form1" class="form-control" [(ngModel)]="model.search" name="search" value="{{value}}" #box >
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-chevron-right fa-lg"></i></span>
+                </div>
+              </div>
+            </div>
+                  <br>
                    
-                                <p><span class="badge badge-beige"style="font-size: 0.875em;">2</span>&nbsp;&nbsp;&nbsp;Describe what results you want for this search:</p><br>     
-                        <h5 class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
-                        <!--Ability-->
-                       <div class="row search-values">
-                             <div class="col-md-1">
-                               <p>{{DataService.differentiator[0].levels[0]}}</p>
-                                </div>
-                                 <div class="col-md-7">
-                                    <p>
-                                      <span style="margin-left:45%">{{DataService.differentiator[0].levels[1]}}</span>
-                                  <nouislider [min]="0" [max]="2" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
-                                    </p>
-                                  </div>
-                              <br>
-                               <div>
-                               <p>{{DataService.differentiator[0].levels[2]}}</p>
-                               </div>
+            <p><span class="badge badge-beige"style="font-size: 0.875em;">2</span>&nbsp;&nbsp;&nbsp;Describe what results you want for this search:</p><br>     
+            <h5 class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
+          
+            <div class="row search-values">
+              <div class="col-md-1">
+                 <p>{{DataService.differentiator[0].levels[0]}}</p>
+              </div>
+               <div class="col-md-7">
+                    <p>
+                    <span style="margin-left:45%">{{DataService.differentiator[0].levels[1]}}</span>
+                    <nouislider [min]="0" [max]="2" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
+                     </p>
+                </div>
+                     <br>
+              <div>
+                 <p>{{DataService.differentiator[0].levels[2]}}</p>
+                  </div>
+                    </div>
+                     <br><br>
+                      <h5 *ngIf="DataService.type.levels.length > 0" class="card-title" style="margin-left:2.50em">{{DataService.type.name}}:</h5>
+                       <div class="row  search-values" *ngIf="DataService.type.levels.length == 3">
+                          <div class="col-md-1">
+                           <p>{{DataService.type.levels[0]}}</p>
                              </div>
-                              <br><br>
-                               <h5 class="card-title" style="margin-left:2.50em">{{DataService.type.name}}:</h5>
-                            <div class="row  search-values">
-                             <div class="col-md-1">
-                               <p>{{DataService.type.levels[0]}}</p>
-                                </div>
-                                 <div class="col-md-7">
-                                    <p>
-                                      <span style="margin-left:45%">{{DataService.type.levels[1]}}</span>
+
+                           <div class="col-md-7">
+                              <p>
+                                <span style="margin-left:45%">{{DataService.type.levels[1]}}</span>
                                   <nouislider [min]="0" [max]="2" [step]="1" name="noui2" [(ngModel)]="model.slider_value2" ></nouislider>
-                                    </p>
-                                  </div>
-                              <div class="col-md-2">
+                              </p>
+                            </div>
+                            <div class="col-md-2">
                                <p>{{DataService.type.levels[2]}}</p>
-                               </div>
-                             </div>   
-                             <br>
+                            </div>
+                            </div>   
+
+                         <div class="row  search-values" *ngIf="DataService.type.levels.length == 2">
+                          <div class="col-md-5">
+                           <p>{{DataService.type.levels[0]}}</p>
+                             </div>
+                           <div class="col-md-7">
+                              <p>
+                                <span style="margin-left:45%"></span>
+                                  <nouislider [min]="0" [max]="1" [step]="1" name="noui2" [(ngModel)]="model.slider_value2" ></nouislider>
+                              </p>
+                            </div>
+                            <div class="col-md-2">
+                               <p>{{DataService.type.levels[1]}}</p>
+                            </div>
+                            </div>    
+
+                            <div class="row  search-values" *ngIf="DataService.type.levels.length == 1">
+                          <div class="col-md-1">
+                           <p></p>
+                             </div>
+                           <div class="col-md-7">
+                              <p>
+                                <span style="margin-left:45%">{{DataService.type.levels[0]}}</span>
+                              </p>
+                            </div>
+                            <div class="col-md-2">
+                               <p></p>
+                            </div>
+                            </div>   
+                        <br>
                       
-                          <p><span class="badge badge-beige" style="font-size: 0.875em;">3</span>&nbsp;&nbsp;&nbsp;And … Go!</p>   
-                        <button class="btn btn-primary" type="submit" color="warn" ><i class="fa fa-search"></i>&nbsp; Search</button>
-                        </form>
+                <p><span class="badge badge-beige" style="font-size: 0.875em;">3</span>&nbsp;&nbsp;&nbsp;And … Go!</p>   
+                <button class="btn btn-primary" type="submit" color="warn" ><i class="fa fa-search"></i>&nbsp; Search</button>
+                </form>
                              
-                    </div>
-                    </div>
-                
-                      </div>
+              </div>
           </div>
+                
+      </div>
+   </div>
           <br>
            <div *ngIf="error"  class="row">
               <div class="col-md-12">
