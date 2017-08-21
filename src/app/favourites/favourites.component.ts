@@ -100,13 +100,13 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   removearticle;
   deleteArticle(index)
   { 
-    this.deleting = true;
+    this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
       this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-            this.deleting = false;
+            this.loading = false;
             alert('Successfully Deleted');
           window.location.reload();
         });
@@ -114,13 +114,13 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
 
   deleteOneNoteArticle(index)
   { 
-    this.loading1 = true;
+    this.deleting = true;
       console.log('Page id is', index);
       this.http.get('https://student.almanac-learning.com/onenote/deletepages?pageid=' + index)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             alert('Successfully Deleted');
-            this.loading1 = false;
+            this.deleting = false;
           window.location.reload();
         });
   }
