@@ -16,6 +16,7 @@ export class FavouritesComponent implements OnInit {
 array = new Array(6);
 loading = true;
 loading1= true;
+deleting = false;
 saved_data;
 toggle = false;
 data = {};
@@ -99,13 +100,13 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   removearticle;
   deleteArticle(index)
   { 
-    this.loading = true;
+    this.deleting = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
       this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-            this.loading = false;
+            this.deleting = false;
             alert('Successfully Deleted');
           window.location.reload();
         });
