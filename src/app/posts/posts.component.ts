@@ -285,6 +285,7 @@ getdata2(data)
         this.http.get('https://student.almanac-learning.com/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
+              window.scrollTo(0,0);
         });
   }
 
@@ -298,8 +299,8 @@ getdata2(data)
     this.http.get('https://student.almanac-learning.com/onenote/checknote4')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
-          alert('Save to One Note');
           this.onenoteloader = false;
+              window.scrollTo(0,0);
         });
   }
   onenotemodal = false;
