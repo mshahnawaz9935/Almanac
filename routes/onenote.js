@@ -1175,11 +1175,11 @@ var counter =0;
                 })
               })
                }
-               
+                callback(url);
         }
         else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
       }
-            callback(url);
+           
     });
         //  setTimeout(function() {
         //             fulldata = 
