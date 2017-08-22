@@ -270,6 +270,7 @@ router.get('/instances', (req, res) => {
            else if(response.statusCode == 500 && email !== undefined)
         { console.log('nuffing 500' , email, error ,response.statusCode, response.headers);
            // callback(false , '');
+           console.log('Instances Url is' , options.url);
             res.json('500 Occured');
         }
         else {

@@ -258,11 +258,12 @@ moduledata;
              else if(dataFromServer == '500 Occured')
            {
                 this.exists = false;
+                this.getInstances();
            }
            else 
            {
              this.exists = true;
-             this.subscription = 'View your subscribed modules below';
+             this.subscription = 'View your subscribed collections below';
               this.getdata(dataFromServer);
            }
         }
