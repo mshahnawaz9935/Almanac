@@ -93,7 +93,6 @@ export class ResultsComponent implements OnInit {
               .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                 console.log(dataFromServer);
                 this.saving = false;
-                  alert('Saved to Favourites');
               });
       });
   }

@@ -109,7 +109,6 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
             this.loading = false;
-            alert('Successfully Deleted');
           window.location.reload();
         });
   }
