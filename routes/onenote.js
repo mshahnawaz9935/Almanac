@@ -1080,7 +1080,8 @@ var counter =0;
     {   
    // var fulldata;
        getarticle2(token, topic, chapter ,articleid , studentid, moduleid, function(data , obj){
- 
+
+          console.log('data before match' , data);
               getToken(function(token2){
     var favourites ={};
 var url = '';
@@ -1352,7 +1353,7 @@ var counter =0;
 }
 
     function createNewPage2(accessToken, payload, multipart) {
-      console.log('here' , payload);
+      console.log('here' );
             var options = {
                 url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
                 headers: {
