@@ -52,6 +52,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
                           this.loading1= false;
                         })
               }
+              else this.loading1= false;
         })
    }
 
