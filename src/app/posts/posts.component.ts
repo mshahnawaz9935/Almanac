@@ -45,7 +45,7 @@ export class PostsComponent implements OnInit {
       window.scrollTo(0,0);
       this.data = this.DataService.myquery;
       console.log(this.DataService.modulename ,'Article id' , this.DataService.myquery.articleid);
-    this.http.get('http://localhost:3000/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
+    this.http.get('https://student.almanac-learning.com/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
   
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
          
@@ -282,7 +282,7 @@ getdata2(data)
 
   savedata()
   {
-        this.http.get('http://localhost:3000/api/store')
+        this.http.get('https://student.almanac-learning.com/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
         });
@@ -295,7 +295,7 @@ getdata2(data)
   saveonenote4()
   {
     this.onenoteloader = true;
-    this.http.get('http://localhost:3000/onenote/checknote4')
+    this.http.get('https://student.almanac-learning.com/onenote/checknote4')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Data Saved to One Note', dataFromServer);
           alert('Save to One Note');
@@ -307,7 +307,7 @@ getdata2(data)
 
   checknote()
   {
-       this.http.get('http://localhost:3000/onenote/checknote2')
+       this.http.get('https://student.almanac-learning.com/onenote/checknote2')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Check note', dataFromServer);
           if(dataFromServer == 'Notebook exists')
@@ -321,7 +321,7 @@ getdata2(data)
 
         //   this.saved = true;
         //   this.loading = true;
-        //  this.http.get('http://localhost:3000/api/getdata')
+        //  this.http.get('https://student.almanac-learning.com/api/getdata')
         // .map((res: Response) => res.json()).subscribe((dataFromServer) => {
         //   console.log( 'Saved data in db' , dataFromServer);
         //   this.saved_data = dataFromServer;
