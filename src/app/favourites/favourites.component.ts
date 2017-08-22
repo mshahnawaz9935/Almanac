@@ -54,6 +54,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
               }
               else this.loading1= false;
         })
+        console.log(this.DataService.dblogin);
    }
 
   ngOnInit() {
