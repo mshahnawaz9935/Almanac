@@ -62,7 +62,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
 
   }
   getonenote()
-  {
+  {       this.loading1= true;
           this.http.get('https://student.almanac-learning.com/onenote/getpages')
                         .map((res: Response) => res.json()).subscribe((Serverdata) => {
                           console.log('Pages are ' + Serverdata );
