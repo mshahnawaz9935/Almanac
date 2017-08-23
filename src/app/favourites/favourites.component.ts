@@ -34,12 +34,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
 
               if(dataFromServer == 'Logged in')
               {
-                    this.http.get('https://student.almanac-learning.com/onenote/getpages')
-                        .map((res: Response) => res.json()).subscribe((Serverdata) => {
-                          console.log('Pages are ' + Serverdata );
-                          this.getpages(Serverdata);
-                          this.loading1= false;
-                        })
+                    this.getonenote();
               }
               else this.loading1= false;
         })
@@ -64,6 +59,17 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
                     this.getdata2(dataFromServer);
                     console.log('Saved_data' , this.saved_data);
         });
+
+  }
+  getonenote()
+  {
+          this.http.get('https://student.almanac-learning.com/onenote/getpages')
+                        .map((res: Response) => res.json()).subscribe((Serverdata) => {
+                          console.log('Pages are ' + Serverdata );
+                          this.getpages(Serverdata);
+                          this.deleting = false;
+                          this.loading1= false;
+                        })
 
   }
 
@@ -116,7 +122,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
      this.removearticle = this.saved_data[index];
       this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log( dataFromServer);
+          console.log(dataFromServer);
           this.getfavs();
         });
   }
@@ -128,7 +134,9 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
       this.http.get('https://student.almanac-learning.com/onenote/deletepages?pageid=' + index)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-          window.location.reload();
+          this.deleting =false; 
+          setTimeout(() => {  this.getonenote();},800 );
+        
         });
   }
 
