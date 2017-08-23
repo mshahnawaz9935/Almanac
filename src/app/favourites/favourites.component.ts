@@ -78,10 +78,12 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   page = [];
   getpages(data)
   {
+    console.log('One note pages' , data);
     this.page = [];
      
      for(let pages of data.value)
-     {
+     {    if(pages.parentNotebook !== undefined)
+            {
           if(pages.parentNotebook.displayName == 'TCD Almanac')
           {
             let k = pages.title.indexOf(" ");
@@ -90,6 +92,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
             let obj = { id: pages.id, title : pages.title, section :  pages.parentSection.displayName  };
             this.page.push(obj);
           }
+            }
 
      }
      console.log(this.page);
