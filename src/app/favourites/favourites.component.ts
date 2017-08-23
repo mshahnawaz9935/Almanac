@@ -81,6 +81,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
     console.log('One note pages' , data);
     this.page = [];
      
+     if(data.value !== null && data.value !== undefined)
      for(let pages of data.value)
      {    if(pages.parentNotebook !== undefined && pages.parentNoteBook  !== null)
             {
