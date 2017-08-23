@@ -26,18 +26,7 @@ favs_data = [];
 image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   constructor(private http:Http , private DataService:DataService) {
 
-         this.http.get('https://student.almanac-learning.com/api/getdata')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-                    console.log( 'Saved data in db' , dataFromServer);
-                    if(dataFromServer.length == 0 )
-                    this.nodata =true;
-                    else this.nodata = false;
-                    this.getdata(dataFromServer);
-                    this.loading = false;
-                    this.saved_data = dataFromServer;
-                    this.getdata2(dataFromServer);
-                    console.log('Saved_data' , this.saved_data);
-        });
+      this.getfavs();
 
           this.http.get('https://student.almanac-learning.com/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
@@ -59,6 +48,26 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
 
   ngOnInit() {
   }
+
+  getfavs()
+  {
+        this.loading = true;
+       this.http.get('https://student.almanac-learning.com/api/getdata')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+                    console.log( 'Saved data in db' , dataFromServer);
+                    if(dataFromServer.length == 0 )
+                    this.nodata =true;
+                    else this.nodata = false;
+                    this.getdata(dataFromServer);
+                    this.loading = false;
+                    this.saved_data = dataFromServer;
+                    this.getdata2(dataFromServer);
+                    console.log('Saved_data' , this.saved_data);
+        });
+
+  }
+
+
 
   page = [];
   getpages(data)
@@ -108,7 +117,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
       this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-          window.location.reload();
+          this.getfavs();
         });
   }
 
