@@ -26,7 +26,28 @@ favs_data = [];
 image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   constructor(private http:Http , private DataService:DataService) {
 
-         this.http.get('https://student.almanac-learning.com/api/getdata')
+      this.getfavs();
+
+          this.http.get('https://student.almanac-learning.com/onenote/checklogin')
+        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          console.log('Login status is ' + dataFromServer );
+
+              if(dataFromServer == 'Logged in')
+              {
+                    this.getonenote();
+              }
+              else this.loading1= false;
+        })
+        console.log(this.DataService.dblogin);
+   }
+
+  ngOnInit() {
+  }
+
+  getfavs()
+  {
+        this.loading = true;
+       this.http.get('https://student.almanac-learning.com/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                     console.log( 'Saved data in db' , dataFromServer);
                     if(dataFromServer.length == 0 )
@@ -39,30 +60,25 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
                     console.log('Saved_data' , this.saved_data);
         });
 
-          this.http.get('https://student.almanac-learning.com/onenote/checklogin')
-        .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Login status is ' + dataFromServer );
-
-              if(dataFromServer == 'Logged in')
-              {
-                    this.http.get('https://student.almanac-learning.com/onenote/getpages')
+  }
+  getonenote()
+  {       this.loading1= true;
+          this.http.get('https://student.almanac-learning.com/onenote/getpages')
                         .map((res: Response) => res.json()).subscribe((Serverdata) => {
                           console.log('Pages are ' + Serverdata );
                           this.getpages(Serverdata);
+                          this.deleting = false;
                           this.loading1= false;
                         })
-              }
-              else this.loading1= false;
-        })
-        console.log(this.DataService.dblogin);
-   }
 
-  ngOnInit() {
   }
+
+
 
   page = [];
   getpages(data)
   {
+    this.page = [];
      
      for(let pages of data.value)
      {
@@ -107,8 +123,8 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
      this.removearticle = this.saved_data[index];
       this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log( dataFromServer);
-          window.location.reload();
+          console.log(dataFromServer);
+          this.getfavs();
         });
   }
 
@@ -119,7 +135,9 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
       this.http.get('https://student.almanac-learning.com/onenote/deletepages?pageid=' + index)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-          window.location.reload();
+          this.deleting =false; 
+          setTimeout(() => {  this.getonenote();},800 );
+        
         });
   }
 

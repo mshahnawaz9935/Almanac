@@ -54,7 +54,7 @@
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
 
-<ul *ngIf="toggle == false" class="card-list"> 
+<ul *ngIf="toggle == false && loading1== false && deleting== false" class="card-list"> 
     <li class="card-fav" *ngFor="let p of page; let index = index" [style.background-image]="'url('+ image + ')'" style=" background-size: 100% 100%"   >
                             <div class="transbox-1note"  >
                             <div class="card-1note-bg-category">
@@ -74,7 +74,7 @@
                         </div>
                 </li>
 </ul>
- <div *ngIf="noonenotedata"  class="row">
+ <div *ngIf="noonenotedata && toggle == false"  class="row">
               <div class="col-md-12">
                 <div class="card">
                  <div class="card-block">
@@ -87,41 +87,6 @@
                 </div>
                 </div>
 
-
-
-            <!--<div *ngIf="toggle == true">
-            <div class="row" >
-                <div class="col-md-12">
-                  <div class="card">      <div class="card-block" >   <h2 class="card-text"> {{data.topic}}</h2></div>
-                  </div>
-                   <br>
-                  </div>
-                 <div class="col-md-6" *ngFor="let mode of data.modes" >
-             <div  *ngFor= "let section of mode.sections"  >
-
-                   <div class="card">
-                        <div class="card-block" >
-                    <h2 [innerHTML]="section.title" class="card-text">    </h2>   
-                        <p [innerHTML]="section.text.text" class="card-text">    </p>      
-                        
-                    </div>
-                    <div class="card-block" >   
-                              <h2 class="card-text" *ngIf="section.images !== undefined"> Images under this section </h2>
-                       <div *ngFor= "let url of section.images" class="view overlay hm-white-slight">
-                        <img [src]="url.url" alt="" style="width:100%;height:100%">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          </div>
-                          </div>
-                         
-              </div>
-              <br>
-              </div>    
-              </div>   
-              </div>     
-                     
-            </div>-->
 <br>
    <div *ngIf="toggle == true">
        <h2 class="card-text" style="font-size:2.5rem">{{data.chapter}} </h2>

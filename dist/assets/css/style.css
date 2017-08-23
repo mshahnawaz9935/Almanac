@@ -1181,10 +1181,9 @@ h4, h5, h6 {
   border-left: 20px solid #e2dccc;
 }
 
-/*
 .arrow-beige:hover, .arrow-beige:active {
-  color: black;
-} */
+  color: #614d30;
+}
 
 /* BUTTON ARROW LEFT */
 
