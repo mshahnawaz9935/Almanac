@@ -21,7 +21,7 @@
                   <br>
                    
             <p><span class="badge badge-beige"style="font-size: 0.875em;">2</span>&nbsp;&nbsp;&nbsp;Describe what results you want for this search:</p><br>     
-            <h5 class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
+            <h5 *ngIf="DataService.differentiator[0].levels.length !== 1" class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
           
             <div  *ngIf="DataService.differentiator[0].levels.length == 3" class="row search-values">
               <div class="col-md-1">
@@ -102,12 +102,9 @@
                             </div>
                             </div>    
 
-                        <span *ngIf="DataService.type.levels.length == 1">
-                              <p>
-                                <span style="margin-left:45%">{{DataService.type.levels[0]}}</span>
-                              </p>
-                         
-                            </span>   
+                        <div class="row  search-values" *ngIf="DataService.type.levels.length == 1">
+                            <h5 *ngIf="DataService.differentiator[0].levels.length !== 1" class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}: {{DataService.type.levels[0]}}></h5>
+                            </div>   
                         <br>
                       
                 <p><span class="badge badge-beige" style="font-size: 0.875em;">3</span>&nbsp;&nbsp;&nbsp;And … Go!</p>   
