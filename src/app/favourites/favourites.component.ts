@@ -28,7 +28,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
 
       this.getfavs();
 
-          this.http.get('https://student.almanac-learning.com/onenote/checklogin')
+          this.http.get('http://localhost:3000/onenote/checklogin')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log('Login status is ' + dataFromServer );
 
@@ -47,7 +47,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   getfavs()
   {
         this.loading = true;
-       this.http.get('https://student.almanac-learning.com/api/getdata')
+       this.http.get('http://localhost:3000/api/getdata')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
                     console.log( 'Saved data in db' , dataFromServer);
                     if(dataFromServer.length == 0 )
@@ -63,7 +63,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   }
   getonenote()
   {       this.loading1= true;
-          this.http.get('https://student.almanac-learning.com/onenote/getpages')
+          this.http.get('http://localhost:3000/onenote/getpages')
                         .map((res: Response) => res.json()).subscribe((Serverdata) => {
                           console.log('Pages are ' + Serverdata );
                           this.getpages(Serverdata);
@@ -126,7 +126,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
     this.loading = true;
          console.log('Removed article is' , this.removearticle);
      this.removearticle = this.saved_data[index];
-      this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
+      this.http.get('http://localhost:3000/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log(dataFromServer);
           this.getfavs();
@@ -137,7 +137,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   { 
     this.deleting = true;
       console.log('Page id is', index);
-      this.http.get('https://student.almanac-learning.com/onenote/deletepages?pageid=' + index)
+      this.http.get('http://localhost:3000/onenote/deletepages?pageid=' + index)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
           this.deleting =false; 
