@@ -20,4 +20,11 @@ export class HomeComponent implements OnInit {
 
   }
 
+  getmodules()
+  {
+    if(this.DataService.authenticated1 == true)
+      this.router.navigate(['/modules']);
+    else this.router.navigate(['/account']);
+  }
+
 }
