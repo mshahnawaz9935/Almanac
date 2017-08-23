@@ -83,7 +83,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
      
      if(data.value !== null && data.value !== undefined)
      for(let pages of data.value)
-     {    if(pages.parentNotebook !== undefined && pages.parentNoteBook  !== null)
+     {    if(pages.parentNotebook !== undefined && pages.parentNotebook  !== null)
             {
               console.log(pages.parentNotebook);
               if(pages.parentNotebook.displayName == 'TCD Almanac')
