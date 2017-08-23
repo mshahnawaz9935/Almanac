@@ -81,17 +81,19 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
     console.log('One note pages' , data);
     this.page = [];
      
+     if(data.value !== null && data.value !== undefined)
      for(let pages of data.value)
-     {    if(pages.parentNotebook !== undefined)
+     {    if(pages.parentNotebook !== undefined && pages.parentNoteBook  !== null)
             {
-          if(pages.parentNotebook.displayName == 'TCD Almanac')
-          {
-            let k = pages.title.indexOf(" ");
-            if(k>0 && k !== -1)
-            pages.title =  pages.title.substring(0,k);
-            let obj = { id: pages.id, title : pages.title, section :  pages.parentSection.displayName  };
-            this.page.push(obj);
-          }
+              console.log(pages.parentNotebook);
+              if(pages.parentNotebook.displayName == 'TCD Almanac')
+              {
+                let k = pages.title.indexOf(" ");
+                if(k>0 && k !== -1)
+                pages.title =  pages.title.substring(0,k);
+                let obj = { id: pages.id, title : pages.title, section :  pages.parentSection.displayName  };
+                this.page.push(obj);
+              }
             }
 
      }
