@@ -23,9 +23,9 @@ export class SafePipe implements PipeTransform {
 })
 export class PostsComponent implements OnInit {
 
-   color = 'primary';
+   color = 'accent';
   mode = 'determinate';
-  value1 = 50;
+  value1 = 0;
   bufferValue = 75;
 
     @HostListener('window:scroll', ['$event'])

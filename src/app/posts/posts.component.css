@@ -5,8 +5,15 @@
 .home-text {
 color: #616b70;
 }
-
-
+.example-margin1
+{
+    position: fixed;
+    overflow : visible !important;
+    z-index: 10;
+    bottom: 20px;
+    width:80%;
+    padding-top: 5px;
+}
 
 .example-header-image {
   background-image: url('./assets/img/examples/shiba1.jpg');
