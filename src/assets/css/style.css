@@ -183,7 +183,7 @@
 }
 
 .categories-list li {
-    color: #616b70;
+    color: #aca084;
     display: inline-table;
 }
 
@@ -200,12 +200,14 @@
     }
 }
 
+/* 
 .categories-list a {
     color: #aca084;
-}
+} */
 
 .categories-list:hover {
     color: #eb7839;
+    cursor: pointer;
 }
 
 .browse {
@@ -1179,10 +1181,9 @@ h4, h5, h6 {
   border-left: 20px solid #e2dccc;
 }
 
-/*
 .arrow-beige:hover, .arrow-beige:active {
-  color: black;
-} */
+  color: #614d30;
+}
 
 /* BUTTON ARROW LEFT */
 

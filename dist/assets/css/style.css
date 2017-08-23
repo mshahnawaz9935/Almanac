@@ -183,7 +183,7 @@
 }
 
 .categories-list li {
-    color: #616b70;
+    color: #aca084;
     display: inline-table;
 }
 
@@ -200,12 +200,14 @@
     }
 }
 
+/* 
 .categories-list a {
     color: #aca084;
-}
+} */
 
 .categories-list:hover {
     color: #eb7839;
+    cursor: pointer;
 }
 
 .browse {
