@@ -102,19 +102,12 @@
                             </div>
                             </div>    
 
-                            <div class="row  search-values" *ngIf="DataService.type.levels.length == 1">
-                          <div class="col-md-1">
-                           <p></p>
-                             </div>
-                           <div class="col-md-7">
+                        <span *ngIf="DataService.type.levels.length == 1">
                               <p>
                                 <span style="margin-left:45%">{{DataService.type.levels[0]}}</span>
                               </p>
-                            </div>
-                            <div class="col-md-2">
-                               <p></p>
-                            </div>
-                            </div>   
+                         
+                            </span>   
                         <br>
                       
                 <p><span class="badge badge-beige" style="font-size: 0.875em;">3</span>&nbsp;&nbsp;&nbsp;And … Go!</p>   
