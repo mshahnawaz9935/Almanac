@@ -21,9 +21,11 @@
                                 <div class="title-card" style="cursor:pointer">{{modules.name}}</div>
                                 <br>
                                 
-                                <div class="tags-card">
-                                    <button type="button" class="arrow-button arrow-beige">Author Name</button>
-                                    <button type="button" class="arrow-button arrow-beige">Type of Cycle</button>
+                                <div class="tags-card" >
+                                    <button type="button" *ngIf="modules.metadata !== null" class="arrow-button arrow-beige">Author Name : {{modules.metadata.publisher}}</button>
+                                    <button type="button" *ngIf="modules.metadata !== null" class="arrow-button arrow-beige">Age Range : {{modules.metadata.targetAgeRange}}</button>
+                                     <button type="button" *ngIf="modules.metadata == null" class="arrow-button arrow-beige">Author Name</button>
+                                    <button type="button" *ngIf="modules.metadata == null" class="arrow-button arrow-beige">Age Range</button>
                                 </div>
                             </li>
                         </ul>
