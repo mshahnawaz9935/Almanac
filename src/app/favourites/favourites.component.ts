@@ -108,7 +108,6 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
       this.http.get('https://student.almanac-learning.com/api/delete?id=' + this.removearticle.chapter)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-            this.loading = false;
           window.location.reload();
         });
   }
@@ -120,7 +119,6 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
       this.http.get('https://student.almanac-learning.com/onenote/deletepages?pageid=' + index)
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-            this.deleting = false;
           window.location.reload();
         });
   }
