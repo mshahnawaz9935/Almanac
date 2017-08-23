@@ -54,6 +54,16 @@ export class SearchComponent implements OnInit {
             {
             this.model.slider_value1=  this.DataService.differentiator[0].levels.indexOf(this.DataService.slider1) ;
             this.model.slider_value2 = this.DataService.type.levels.indexOf(this.DataService.slider2) ;
+            console.log('Slider values are',  this.model.slider_value1 ,this.model.slider_value2  );
+            if( this.model.slider_value1 == -1)
+            {
+              this.model.slider_value1 = 0;
+            }
+            if( this.model.slider_value2 == -1)
+            {
+              this.model.slider_value2 = 0;
+            }
+            console.log('New Slider values are',  this.model.slider_value1 ,this.model.slider_value2  );
             }
         }
    

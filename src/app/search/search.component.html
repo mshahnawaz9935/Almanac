@@ -70,7 +70,7 @@
 
 
                      <br><br>
-                      <h5 *ngIf="DataService.type.levels.length > 0" class="card-title" style="margin-left:2.50em">{{DataService.type.name}}:</h5>
+                      <h5 class="card-title" style="margin-left:2.50em">{{DataService.type.name}}:</h5>
                        <div class="row  search-values" *ngIf="DataService.type.levels.length == 3">
                           <div class="col-md-1">
                            <p>{{DataService.type.levels[0]}}</p>
@@ -102,12 +102,19 @@
                             </div>
                             </div>    
 
-                        <span *ngIf="DataService.type.levels.length == 1">
+                         <div class="row  search-values" *ngIf="DataService.type.levels.length == 1">
+                          <div class="col-md-1">
+                           <p></p>
+                             </div>
+                           <div class="col-md-7">
                               <p>
-                                <span style="margin-left:45%">{{DataService.type.levels[0]}}</span>
+                               <span style="margin-left:45%">{{DataService.type.levels[0]}}</span>
                               </p>
-                         
-                            </span>   
+                            </div>
+                            <div class="col-md-2">
+                               <p></p>
+                            </div>
+                            </div>  
                         <br>
                       
                 <p><span class="badge badge-beige" style="font-size: 0.875em;">3</span>&nbsp;&nbsp;&nbsp;And … Go!</p>   
