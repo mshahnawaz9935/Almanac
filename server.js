@@ -37,6 +37,14 @@ app.use('/api', api);
 app.use('/note', note);
 app.use('/onenote', onenote);
 
+
+
+
+
+
+app.get('/server.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
