@@ -78,6 +78,7 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
   page = [];
   getpages(data)
   {
+    this.page = [];
      
      for(let pages of data.value)
      {
