@@ -23,7 +23,7 @@
             <p><span class="badge badge-beige"style="font-size: 0.875em;">2</span>&nbsp;&nbsp;&nbsp;Describe what results you want for this search:</p><br>     
             <h5 class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
           
-            <div class="row search-values">
+            <div  *ngIf="DataService.type.levels.length == 3" class="row search-values">
               <div class="col-md-1">
                  <p>{{DataService.differentiator[0].levels[0]}}</p>
               </div>
@@ -36,6 +36,21 @@
                      <br>
               <div>
                  <p>{{DataService.differentiator[0].levels[2]}}</p>
+                  </div>
+                    </div>
+                    <div  *ngIf="DataService.type.levels.length == 2" class="row search-values">
+              <div class="col-md-1">
+                 <p>{{DataService.differentiator[0].levels[0]}}</p>
+              </div>
+               <div class="col-md-7">
+                    <p>
+                    <span style="margin-left:45%"></span>
+                    <nouislider [min]="0" [max]="1" [step]="1" name="noui1" [(ngModel)]="model.slider_value1" ></nouislider>
+                     </p>
+                </div>
+                     <br>
+              <div>
+                 <p>{{DataService.differentiator[0].levels[1]}}</p>
                   </div>
                     </div>
                      <br><br>
