@@ -23,7 +23,7 @@
             <p><span class="badge badge-beige"style="font-size: 0.875em;">2</span>&nbsp;&nbsp;&nbsp;Describe what results you want for this search:</p><br>     
             <h5 class="card-title" style="margin-left:2.50em">{{DataService.differentiator[0].name}}:</h5>
           
-            <div  *ngIf="DataService.type.levels.length == 3" class="row search-values">
+            <div  *ngIf="DataService.differentiator[0].levels.length == 3" class="row search-values">
               <div class="col-md-1">
                  <p>{{DataService.differentiator[0].levels[0]}}</p>
               </div>
@@ -38,7 +38,7 @@
                  <p>{{DataService.differentiator[0].levels[2]}}</p>
                   </div>
                     </div>
-                    <div  *ngIf="DataService.type.levels.length == 2" class="row search-values">
+                    <div  *ngIf="DataService.differentiator[0].levels.length == 2" class="row search-values">
               <div class="col-md-1">
                  <p>{{DataService.differentiator[0].levels[0]}}</p>
               </div>
@@ -53,6 +53,22 @@
                  <p>{{DataService.differentiator[0].levels[1]}}</p>
                   </div>
                     </div>
+                     <div  *ngIf="DataService.differentiator[0].levels.length == 1" class="row search-values">
+              <div class="col-md-1">
+                 <p></p>
+              </div>
+               <div class="col-md-7">
+                    <p>
+                    <span style="margin-left:45%">{{DataService.differentiator[0].levels[0]}}</span>
+                    </p>
+                </div>
+                     <br>
+                     <div class="col-md-2">
+                 <p></p>
+                  </div>
+                    </div>
+
+
                      <br><br>
                       <h5 *ngIf="DataService.type.levels.length > 0" class="card-title" style="margin-left:2.50em">{{DataService.type.name}}:</h5>
                        <div class="row  search-values" *ngIf="DataService.type.levels.length == 3">
