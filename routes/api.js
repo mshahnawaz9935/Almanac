@@ -398,7 +398,7 @@ router.get('/store', (req, res) => {
      favourites['username']= req.session.email;
      favourites['modulename'] = req.session.modulename;
      favourites['topic'] = req.session.topic;
-     favourites['chapter'] = req.session.chapter;
+     favourites['chapter'] = req.session.chapter.trim();
           console.log('sdssd' + favourites + favourites.title + favourites.username + favourites.modulename + favourites.topic + favourites.chapter);
     collection.insert(favourites, function(err, docs) {
         collection.count(function(err, count) {
