@@ -1138,7 +1138,7 @@ var counter =0;
               mode.sections.forEach(function(section)
               {
                   if(chapter == 'Acid and Bases' && counter > 4)
-                  break;
+                  return true;
                   
                   url = url + "<h1>" + section.title + "</h1>";
                     url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
