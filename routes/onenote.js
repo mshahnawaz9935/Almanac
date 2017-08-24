@@ -1269,7 +1269,7 @@ var counter =0;
                           console.log('File url is' ,fileurl );
              
                     url = url+ "<p><img src=" + "\"" + fileurl + "\"" + "/><br>"+
-                    width +  "</p><p>Source:" + attr
+                      image.caption +  "</p><p>Source:" + image.attribution
                     + "</p>" ;
                         }
                         else {
