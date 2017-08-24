@@ -269,7 +269,8 @@ router.get('/checknote4', function (req, res) {
           , function (response)
              {   
                  console.log('Response is',response  );
-                 res.json('Notebook exists and section created' + sectionid + response);
+              //   res.json('Notebook exists and section created' + sectionid + response);
+               res.json(response);
              } );
       
        }
