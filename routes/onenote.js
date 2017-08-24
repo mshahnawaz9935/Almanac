@@ -1354,13 +1354,14 @@ var counter =0;
 }
 
     function createNewPage2(accessToken, payload, multipart) {
-      console.log('here' );
+    
             var options = {
                 url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
                 headers: {
                 'Authorization': 'Bearer ' + accessToken
                 }
             };
+              console.log('here' , options.url );
             // Build simple request
             if (!multipart) {
                 options.headers['Content-Type'] = 'text/html';
