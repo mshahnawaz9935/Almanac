@@ -271,7 +271,7 @@ router.get('/checknote4', function (req, res) {
                  console.log('Response is',response );
                  if(response.error == undefined)
                  res.json('Notebook exists and section created' + sectionid );
-                 else res.json('Pushed to OneNote failed');
+                 else res.json('Pushed to OneNote Failed');
              } );
       
        }
@@ -285,7 +285,7 @@ router.get('/checknote4', function (req, res) {
                   console.log('Response is',response );
                  if(response.error == undefined)
                  res.json('Notebook exists and section created' + sectionid);
-                 else res.json('Pushed to OneNote failed');
+                 else res.json('Pushed to OneNote Failed');
              } );
           
          });
