@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { Http ,Response} from '@angular/http'; 
 import 'rxjs/add/operator/map';
 import { DataService } from '../DataService';
@@ -6,8 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Image} from '../image.interface';
 import {Pipe, PipeTransform} from '@angular/core';
-
-
+import {HostListener, OnInit, Component, Directive, Output, EventEmitter, Input, SimpleChange} from '@angular/core';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -24,6 +22,22 @@ export class SafePipe implements PipeTransform {
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+
+   color = 'accent';
+  mode = 'determinate';
+  value1 = 0;
+  bufferValue = 75;
+
+    @HostListener('window:scroll', ['$event'])
+        track(event) {
+        let s:number = window.scrollY; ;
+           let d:number = document.body.scrollHeight;
+           let scrollPercent:number = s / d;
+        var position = scrollPercent;
+        this.value1 = position * 110;
+        console.log(position);
+        }
+      
 
       private NextPhotoInterval:number = 3000;
       private NextPhotoInterval2:number = 100;
@@ -67,6 +81,8 @@ hugeimage = 0;
 hugeimageurl = '';
 title= [];
 videos2 = [];
+
+
 getdata2(data)
   {
     this.images = [];
@@ -285,11 +301,16 @@ getdata2(data)
         this.http.get('https://student.almanac-learning.com/api/store')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
           console.log( dataFromServer);
-              window.scrollTo(0,0);
         });
   }
 
-
+  getmouselocation(event)
+  {
+    var x = event.clientX;
+    var y = event.clientY;
+    var coords = "X coords: " + x + ", Y coords: " + y;
+    console.log(coords);
+  }
 
 
 
