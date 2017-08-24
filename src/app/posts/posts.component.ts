@@ -322,9 +322,9 @@ getdata2(data)
           console.log( dataFromServer);
           this.onenoteloader = false;
               window.scrollTo(0,0);
-              if(dataFromServer == 'Push To OneNote Failed')
+              if(dataFromServer == 'Pushed to OneNote Failed')
               {
-                alert('Push To OneNote Failed');
+                alert('Export To OneNote Failed !! Try saving to Favourites');
               }
               else alert('Export Successful');
         });

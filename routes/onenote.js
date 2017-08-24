@@ -307,7 +307,7 @@ router.get('/checknote4', function (req, res) {
                  console.log('Response is',response  );
                    if(response.error !== undefined)
                  {
-                   res.json('Push To OneNote Failed');
+                   res.json('Pushed To OneNote Failed');
                  }
                  else res.json('Notebook exists and section created' + sectionid + response);
              } );
