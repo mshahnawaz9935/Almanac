@@ -17,7 +17,7 @@ export class ModulesComponent implements OnInit {
   user ='User';
   loading: Boolean;
   subscription = '';
-  list = ['random-img-01.jpg','random-img-02.jpg','random-img-03.jpg','random-img-04.jpg','random-img-05.jpg','random-img-06.jpg','random-img-07.jpg','random-img-08.jpg','random-img-09.jpg','random-img-10.jpg'];
+  list = ['random-img-01.jpg','random-img-02.jpg','random-img-04.jpg','random-img-05.jpg','random-img-03.jpg','random-img-06.jpg','random-img-07.jpg','random-img-08.jpg','random-img-09.jpg','random-img-10.jpg'];
   error : Boolean;
   authenticated1;
   constructor(private http:Http , private DataService:DataService ,private router: Router) { 
