@@ -1477,7 +1477,6 @@ var counter =0;
                 });
                 });
             }
-            console.log('Request log' , r);
 }
 
  function createOneNoteArticle(token, topic, chapter ,articleid , studentid , moduleid) {
