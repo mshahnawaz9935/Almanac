@@ -268,9 +268,10 @@ router.get('/checknote4', function (req, res) {
          createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
           , function (response)
              {   
-                 console.log('Response is',response   );
-              //   res.json('Notebook exists and section created' + sectionid + response);
-               res.json(response);
+                 console.log('Response is',response );
+                 if(response.error == undefined)
+                 res.json('Notebook exists and section created' + sectionid );
+                 else res.json('Pushed to OneNote failed');
              } );
       
        }
@@ -281,8 +282,10 @@ router.get('/checknote4', function (req, res) {
             createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
              , function (response)
              {   
-                console.log('Response is',response );
-                   res.json('Notebook exists and section created' + sectionid + response) ;
+                  console.log('Response is',response );
+                 if(response.error == undefined)
+                 res.json('Notebook exists and section created' + sectionid);
+                 else res.json('Pushed to OneNote failed');
              } );
           
          });
