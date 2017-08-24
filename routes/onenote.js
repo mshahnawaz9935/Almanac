@@ -269,7 +269,7 @@ router.get('/checknote4', function (req, res) {
           , function (response)
              {   
                  console.log('Response is',response);
-                 if(response.error)
+                 if(response.error !== undefined)
                  {
                    res.json('Push To OneNote Failed');
                  }
@@ -285,7 +285,7 @@ router.get('/checknote4', function (req, res) {
              , function (response)
              {   
                  console.log('Response is',response);
-                 if(response.error)
+                   if(response.error !== undefined)
                  {
                    res.json('Push To OneNote Failed');
                  }
@@ -308,7 +308,7 @@ router.get('/checknote4', function (req, res) {
             createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
              , function (response)
              {  console.log('Response is',response);
-                 if(response.error)
+                   if(response.error !== undefined)
                  {
                    res.json('Push To OneNote Failed');
                  }
