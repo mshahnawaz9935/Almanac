@@ -268,7 +268,7 @@ router.get('/checknote4', function (req, res) {
          createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
           , function (response)
              {   
-                 console.log('Response is',response , response[0]  );
+                 console.log('Response is',response   );
               //   res.json('Notebook exists and section created' + sectionid + response);
                res.json(response);
              } );
@@ -1521,7 +1521,7 @@ var counter =0;
 
         createNewPage2(token, data , false , function(response)
         {
-            callback(response);
+            callback(JSON.parse(response));
         });
          });
 
