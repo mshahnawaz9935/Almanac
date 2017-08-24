@@ -1354,7 +1354,7 @@ var counter =0;
 }
 
     function createNewPage2(accessToken, payload, multipart) {
-      console.log('here' , payload );
+      console.log('here' );
             var options = {
                 url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
                 headers: {
