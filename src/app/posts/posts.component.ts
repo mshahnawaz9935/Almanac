@@ -319,9 +319,11 @@ getdata2(data)
     this.onenoteloader = true;
     this.http.get('https://student.almanac-learning.com/onenote/checknote4')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
-          console.log('Data Saved to One Note', dataFromServer);
+          console.log( dataFromServer);
           this.onenoteloader = false;
               window.scrollTo(0,0);
+              // if(dataFromServer)
+              // {}
         });
   }
   onenotemodal = false;
