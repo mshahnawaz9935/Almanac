@@ -265,14 +265,22 @@ router.get('/checknote4', function (req, res) {
     {
      
        if(sec == 1){
-         createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+         createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
+          , function (response)
+             {   
+                 console.log('Response is',response);
+             } );
        res.json('Notebook exists id is ' + notebookid + 'Section exists id is' + sectionid);
        }
        else if(sec==0)
        {
          createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid , req.session.modulename , function(sectionid)
          {
-            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
+             , function (response)
+             {   
+                 console.log('Response is',response);
+             } );
             res.json('Notebook exists and section created' + sectionid);
          });
 
@@ -287,7 +295,11 @@ router.get('/checknote4', function (req, res) {
          console.log('notebook id' ,notebookid);
       createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid ,req.session.modulename, function(sectionid)
          {
-            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid
+             , function (response)
+             {   
+                 console.log('Response is',response);
+             } );
             res.json('Notebook' + notebookid + 'and section created' + sectionid);
          });
          });
@@ -1442,7 +1454,7 @@ var counter =0;
             }
 }
 
-    function createNewPage2(accessToken, payload, multipart) {
+    function createNewPage2(accessToken, payload, multipart,callback) {
     
             var options = {
                 url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
@@ -1458,9 +1470,11 @@ var counter =0;
             }
              var r = request.post(options, function (err, resp, body) {
               if (err) {
-                console.log('Error!' , err);
+              //  console.log('Error!' , err);
+                callback(err);
               } else {
-                console.log('Response is: ' + body);
+                //console.log('Response is: ' + body);
+                callback(body);
               }
             });
             // Build multi-part request
@@ -1479,7 +1493,7 @@ var counter =0;
             }
 }
 
- function createOneNoteArticle(token, topic, chapter ,articleid , studentid , moduleid) {
+ function createOneNoteArticle(token, topic, chapter ,articleid , studentid , moduleid , callback) {
 
 
          writer2(token, topic, chapter ,articleid , studentid, moduleid,function(data){
@@ -1497,27 +1511,11 @@ var counter =0;
         "</body>" +
         "</html>";   
 
-        createNewPage2(token, data , false);
+        createNewPage2(token, data , false , function(response)
+        {
+            callback(response);
+        });
          });
-
-        // getarticle(token, topic, chapter ,articleid , studentid, moduleid,function(data , obj){
-
-        //   data = 
-        // "<!DOCTYPE html>" +
-        // "<html>" +
-        // "<head>" +
-        // "    <title>"+ topic + dateTimeNowISO() +"</title>" +
-        // "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
-        // "</head>" +
-        // "<body>" +
-        // "    <p> View Your Saved Article <i>formatted</i></p>" +
-        //  data +
-        // "</body>" +
-        // "</html>";   
-
-        // createNewPage2(token, data , false);
-        //  });
-     
 
     
     }
