@@ -265,14 +265,14 @@ router.get('/checknote4', function (req, res) {
     {
      
        if(sec == 1){
-         createOneNoteArticle2(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+         createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
        res.json('Notebook exists id is ' + notebookid + 'Section exists id is' + sectionid);
        }
        else if(sec==0)
        {
          createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid , req.session.modulename , function(sectionid)
          {
-            createOneNoteArticle2(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
             res.json('Notebook exists and section created' + sectionid);
          });
 
@@ -287,7 +287,7 @@ router.get('/checknote4', function (req, res) {
          console.log('notebook id' ,notebookid);
       createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid ,req.session.modulename, function(sectionid)
          {
-            createOneNoteArticle2(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
+            createOneNoteArticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
             res.json('Notebook' + notebookid + 'and section created' + sectionid);
          });
          });
