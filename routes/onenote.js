@@ -1489,7 +1489,7 @@ var counter =0;
               //  console.log('Error!' , err);
                 callback(err);
               } else {
-                //console.log('Response is: ' + body);
+                console.log('Response is: ' + body + resp);
                 callback(body);
               }
             });
@@ -1529,7 +1529,6 @@ var counter =0;
 
         createNewPage2(token, data , false , function(response)
         {
-            console.log(response);
             callback(JSON.parse(response));
         });
          });
