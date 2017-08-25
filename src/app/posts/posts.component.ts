@@ -318,14 +318,15 @@ getdata2(data)
   saveonenote4()
   {
     this.onenoteloader = true;
+      setTimeout(()=> {
+                this.info = "Takes a while for the article to be exported to One Note";
+              } , 1000 )
     this.http.get('https://student.almanac-learning.com/onenote/checknote4')
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {
+          
           console.log( dataFromServer);
           this.onenoteloader = false;
               window.scrollTo(0,0);
-              setTimeout(()=> {
-                this.info = "Takes a while for the article to be exported to One Note";
-              } , 1000 )
               if(dataFromServer == 'Pushed to OneNote Failed')
               {
                 this.info = '';
