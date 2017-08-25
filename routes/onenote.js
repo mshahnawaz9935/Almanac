@@ -1529,6 +1529,7 @@ var counter =0;
 
         createNewPage2(token, data , false , function(response)
         {
+            console.log(response);
             callback(JSON.parse(response));
         });
          });
