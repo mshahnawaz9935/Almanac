@@ -1486,7 +1486,7 @@ var counter =0;
             }
              var r = request.post(options, function (err, resp, body) {
               if (err) {
-              //  console.log('Error!' , err);
+               console.log('Error!' , err);
                 callback(err);
               } else {
                 console.log('Response is: ' + body + resp);
