@@ -27,6 +27,7 @@ export class PostsComponent implements OnInit {
   mode = 'determinate';
   value1 = 0;
   bufferValue = 75;
+  info = '';
 
     @HostListener('window:scroll', ['$event'])
         track(event) {
@@ -322,11 +323,19 @@ getdata2(data)
           console.log( dataFromServer);
           this.onenoteloader = false;
               window.scrollTo(0,0);
+              setTimeout(()=> {
+                this.info = "Takes a while for the article to be exported to One Note";
+              } , 1000 )
               if(dataFromServer == 'Pushed to OneNote Failed')
               {
+                this.info = '';
                 alert('Export To OneNote Failed !! Try saving to Favourites');
               }
-              else alert('Export Successful');
+              else
+              { 
+                this.info = '';
+                alert('Export Successful');
+              }
         });
   }
   onenotemodal = false;
