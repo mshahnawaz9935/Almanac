@@ -30,7 +30,7 @@ export class ResultsComponent implements OnInit {
         .map((res: Response) => res.json())
         .subscribe((dataFromServer) => {
                    this.loading = false;
-          if(dataFromServer !== 'Internal Server Error')
+          if(dataFromServer !== 'Internal Server Error' && dataFromServer !== 'Error Occured'  )
           {
           this.data = dataFromServer;
  

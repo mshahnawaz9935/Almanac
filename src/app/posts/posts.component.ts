@@ -60,6 +60,8 @@ export class PostsComponent implements OnInit {
       window.scrollTo(0,0);
       this.data = this.DataService.myquery;
       console.log(this.DataService.modulename ,'Article id' , this.DataService.myquery.articleid);
+      let url = 'https://student.almanac-learning.com/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid ;
+      console.log(url);
     this.http.get('https://student.almanac-learning.com/api/posts?topic='+ this.data.topic + '&chapter='+ this.data.chapter + '&moduleid='+ this.DataService.moduleid + '&modulename=' + this.DataService.modulename + '&articleid=' + this.data.articleid )
   
         .map((res: Response) => res.json()).subscribe((dataFromServer) => {

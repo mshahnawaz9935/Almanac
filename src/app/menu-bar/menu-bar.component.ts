@@ -162,8 +162,9 @@ exists = false;
    }
 list=[];
 moduledata;
+ 
   back() {
-      console.log('back');
+      console.log('back', this.location);
       this.location.back(); // <-- go back to previous location on cancel
     }
    getdata(data)
@@ -185,6 +186,7 @@ moduledata;
     this.router.navigate(['/search']);
     value='';
   }
+
     onclick(moduleid, modulename){
     console.log(moduleid, modulename, 'Module clicked');
     this.DataService.moduleid = moduleid;
@@ -237,14 +239,6 @@ moduledata;
   }
 
     getInstances() {
-       this.http.get('https://student.almanac-learning.com/api/subscription')
-              .map((res: Response) => res.json()). 
-
-              subscribe((dataFromServer) => {
-                console.log('Subscription status is ' + dataFromServer );
-                this.user = dataFromServer.name;
-
-              })
 
       console.log('on error');
            this.http.get('https://student.almanac-learning.com/api/instances?id=menuerror')

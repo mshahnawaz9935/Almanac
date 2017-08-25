@@ -11,7 +11,7 @@ var favourites;
    mongoose.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true');
 
 
-  //  mongoose.connect('mongodb://127.0.0.1:27017/test');
+   // mongoose.connect('mongodb://127.0.0.1:27017/test');
 console.log('Api running check');
   var token = '';
 router.get('/token', (req, res) => {
@@ -30,8 +30,8 @@ router.get('/insert_user', (req, res) => {
     var username = req.query.username;
     var password = req.query.password;
 
-   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
-    // MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+       MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+   //  MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -58,8 +58,8 @@ router.get('/insert_user', (req, res) => {
 
 
 router.get('/getdata', (req, res) => {
-   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
-   //   MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
+      MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+    //  MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -68,7 +68,7 @@ router.get('/getdata', (req, res) => {
     db.close();
 });
    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function(err, db) {
-  // MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
+  //  MongoClient.connect('mongodb://127.0.0.1:27017/test',function(err, db) {
     if(err) throw err;
 
      var collection = db.collection('test');
@@ -104,26 +104,7 @@ router.get('/saskey', (req, res) => {
 
 
 router.get('/search', (req, res) => {
-//       username = "almanac",
-//     password = "a1m*Nac";
-//     var request = require('request');
-// var options = {
-//   url: 'http://kdeg-vm-43.scss.tcd.ie/cjfallon/',
-//   auth: {
-//     user: username,
-//     password: password
-//   }
-// }
 
-// request(options, function (err, res, body) {
-//   if (err) {
-//     console.dir(err)
-//     return
-//   }
-//   console.dir('headers', res.headers)
-//   console.dir('status code', res.statusCode)
-//   console.dir(body)
-// })
 
   var id = req.query.id;
   var moduleid = req.query.moduleid;
@@ -131,18 +112,7 @@ router.get('/search', (req, res) => {
   var publisher = req.query.source;
   req.session.moduleid = moduleid;
   console.log('id is ' + id);
-
-    // request.get('http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/search2?query='+ id,function(err,response,body){
-    //     console.log(response.body);
-    // res.send(response.body);
-    // });
-    //  request.get('https://services.almanac-learning.com/composer/students/5922b40c74748a1b1c8e4408/instances/5922b42274748a1b1c8e440f/articles?searchQuery=' + id+ '&differentiator=None',function(err,response,body){
-    //     console.log(response.body);
-    // res.send(response.body);
-    // });
-    // getToken(function(token)
-    // {   
-
+ 
     var request = require('request');
     var headers = {
         Authorization: 'Bearer ' + token
@@ -166,10 +136,14 @@ router.get('/search', (req, res) => {
             res.json('Internal Server Error');
             }
             else 
-             console.log('nuffing' , error ,response.statusCode, response.headers);}
+            {
+             console.log('nuffing' , error ,response.statusCode, response.headers);
+             res.json('Error Occured');
+            }
+            
+        }
     })
 
-    // });
 
 
 });
@@ -369,15 +343,19 @@ req.session.articleid = articleid;
         method: 'GET',
         headers: headers,
     }
-    console.log(options.url);
  request(options, function (error, response, body) {
+     console.log(options.url);
         if (!error && response.statusCode == 200) {
                 console.log("post query" + JSON.parse(response.body));
                 favourites = response.body;
                 console.log('Topic is ' + req.session.topic + 'Chapter is ' + req.session.chapter + 'Module Name is '+req.session.moduleid + 'Module Id is ' + req.session.modulename + 'Article id is' + req.session.articleid + 'Student id is' + req.session.studentid );
             res.send(response.body);
         }
-        else console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+        else
+        {
+             console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
+             res.send('Error Occured !! Invalid Query');
+        }
     });
 });
 
@@ -386,9 +364,8 @@ router.get('/store', (req, res) => {
 
 // Delete all documents in a colection  db.test.remove({})
 
-
-   MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
-   //  MongoClient.connect('mongodb://127.0.0.1:27017/test',
+  // MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true',
+     MongoClient.connect('mongodb://127.0.0.1:27017/test',
       function(err, db) {
           console.log('connected');
     if(err) throw err;

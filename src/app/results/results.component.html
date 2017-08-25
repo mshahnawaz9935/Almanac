@@ -1,26 +1,4 @@
-       <!--<h2>CARDS - Search Result</h2>
-            <ul *ngIf="!error">
-            <li *ngFor= "let result of results"   >
-                <div class="card-result">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <ul class="card-list">
-                            <li class="left-card-result" [style.background-image]="'url(' + result.image + ')'">
-                                <div class="transbox"></div>
-                            <li class="right-card-result">
-                                <div class="category-card">{{DataService.modulename}}</div>
-                                <div class="title-card">{{result.name}}
-                                    <hr class="category" />
 
-                                    <p class="text-card">  {{result.description}}</p>
-                                
-                                </div>
-                            </li>
-                        </ul>
-                </div>
-            </li>
-            </ul>-->  
             <h2>{{DataService.modulename}}</h2>
 
             <ul *ngIf="!saving == true" class="card-list"> 
@@ -87,33 +65,4 @@
                         <br>
                 </div>
                 </div>
-
-          <!--<div *ngIf="!error" class="row">
-             <div class="col-md-4"  *ngFor= "let result of results">
-             <div class="card" (click)="onSelect(result)" >
-                    <div class="card-block">
-             
-                        <h4 class="card-title" style="">{{result.name}}</h4>
-                 
-                        </div>
-              
-                      <div class="view overlay hm-white-slight" >
-                        <img [src]="result.image" alt="" style="height:300px;width: 100%;">
-                        <a>
-                            <div class="mask waves-effect waves-light"></div>
-                        </a>
-                          <div class="card-block" style="height:180px;" >
-                            
-                                  <h5 class="card-title" >Description</h5>
-                                  <hr>
-                             
-                                   <p class="card-text" [innerHTML]="result.description" ></p>
-                          </div>
-                        </div>
-                </div>
-                <br>
-                      </div>
-                                      
-                     
-            </div>-->
                     
