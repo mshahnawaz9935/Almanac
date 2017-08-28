@@ -1114,7 +1114,7 @@ var counter =0;
        //         console.log("post query" + response.body);
                 favourites = JSON.parse(response.body);
               //  var counter = 0;
-       console.log('response article' , response.body.modes , favourites.modes);
+       console.log('response article' , response.body.modes , favourites.modes , obj);
             var x=0;
             if(favourites.modes != undefined)
             {
