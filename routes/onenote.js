@@ -1472,6 +1472,7 @@ var counter =0;
                 }
             };
               console.log('here' , options.url );
+               console.log(((payload.toString().length)-814)/1.37);    
             // Build simple request
             if (!multipart) {
                 options.headers['Content-Type'] = 'text/html';
