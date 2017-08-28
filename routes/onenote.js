@@ -1166,7 +1166,7 @@ var counter =0;
                         var width =  image.width;
                         var attr = 'Publisher';
                            if(obj.length >0)            
-                               obj.every(function(obj) {
+                               obj.some(function(obj) {
                                   
                                  if(obj.fileurl == fileurl)
                                  {
@@ -1175,7 +1175,7 @@ var counter =0;
                                     url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
                           obj.width +  "</p><p>Source:" + obj.attr
                           + "</p>" ;
-                                  return false;
+                                  return true;
                                  }
                      
                                })
