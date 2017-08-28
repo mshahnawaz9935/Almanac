@@ -1128,7 +1128,7 @@ var counter =0;
             // {
               mode.sections.forEach(function(section)
               {
-                  if(chapter == ' The States of Matter' && counter > 6)
+                  if(chapter == 'The States of Matter' && counter > 6)
                   return true;
                   
                   url = url + "<h1>" + section.title + "</h1>";
