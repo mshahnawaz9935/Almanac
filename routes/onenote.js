@@ -1154,7 +1154,7 @@ var counter =0;
                         if(image.attribution == 'Publisher')   // change name to stop check
                         {   
                         
-                        console.log('Image attribute cj fallon found' ,image.attribution,image.url);
+                       // console.log('Image attribute cj fallon found' ,image.attribution,image.url);
                         var caption =  image.caption;
                         var fileurl = image.url + key;
                         var width =  image.width;
@@ -1167,7 +1167,7 @@ var counter =0;
                                  if(obj.fileurl == fileurl)
                                  {
                                    console.log('matched');
-                       
+                                  console.log('File url is' ,fileurl );
                                url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
                     obj.width +  "</p><p>Source:" + obj.attr
                     + "</p>" ;
