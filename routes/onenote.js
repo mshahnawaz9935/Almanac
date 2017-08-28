@@ -1114,11 +1114,14 @@ var counter =0;
        //         console.log("post query" + response.body);
                 favourites = JSON.parse(response.body);
               //  var counter = 0;
-       console.log('response article' , response.body.modes , favourites.modes , obj);
+       console.log('response article' , response.body.modes , favourites.modes );
             var x=0;
             if(favourites.modes != undefined)
             {
             console.log('Modes length' ,favourites.modes.length);
+             obj.forEach(function(obj) {
+                  console.log(obj.fileurl);
+             })
             favourites.modes.forEach(function (mode)
             {
             // for(var i=0; i< mode.sections.length; i++) 
