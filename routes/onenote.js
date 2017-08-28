@@ -1113,7 +1113,7 @@ var counter =0;
         if (!error && response.statusCode == 200) {
        //         console.log("post query" + response.body);
                 favourites = JSON.parse(response.body);
-              //  var counter = 0;
+                var counter = 0;
        console.log('response article' , response.body.modes , favourites.modes );
             var x=0;
             if(favourites.modes != undefined)
