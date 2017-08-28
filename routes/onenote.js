@@ -1128,7 +1128,7 @@ var counter =0;
             // {
               mode.sections.forEach(function(section)
               {
-                  if(chapter == 'Common Gases' && counter > 3)
+                  if(chapter == 'Common Gases' && counter > 5)
                   {
                     console.log('BREAKING');
                   return true;
