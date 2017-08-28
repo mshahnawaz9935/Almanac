@@ -1162,8 +1162,6 @@ var counter =0;
                         var fileurl = image.url + key;
                         var width =  image.width;
                         var attr = 'Publisher';
-                          console.log('File url is' ,fileurl );
-
                            if(obj.length >0)            
                                obj.forEach(function(obj) {
                                   
