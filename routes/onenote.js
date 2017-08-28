@@ -1172,6 +1172,7 @@ var counter =0;
                                url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
                     obj.width +  "</p><p>Source:" + obj.attr
                     + "</p>" ;
+                                  return true;
                                  }
                      
                                })
