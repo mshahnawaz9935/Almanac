@@ -1159,23 +1159,23 @@ var counter =0;
                  //     console.log('Image url is ',favourites.sections[i].images[j].url);
                         if(image.attribution == 'Publisher')   // change name to stop check
                         {   
-                        
+
                        // console.log('Image attribute cj fallon found' ,image.attribution,image.url);
                         var caption =  image.caption;
                         var fileurl = image.url + key;
                         var width =  image.width;
                         var attr = 'Publisher';
                            if(obj.length >0)            
-                               obj.forEach(function(obj) {
+                               obj.every(function(obj) {
                                   
                                  if(obj.fileurl == fileurl)
                                  {
                                    console.log('matched');
                                   console.log('File url is' ,fileurl );
-                               url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
-                    obj.width +  "</p><p>Source:" + obj.attr
-                    + "</p>" ;
-                                  return true;
+                                    url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
+                          obj.width +  "</p><p>Source:" + obj.attr
+                          + "</p>" ;
+                                  return false;
                                  }
                      
                                })
