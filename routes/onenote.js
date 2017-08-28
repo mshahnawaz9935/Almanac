@@ -1118,7 +1118,7 @@ var counter =0;
             var x=0;
             if(favourites.modes != undefined)
             {
-            console.log('Modes length' ,favourites.modes.length);
+            console.log('Modes length' ,favourites.modes.length , obj.length);
              obj.forEach(function(obj) {
                   console.log(obj.fileurl);
              })
