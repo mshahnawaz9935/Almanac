@@ -1409,10 +1409,10 @@ var counter =0;
               })
            //   setTimeout(function() {
 
-              callback(url , obj);
+            
             //  },favourites.modes.length * 4000 )
                }
-               
+                 callback(url , obj);
                
         }
         else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
