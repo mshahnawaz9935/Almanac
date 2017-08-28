@@ -147,18 +147,6 @@ router.get('/aboutme', function (req, res) {
    // }
 });
 
-router.get('/checknote', function (req, res) {                // checknotebook exists or not
-  // check for token
-  checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
-  {
-    if(t==1)
-    {
-      res.json('Notebook exists');
-    }
-    else res.json('Notebook doesnt exists');
-
-});
-});
 
 router.get('/checknote2', function (req, res) {
   // check for token
@@ -1394,11 +1382,11 @@ var counter =0;
                         if(image.attribution == 'Publisher')   // change name to stop check
                         {   
                         
-                        console.log('Image attribute cj fallon found' ,image.attribution,image.url);
+                      //  console.log('Image attribute cj fallon found' ,image.attribution,image.url);
                         var caption =  image.caption;
                         var fileurl = image.url + key;
                         var attr = 'Publisher';
-                          console.log('File url is' ,fileurl );
+                        //  console.log('File url is' ,fileurl );
                        
                         encoder(fileurl ,function(image)
                         {
