@@ -1126,13 +1126,13 @@ var counter =0;
             {
             // for(var i=0; i< mode.sections.length; i++) 
             // {
-              mode.sections.forEach(function(section)
+              mode.sections.some(function(section)
               {
-                  // if(chapter == 'Common Gases' && counter > 8)
-                  // {
-                  //   console.log('BREAKING');
-                  // return true;
-                  // }
+                  if(chapter == 'The States of Matter' && counter > 5)
+                  {
+                    console.log('BREAKING');
+                  return true;
+                  }
                   
                   url = url + "<h1>" + section.title + "</h1>";
                     url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
