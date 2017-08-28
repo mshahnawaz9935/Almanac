@@ -1166,7 +1166,7 @@ var counter =0;
                         var width =  image.width;
                         var attr = 'Publisher';
                            if(obj.length >0)            
-                               obj.some(function(obj) {
+                               obj.forEach(function(obj) {
                                   
                                  if(obj.fileurl == fileurl)
                                  {
