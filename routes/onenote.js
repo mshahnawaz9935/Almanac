@@ -1093,7 +1093,7 @@ var counter =0;
    // var fulldata;
        getarticle2(token, topic, chapter ,articleid , studentid, moduleid, function(data , obj){
 
-          console.log('data before match' , data);
+          console.log('data before match' , data , obj);
               getToken(function(token2){
     var favourites ={};
 var url = '';
