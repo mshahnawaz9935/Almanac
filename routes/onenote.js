@@ -1128,8 +1128,8 @@ var counter =0;
             // {
               mode.sections.forEach(function(section)
               {
-                  // if(chapter == 'Acid and Bases' && counter > 6)
-                  // return true;
+                  if(chapter == ' The States of Matter' && counter > 6)
+                  return true;
                   
                   url = url + "<h1>" + section.title + "</h1>";
                     url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
