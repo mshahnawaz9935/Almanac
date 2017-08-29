@@ -14,7 +14,7 @@ var credentials = {
   client_id: 'fa64935f-0786-46d4-9a8d-b9e4b6d66fa9',
   client_secret: 'wMiUNne6zxtmmgTjb4CUOJ7',
   redirect_uri: 'https://student.almanac-learning.com/onenote/login',
-  scope: ['User.Read Mail.Send Mail.ReadWrite Notes.Create Notes.Read.All Notes.ReadWrite.All offline_access']
+  scope: ['User.Read Mail.Send Mail.ReadWrite Notes.Create Notes.Read.All Notes.ReadWrite.All offline_access wl.signin wl.basic wl.offline_access office.onenote_create Office.onenote Office.onenote_update Office.onenote_update_by_app']
 };
 
 
