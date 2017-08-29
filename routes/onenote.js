@@ -1128,7 +1128,7 @@ var counter =0;
             // {
               mode.sections.some(function(section)
               {
-                  if(chapter == 'The States of Matter' && counter > 7)
+                  if(chapter == 'The States of Matter' && counter > 5)
                   {
                     console.log('BREAKING' , counter);
                   return true;
