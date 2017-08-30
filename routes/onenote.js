@@ -1171,12 +1171,16 @@ var counter =0;
                                   
                                  if(obj.fileurl == fileurl)
                                  {
-                                   console.log('matched');
-                                  console.log('File url is' ,fileurl );
-                                  console.log('File size is', (obj.data.toString().length-814)/1.37);
+                                  
+                                  console.log('File size is', ((obj.data.toString().length-814)/1.37)/1000);
+                                  if(((obj.data.toString().length-814)/1.37)/1000 < 700)
+                                  {
+                                     console.log('matched');
+                                      console.log('File url is' ,fileurl );
                                     url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
                           obj.width +  "</p><p>Source:" + obj.attr
                           + "</p>" ;
+                                  }
                                   return true;
                                  }
                      
@@ -1225,97 +1229,6 @@ var counter =0;
                       
 }
 
-  function writer3(token, topic, chapter ,articleid , studentid, moduleid,  callback)
-    {   
-
-              getToken(function(token2){
-    var favourites ={};
-  var url = '';
-  var counter =0;
-
-    var headers = {
-        "content-type": "application/json",
-        Authorization: 'Bearer ' + token2 
-    }
-    var options = {
-             url:'https://services.almanac-learning.com/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
-        method: 'GET',
-        headers: headers,
-    }
-    console.log(options.url);
- request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-       //         console.log("post query" + response.body);
-                favourites = JSON.parse(response.body);
-       console.log('response article' , response.body.modes , favourites.modes);
-            var x=0;
-            if(favourites.modes != undefined)
-            {
-            console.log('Modes length' ,favourites.modes.length);
-            favourites.modes.forEach(function (mode)
-            {
-            // for(var i=0; i< mode.sections.length; i++) 
-            // {
-              mode.sections.forEach(function(section)
-              {
-                  url = url + "<h1>" + section.title + "</h1>";
-                    url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
-                     if(section.images !==  undefined)
-                    url = url + " <h3>Images from this section are as under</h3>";
-                    try{
-                        var image_len = section.images.length;
-                    }
-                    catch(err)
-                    {   // continue;  
-                    }
-                    finally { }
-                    if(section.videos !== undefined)
-                    if(section.videos.length > 0)
-                    url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + section.videos[0].url + "' /><br>" ;
-                    if(section.images !== undefined)
-                    section.images.forEach(function(image)
-                    {
-                        if(image.caption !==null)
-                        {
-                        image.caption = image.caption.substring(9,image.caption.length-3 );
-                        }
-                        else image.caption ='Caption '+ Math.floor((Math.random() * 1000) + 1);
-                 //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(image.attribution == 'Publisher')   // change name to stop check
-                        {   
-                        
-                        console.log('Image attribute cj fallon found' ,image.attribution,image.url);
-                        var caption =  image.caption;
-                        var fileurl = image.url + key;
-                        var width =  image.width;
-                        var attr = 'Publisher';
-                          console.log('File url is' ,fileurl );
-             
-                    url = url+ "<p><img src=" + "\"" + fileurl + "\"" + "/><br>"+
-                      image.caption +  "</p><p>Source:" + image.attribution
-                    + "</p>" ;
-                        }
-                        else {
-                    
-                    url = url+ "<p><img src=" + "\"" + image.url + "\"" + "/><br>"+
-                    image.caption +  "</p><p>Source:" + image.attribution
-                    + "</p>" ;
-                        }
-                        url = url + '<br>';
-                    })
-                })
-              })
-               }
-                callback(url);
-        }
-        else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
-      }
-           
-    });
-
-  });
-                                  
-}
 
 function encoder(url , callback)
 {
@@ -1532,28 +1445,7 @@ var counter =0;
     
     }
 
- function createOneNoteArticle2(token, topic, chapter ,articleid , studentid , moduleid) {
 
-
-         writer3(token, topic, chapter ,articleid , studentid, moduleid,function(data){
-
-           data  =
-             "<!DOCTYPE html>" +
-        "<html>" +
-        "<head>" +
-        "    <title>"+ chapter + " " + dateTimeNowISO() +"</title>" +
-        "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
-        "</head>" +
-        "<body>" +
-        "    <p> View Your Saved Article <i>formatted</i></p>" +
-         data +
-        "</body>" +
-        "</html>";   
-
-        createNewPage2(token, data , false);
-         });
-
-}
 
 
 function writetonote(token,topic,chapter)
