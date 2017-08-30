@@ -1128,12 +1128,12 @@ var counter =0;
             // {
               mode.sections.some(function(section)
               {
-                  if(chapter == 'The States of Matter' && counter > 2)
-                  {
-                    console.log('BREAKING' , counter);
-                  return true;
-                }
-                else counter++;
+                // //   if(chapter == 'The States of Matter' && counter > 2)
+                // //   {
+                // //     console.log('BREAKING' , counter);
+                // //   return true;
+                // // }
+                // else counter++;
                   
                   url = url + "<h1>" + section.title + "</h1>";
                     url = url + "<h2>" +  section.text.text.substring(9, section.text.text.length-3 ) + "</h2>";
