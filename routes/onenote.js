@@ -1173,7 +1173,7 @@ var counter =0;
                                  {
                                   
                                   console.log('File size is', ((obj.data.toString().length-814)/1.37)/1000);
-                                  if(((obj.data.toString().length-814)/1.37)/1000 < 700)
+                                  if(((obj.data.toString().length-814)/1.37)/1000 < 500)
                                   {
                                      console.log('matched');
                                       console.log('File url is' ,fileurl );
