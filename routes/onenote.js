@@ -1114,6 +1114,7 @@ var counter =0;
        //         console.log("post query" + response.body);
                 favourites = JSON.parse(response.body);
                var counter = 0;
+               var images_size = 0;
        console.log('response article' , response.body.modes , favourites.modes );
             var x=0;
             if(favourites.modes != undefined)
@@ -1177,6 +1178,7 @@ var counter =0;
                                   {
                                      console.log('matched');
                                       console.log('File url is' ,fileurl );
+                                      images_size = images_size + ((obj.data.toString().length-814)/1.37)/1000;
                                     url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
                           obj.width +  "</p><p>Source:" + obj.attr
                           + "</p>" ;
@@ -1202,6 +1204,7 @@ var counter =0;
                 })
               })
                }
+               console.log('Image sizes are' , images_size);
                 callback(url);
         }
         else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
