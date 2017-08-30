@@ -1174,7 +1174,7 @@ var counter =0;
                                  {
                                   
                                   console.log('File size is', ((obj.data.toString().length-814)/1.37)/1000);
-                                  if(((obj.data.toString().length-814)/1.37)/1000 < 200)
+                                  if(((obj.data.toString().length-814)/1.37)/1000 < 500 || images_size < 1700)
                                   {
                                      console.log('matched');
                                       console.log('File url is' ,fileurl );
