@@ -88,9 +88,9 @@ image = 'assets/img/almanac/cards/img-favourites-01.jpg';
               console.log(pages.parentNotebook);
               if(pages.parentNotebook.displayName == 'TCD Almanac')
               {
-                let k = pages.title.indexOf(" ");
-                if(k>0 && k !== -1)
-                pages.title =  pages.title.substring(0,k);
+                // let k = pages.title.indexOf(" ");
+                // if(k>0 && k !== -1)
+                // pages.title =  pages.title.substring(0,k);
                 let obj = { id: pages.id, title : pages.title, section :  pages.parentSection.displayName  };
                 this.page.push(obj);
               }
