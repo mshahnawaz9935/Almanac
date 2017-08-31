@@ -1174,15 +1174,15 @@ var counter =0;
                                  {
                                   
                                   console.log('File size is', ((obj.data.toString().length-814)/1.37)/1000);
-                            //      if(((obj.data.toString().length-814)/1.37)/1000 < 500 && images_size < 1700)
-                            //      {
+                                  if(((obj.data.toString().length-814)/1.37)/1000 < 500 && images_size < 1500)
+                                  {
                                      console.log('matched');
                                       console.log('File url is' ,fileurl );
                                       images_size = images_size + ((obj.data.toString().length-814)/1.37)/1000;
                                     url = url+ "<p><img src=" + "\"data:image/jpeg;base64," + obj.data + "\"" + "/><br>"+
                           obj.width +  "</p><p>Source:" + obj.attr
                           + "</p>" ;
-                            //      }
+                                  }
                                   return true;
                                  }
                      
