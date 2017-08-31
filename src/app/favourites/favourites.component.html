@@ -45,11 +45,11 @@
 <h2 *ngIf="toggle == false && DataService.dblogin == false" class="card-text">Articles exported to One Note</h2>
 <br><br>
 
-<div class="card-block" *ngIf="toggle == true && loading1 == true">
+<div class="card-block" *ngIf="toggle == false && loading1 == true">
                      <h4 class="card-title" >Loading One Note Articles...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
-      <div class="card-block" *ngIf="toggle == true && deleting == true">
+      <div class="card-block" *ngIf="toggle == false && deleting == true">
                      <h4 class="card-title" >Deleting One Note Articles from ALMANAC...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
