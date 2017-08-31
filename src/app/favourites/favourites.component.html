@@ -45,11 +45,11 @@
 <h2 *ngIf="toggle == false && DataService.dblogin == false" class="card-text">Articles exported to One Note</h2>
 <br><br>
 
-<div class="card-block" *ngIf="loading1 == true">
+<div class="card-block" *ngIf="toggle == true && loading1 == true">
                      <h4 class="card-title" >Loading One Note Articles...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
-      <div class="card-block" *ngIf="deleting == true">
+      <div class="card-block" *ngIf="toggle == true && deleting == true">
                      <h4 class="card-title" >Deleting One Note Articles from ALMANAC...Please wait</h4>
       <md-progress-spinner class="example-margin" [color]="warn" mode="indeterminate" > </md-progress-spinner>
       </div>
@@ -114,10 +114,10 @@
                              <div class="col-md-7"><p [innerHTML]="section.text.text" class="card-text"> </p> </div>
                                </div>
                   
-              <div class="post-video" *ngIf="section.videos !== undefined">
+                 <div class="post-video" *ngIf="section.videos !== undefined">
                       <br>
                           <br>
-                    <iframe allowfullscreen frameborder="0" height="315" width="560" [src]="section.videos[0].url | safe"></iframe>
+                    <iframe *ngIf="section.videos[0] !== undefined" allowfullscreen frameborder="0" height="315" width="560" [src]="section.videos[0].url | safe"></iframe>
                <br>
                 </div>
                 <br>

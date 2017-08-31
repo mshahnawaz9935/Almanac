@@ -47,8 +47,8 @@ router.get('/userlogin', (req, res) => {
 
     var username = req.query.username;
     var password = req.query.password;
-    MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
- //  MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
+  //  MongoClient.connect('mongodb://remotemongodb:J3gcFVlTzb4KznFQ8Rbsz7V7cEROONHgSQMXkyI8wswQ41afGnkEvkn1iYmT01ktjvCH1FLOSYiaQi0t893rNw==@remotemongodb.documents.azure.com:10250/?ssl=true', function (err, db) {        //Run mongodb and its service mongod.exe
+   MongoClient.connect('mongodb://127.0.0.1:27017/userdata',function(err, db) {
     if (err) {
         throw err;
     } else {
@@ -1096,6 +1096,7 @@ var counter =0;
           console.log('data before match' , data ,'Object is' , obj);
               getToken(function(token2){
     var favourites ={};
+    var videos2=[];
 var url = '';
 var counter =0;
 
@@ -1149,7 +1150,38 @@ var counter =0;
                     finally { }
                     if(section.videos !== undefined)
                     if(section.videos.length > 0)
-                    url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + section.videos[0].url + "' /><br>" ;
+                    {
+                      if(videos2.length == 0)
+                      {
+                        videos2.push(section.videos[0].url);
+                           url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + section.videos[0].url + "' /><br>" ;
+                      }
+                      else
+                      {
+                      var match= false;
+                      section.videos.some(function(vid)
+                      {
+                        var x= 0;
+                          videos2.some(function(video) {
+                            if(vid.url !== video)
+                            {
+                                x++;
+                            }
+                            
+                            
+                          });
+                          if(x== videos2.length)
+                          {
+                             videos2.push(vid.url);
+                             url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + vid.url + "' /><br>" ;
+                             return true;
+                          }
+
+                      })
+                    }
+
+                  
+                    }
                     if(section.images !== undefined)
                     section.images.forEach(function(image)
                     {
