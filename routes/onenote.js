@@ -9,13 +9,13 @@ var authHelper = require('../authHelper.js');
   var base64Img = require('base64-img');
   var MongoClient = require('mongodb').MongoClient , format = require('util').format;
 
-/* GET home page. */
 var t=2,sec=2;
 var notebookid;
 var sectionid;
+// SAS KEY
 var key = '?sv=2016-05-31&ss=bfqt&srt=sco&sp=rc&se=2018-04-23T22:53:50Z&st=2017-07-20T14:53:50Z&spr=https&sig=AhAPJr%2BBr5urTfnfBKaF2hnIkpS1xEUCbekiNZW4Od4%3D';
 
-function getToken (callback)
+function getToken (callback)                // Get token from Azure AD
 {
     var token = '';
     var favourites ={};
@@ -43,7 +43,7 @@ function getToken (callback)
         });
 }
 
-router.get('/userlogin', (req, res) => {
+router.get('/userlogin', (req, res) => {            // Login using Mongodb
 
     var username = req.query.username;
     var password = req.query.password;
@@ -72,7 +72,7 @@ router.get('/userlogin', (req, res) => {
                 console.log(req.session.login);
                     req.session.email = result.username;
                 counter++;
-                      res.cookie(authHelper.sessionemail, req.session.email);
+                      res.cookie(authHelper.sessionemail, req.session.email);  // Storing email in session
                 req.session.save();
                 console.log(req.session.email);
                  }
@@ -148,99 +148,7 @@ router.get('/aboutme', function (req, res) {
 });
 
 
-router.get('/checknote2', function (req, res) {
-  // check for token
-   checknote2(req,res);
-  setTimeout(function()
-  {
-    console.log('t is', t);
-    if(t == 1)
-    {
-      checksection(req.cookies.ACCESS_TOKEN_CACHE_KEY , 'Almanac');
-       setTimeout(function()
-       {
-          console.log( 'sec is ', sec);
-      if(sec==1)
-      {
-        console.log('Both exists');
-       writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
-
-      }
-      else
-      {
-        console.log('Notebook exists and section created');
-        createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY , notebookid , req.session.modulename);
-          setTimeout(function()
-          {
-              writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter);
-          },4700);
-      }
-       },1500);
-
-    }
-     else 
-     {
-       console.log('Notebook and section created');
-      // res.json('Notebook created');
-      createnotebook(req.cookies.ACCESS_TOKEN_CACHE_KEY ,req.session.modulename);
-      setTimeout(function()
-          {
-              writespecific(req.cookies.ACCESS_TOKEN_CACHE_KEY, 'lava', 'Volcanoes');
-          },6500);
-    }
-  },1200);
-    //    res.json('Notebooks created or updated and data saved to Note');
-     
-});
-
-router.get('/checknote3', function (req, res) {
-
-  console.log('check token' , req.cookies.ACCESS_TOKEN_CACHE_KEY);
-  
-  checknote2(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(t , notebookid)
-  {
-    if(t==1)
-    {
-       console.log('notebook id' ,notebookid);
-    checksection(req.cookies.ACCESS_TOKEN_CACHE_KEY , notebookid , req.session.modulename , function(sec, sectionid)
-    {
-     
-       if(sec == 1){
-         createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
-       res.json('Notebook exists id is ' + notebookid + 'Section exists id is' + sectionid);
-       }
-       else if(sec==0)
-       {
-         createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid , req.session.modulename , function(sectionid)
-         {
-           createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
-            res.json('Notebook exists and section created' + sectionid);
-         });
-
-       }
-
-    });
-    }
-    else if(t==0)
-    {
-       console.log('t=0');
-      createnotebook(req.cookies.ACCESS_TOKEN_CACHE_KEY , function(notebookid){
-         console.log('notebook id' ,notebookid);
-      createsection(req.cookies.ACCESS_TOKEN_CACHE_KEY, notebookid ,req.session.modulename, function(sectionid)
-         {
-           createarticle(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic, req.session.chapter , req.session.articleid , req.session.studentid , req.session.moduleid);
-            res.json('Notebook' + notebookid + 'and section created' + sectionid);
-         });
-         });
-    }
-
-
-
-  });
-
-     
-});
-router.get('/checknote4', function (req, res) {
+router.get('/checknote4', function (req, res) {          // Route to create OneNote Notebooks sections and articles
 
   console.log('check token' , req.cookies.ACCESS_TOKEN_CACHE_KEY);
   
@@ -304,17 +212,12 @@ router.get('/checknote4', function (req, res) {
          });
     }
 
-
-
   });
 
-     
 });
 
 
-
-
-function createnotebook(token ,callback)
+function createnotebook(token ,callback)           //Creates Notebook
 {
      var options = {
     url: 'https://graph.microsoft.com/beta/me/onenote/notebooks',
@@ -340,14 +243,9 @@ function createnotebook(token ,callback)
 }
 
 
-router.get('/writenote', function (req, res) {
+router.get('/checklogin', function (req, res) {        // TO Check the session data and user login
   // check for token
-  writetonote(req.cookies.ACCESS_TOKEN_CACHE_KEY, req.session.topic , req.session.chapter);
-   res.redirect('/search');
-});
-router.get('/checklogin', function (req, res) {        // Wont work directly on angular, need to be executed on node
-  // check for token
-  // if (req.cookies.ACCESS_TOKEN_CACHE_KEY === undefined) {  // for testing very importnat to neutralize session
+  // if (req.cookies.ACCESS_TOKEN_CACHE_KEY === undefined) {  // for testing its very important to neutralize session
   //   req.session.login = '';
   //   console.log('here');
   // }
@@ -514,7 +412,7 @@ function checknote(token ,callback)                                // No use for
 
 }
 
-function checknote2(token, callback)
+function checknote2(token, callback)                  //Checks for notebook named TCD Almanac
 {   t=0;
     var options = {
     host: 'graph.microsoft.com',
@@ -579,7 +477,7 @@ function checknote2(token, callback)
 
 
 
-function getonenotearticles(token, callback)
+function getonenotearticles(token, callback)              // Get stored OneNote articles 
 {
     var options = {
     host: 'graph.microsoft.com',
@@ -805,289 +703,8 @@ function createsection(token, notebookid ,modulename ,callback)
 }
 
 
-function writespecific(token,topic,chapter ,callback)
-{
-   
-    console.log('inside token' , topic,chapter);
-    var url = '';
-    var queryObject =  {
-    "userID":"IOK_Postman_Testing",
-    "parameters":{
-            "parameterInstance":[
-                {"name":"complexity","value":5},
-                {"name":"duration","value":4}, 
-                {"name":"topic","value":topic},
-                {"name":"chapter","value":chapter}
-            ]
-        }
-    } ;
-    var favourites = {};
-    request({
-        url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-        method: "POST",
-        json: true,   // <--Very important!!!
-        body: queryObject,
-        headers: {
-            "content-type": "application/json",  // <--Very important!!!
-        },
-        }, function (error, response, body){
-            favourites = response.body;
-            if(favourites.sections != undefined)
-            {
-            console.log(favourites.sections.section.length);
-            for(var i=0; i< favourites.sections.section.length; i++) 
-            {  
-                    url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
-                    url = url + "<h4>" +  favourites.sections.section[i].text.text + "</h4>";
-                    try{
-                        var image_len = favourites.sections.section[i].images.image.length;
-                    }
-                    catch(err)
-                    {    continue;  }
-                    finally { }
-                    for(var j=0; j< image_len;j++)
-                    {
-                    url = url+ "<p><img src=" + "\"" + favourites.sections.section[i].images.image[j].url + "\"" + "/></p>";
-                    }
-                }
-               }
-               else{
-                  favourites= { title: 'Page does not exists: Error 404' };
-                  url = url + "<p> Contact your School or Teacher</p>";
-                  console.log('I come here when i get error' , favourites.title);
-               }
-                callback(url);
-            
-        });
-        
-       
-     
-    }
 
-
-function writespecific2(token,topic,chapter, articleid ,studentid, moduleid,callback)
-{
-    getToken(function(token2){
-    console.log('inside token' , topic,chapter , token, articleid ,studentid, moduleid);
-    var url = '';
-    var favourites = {};
-    var headers = {
-        "content-type": "application/json",
-        Authorization: 'Bearer ' + token2 
-    }
-    var options = {
-         url:'https://services.almanac-learning.com/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
-        method: 'GET',
-        headers: headers,
-    }
-    console.log(options.url);
-    request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          favourites = JSON.parse(response.body);
-            console.log('response article' , response.body , favourites.sections);
-            if(favourites.sections != undefined)
-            {
-            console.log(favourites.sections.length);
-            for(var i=0; i< favourites.sections.length; i++) 
-            {  
-                    url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
-                    url = url + "<h4>" +  favourites.sections[i].text.text + "</h4>";
-                    try{
-                        var image_len = favourites.sections[i].images.length;
-                    }
-                    catch(err)
-                    {    continue;  }
-                    finally { }
-                    for(var j=0; j< image_len;j++)
-                    {
-                      console.log('Image url is ',favourites.sections[i].images[j].url);
-                    url = url+ "<p><img src=" + "\"" + favourites.sections[i].images[j].url + "\"" + "/><br>"+
-                    favourites.sections[i].images[j].caption +  "</p><p>" + favourites.sections[i].images[j].attribution
-                    + "</p>" ;
-                    }
-                }
-               }
-               else
-               {
-                  favourites= { title: 'Page does not exists: Error 404' };
-                  url = url + "<p> Contact your School or Teacher</p>";
-                  console.log('I come here when i get error' , favourites.title);
-               }
-                
-        }
-        else {
-                  favourites= { title: 'Page does not exists: Error 404' };
-                  url = url + "<p> Contact your School or Teacher</p>";
-                  console.log('Error occured getting data' , error ,response.body,response.statusCode, response.headers);
-               }
-               callback(url);
-    });
-
-        });
-       
-     
-    }
-
-
-    function createarticle(token, topic, chapter ,articleid , studentid , moduleid)
-    {
-      
-      writespecific2(token, topic, chapter ,articleid , studentid, moduleid,function(url)
-      {
-        var htmlPayload =
-        "<!DOCTYPE html>" +
-        "<html>" +
-        "<head>" +
-        "    <title>"+ topic +"</title>" +
-        "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
-        "</head>" +
-        "<body>" +
-        "    <p> View Your Page <i>formatted</i></p>" +
-         url +
-        "</body>" +
-        "</html>";   
-        console.log('Payload is' , htmlPayload);
-            
-            createNewPage(token, htmlPayload, false); 
-
-      });
-       
-
-    }
-
-    
-function getarticle(token, topic, chapter ,articleid , studentid, moduleid, callback)
-{
-  getToken(function(token2){
-    var favourites ={};
-var url = '';
-var obj = [];
-var counter =0;
-
-    var headers = {
-        "content-type": "application/json",
-        Authorization: 'Bearer ' + token2 
-    }
-    var options = {
-             url:'https://services.almanac-learning.com/composer/students/' + studentid + '/instances/'+ moduleid +'/articles/' + articleid + '/',
-        method: 'GET',
-        headers: headers,
-    }
-    console.log(options.url);
- request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-       //         console.log("post query" + response.body);
-                favourites = JSON.parse(response.body);
-       console.log('response article' , response.body.modes , favourites.modes);
-            if(favourites.modes != undefined)
-            {
-            console.log('Modes length' ,favourites.modes.length);
-            favourites.modes.forEach(function (mode)
-            {
-            for(var i=0; i< mode.sections.length; i++) 
-            {
-       
-                    url = url + " <h3>Images from this section are as under</h3>";
-                    url = url + "<h4>" +  mode.sections[i].text.text.substring(9, mode.sections[i].text.text.length-3 ) + "</h4>";
-                    try{
-                        var image_len = mode.sections[i].images.length;
-                    }
-                    catch(err)
-                    {    continue;  }
-                    finally { }
-                    var x=0;
-                    if(mode.sections[i].videos !== undefined)
-                    if(mode.sections[i].videos.length > 0)
-                    url = url + "<br><iframe width='340' height='280' data-original-src='https://www.youtube.com/watch?v=" + mode.sections[i].videos[0].url + "' /><br>" ;
-                    for(var j=0; j< image_len;j++)
-                    {
-                        if(mode.sections[i].images[j].caption !==null)
-                        {
-                        mode.sections[i].images[j].caption = mode.sections[i].images[j].caption.substring(9,mode.sections[i].images[j].caption.length-3 );
-                        }
-                        else mode.sections[i].images[j].caption ='Caption '+ Math.floor((Math.random() * 1000) + 1);
-                 //     console.log('Image url is ',favourites.sections[i].images[j].url);
-                        if(mode.sections[i].images[j].attribution == 'Publisher')   // change name to stop check
-                        {   
-                        
-                        console.log('Image attribute cj fallon found' ,mode.sections[i].images[j].attribution,mode.sections[i].images[j].url , 'i is ', i , 'j is' ,j);
-                        var caption =  mode.sections[i].images[j].caption;
-                        var fileurl = mode.sections[i].images[j].url + key;
-                        var width =  mode.sections[i].images[j].width;
-                        var attr = 'Publisher';
-                          console.log('File url is' ,fileurl );
-                          var details = {"attr" : attr , "fileurl" : fileurl , "width" : caption  };
-                          obj.push(details);
-                          x++;
-
-
-                        }
-                        else {
-                    
-                    url = url+ "<p><img src=" + "\"" + mode.sections[i].images[j].url + "\"" + "/><br>"+
-                    mode.sections[i].images[j].caption +  "</p><p>Source:" + mode.sections[i].images[j].attribution
-                    + "</p>" ;
-                        }
-                        url = url + '<br>';
-                    }
-                }
-                })
-               }
-               callback(url , obj);
-               
-        }
-        else { console.log('nuffing2 instances' , error ,response.statusCode, response.headers);
-        callback(url , obj);
-        }
-    });
-  });
-}
-
-// Old code for writing to file and reading the binary code of image
-    function writer(token, topic, chapter ,articleid , studentid, moduleid,  callback)
-    {   
-   // var fulldata;
-       getarticle(token, topic, chapter ,articleid , studentid, moduleid, function(data , obj){
-           var  fulldata = data;
-        //   console.log(fulldata);
-           console.log('Object Length' ,obj.length);   
-           if(obj.length >0)            
-            obj.forEach(function(obj) {
-         
-            // url = url+ "<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + width +  "</p>"  + "<p>Source:" + attr;
-             writetofile(obj.width, obj.fileurl , function(result) {
-                console.log('Result is' ,result);
-                            decode(obj.width, function(image){
-                                  console.log(' new creation is File url is' ,obj.fileurl, obj.width);
-                                fulldata = fulldata +"<p><img src=" + "\"" + "data:image/jpeg;base64," + image + "\"" +  "/><br>" + obj.width +  "</p>"  + "<p>Source:" + obj.attr
-                        + "</p>" ;
-                     //   console.log(fulldata);
-                            });
-                     
-                        });
-                      
-                        
-               });
-               setTimeout(function() {
-                    fulldata = 
-        "<!DOCTYPE html>" +
-        "<html>" +
-        "<head>" +
-        "    <title>"+ topic + dateTimeNowISO() +"</title>" +
-        "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
-        "</head>" +
-        "<body>" +
-        "    <p> View Your Saved Article <i>formatted</i></p>" +
-         fulldata +
-        "</body>" +
-        "</html>";   
-                                   callback(fulldata);
-               }, obj.length * 700);
-            
-                      });
-                      
-}
-
+//Method for converting and generating binary data for OneNote
    function writer2(token, topic, chapter ,articleid , studentid, moduleid,  callback)
     {   
    // var fulldata;
@@ -1379,41 +996,6 @@ var counter =0;
 }
 
 
-    function createNewPage(accessToken, payload, multipart) {
-            var options = {
-                url: 'https://graph.microsoft.com/beta/me/onenote/sections/'+ sectionid  +'/pages',
-                headers: {
-                'Authorization': 'Bearer ' + accessToken
-                }
-            };
-            // Build simple request
-            if (!multipart) {
-                options.headers['Content-Type'] = 'text/html';
-                options.body = payload;
-            }
-            var r = request.post(options, function (err, resp, body) {
-              if (err) {
-                console.log('Error!');
-              } else {
-                console.log('Response is: ' + body);
-              }
-            });
-            // Build multi-part request
-            if (multipart) {
-                var CRLF = '\r\n';
-                var form = r.form(); // FormData instance
-                _.each(payload, function(partData, partId) {
-                form.append(partId, partData.body, {
-                    // Use custom multi-part header
-                    header: CRLF +
-                    '--' + form.getBoundary() + CRLF +
-                    'Content-Disposition: form-data; name=\"' + partId + '\"' + CRLF +
-                    'Content-Type: ' + partData.contentType + CRLF + CRLF
-                });
-                });
-            }
-}
-
     function createNewPage2(accessToken, payload, multipart,callback) {
     
             var options = {
@@ -1481,114 +1063,9 @@ var counter =0;
     
     }
 
-
-
-
-function writetonote(token,topic,chapter)
-{
-    console.log('inside token' , topic,chapter);
-    var url = '';
-    var queryObject =  {
-    "userID":"IOK_Postman_Testing",
-    "parameters":{
-            "parameterInstance":[
-                {"name":"complexity","value":5},
-                {"name":"duration","value":4}, 
-                {"name":"topic","value":topic},
-                {"name":"chapter","value":chapter}
-            ]
-        }
-    } ;
-    var favourites = {};
-    request({
-        url: "http://kdeg-vm-43.scss.tcd.ie/ALMANAC_Personalised_Composition_Service/composer/atomiccompose",
-        method: "POST",
-        json: true,   // <--Very important!!!
-        body: queryObject,
-        headers: {
-            "content-type": "application/json",  // <--Very important!!!
-        },
-        }, function (error, response, body){
-
-            console.log("post query" + response.body);
-            favourites = response.body;
-            console.log(favourites.sections.section.length);
-            for(var i=0; i< favourites.sections.section.length; i++) 
-            {  
-                    url = url + " <h3>Images from section "+ (i+1) + " are as under</h3>";
-                    url = url + "<h4>" +  favourites.sections.section[i].text.text + "</h4>";
-                    try{
-                        var image_len = favourites.sections.section[i].images.image.length;
-                    }
-                    catch(err)
-                    {    continue;  }
-                    finally { }
-                    for(var j=0; j< image_len;j++)
-                    {
-                    url = url+ "<p><img src=" + "\"" + favourites.sections.section[i].images.image[j].url + "\"" + "/></p>";
-                    }
-                }
-            
-        });
-        
-       
-       //  console.log(htmlPayload); 
-        setTimeout(function()
-        {   
-   
-                var htmlPayload =
-        "<!DOCTYPE html>" +
-        "<html>" +
-        "<head>" +
-        "    <title>"+ favourites.title +"&nbsp;</title>" +
-        "    <meta name=\"created\" content=\"" + dateTimeNowISO() + "\">" +
-        "</head>" +
-        "<body>" +
-        "    <p> View Your Page <i>formatted</i></p>" +
-         url +
-        "</body>" +
-        "</html>";   
-            
-            createPage(token, htmlPayload, false); 
-        }, 2000);
-     
-    }
- 
-        function dateTimeNowISO() {             // replace T with a space
+  function dateTimeNowISO() {             // replace T with a space
             return new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');  // delete the dot and everything after
             }
-
-    function createPage(accessToken, payload, multipart) {
-            var options = {
-                url: 'https://graph.microsoft.com/beta/me/onenote/pages',
-                headers: {
-                'Authorization': 'Bearer ' + accessToken
-                }
-            };
-            console.log('ACCESS TOKEN IS' + accessToken ,' Payload is', payload);
-            // Build simple request
-            if (!multipart) {
-                options.headers['Content-Type'] = 'text/html';
-                options.body = payload;
-            }
-            var r = request.post(options);
-            // Build multi-part request
-            if (multipart) {
-                var CRLF = '\r\n';
-                var form = r.form(); // FormData instance
-                _.each(payload, function(partData, partId) {
-                form.append(partId, partData.body, {
-                    // Use custom multi-part header
-                    header: CRLF +
-                    '--' + form.getBoundary() + CRLF +
-                    'Content-Disposition: form-data; name=\"' + partId + '\"' + CRLF +
-                    'Content-Type: ' + partData.contentType + CRLF + CRLF
-                });
-                });
-            }
-            }
-
-
 
 
 function aboutmail(req,res)
@@ -1774,33 +1251,7 @@ var request = client.get(url, function(response) {
   console.log('There will be no more data.');
     callback(url);
 });
-//    fs.open(filename + '.jpg', 'r+', function(err, fd) {
-//    if (err) {
-//       return console.error(err);
-//    }
-//    console.log("File opened successfully!");
-//    console.log("Going to read the file");
-   
-//    fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
-//       if (err){
-//          console.log(err);
-//       }
 
-//       // Print only read bytes to avoid junk.
-//       if(bytes > 0){
-//          console.log(buf.slice(0, bytes).toString());
-//       }
-
-//       // Close the opened file.
-//       fs.close(fd, function(err){
-//          if (err){
-//             console.log(err);
-//          } 
-//          console.log("File closed successfully.");
-//           callback(url);
-//       });
-//    });
-// });
   
 });
 
